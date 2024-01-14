@@ -1,0 +1,4 @@
+<template>
+  <LayoutFHeader />
+  <slot />
+</template>

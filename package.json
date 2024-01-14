@@ -1,0 +1,25 @@
+{
+  "name": "flipthecoin",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@iconify-json/octicon": "^1.1.48",
+    "@nuxt/devtools": "latest",
+    "@types/node": "^18.17.3",
+    "@types/three": "^0.156.0",
+    "@types/zdog": "^1.1.4",
+    "nuxt": "^3.9.1"
+  },
+  "dependencies": {
+    "@nuxt/ui": "^2.12.0",
+    "cannon-es": "^0.20.0",
+    "three": "^0.156.1",
+    "zdog": "^1.1.3"
+  }
+}
