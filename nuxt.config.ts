@@ -2,9 +2,13 @@
 export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   devtools: { enabled: true },
-  modules: ['@nuxt/ui'],
+  modules: ['@nuxt/ui', 'nitro-cloudflare-dev'],
   ui: {
     icons: ['octicon'],
   },
   watch: ['./coin/index.ts'],
+  nitro: {
+    preset: 'cloudflare-module',
+  },
+  compatibilityDate: '2025-01-10',
 });
