@@ -1,0 +1,10 @@
+compatibility_date = "2024-09-30"
+
+name = "fliptecoin-app"
+
+main = ".output/server/index.mjs"
+
+assets = { directory = ".output/public", binding = "ASSETS" }
+
+[observability]
+enabled = false
