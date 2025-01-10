@@ -15,4 +15,4 @@ binding = "flipthecoin-app-flipthecoin_emails_list_local"
 id = "84542cf8ed754a35a8cfbcdd32aa9d7e"
 
 [observability]
-enabled = false
+enabled = true
