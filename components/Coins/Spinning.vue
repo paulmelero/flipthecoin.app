@@ -1,8 +1,10 @@
 <template>
-  <canvas aria-hidden class="canvas" :width="size" :height="size"></canvas>
+  <canvas class="canvas" :width="size" :height="size"></canvas>
 </template>
 
 <script setup lang="ts">
+
+
 const props = withDefaults(
   defineProps<{
     size?: number;

@@ -1,12 +1,30 @@
 <template>
-  <main>
-    <h1>Toss a coin</h1>
+  <main class="container mx-auto prose dark:prose-invert">
+    <h1>Watch the coin flip continuously</h1>
+    <p>This is a test page. It's not meant to be used as a real game.</p>
 
-    <button @click="toss">Toss me</button>
+    <blockquote>
+      <h2 class="text-red-500">Notice</h2>
+
+      <p class="not-prose">The content of this page ⚠️ flashes a lot, be aware if you have
+        photosensitive epilepsy or other conditions that may be triggered by
+        flashing lights or motion.</p>
+    </blockquote>
+
+    <!-- <button @click="toss">Toss me</button> -->
+    <button @click="reset">Reset</button>
+    <button @click="pause">{{ paused ? 'Resume' : 'Pause' }}</button>
 
     <p v-if="coin">
-      You got <output>{{ coin }}</output
-      >!
+      <output v-if="biasNonetheless.toFixed(2) !== '0.00'">{{ winningSide }} wins by
+        <span class="biassed">{{ percentageFormatter.format(biasNonetheless) }}</span>!</output>
+      <output v-else>
+        The coin is fair!
+      </output>
+    </p>
+
+    <p v-if="coin">
+      You got <output>{{ coin }}</output>!
     </p>
 
     <p>
@@ -15,8 +33,7 @@
     </p>
 
     <p>
-      Total <output>{{ history.heads + history.tails }}</output
-      >!
+      Total <output>{{ history.heads + history.tails }}</output>!
     </p>
 
     <table>
@@ -24,25 +41,17 @@
         <tr>
           <th>
             <span>Heads</span>
-            <span
-              v-if="biasTowardsHeads > 0"
-              class="tabular"
-              :class="{
-                biassed: biasTowardsHeads > 0,
-              }"
-            >
+            <span v-if="biasTowardsHeads > 0" class="tabular" :class="{
+              biassed: biasTowardsHeads > 0,
+            }">
               +{{ percentageFormatter.format(biasTowardsHeads) }}
             </span>
           </th>
           <th>
             <span>Tails</span>
-            <span
-              v-if="biasTowardsTails > 0"
-              class="tabular"
-              :class="{
-                biassed: biasTowardsTails > 0,
-              }"
-            >
+            <span v-if="biasTowardsTails > 0" class="tabular" :class="{
+              biassed: biasTowardsTails > 0,
+            }">
               +{{ percentageFormatter.format(biasTowardsTails) }}
             </span>
           </th>
@@ -128,6 +137,14 @@ const biasTowardsTails = computed(() => {
   return 1 / (biasTowardsHeads.value + 1) - 1;
 });
 
+const biasNonetheless = computed(() => {
+  return 1 / (biasTowardsHeads.value + 1) - 1;
+});
+
+const winningSide = computed(() => {
+  return biasTowardsHeads.value > biasTowardsTails.value ? 'Heads' : 'Tails';
+});
+
 const reset = () => {
   coin.value = undefined;
   history.value = { heads: 0, tails: 0 };
@@ -192,19 +209,21 @@ td:last-child {
 output {
   font-size: 2rem;
   font-weight: bold;
+  font-family: monospace;
 }
 
-button + p {
+button+p {
   margin-top: 2rem;
 }
 
-button + p output {
+button+p output {
   font-size: 2rem;
   font-weight: bold;
 }
 
 .tabular {
   font-variant-numeric: tabular-nums;
+  font-family: monospace;
 }
 
 .biassed {
