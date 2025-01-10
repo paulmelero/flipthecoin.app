@@ -1,5 +1,7 @@
 {
   "name": "flipthecoin",
+  "description": "The Online Coin Flip App",
+  "type": "module",
   "private": true,
   "scripts": {
     "build": "nuxt build",
