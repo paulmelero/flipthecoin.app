@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   devtools: { enabled: true },
-  modules: ['@nuxt/ui', 'nitro-cloudflare-dev'],
+  modules: ['@nuxt/ui', 'nitro-cloudflare-dev', '@nuxt/content'],
   ui: {
     icons: ['octicon'],
   },

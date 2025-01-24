@@ -270,7 +270,6 @@ export function useThreeJsCoin(
     (resultText.material as THREE.Material).transparent = true;
     (resultText.material as THREE.Material).opacity = 0;
 
-    resultText.castShadow = true;
     scene.add(resultText);
 
     // Animate both position and opacity

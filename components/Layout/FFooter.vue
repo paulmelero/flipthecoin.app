@@ -2,7 +2,7 @@
   <footer class="container mx-auto py-8 px-4">
     <div class="flex flex-col md:flex-row justify-between items-center gap-4">
       <div class="flex items-center">
-        <Logo />
+        <BrandLogo :data-test="uid" />
       </div>
 
       <div class="text-sm text-gray-600">
@@ -15,3 +15,7 @@
     </div>
   </footer>
 </template>
+
+<script setup lang="ts">
+const { uid } = getCurrentInstance()
+</script>
