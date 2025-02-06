@@ -5,12 +5,15 @@
 </template>
 
 <script setup lang="ts">
+const TITLE = 'FlipTheCoin.app - Do you need a coin?'
+const DESCRIPTION = 'The place where coins fairly flip. What is random? What is your fait? Please don\'t leave a coin decide it.'
 useHead({
-  title: 'Flip The Coin - The Online Coin Flip Game',
+  title: TITLE,
+  titleTemplate: (title) => title ? `${title} -- ${TITLE}` : TITLE,
   meta: [
-    { name: 'description', content: 'A fair and random online coin flip game with 3D animation. Perfect for making decisions or just having fun!' },
-    { property: 'og:title', content: 'Flip The Coin - The Online Coin Flip Game' },
-    { property: 'og:description', content: 'A fair and random online coin flip game with 3D animation' },
+    { name: 'description', content: DESCRIPTION },
+    { property: 'og:title', content: TITLE },
+    { property: 'og:description', content: DESCRIPTION },
     // TODO
     // { property: 'og:image', content: '/img/social-preview.jpg' },
     // { name: 'twitter:card', content: 'summary_large_image' }
