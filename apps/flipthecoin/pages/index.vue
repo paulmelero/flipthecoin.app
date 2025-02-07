@@ -65,7 +65,7 @@ const tossCount = ref(0);
 const previousTossCount = ref(0);
 const isIntersecting = ref(false);
 
-const { setup, cleanup, flipCoin } = useThreeJsCoin(
+const { setup, disposeSceneResources, flipCoin } = useThreeJsCoin(
   canvasRef,
   isFlipping,
   result,
@@ -78,13 +78,12 @@ onMounted(() => {
   setup();
 });
 
-onUnmounted(() => {
-  cleanup();
+onBeforeUnmount(() => {
+  disposeSceneResources();
 });
 
 // Content
 const { data: home } = await useAsyncData(() => queryCollection('content').path('/').first())
-
 
 useSeoMeta({
   title: home.value?.title,

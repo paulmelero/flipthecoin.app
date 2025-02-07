@@ -1,0 +1,10 @@
+{
+  "manifest_version": 2,
+  "name": "FlipTheCoin",
+  "description": "Do you need a coin?",
+  "version": "1.0.0",
+  "browser_action": {
+    "default_popup": "index.html"
+  },
+  "permissions": []
+}

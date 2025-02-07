@@ -4,7 +4,6 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { gsap } from 'gsap';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
-import type { Ref } from 'vue';
 
 export function useThreeJsCoin(
   canvasRef: Ref<HTMLCanvasElement | null>,
@@ -30,6 +29,8 @@ export function useThreeJsCoin(
     mainLight: THREE.DirectionalLight;
 
   const DEFAULT_CAMERA_POSITION = new THREE.Vector3(-5, 4, 1);
+  const animationFrameId = ref(null);
+  const geometries: THREE.BufferGeometry[] = [];
 
   const initThreeJS = () => {
     scene = new THREE.Scene();
@@ -103,6 +104,7 @@ export function useThreeJsCoin(
       height,
       segments
     );
+    geometries.push(geometry); // Store geometry for later disposal
     const material = new THREE.MeshStandardMaterial({
       color: 0xd4af37, // Golden color
       metalness: 0.7,
@@ -144,6 +146,7 @@ export function useThreeJsCoin(
   const createFloor = () => {
     // Visual representation to show shadows
     const floorGeometry = new THREE.PlaneGeometry(100, 100);
+    geometries.push(floorGeometry); // Store geometry for later disposal
     // set to ShadowMaterial to receive shadows but not be visible
     const floorMaterial = new THREE.ShadowMaterial({ opacity: 0.5 });
     floorMesh = new THREE.Mesh(floorGeometry, floorMaterial);
@@ -234,6 +237,7 @@ export function useThreeJsCoin(
       bevelSize: 0.01,
       bevelSegments: 6,
     });
+    geometries.push(textGeometry); // Store geometry for later disposal
 
     textGeometry.scale(0.9, 1, 1);
 
@@ -355,7 +359,7 @@ export function useThreeJsCoin(
   };
 
   const animate = () => {
-    requestAnimationFrame(animate);
+    animationFrameId.value = requestAnimationFrame(animate);
 
     world.step(1 / 60);
 
@@ -408,20 +412,23 @@ export function useThreeJsCoin(
   function setup() {
     initThreeJS();
     initPhysics();
-    initFont();
-    createFloor();
-    createCoin();
-    animate();
-    initListeners();
+    initFont().then(() => {
+      createFloor();
+      createCoin();
+      animate();
+      initListeners();
+    });
   }
 
-  function cleanup() {
+  function disposeSceneResources() {
     destroyListeners();
+    geometries.forEach((geometry) => geometry.dispose());
   }
 
   return {
     setup,
-    cleanup,
+    disposeSceneResources,
     flipCoin,
+    animationFrameId,
   };
 }
