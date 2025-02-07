@@ -4,10 +4,10 @@ import { _height } from '#tailwind-config/theme';
     <UContainer class="flex justify-between items-center">
       <nuxt-link to="/" class="flex items-center">
         <BrandLogo />
-        <BrandLogo />
       </nuxt-link>
       <nav class="flex gap-2">
         <nuxt-link to="/">Home</nuxt-link>
+        <nuxt-link to="/extension">Browser Extension</nuxt-link>
       </nav>
     </UContainer>
   </header>

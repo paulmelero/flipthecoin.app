@@ -14,5 +14,10 @@ id = "a456c36d4e14411a8a8a9f6c8d3ff224"
 binding = "flipthecoin-app-flipthecoin_emails_list_local"
 id = "84542cf8ed754a35a8cfbcdd32aa9d7e"
 
+[[d1_databases]]
+binding = "cf_d1_flipthecoin_content"
+database_name = "cf_d1_flipthecoin_content"
+database_id = "742ff927-04aa-4c68-9ff9-6e45833c3216"
+
 [observability]
 enabled = true
