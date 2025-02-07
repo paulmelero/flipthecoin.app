@@ -1,0 +1,31 @@
+{
+  "name": "@flipthecoin/app",
+  "description": "The Online Coin Flip App",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@iconify-json/octicon": "^1.1.48",
+    "@nuxt/devtools": "latest",
+    "@types/node": "^18.17.3",
+    "@types/three": "^0.156.0",
+    "@types/zdog": "^1.1.4",
+    "nitro-cloudflare-dev": "^0.2.1",
+    "nuxt": "^3.15.1",
+    "wrangler": "^3.101.0"
+  },
+  "dependencies": {
+    "@nuxt/content": "^3.0.0",
+    "@nuxt/ui": "^2.12.0",
+    "cannon-es": "^0.20.0",
+    "gsap": "^3.12.4",
+    "three": "^0.156.1",
+    "zdog": "^1.1.3"
+  }
+}
