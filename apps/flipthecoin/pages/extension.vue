@@ -1,5 +1,9 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData(() => queryCollection('content').path('extension').first())
+const { data: page } = await useContent('extension');
+
+definePageMeta({
+  layout: 'blogpost',
+});
 
 useSeoMeta({
   title: page.value?.title,
@@ -8,6 +12,5 @@ useSeoMeta({
 </script>
 
 <template>
-  <ContentRenderer v-if="page" :value="page" />
-  <div v-else>page not found</div>
+    <MDCRenderer :body="page?.body" :data="page?.data" />
 </template>

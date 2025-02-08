@@ -1,8 +1,0 @@
-{
-  "name": "@flipthecoin/shared",
-  "version": "1.0.0",
-  "files": [
-    "src"
-  ],
-  "license": "MIT"
-}

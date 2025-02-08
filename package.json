@@ -3,6 +3,15 @@
   "name": "flipthecoinapp-monorepo",
   "version": "0.0.0",
   "scripts": {
-    "build": "pnpm -r build"
+    "build": "pnpm -r build",
+    "dev": "pnpm --filter @flipthecoin/app dev"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "better-sqlite3",
+      "esbuild",
+      "workerd"
+    ]
   }
 }

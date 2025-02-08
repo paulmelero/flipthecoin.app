@@ -2,10 +2,6 @@
 title: Simply –flip the coin
 ---
 
-::f-title
-My First Page
-::
-
 The game of uncertainty: Tossing a coin gives us roughly 50% chance of it
 landing heads and 50% chance landing tails, but until the coin lands we
 don't know what it will be!

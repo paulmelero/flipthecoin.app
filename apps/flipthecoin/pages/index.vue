@@ -1,12 +1,12 @@
 <template>
-  <FJumbo class="bg-yellow-500 text-black min-h-[100dvh] relative overflow-hidden">
+  <ContentFJumbo class="bg-yellow-500 text-black min-h-[100dvh] relative overflow-hidden">
     <div class="self-center">
       <canvas ref="canvasRef" class="w-screen h-[80dvh] mt-0 absolute top-0 left-0" :class="{
         'cursor-pointer': !isFlipping,
         'cursor-grab': isIntersecting && !isFlipping,
       }"></canvas>
       <div class="isolate z-10">
-        <FTitle>"Flip The Coin", the online game</FTitle>
+        <ContentFTitle>"Flip The Coin", the online game</ContentFTitle>
         <p class="mb-3">
           Have you ever let fate decide for you? You certainly shouldn't!
         </p>
@@ -18,15 +18,12 @@
       </div>
 
     </div>
-  </FJumbo>
-  <FJumbo class="min-h-[400px] prose dark:prose-invert">
-    <ContentRenderer v-if="home" :value="home" />
-    <FTitle as="h2"></FTitle>
-
-
+  </ContentFJumbo>
+  <ContentFJumbo class="min-h-[400px] prose dark:prose-invert">
+    <MDCRenderer :body="home.body" :data="home.data" />
     <NewsletterForm />
-  </FJumbo>
-  <FJumbo class="flex justify-between items-center gap-4 min-h-[400px]">
+  </ContentFJumbo>
+  <ContentFJumbo class="flex justify-between items-center gap-4 min-h-[400px]">
     <svg class="w-10 h-10 mb-3 text-gray-200 dark:text-gray-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
       fill="currentColor" viewBox="0 0 18 14">
       <path
@@ -37,26 +34,12 @@
         and the choices you make today will make you what you are tomorrow."</em>
       — Michael Josephson
     </blockquote>
-  </FJumbo>
-  <!-- <FJumbo class="min-h-[400px]">
-    <FTitle as="h2">How to play?</FTitle>
-    <p>
-      The game is simple: you flip a coin and complete the challenge. If you
-      don't like the challenge, you can skip it and flip the coin again.
-    </p>
-    <p>
-      The game is played in turns. Each turn consists of flipping a coin and
-      completing the challenge. If you don't like the challenge, you can skip it
-      and flip the coin again.
-    </p>
-    <p>
-      The game ends when you complete all the challenges or when you give up.
-    </p>
-  </FJumbo> -->
+  </ContentFJumbo>
 </template>
 
 <script setup lang="ts">
 import { useThreeJsCoin } from '~/composables/useThreeJsCoin';
+import { useContent } from '~/composables/useContent';
 
 const canvasRef = ref<HTMLCanvasElement | null>(null);
 const isFlipping = ref(false);
@@ -83,10 +66,10 @@ onBeforeUnmount(() => {
 });
 
 // Content
-const { data: home } = await useAsyncData(() => queryCollection('content').path('/').first())
+const { data: home } = await useContent('index');
 
 useSeoMeta({
   title: home.value?.title,
   description: home.value?.description
-})
+});
 </script>

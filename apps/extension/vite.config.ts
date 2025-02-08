@@ -12,7 +12,7 @@ export default defineConfig({
       name: 'copy-manifest',
       generateBundle() {
         const manifestPath = resolve(
-          new URL(import.meta.url),
+          new URL(import.meta.url).pathname,
           `src/manifests/manifest.${browser}.json`
         );
         const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
@@ -29,7 +29,7 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: resolve(new URL(import.meta.url), 'index.html'),
+        main: resolve(new URL(import.meta.url).pathname, 'index.html'),
       },
       output: {
         entryFileNames: `assets/[name].js`,

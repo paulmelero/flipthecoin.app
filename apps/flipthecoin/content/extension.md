@@ -1,4 +1,4 @@
-# Flip THe Coin Browser Extension
+# Flip The Coin Browser Extension
 
 This is the browser extension for Flip The Coin. It allows you to flip a coin in your browser whenever you are. It is available for Chrome and Firefox.
 
