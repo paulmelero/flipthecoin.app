@@ -29,7 +29,8 @@ export function useThreeJsCoin(
     mainLight: THREE.DirectionalLight;
 
   const DEFAULT_CAMERA_POSITION = new THREE.Vector3(-5, 4, 1);
-  const animationFrameId = ref(null);
+
+  const animationFrameId = ref<number | null>(null);
   const geometries: THREE.BufferGeometry[] = [];
 
   const initThreeJS = () => {

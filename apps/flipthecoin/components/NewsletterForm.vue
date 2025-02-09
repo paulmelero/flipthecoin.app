@@ -1,13 +1,21 @@
 <template>
-  <form @submit.prevent="subscribe" class="form-control">
-    <input
-      v-model="email"
-      type="email"
-      placeholder="Email"
-      required
-      :disabled="loading"
-      class="input-md md:input-lg input-bordered input-primary w-full mb-4"
-    />
+  <form @submit.prevent="subscribe">
+    <fieldset class="form-control">
+      <label class="label">
+        <span class="label-text">Enter your email address</span>
+      </label>
+      <input
+        v-model="email"
+        type="email"
+        placeholder="Email"
+        required
+        :disabled="loading"
+        class="input-md md:input-lg input-bordered input-primary w-full mb-4"
+        :class="{
+          'input-error': error,
+        }"
+      />
+    </fieldset>
     <label class="label items-center gap-2 mb-4" id="agreeToTerms">
       <input
         type="checkbox"
@@ -19,7 +27,7 @@
       <span class="label-text grow"> I agree to the terms and conditions </span>
     </label>
     <button type="submit" class="btn" :loading="loading">
-      {{ loading ? 'Subscribing...' : 'Subscribe' }}
+      {{ loading ? 'Subscribing...' : success ? 'Subscribed!' : 'Subscribe' }}
     </button>
     <p v-if="error" class="text-red-500 mt-2">{{ error }}</p>
     <p v-if="success" class="text-green-500 mt-2">Thanks for subscribing!</p>
