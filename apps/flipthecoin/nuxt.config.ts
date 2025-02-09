@@ -16,12 +16,38 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: '2025-01-10',
-  modules: ['nitro-cloudflare-dev', '@nuxt/ui', '@nuxtjs/mdc'],
+  modules: [
+    'nitro-cloudflare-dev',
+    '@nuxtjs/color-mode',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/mdc',
+    '@nuxt/fonts',
+  ],
   mdc: {
     components: {
       map: {
         h1: 'ContentFTitle',
+        h2: 'ContentFTitleH2',
       },
     },
+  },
+  fonts: {
+    families: [
+      {
+        name: 'Fira Sans',
+        provider: 'google',
+        weight: 300,
+      },
+      {
+        name: 'IBM Plex Mono',
+        provider: 'google',
+        weight: 400,
+      },
+    ],
+  },
+  colorMode: {
+    preference: 'system', // default theme
+    dataValue: 'theme', // activate data-theme in <html> tag
+    classSuffix: '',
   },
 });

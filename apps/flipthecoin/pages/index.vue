@@ -1,39 +1,49 @@
 <template>
-  <ContentFJumbo class="bg-yellow-500 text-black min-h-[100dvh] relative overflow-hidden">
+  <ContentFJumbo
+    class="yellow-gradient text-black min-h-[80dvh] relative overflow-hidden"
+    rounded
+  >
     <div class="self-center">
-      <canvas ref="canvasRef" class="w-screen h-[80dvh] mt-0 absolute top-0 left-0" :class="{
-        'cursor-pointer': !isFlipping,
-        'cursor-grab': isIntersecting && !isFlipping,
-      }"></canvas>
+      <canvas
+        ref="canvasRef"
+        class="w-screen h-[80dvh] mt-0 absolute top-0 left-0"
+        :class="{
+          'cursor-pointer': !isFlipping,
+          'cursor-grab': isIntersecting && !isFlipping,
+        }"
+      ></canvas>
       <div class="isolate z-10">
         <ContentFTitle>"Flip The Coin", the online game</ContentFTitle>
         <p class="mb-3">
           Have you ever let fate decide for you? You certainly shouldn't!
         </p>
-        <UButton color="white" @click="flipCoin" :disabled="isFlipping" size="xl">
-          {{ isFlipping ? 'Flipping...' : 'Flip the coin' }}
-        </UButton>
+        <button
+          class="btn btn-neutral btn-lg"
+          @click="flipCoin"
+          :disabled="isFlipping"
+        >
+          <span v-if="isFlipping" class="loading loading-spinner"></span>
+          <span>
+            {{ isFlipping ? 'Flipping...' : 'Flip the coin' }}
+          </span>
+        </button>
         <!-- Keep text for accessibility -->
         <output class="mt-3 sr-only" v-if="result">Result: {{ result }}</output>
       </div>
-
     </div>
   </ContentFJumbo>
-  <ContentFJumbo class="min-h-[400px] prose dark:prose-invert">
+  <ContentFJumbo class="prose dark:prose-invert">
     <MDCRenderer :body="home.body" :data="home.data" />
     <NewsletterForm />
   </ContentFJumbo>
   <ContentFJumbo class="flex justify-between items-center gap-4 min-h-[400px]">
-    <svg class="w-10 h-10 mb-3 text-gray-200 dark:text-gray-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-      fill="currentColor" viewBox="0 0 18 14">
-      <path
-        d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
-    </svg>
-    <blockquote>
-      <em>"You are what you are today because of the choices you made yesterday,
-        and the choices you make today will make you what you are tomorrow."</em>
+    <ContentFQuote>
+      <em
+        >"You are what you are today because of the choices you made yesterday,
+        and the choices you make today will make you what you are tomorrow."</em
+      >
       — Michael Josephson
-    </blockquote>
+    </ContentFQuote>
   </ContentFJumbo>
 </template>
 
@@ -70,6 +80,20 @@ const { data: home } = await useContent('index');
 
 useSeoMeta({
   title: home.value?.title,
-  description: home.value?.description
+  description: home.value?.description,
 });
 </script>
+
+<style scoped>
+.yellow-gradient {
+  background-color: #ffc303ff;
+  background-image: radial-gradient(
+      49% 81% at 45% 27%,
+      #fcc006ff 0%,
+      #073aff00 100%
+    ),
+    radial-gradient(142% 91% at 83% 7%, #ffc303ff 1%, #ff000000 99%),
+    radial-gradient(142% 91% at -6% 74%, #ffab00ff 1%, #ff000000 99%),
+    radial-gradient(142% 91% at 111% 84%, #ff7000ff 0%, #fff590ff 100%);
+}
+</style>
