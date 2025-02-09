@@ -6,7 +6,7 @@
 
     <nav class="mb-4">
       <h4 class="footer-title">
-        <span class="text-lg font-bold">Navigation</span>
+        <span class="text-lg font-bold">Legal</span>
       </h4>
       <a href="/privacy" class="hover:text-gray-900">Privacy Policy</a>
       <a href="/terms" class="hover:text-gray-900">Terms of Service</a>
