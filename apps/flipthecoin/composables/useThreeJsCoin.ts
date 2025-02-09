@@ -172,6 +172,8 @@ export function useThreeJsCoin(
 
   const flipCoin = () => {
     if (isFlipping.value) return;
+    removeText();
+
     controls.enabled = false;
     result.value = '';
     isFlipping.value = true;
@@ -310,7 +312,6 @@ export function useThreeJsCoin(
   }
 
   function onCanvasClick() {
-    removeText();
     // if (isIntersecting.value) {
     flipCoin();
     // }
