@@ -34,23 +34,26 @@
   </ContentFJumbo>
   <ContentFJumbo class="prose dark:prose-invert">
     <MDCRenderer :body="home.body" :data="home.data" />
+    <div class="divider" />
     <NewsletterForm />
   </ContentFJumbo>
-  <ContentFJumbo class="flex justify-between items-center gap-4 min-h-[400px]">
-    <ContentFQuote>
+  <div class="divider" />
+  <ContentFJumbo
+    class="flex flex-col justify-between items-center gap-4 min-h-[400px]"
+  >
+    <ContentFQuote class="flex gap-4">
       <em
         >"You are what you are today because of the choices you made yesterday,
         and the choices you make today will make you what you are tomorrow."</em
-      >
-      — Michael Josephson
+      ><br /><span>— Michael Josephson</span>
     </ContentFQuote>
+    <NuxtLink href="/blog" class="btn btn-primary btn-lg"
+      >Read more stories about coin tosses</NuxtLink
+    >
   </ContentFJumbo>
 </template>
 
 <script setup lang="ts">
-import { useThreeJsCoin } from '~/composables/useThreeJsCoin';
-import { useContent } from '~/composables/useContent';
-
 const canvasRef = ref<HTMLCanvasElement | null>(null);
 const isFlipping = ref(false);
 const result = ref('');

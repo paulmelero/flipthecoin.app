@@ -5,10 +5,7 @@
     :class="classes"
     class="font-headings font-[500] mb-[0.5em]"
   >
-    <a v-if="generate" :href="`#${props.id}`" class="font-headings">
-      <slot />
-    </a>
-    <slot v-else />
+    <slot />
   </component>
 </template>
 

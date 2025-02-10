@@ -5,7 +5,7 @@ import { gsap } from 'gsap';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 
-export function useThreeJsCoin(
+export default function useThreeJsCoin(
   canvasRef: Ref<HTMLCanvasElement | null>,
   isFlipping: Ref<boolean>,
   result: Ref<string>,

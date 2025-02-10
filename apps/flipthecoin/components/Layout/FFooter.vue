@@ -11,9 +11,9 @@
       <a href="/privacy" class="hover:text-gray-900">Privacy Policy</a>
       <a href="/terms" class="hover:text-gray-900">Terms of Service</a>
     </nav>
-    <div>
-      &copy; {{ new Date().getFullYear() }} Flip The Coin App. All rights
-      reserved.
-    </div>
+  </footer>
+  <footer class="footer bg-neutral text-base-content mx-auto py-8 px-4">
+    &copy; {{ new Date().getFullYear() }} Flip The Coin App. All rights
+    reserved.
   </footer>
 </template>

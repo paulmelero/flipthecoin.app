@@ -8,6 +8,9 @@ export default defineNuxtConfig({
       },
     },
   },
+  devtools: {
+    enabled: true,
+  },
   watch: ['!./content/**/.*.md'],
   nitro: {
     preset: 'cloudflare-module',
