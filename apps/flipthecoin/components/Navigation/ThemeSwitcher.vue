@@ -1,6 +1,7 @@
 <template>
   <ColorScheme placeholder="..." tag="span">
     <label class="grid cursor-pointer place-items-center">
+      <div class="label-text sr-only">Switch color themes</div>
       <input
         type="checkbox"
         :checked="isLight ? false : true"

@@ -5,7 +5,9 @@ const CONTENT_DIR = './content/blog';
 
 export default defineEventHandler(async (event) => {
   const files = fs.readdirSync(CONTENT_DIR);
-  const filteredFileNames = files.filter((file) => file.endsWith('.md'));
+  const filteredFileNames = files.filter(
+    (file) => file.endsWith('.md') && !file.startsWith('.')
+  );
 
   const posts = await Promise.all(
     filteredFileNames.map(async (markdownFileName) => {
