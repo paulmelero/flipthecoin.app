@@ -1,3 +1,8 @@
 {
-  "extends": "../.nuxt/tsconfig.server.json"
+  "extends": "../.nuxt/tsconfig.server.json",
+  "compilerOptions": {
+    // so we can use `import.meta.env` in our server code
+    // we need to set "types": ["vite/client"]
+    "types": ["vite/client"]
+  }
 }
