@@ -33,7 +33,7 @@
     </div>
   </ContentFJumbo>
   <ContentFJumbo class="prose dark:prose-invert">
-    <MDCRenderer :body="home.body" :data="home.data" />
+    <MDCRenderer :body="home?.body" :data="home.data" />
     <div class="divider" />
     <NewsletterForm />
   </ContentFJumbo>
@@ -67,7 +67,7 @@ const { setup, disposeSceneResources, flipCoin } = useThreeJsCoin(
   result,
   tossCount,
   previousTossCount,
-  isIntersecting
+  isIntersecting,
 );
 
 onMounted(() => {
@@ -90,11 +90,8 @@ useSeoMeta({
 <style scoped>
 .yellow-gradient {
   background-color: #ffc303ff;
-  background-image: radial-gradient(
-      49% 81% at 45% 27%,
-      #fcc006ff 0%,
-      #073aff00 100%
-    ),
+  background-image:
+    radial-gradient(49% 81% at 45% 27%, #fcc006ff 0%, #073aff00 100%),
     radial-gradient(142% 91% at 83% 7%, #ffc303ff 1%, #ff000000 99%),
     radial-gradient(142% 91% at -6% 74%, #ffab00ff 1%, #ff000000 99%),
     radial-gradient(142% 91% at 111% 84%, #ff7000ff 0%, #fff590ff 100%);

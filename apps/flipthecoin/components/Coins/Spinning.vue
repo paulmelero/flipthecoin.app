@@ -12,12 +12,10 @@ const props = withDefaults(
   }>(),
   {
     size: 400,
-  }
+  },
 );
 
-onMounted(() => {
-
-})
+onMounted(() => {});
 </script>
 
 <style scoped>
@@ -26,7 +24,11 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 5, 0.5) 0%, rgba(255, 255, 255, 0) 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 5, 0.5) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
 }
 
 .coin {

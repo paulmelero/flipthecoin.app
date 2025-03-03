@@ -7,9 +7,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "prepare": "nuxt prepare",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "cf:preview": "pnpm build && pnpx wrangler pages dev dist",
+    "preview": "nuxt build && nuxt preview",
     "cf:logs": "pnpx wrangler pages deployment tail",
     "postinstall": "nuxt prepare"
   },

@@ -20,8 +20,8 @@ const classes = computed(() => {
     props.as === 'h1'
       ? 'md:text-3xl text-2xl'
       : props.as === 'h2'
-      ? 'md:text-2xl text-xl'
-      : '';
+        ? 'md:text-2xl text-xl'
+        : '';
 
   return [size];
 });
@@ -32,6 +32,6 @@ const generate = computed(
     props.id &&
     ((typeof headings?.anchorLinks === 'boolean' &&
       headings?.anchorLinks === true) ||
-      (typeof headings?.anchorLinks === 'object' && headings?.anchorLinks?.h1))
+      (typeof headings?.anchorLinks === 'object' && headings?.anchorLinks?.h1)),
 );
 </script>

@@ -13,7 +13,7 @@ export default defineConfig({
       generateBundle() {
         const manifestPath = resolve(
           new URL(import.meta.url).pathname,
-          `src/manifests/manifest.${browser}.json`
+          `src/manifests/manifest.${browser}.json`,
         );
         const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
         this.emitFile({

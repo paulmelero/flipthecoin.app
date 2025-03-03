@@ -4,7 +4,11 @@
   "version": "0.0.0",
   "scripts": {
     "build": "pnpm -r build",
-    "dev": "pnpm --filter @flipthecoin/app dev"
+    "dev": "pnpm --filter @flipthecoin/app dev",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -13,5 +17,10 @@
       "esbuild",
       "workerd"
     ]
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "prettier": "3.5.3"
   }
 }

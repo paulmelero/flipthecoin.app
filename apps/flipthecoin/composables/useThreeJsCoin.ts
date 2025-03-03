@@ -11,7 +11,7 @@ export default function useThreeJsCoin(
   result: Ref<string>,
   tossCount: Ref<number>,
   previousTossCount: Ref<number>,
-  isIntersecting: Ref<boolean>
+  isIntersecting: Ref<boolean>,
 ) {
   let scene: THREE.Scene,
     camera: THREE.PerspectiveCamera,
@@ -39,7 +39,7 @@ export default function useThreeJsCoin(
       75,
       window.innerWidth / window.innerHeight,
       0.1,
-      1000
+      1000,
     );
     renderer = new THREE.WebGLRenderer({
       canvas: canvasRef.value!,
@@ -103,7 +103,7 @@ export default function useThreeJsCoin(
       radius,
       radius,
       height,
-      segments
+      segments,
     );
     geometries.push(geometry); // Store geometry for later disposal
     const material = new THREE.MeshStandardMaterial({
@@ -186,13 +186,13 @@ export default function useThreeJsCoin(
     coinBody.position.set(
       coinMesh.position.x,
       coinMesh.position.y,
-      coinMesh.position.z
+      coinMesh.position.z,
     );
     coinBody.velocity.set(randomX, flipForce, randomZ);
     coinBody.angularVelocity.set(
       Math.random() * 20 - 10,
       Math.random() * 20 - 10,
-      0
+      0,
     );
   };
 
@@ -270,7 +270,7 @@ export default function useThreeJsCoin(
     resultText.position.set(
       coinBody.position.x,
       coinBody.position.y + 0.5, // Start lower
-      coinBody.position.z
+      coinBody.position.z,
     );
 
     // Set initial opacity to 0

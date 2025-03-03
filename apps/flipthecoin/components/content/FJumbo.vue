@@ -16,6 +16,6 @@ withDefaults(
   {
     as: 'section',
     rounded: true,
-  }
+  },
 );
 </script>

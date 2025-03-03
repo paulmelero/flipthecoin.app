@@ -7,10 +7,10 @@ definePageMeta({
 
 useSeoMeta({
   title: page.value?.title,
-  description: page.value?.description
-})
+  description: page.value?.description,
+});
 </script>
 
 <template>
-    <MDCRenderer :body="page?.body" :data="page?.data" />
+  <MDCRenderer :body="page?.body" :data="page?.data" />
 </template>

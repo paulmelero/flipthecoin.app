@@ -6,13 +6,13 @@ definePageMeta({
 });
 
 const route = useRoute();
-const postFileName = route.params.post;
+const postFileName = route.params.post as string;
 
 if (!postFileName) {
   throw createError('Post not found');
 }
 
-const { data: post } = (await useContent(`${postFileName}?blog=1`)) as {
+const { data: post } = (await useContent(postFileName)) as {
   data: Ref<Partial<MDCParserResult>>;
 };
 
