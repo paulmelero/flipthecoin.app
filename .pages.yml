@@ -1,0 +1,49 @@
+media:
+  input: apps/flipthecoin/assets/img
+  output: /img
+content:
+  - name: blog
+    label: Blog
+    type: collection
+    path: apps/flipthecoin/content/blog
+    view:
+      fields: [title]
+      primary: title
+    fields:
+      - name: title
+        label: Title
+        type: text
+      - name: date
+        label: Date
+        type: date
+      - name: author
+        label: Author
+        type: text
+      - name: description
+        label: Description
+        type: text
+        options:
+          maxlength: 180
+      - name: body
+        label: Body
+        type: rich-text
+      - name: image
+        label: Image
+        type: image
+        required: false
+  - name: homepage
+    label: Home Page
+    type: file
+    path: apps/flipthecoin/content/index.md
+  - name: aboutus
+    label: About Us
+    type: file
+    path: apps/flipthecoin/content/about-us.md
+  - name: extension
+    label: Extension Home Page
+    type: file
+    path: apps/flipthecoin/content/extension.md
+  - name: privacy
+    label: Privacy Policy
+    type: file
+    path: apps/flipthecoin/content/privacy-policy.md
