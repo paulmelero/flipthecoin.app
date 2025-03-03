@@ -1,7 +1,8 @@
 <script setup lang="ts">
-const slug = useRoute().params.page;
+const route = useRoute();
+
 const { data: page } = await useAsyncData(() =>
-  queryCollection('content').path(`/${slug}`).first(),
+  queryCollection('pages').path(`/pages${route.path}`).first(),
 );
 
 useSeoMeta({

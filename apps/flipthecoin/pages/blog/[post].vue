@@ -1,29 +1,26 @@
 <script setup lang="ts">
-import type { MDCParserResult } from '@nuxtjs/mdc';
-
 definePageMeta({
   layout: 'blogpost',
 });
 
 const route = useRoute();
-const postFileName = route.params.post as string;
 
-if (!postFileName) {
-  throw createError('Post not found');
-}
+const { data: post } = await useAsyncData(route.path, async () => {
+  const res = await queryCollection('blog').path(route.path).first();
 
-const { data: post } = (await useContent(postFileName)) as {
-  data: Ref<Partial<MDCParserResult>>;
-};
+  console.log({ res });
+
+  return res;
+});
 
 useSeoMeta({
-  title: post.value.data?.title,
-  description: post.value?.data?.description,
+  title: post.value?.title,
+  description: post.value?.description,
 });
 </script>
 
 <template>
   <div v-if="post && post.body">
-    <MDCRenderer :body="post.body" :data="post.data" />
+    <ContentRenderer :value="post" />
   </div>
 </template>

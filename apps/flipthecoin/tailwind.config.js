@@ -1,5 +1,3 @@
-import { dark } from 'daisyui/src/theming/themes';
-
 export default {
   theme: {
     extend: {

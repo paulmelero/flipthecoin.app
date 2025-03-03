@@ -34,16 +34,16 @@ content:
   - name: homepage
     label: Home Page
     type: file
-    path: apps/flipthecoin/content/index.md
+    path: apps/flipthecoin/content/pages/index.md
   - name: aboutus
     label: About Us
     type: file
-    path: apps/flipthecoin/content/about-us.md
+    path: apps/flipthecoin/content/pages/about-us.md
   - name: extension
     label: Extension Home Page
     type: file
-    path: apps/flipthecoin/content/extension.md
+    path: apps/flipthecoin/content/pages/extension.md
   - name: privacy
     label: Privacy Policy
     type: file
-    path: apps/flipthecoin/content/privacy-policy.md
+    path: apps/flipthecoin/content/pages/privacy-policy.md

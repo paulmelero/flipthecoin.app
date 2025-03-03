@@ -24,9 +24,9 @@
     "wrangler": "^3.107.3"
   },
   "dependencies": {
+    "@nuxt/content": "^3.2.2",
     "@nuxt/fonts": "^0.10.3",
     "@nuxtjs/color-mode": "^3.5.2",
-    "@nuxtjs/mdc": "^0.13.5",
     "cannon-es": "^0.20.0",
     "gsap": "^3.12.4",
     "three": "^0.162.0"

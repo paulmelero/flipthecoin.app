@@ -33,7 +33,7 @@
     </div>
   </ContentFJumbo>
   <ContentFJumbo class="prose dark:prose-invert">
-    <MDCRenderer :body="home?.body" :data="home.data" />
+    <ContentRenderer v-if="home" :value="home" />
     <div class="divider" />
     <NewsletterForm />
   </ContentFJumbo>
@@ -79,7 +79,9 @@ onBeforeUnmount(() => {
 });
 
 // Content
-const { data: home } = await useContent('index');
+const { data: home } = await useAsyncData('home', () => {
+  return queryCollection('pages').path('/pages/').first();
+});
 
 useSeoMeta({
   title: home.value?.title,

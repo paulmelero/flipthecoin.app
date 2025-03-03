@@ -27,7 +27,7 @@
       <h4 class="footer-title">
         <span class="text-lg font-bold">Legal</span>
       </h4>
-      <a href="/privacy" class="">Privacy Policy</a>
+      <a href="/privacy-policy" class="">Privacy Policy</a>
       <a href="/terms" class="">Terms of Service</a>
     </nav>
   </footer>
