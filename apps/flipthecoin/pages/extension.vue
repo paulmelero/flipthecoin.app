@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { data: page } = await useContent('extension');
+const { data: page } = await useAsyncData('extension', () => {
+  return queryCollection('pages').path('/pages/extension').first();
+});
 
 definePageMeta({
   layout: 'blogpost',
@@ -12,5 +14,5 @@ useSeoMeta({
 </script>
 
 <template>
-  <MDCRenderer :body="page?.body" :data="page?.data" />
+  <ContentRenderer v-if="page" :value="page" />
 </template>

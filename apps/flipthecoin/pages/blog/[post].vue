@@ -4,14 +4,13 @@ definePageMeta({
 });
 
 const route = useRoute();
-const postFileName = route.params.post as string;
 
-if (!postFileName) {
-  throw createError('Post not found');
-}
+const { data: post } = await useAsyncData(route.path, async () => {
+  const res = await queryCollection('blog').path(route.path).first();
 
-const { data: post } = await useAsyncData(postFileName, () => {
-  return queryCollection('blog').path(postFileName).first();
+  console.log({ res });
+
+  return res;
 });
 
 useSeoMeta({
@@ -22,6 +21,6 @@ useSeoMeta({
 
 <template>
   <div v-if="post && post.body">
-    <MDCRenderer :body="post.body" :data="post" />
+    <ContentRenderer :value="post" />
   </div>
 </template>
