@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { data: page } = await useContent('about-us');
+const { data: page } = await useAsyncData(() =>
+  queryCollection('pages').path('/about-us').first(),
+);
 
 definePageMeta({
   layout: 'blogpost',

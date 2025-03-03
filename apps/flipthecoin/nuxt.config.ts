@@ -26,7 +26,7 @@ export default defineNuxtConfig({
     'nitro-cloudflare-dev',
     '@nuxtjs/color-mode',
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/mdc',
+    '@nuxt/content',
     '@nuxt/fonts',
   ],
   mdc: {
