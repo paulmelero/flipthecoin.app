@@ -1,19 +1,21 @@
 <template>
-  <ContentFJumbo
+  <FJumbo
     class="yellow-gradient text-black min-h-[80dvh] relative overflow-hidden"
     rounded
   >
     <div class="self-center">
-      <canvas
-        ref="canvasRef"
-        class="w-screen h-[80dvh] mt-0 absolute top-0 left-0"
-        :class="{
-          'cursor-pointer': !isFlipping,
-          'cursor-grab': isIntersecting && !isFlipping,
-        }"
-      ></canvas>
+      <ClientOnly>
+        <canvas
+          ref="canvasRef"
+          class="w-screen h-[80dvh] mt-0 absolute top-0 left-0"
+          :class="{
+            'cursor-pointer': !isFlipping,
+            'cursor-grab': isIntersecting && !isFlipping,
+          }"
+        ></canvas>
+      </ClientOnly>
       <div class="isolate z-10">
-        <ContentFTitle>"Flip The Coin", the online game</ContentFTitle>
+        <FTitle>"Flip The Coin", the online game</FTitle>
         <p class="mb-3">
           Have you ever let fate decide for you? You certainly shouldn't!
         </p>
@@ -31,26 +33,23 @@
         <output class="mt-3 sr-only" v-if="result">Result: {{ result }}</output>
       </div>
     </div>
-  </ContentFJumbo>
-  <ContentFJumbo class="prose dark:prose-invert">
+  </FJumbo>
+  <FJumbo class="prose dark:prose-invert">
     <ContentRenderer v-if="home" :value="home" />
-    <div class="divider" />
-    <NewsletterForm />
-  </ContentFJumbo>
+  </FJumbo>
+  <FJumbo class="flex flex-col items-center gap-4">
+    <FTitle as="h2">Did you enjoy this story?</FTitle>
+    <p>Visit the Blog</p>
+    <p>
+      <NuxtLink href="/blog" class="btn btn-primary"
+        >Read more stories about coin tosses</NuxtLink
+      >
+    </p>
+  </FJumbo>
   <div class="divider" />
-  <ContentFJumbo
-    class="flex flex-col justify-between items-center gap-4 min-h-[400px]"
-  >
-    <ContentFQuote class="flex gap-4">
-      <em
-        >"You are what you are today because of the choices you made yesterday,
-        and the choices you make today will make you what you are tomorrow."</em
-      ><br /><span>— Michael Josephson</span>
-    </ContentFQuote>
-    <NuxtLink href="/blog" class="btn btn-primary btn-lg"
-      >Read more stories about coin tosses</NuxtLink
-    >
-  </ContentFJumbo>
+  <FJumbo class="min-h-[400px]">
+    <NewsletterForm />
+  </FJumbo>
 </template>
 
 <script setup lang="ts">
@@ -70,7 +69,8 @@ const { setup, disposeSceneResources, flipCoin } = useThreeJsCoin(
   isIntersecting,
 );
 
-onMounted(() => {
+onMounted(async () => {
+  await nextTick(); // needed for the canvas to be defined
   setup();
 });
 

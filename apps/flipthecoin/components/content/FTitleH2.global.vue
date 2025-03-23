@@ -1,10 +1,10 @@
 <template>
-  <ContentFTitle as="h2" class="font-headings mb-[0.5em]" :id="props.id">
+  <FTitle as="h2" class="font-headings mb-[0.5em]" :id="props.id">
     <a v-if="props.id && generate" :href="`#${props.id}`" class="font-headings">
       <slot />
     </a>
     <slot v-else
-  /></ContentFTitle>
+  /></FTitle>
 </template>
 
 <script setup lang="ts">

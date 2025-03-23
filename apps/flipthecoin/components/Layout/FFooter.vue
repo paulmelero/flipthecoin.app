@@ -1,4 +1,12 @@
 <template>
+  <footer class="footer bg-neutral text-neutral-content py-6 px-4 lg:px-8">
+    <FQuote class="flex gap-4">
+      <em
+        >"You are what you are today because of the choices you made yesterday,
+        and the choices you make today will make you what you are tomorrow."</em
+      ><br /><span>— Michael Josephson</span>
+    </FQuote>
+  </footer>
   <footer
     class="footer py-8 px-4 lg:px-8 bg-neutral text-neutral-content mx-auto"
   >
@@ -19,7 +27,7 @@
         <span class="text-lg font-bold">Projects</span>
       </h4>
       <a href="/blog" class="">Blog</a>
-      <a href="/browser-extension" class="">Browser extension</a>
+      <a href="/extension" class="">Browser extension</a>
       <!-- <a href="/contact" class="">Have more ideas?</a> -->
     </nav>
 

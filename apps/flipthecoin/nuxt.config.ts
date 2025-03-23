@@ -1,6 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
+  router: {
+    options: {
+      linkActiveClass: 'active',
+    },
+  },
   routeRules: {
     '/blog/**': { prerender: true },
   },
@@ -32,8 +37,8 @@ export default defineNuxtConfig({
   mdc: {
     components: {
       map: {
-        h1: 'ContentFTitle',
-        h2: 'ContentFTitleH2',
+        h1: 'FTitle',
+        h2: 'FTitleH2',
       },
     },
   },
@@ -45,9 +50,10 @@ export default defineNuxtConfig({
         weight: 300,
       },
       {
-        name: 'IBM Plex Mono',
+        name: 'Archivo',
         provider: 'google',
-        weight: 400,
+        variationSettings: "'wdth' 125",
+        weight: 500,
       },
     ],
   },

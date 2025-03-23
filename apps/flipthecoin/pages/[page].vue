@@ -5,6 +5,10 @@ const { data: page } = await useAsyncData(() =>
   queryCollection('pages').path(`/pages${route.path}`).first(),
 );
 
+definePageMeta({
+  layout: 'blogpost',
+});
+
 useSeoMeta({
   title: page.value?.title,
   description: page.value?.description,

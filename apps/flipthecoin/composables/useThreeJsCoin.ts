@@ -28,6 +28,15 @@ export default function useThreeJsCoin(
     controls: OrbitControls,
     mainLight: THREE.DirectionalLight;
 
+  if (import.meta.server) {
+    return {
+      setup: () => {},
+      disposeSceneResources: () => {},
+      flipCoin: () => {},
+      animationFrameId: ref<number | null>(null),
+    };
+  }
+
   const DEFAULT_CAMERA_POSITION = new THREE.Vector3(-5, 4, 1);
 
   const animationFrameId = ref<number | null>(null);
@@ -317,15 +326,24 @@ export default function useThreeJsCoin(
     // }
   }
 
+  const onWindowResize = () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  };
+
   const initListeners = () => {
     canvasRef.value?.addEventListener('pointermove', onPointerMove);
     canvasRef.value?.addEventListener('click', onCanvasClick);
+    window.addEventListener('resize', onWindowResize);
   };
 
   const destroyListeners = () => {
     canvasRef.value?.removeEventListener('pointermove', onPointerMove);
     canvasRef.value?.removeEventListener('click', onCanvasClick);
+    window.removeEventListener('resize', onWindowResize);
   };
+
   const zoomToGroup = () => {
     const aabb = new THREE.Box3().setFromObject(coinMesh);
     const center = aabb.getCenter(new THREE.Vector3());

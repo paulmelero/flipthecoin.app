@@ -5,10 +5,10 @@ export default {
         headings: [
           'Archivo',
           {
+            weight: '500',
             fontVariationSettings: '"wdth" 125',
           },
         ],
-        mono: ['IBM Plex Mono'],
         body: ['Fira Sans', 'sans-serif'],
       },
     },
@@ -17,10 +17,10 @@ export default {
   daisyui: {
     themes: [
       {
-        light: require('daisyui/src/theming/themes')['bumblebee'],
+        light: require('daisyui/src/theming/themes')['fantasy'],
       },
       {
-        dark: require('daisyui/src/theming/themes')['dim'],
+        dark: require('daisyui/src/theming/themes')['dracula'],
       },
     ],
   },

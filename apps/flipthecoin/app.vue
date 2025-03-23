@@ -26,20 +26,6 @@ useHead({
       rel: 'canonical',
       href: 'https://flipthecoin.app',
     },
-    {
-      rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,500&display=swap',
-    },
-    {
-      rel: 'preconnect',
-      href: 'https://fonts.gstatic.com',
-      // @ts-ignore
-      crossorigin: true,
-    },
-    {
-      rel: 'preconnect',
-      href: 'https://fonts.googleapis.com',
-    },
   ],
 });
 

@@ -6,11 +6,7 @@ definePageMeta({
 const route = useRoute();
 
 const { data: post } = await useAsyncData(route.path, async () => {
-  const res = await queryCollection('blog').path(route.path).first();
-
-  console.log({ res });
-
-  return res;
+  return queryCollection('blog').path(route.path).first();
 });
 
 useSeoMeta({

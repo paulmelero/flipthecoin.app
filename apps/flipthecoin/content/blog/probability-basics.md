@@ -1,6 +1,7 @@
 ---
 title: Probability Basics
 description: Learn the basics of probability and how it relates to coin flips.
+published: false
 ---
 
 # Probability Basics

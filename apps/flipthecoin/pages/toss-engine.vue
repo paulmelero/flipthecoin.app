@@ -14,11 +14,17 @@
     </blockquote>
 
     <!-- <button @click="toss">Toss me</button> -->
-    <button @click="reset">Reset</button>
-    <button @click="pause">{{ paused ? 'Resume' : 'Pause' }}</button>
+    <div class="flex gap-4">
+      <button type="button" @click="reset">Reset</button>
+      <button type="button" @click="pause">
+        {{ paused ? 'Resume' : 'Pause' }}
+      </button>
+    </div>
 
-    <p v-if="coin">
-      <output v-if="biasNonetheless.toFixed(2) !== '0.00'"
+    <p class="text-sm" v-if="coin">
+      <output
+        v-if="biasNonetheless.toFixed(2) !== '0.00'"
+        class="max-w-[85dvw] overflow-hidden whitespace-nowrap"
         >{{ winningSide }} wins by
         <span class="biassed">{{
           percentageFormatter.format(biasNonetheless)
@@ -79,14 +85,13 @@
         </tr>
       </tbody>
     </table>
-
-    <button @click="reset">Reset</button>
-    <button @click="pause">{{ paused ? 'Resume' : 'Pause' }}</button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+definePageMeta({
+  layout: 'blogpost',
+});
 
 type Coin = 'heads' | 'tails';
 type CoinHistory = Record<Coin, number>;

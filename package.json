@@ -3,7 +3,7 @@
   "name": "flipthecoinapp-monorepo",
   "version": "0.0.0",
   "scripts": {
-    "build": "pnpm -r build",
+    "build": "pnpm --filter @flipthecoin/app build",
     "dev": "pnpm --filter @flipthecoin/app dev",
     "prepare": "husky"
   },

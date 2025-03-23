@@ -1,34 +1,49 @@
 <template>
+  <FTitle as="h2">Newsletter</FTitle>
+  <p class="prose dark:prose-invert">
+    Want to know more about the science of coin flips or just interesting facts
+    about statistics and how they apply in life?
+  </p>
+  <p>
+    Stay tuned for more articles and resources. Sign up for our newsletter to
+    get notified when we launch the <b>game</b>, <b>the browser extension</b>,
+    and more!
+  </p>
   <form @submit.prevent="subscribe">
-    <fieldset class="form-control">
-      <label class="label">
-        <span class="label-text">Enter your email address</span>
-      </label>
+    <label class="label mb-2" for="email">
+      <span class="label-text">Enter your email address</span>
+    </label>
+    <div class="grid gap-4 grid-cols-1 md:grid-cols-[60%,1fr]">
       <input
         v-model="email"
+        id="email"
         type="email"
         placeholder="Email"
         required
         :disabled="loading"
-        class="input-md md:input-lg input-bordered input-primary w-full mb-4"
+        class="input-md md:input-lg input-bordered border rounded-lg input-primary w-full md:mb-4"
         :class="{
           'input-error': error,
         }"
       />
-    </fieldset>
-    <label class="label items-center gap-2 mb-4" id="agreeToTerms">
+      <button
+        type="submit"
+        class="btn btn-primary btn-md md:btn-lg md:mb-0 mb-4"
+        :loading="loading"
+      >
+        {{ loading ? 'Subscribing...' : success ? 'Subscribed!' : 'Subscribe' }}
+      </button>
+    </div>
+    <label class="label items-center gap-2 mb-4" for="agreeToTerms">
       <input
         type="checkbox"
-        class="ml-2 checkbox checkbox-primary"
+        class="checkbox checkbox-primary"
         v-model="agreeToTerms"
         id="agreeToTerms"
         required
       />
       <span class="label-text grow"> I agree to the terms and conditions </span>
     </label>
-    <button type="submit" class="btn" :loading="loading">
-      {{ loading ? 'Subscribing...' : success ? 'Subscribed!' : 'Subscribe' }}
-    </button>
     <p v-if="error" class="text-red-500 mt-2">{{ error }}</p>
     <p v-if="success" class="text-green-500 mt-2">Thanks for subscribing!</p>
   </form>
