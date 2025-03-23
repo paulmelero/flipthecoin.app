@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import { useRoute } from '#app';
 
 interface NavLink {
   to: string;
@@ -32,7 +31,7 @@ watch(() => route.path, closeDropdown);
         <BrandLogo />
       </nuxt-link>
     </div>
-    <nav class="navbar-end flex gap-4 md:gap-2">
+    <nav class="navbar-end w-full flex gap-4 md:gap-2">
       <div class="isolate z-10">
         <details ref="dropdownRef" class="dropdown md:hidden">
           <summary class="btn btn-square md:hidden">
@@ -55,7 +54,7 @@ watch(() => route.path, closeDropdown);
           </summary>
           <ul
             aria-live="polite"
-            class="dropdown menu bg-base-200 rounded-box w-52 p-2 z-1 absolute right-0 top-14 shadow-sm md:hidden"
+            class="dropdown menu gap-2 bg-base-200 rounded-box w-52 p-2 z-1 absolute right-0 top-14 shadow-sm md:hidden"
           >
             <li v-for="link in navLinks" :key="link.to">
               <nuxt-link :to="link.to">{{ link.label }}</nuxt-link>
@@ -63,7 +62,7 @@ watch(() => route.path, closeDropdown);
           </ul>
         </details>
       </div>
-      <ul class="menu menu-horizontal hidden md:inline-flex">
+      <ul class="menu menu-horizontal gap-2 hidden md:inline-flex">
         <li v-for="link in navLinks" :key="link.to">
           <nuxt-link :to="link.to">{{ link.label }}</nuxt-link>
         </li>
