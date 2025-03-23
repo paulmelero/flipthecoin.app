@@ -14,9 +14,9 @@ A coin has two sides: heads and tails. When you flip a coin, theoretically there
 
 But there is another case where the coin can land on its edge. This is a rare event, but it is possible. The probability of a coin landing on its edge is very low, but it is not zero. It is estimated that the probability of a coin landing on its edge is about 1 in 6000 flips depending on the conditions ([source](https://ui.adsabs.harvard.edu/abs/1993PhRvE..48.2547M/abstract)).
 
-This is the real "edge case" in coin flips. But don't be confused, it's not related to the origin of this expression. Read more about where does the term ["edge case"](https://flipthecoin.app/blog/where-does-the-term-edge-case-come-from) come from.
+This is the real "edge case" in coin flips. <!-- But don't be confused, it's not related to the origin of this expression. Read more about where does the term ["edge case"](https://flipthecoin.app/blog/where-does-the-term-edge-case-come-from) come from. -->
 
-Learn more about how do we toss a coin in FlipTheCoin.app [here](https://flipthecoin.app/blog/how-we-toss-a-coin).
+<!-- Learn more about how do we toss a coin in FlipTheCoin.app [here](https://flipthecoin.app/blog/how-we-toss-a-coin). -->
 
 ## The Reality
 
@@ -40,7 +40,7 @@ It is related to a statistics topic called "independence". In statistics, two ev
 
 An example of dependant events would be drawing cards from a deck without replacement. If you draw a card from a deck of cards, the probability of drawing a red card is 26/52. But if you draw a red card and do not replace it, the probability of drawing another red card is now 25/51. The first event has affected the probability of the second event.
 
-💡 If you want to learn more about what does it mean to have a probability of "26/52" or "25/51", check the [Probability Basics](https://flipthecoin.app/blog/probability-basics) blog post.
+<!-- 💡 If you want to learn more about what does it mean to have a probability of "26/52" or "25/51", check the [Probability Basics](https://flipthecoin.app/blog/probability-basics) blog post. -->
 
 ## The Law of Large Numbers
 
