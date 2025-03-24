@@ -8,6 +8,10 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/': { prerender: true },
+    '/extension': { prerender: true },
+    '/privacy-policy': { prerender: true },
+    '/terms': { prerender: true },
+    '/about-us': { prerender: true },
     '/blog/**': { prerender: true },
   },
   typescript: {
