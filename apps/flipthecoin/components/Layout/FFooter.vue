@@ -18,25 +18,25 @@
       <h4 class="footer-title">
         <span class="text-lg font-bold">Company</span>
       </h4>
-      <a href="/about-us" class="">About us</a>
-      <!-- <a href="/contact" class="">Contact</a> -->
+      <NuxtLink to="/about-us" class="">About us</NuxtLink>
+      <!-- <NuxtLink to="/contact" class="">Contact</NuxtLink> -->
     </nav>
 
     <nav class="mb-4">
       <h4 class="footer-title">
         <span class="text-lg font-bold">Projects</span>
       </h4>
-      <a href="/blog" class="">Blog</a>
-      <a href="/extension" class="">Browser extension</a>
-      <!-- <a href="/contact" class="">Have more ideas?</a> -->
+      <NuxtLink to="/blog" class="">Blog</NuxtLink>
+      <NuxtLink to="/extension" class="">Browser extension</NuxtLink>
+      <!-- <NuxtLink to="/contact" class="">Have more ideas?</NuxtLink> -->
     </nav>
 
     <nav class="mb-4">
       <h4 class="footer-title">
         <span class="text-lg font-bold">Legal</span>
       </h4>
-      <a href="/privacy-policy" class="">Privacy Policy</a>
-      <a href="/terms" class="">Terms of Service</a>
+      <NuxtLink to="/privacy-policy" class="">Privacy Policy</NuxtLink>
+      <NuxtLink to="/terms" class="">Terms of Service</NuxtLink>
     </nav>
   </footer>
   <footer class="footer py-8 px-4 lg:px-8 bg-neutral text-base-content mx-auto">
