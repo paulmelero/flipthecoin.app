@@ -7,7 +7,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "prepare": "nuxt prepare",
-    "preview": "nuxt build && nuxt preview",
+    "cf:preview": "npx wrangler --cwd ./ dev",
     "cf:logs": "pnpx wrangler pages deployment tail",
     "postinstall": "nuxt prepare"
   },

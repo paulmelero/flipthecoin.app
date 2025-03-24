@@ -13,10 +13,7 @@ command = "pnpm build"
 [[kv_namespaces]]
 binding = "flipthecoin_emails_list"
 id = "a456c36d4e14411a8a8a9f6c8d3ff224"
-
-[[kv_namespaces]]
-binding = "flipthecoin-app-flipthecoin_emails_list_local"
-id = "84542cf8ed754a35a8cfbcdd32aa9d7e"
+preview_id = "84542cf8ed754a35a8cfbcdd32aa9d7e"
 
 [[d1_databases]]
 binding = "cf_d1_flipthecoin_content"
