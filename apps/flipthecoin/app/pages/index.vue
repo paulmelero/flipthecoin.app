@@ -38,13 +38,7 @@
     <ContentRenderer v-if="home" :value="home" />
   </FJumbo>
   <FJumbo class="flex flex-col items-center gap-4">
-    <FTitle as="h2">Did you enjoy this story?</FTitle>
-    <p>Visit the Blog</p>
-    <p>
-      <NuxtLink href="/blog" class="btn btn-primary"
-        >Read more stories about coin tosses</NuxtLink
-      >
-    </p>
+    <BlogGoToBlogCTA />
   </FJumbo>
   <div class="divider" />
   <FJumbo class="min-h-[400px]">

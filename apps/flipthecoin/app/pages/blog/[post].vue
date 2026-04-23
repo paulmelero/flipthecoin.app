@@ -16,7 +16,11 @@ useSeoMeta({
 </script>
 
 <template>
-  <div v-if="post && post.body">
+  <div class="mb-16" v-if="post && post.body">
     <ContentRenderer :value="post" />
+  </div>
+
+  <div class="mb-16">
+    <BlogGoToBlogCTA />
   </div>
 </template>

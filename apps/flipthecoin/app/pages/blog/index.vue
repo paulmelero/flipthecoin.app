@@ -8,7 +8,7 @@ const posts = computed(() => data.value?.filter((post) => post.meta.published));
 useSeoMeta({
   title: 'Blog Posts',
   description:
-    'Statistics curiosities, applied Mathematics, gaming ethics, and more. Stay tuned for the latest blog posts.',
+    'Statistics curiosities, applied Mathematics, gaming ethics, and more. Stay tuned for the latest blog posts and more to come.',
 });
 </script>
 

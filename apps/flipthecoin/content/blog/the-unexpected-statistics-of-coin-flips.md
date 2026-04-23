@@ -38,9 +38,9 @@ One common misconception about coin flips is known as The Gambler's Fallacy. Thi
 
 It is related to a statistics topic called "independence". In statistics, two events are said to be **independent** if the occurrence of one event does not affect the probability of the other event. In the case of coin flips, each flip is an independent event, and the outcome of one flip does not affect the outcome of the next flip.
 
-An example of dependant events would be drawing cards from a deck without replacement. If you draw a card from a deck of cards, the probability of drawing a red card is 26/52. But if you draw a red card and do not replace it, the probability of drawing another red card is now 25/51. The first event has affected the probability of the second event.
+An example of dependant events would be drawing cards from a deck without replacement. If you draw a card from a deck of cards, the probability of drawing a red card is $\tfrac{26}{52}$. But if you draw a red card and do not replace it, the probability of drawing another red card is now $\tfrac{25}{51}$. The first event has affected the probability of the second event.
 
-💡 If you want to learn more about what does it mean to have a probability of "26/52" or "25/51", check the [Probability Basics](https://flipthecoin.app/blog/probability-basics) blog post.
+💡 If you want to learn more about what does it mean to have a probability of $\tfrac{26}{52}$ or $\tfrac{25}{51}$, check the [Probability Basics](https://flipthecoin.app/blog/probability-basics) blog post.
 
 ## The Law of Large Numbers
 

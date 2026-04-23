@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/main.css', 'katex/dist/katex.min.css'],
   router: {
     options: {
       linkActiveClass: 'active',
@@ -44,6 +44,18 @@ export default defineNuxtConfig({
       map: {
         h1: 'FTitle',
         h2: 'FTitleH2',
+      },
+    },
+  },
+  content: {
+    build: {
+      markdown: {
+        remarkPlugins: {
+          'remark-math': {},
+        },
+        rehypePlugins: {
+          'rehype-katex': {},
+        },
       },
     },
   },

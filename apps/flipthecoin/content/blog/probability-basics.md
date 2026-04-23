@@ -13,7 +13,7 @@ This article is an introduction to the topic of probability. We will stick to pl
 
 ## The Basics
 
-When we talk about probability, this is a mathematical concept that can be represented in a few different ways. The most common way to represent probability is as a fraction, decimal, or percentage. For example, if you flip a fair coin, the probability of it landing on heads is **1/2**, which is the same as **0.5**, or also **50%**. The three representations are equivalent and can be used interchangeably.
+When we talk about probability, this is a mathematical concept that can be represented in a few different ways. The most common way to represent probability is as a fraction, decimal, or percentage. For example, if you flip a fair coin, the probability of it landing on heads is $\frac{1}{2}$, which is the same as **0.5**, or also **50%**. The three representations are equivalent and can be used interchangeably.
 
 As we will see in [The Unexpected Statistics of Coin Flips blog post](https://flipthecoin.app/blog/the-unexpected-statistics-of-coin-flips), the probability of a coin landing is not exactly 50-50 every time.
 
@@ -40,14 +40,12 @@ In percentage terms, that same scale goes from **0%** to **100%**. Same idea, ex
 
 Every event has a mirror image called its **complement**: the event of it _not_ happening. And because something either happens or it doesn't, the two probabilities always add up to 1. In symbols:
 
-`P(not A) = 1 − P(A)`
+$$P(\text{not } A) = 1 - P(A)$$
 
 For a fair coin:
 
-```
-- P(heads) = 0.5, so P(not heads) = 1 − 0.5 = **0.5**.
-- P(landing on a face — heads or tails) ≈ 1 − 1/6000 ≈ **0.99983**, because the only other option is the rare "edge" landing. (More on that 1-in-6000 number in [The Unexpected Statistics of Coin Flips](https://flipthecoin.app/blog/the-unexpected-statistics-of-coin-flips).)
-```
+- $P(\text{heads}) = 0.5$, so $P(\text{not heads}) = 1 - 0.5 = 0.5$.
+- $P(\text{face}) \approx 1 - \tfrac{1}{6000} \approx 0.99983$, because the only other option is the rare "edge" landing. (More on that 1-in-6000 number in [The Unexpected Statistics of Coin Flips](https://flipthecoin.app/blog/the-unexpected-statistics-of-coin-flips).)
 
 The complement rule is often the easiest way to compute a probability: instead of counting every way something _can_ happen, count the one way it _can't_ and subtract from 1.
 
@@ -59,19 +57,23 @@ Things get interesting when we ask about more than one flip at a time. Two rules
 
 Coin flips don't influence each other (they are **independent**). In this case, you **multiply** their probabilities:
 
-- P(heads AND heads, on two flips) = 0.5 × 0.5 = **0.25**, or 25%.
-- P(three heads in a row) = 0.5 × 0.5 × 0.5 = **0.125**, or 12.5%.
+- $P(\text{HH}) = 0.5 \times 0.5 = 0.25$, or 25%.
+- $P(\text{HHH}) = 0.5 \times 0.5 \times 0.5 = 0.125$, or 12.5%.
 
-Each extra flip halves the probability. That's why long streaks feel surprising — not because the coin is "due" for the other side, but because each new flip piles another ½ onto the product.
+Each extra flip halves the probability. That's why long streaks feel surprising — not because the coin is "due" for the other side, but because each new flip piles another $\tfrac{1}{2}$ onto the product.
 
 ### "OR" — at least one of several things happens
 
 If two outcomes **can't happen at the same time** (they're **mutually exclusive**), you **add** their probabilities:
 
-- P(heads OR tails, on one flip) = 0.5 + 0.5 = **1**. Unsurprising — that's every non-edge outcome.
-- P(rolling a 1 OR a 2 on a six-sided die) = 1/6 + 1/6 = **2/6**.
+- $P(\text{H} \cup \text{T}) = 0.5 + 0.5 = 1$. Unsurprising — that's every non-edge outcome.
+- $P(1 \cup 2) = \tfrac{1}{6} + \tfrac{1}{6} = \tfrac{2}{6}$ (rolling a 1 or a 2 on a six-sided die).
 
-If the events _can_ overlap, simple addition double-counts the overlap and you have to subtract it back out, but that's a topic for a future article.
+If the events _can_ overlap, simple addition double-counts the overlap and you have to subtract it back out:
+
+$$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
+
+That's the **inclusion–exclusion principle**, and the deeper version is a topic for a future article.
 
 ## A quick note on independence
 
