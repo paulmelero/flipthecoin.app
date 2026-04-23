@@ -12,6 +12,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@flipthecoin/coin-engine": "workspace:*",
+    "cannon-es": "^0.20.0",
+    "gsap": "^3.12.4",
     "three": "^0.162.0",
     "vue": "^3.4.21"
   },

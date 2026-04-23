@@ -1,10 +1,25 @@
 {
   "manifest_version": 3,
-  "name": "FlipTheCoin",
-  "description": "Do you need a coin?",
+  "name": "Flip The Coin",
+  "short_name": "FlipTheCoin",
+  "description": "A fair and random 3D coin flip, right in your browser toolbar. Click the icon, hit the button, let fate decide.",
   "version": "1.0.0",
+  "author": "Paul Melero",
+  "homepage_url": "https://flipthecoin.app",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
   "action": {
-    "default_popup": "index.html"
+    "default_popup": "index.html",
+    "default_title": "Flip The Coin",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+    }
   },
   "permissions": []
 }

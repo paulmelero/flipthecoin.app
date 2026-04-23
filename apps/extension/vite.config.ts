@@ -1,9 +1,11 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import { resolve } from 'path';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
 import fs from 'fs';
 
 const browser = process.env.BROWSER || 'chrome';
+const rootDir = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [
@@ -12,7 +14,7 @@ export default defineConfig({
       name: 'copy-manifest',
       generateBundle() {
         const manifestPath = resolve(
-          new URL(import.meta.url).pathname,
+          rootDir,
           `src/manifests/manifest.${browser}.json`,
         );
         const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
@@ -29,7 +31,7 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: resolve(new URL(import.meta.url).pathname, 'index.html'),
+        main: resolve(rootDir, 'index.html'),
       },
       output: {
         entryFileNames: `assets/[name].js`,
