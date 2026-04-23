@@ -1,70 +1,62 @@
 <template>
-  <canvas ref="canvasRef" class="w-[300px] h-[300px] dark:bg-gray-900"></canvas>
+  <main class="flex flex-col w-[360px] h-[460px] bg-neutral-900 text-white">
+    <div class="relative flex-1 overflow-hidden">
+      <canvas
+        ref="canvasRef"
+        class="w-full h-full block"
+        :class="{ 'cursor-pointer': !isFlipping }"
+      ></canvas>
+    </div>
+    <div class="p-3 flex flex-col items-center gap-2 bg-neutral-950">
+      <output
+        class="text-sm text-neutral-300 min-h-[1.25rem]"
+        aria-live="polite"
+      >
+        <template v-if="result"
+          >Result: <strong>{{ result }}</strong></template
+        >
+      </output>
+      <button
+        class="w-full py-2 rounded-md bg-yellow-400 text-black font-semibold hover:bg-yellow-300 disabled:opacity-60 disabled:cursor-not-allowed transition"
+        @click="flipCoin"
+        :disabled="isFlipping"
+      >
+        {{ isFlipping ? 'Flipping…' : 'Flip the coin' }}
+      </button>
+    </div>
+  </main>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue';
-import * as THREE from 'three';
+import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
+import { useThreeJsCoin } from '@flipthecoin/coin-engine';
 
 const canvasRef = ref<HTMLCanvasElement | null>(null);
-let scene: THREE.Scene;
-let camera: THREE.PerspectiveCamera;
-let renderer: THREE.WebGLRenderer;
-let cube: THREE.Mesh;
-let animationFrameId: number;
+const isFlipping = ref(false);
+const result = ref('');
+const tossCount = ref(0);
+const previousTossCount = ref(0);
+const isIntersecting = ref(false);
 
-onMounted(() => {
-  if (!canvasRef.value) return;
+const { setup, disposeSceneResources, flipCoin } = useThreeJsCoin(
+  canvasRef,
+  isFlipping,
+  result,
+  tossCount,
+  previousTossCount,
+  isIntersecting,
+  {
+    size: 'element',
+    enableOrbitControls: false,
+  },
+);
 
-  // Scene setup
-  scene = new THREE.Scene();
-  camera = new THREE.PerspectiveCamera(75, 300 / 300, 0.1, 1000);
-  renderer = new THREE.WebGLRenderer({
-    canvas: canvasRef.value,
-    antialias: true,
-  });
-  renderer.setSize(300, 300);
-
-  // Create cube
-  const geometry = new THREE.BoxGeometry();
-  const material = new THREE.MeshPhongMaterial({
-    color: 0x00ff00,
-    shininess: 100,
-  });
-  cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
-
-  // Add lights
-  const light = new THREE.DirectionalLight(0xffffff, 1);
-  light.position.set(1, 1, 1);
-  scene.add(light);
-
-  const ambientLight = new THREE.AmbientLight(0x404040);
-  scene.add(ambientLight);
-
-  camera.position.z = 5;
-
-  // Animation loop
-  const animate = () => {
-    animationFrameId = requestAnimationFrame(animate);
-
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-
-    renderer.render(scene, camera);
-  };
-
-  animate();
+onMounted(async () => {
+  await nextTick();
+  setup();
 });
 
 onBeforeUnmount(() => {
-  cancelAnimationFrame(animationFrameId);
-  if (renderer) {
-    renderer.dispose();
-  }
-  if (cube) {
-    cube.geometry.dispose();
-    (cube.material as THREE.Material).dispose();
-  }
+  disposeSceneResources();
 });
 </script>
