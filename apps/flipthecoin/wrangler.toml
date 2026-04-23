@@ -1,4 +1,4 @@
-compatibility_date = "2024-09-30"
+compatibility_date = "2025-01-10"
 compatibility_flags = [ "nodejs_compat" ]
 
 name = "flipthecoin-app"
