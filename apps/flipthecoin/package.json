@@ -14,14 +14,14 @@
   "devDependencies": {
     "@iconify-json/octicon": "^1.1.48",
     "@nuxt/devtools": "^2.6.2",
-    "@nuxt/kit": "4.0.0",
+    "@nuxt/kit": "4.4.2",
     "@nuxtjs/tailwindcss": "^6.14.0",
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^24.0.15",
     "@types/three": "^0.156.0",
     "daisyui": "^4.12.23",
     "nitro-cloudflare-dev": "^0.2.1",
-    "nuxt": "4.0.0",
+    "nuxt": "4.4.2",
     "wrangler": "^4.4.0"
   },
   "dependencies": {

@@ -4,9 +4,9 @@ A fair and random online coin flip game with 3D animation. Perfect for making de
 
 ## TODO
 
-- [ ] Newsletter form
-- [ ] Privacy policy
-- [ ] Terms of service
+- [x] Newsletter form
+- [x] Privacy policy
+- [x] Terms of service
 - [ ] Contact page
 - [ ] Social media links
 - [ ] OG image
