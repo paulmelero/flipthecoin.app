@@ -16,7 +16,7 @@ In the meantime, I get to learn how to launch a product, one with little stakes.
 
 The project is entirely independent-funded and self-sustained. We don't have any sponsors, investors, or partners. We don't have any ads, trackers, or cookies (for now).
 
-Please, refer to the [Privacy Policy](/privacy-policy) and [Terms of Service](/terms-of-service) for more information about how we handle your data.
+Please, refer to the [Privacy Policy](/privacy-policy) and [Terms of Service](/terms) for more information about how we handle your data.
 
 ## How to support us
 

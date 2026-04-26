@@ -53,6 +53,10 @@ export default defineNuxtConfig({
     },
   },
   content: {
+    database: {
+      type: 'd1',
+      bindingName: 'cf_d1_flipthecoin_content',
+    },
     build: {
       markdown: {
         remarkPlugins: {
