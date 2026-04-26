@@ -1,22 +1,27 @@
 <template>
-  <div class="flex gap-2 isolate">
-    <NuxtLink
-      v-for="locale in locales"
-      :key="locale.code"
-      :to="targetsFor(locale.code)"
-      :aria-label="$t(locale.labelKey) as string"
-      :aria-current="$getLocale() === locale.code ? 'true' : undefined"
-      class="btn btn-ghost px-2 py-2 transition-opacity"
-      :class="{
-        'cursor-default opacity-50 pointer-events-none':
-          $getLocale() === locale.code,
-        'hover:opacity-80': $getLocale() !== locale.code,
-      }"
-      @click="$switchLocale(locale.code)"
-    >
-      {{ locale.flag }}
-    </NuxtLink>
-  </div>
+  <ul class="menu menu-horizontal flex gap-2 isolate">
+    <li v-for="locale in locales" :key="locale.code">
+      <NuxtLink
+        :to="targetsFor(locale.code)"
+        :aria-label="$t(locale.labelKey) as string"
+        :title="
+          (($t('langSwitcher.title') as string) +
+            ' ' +
+            $t(locale.labelKey)) as string
+        "
+        :aria-current="$getLocale() === locale.code ? 'true' : undefined"
+        class="px-2 py-2 transition-opacity"
+        :class="{
+          'cursor-default opacity-50 pointer-events-none active':
+            $getLocale() === locale.code,
+          'hover:opacity-80': $getLocale() !== locale.code,
+        }"
+        @click="$switchLocale(locale.code)"
+      >
+        {{ locale.flag }}
+      </NuxtLink>
+    </li>
+  </ul>
 </template>
 
 <script setup lang="ts">

@@ -14,7 +14,7 @@ const { $t, localePath } = useI18n();
       <footer
         class="footer py-8 px-4 lg:px-8 bg-neutral text-neutral-content mx-auto"
       >
-        <aside class="flex items-center">
+        <aside class="flex items-center text-neutral-content">
           <BrandLogo />
         </aside>
 
@@ -50,7 +50,7 @@ const { $t, localePath } = useI18n();
         </nav>
       </footer>
       <footer
-        class="footer py-8 px-4 lg:px-8 bg-neutral text-base-content mx-auto"
+        class="footer py-8 px-4 lg:px-8 bg-neutral text-neutral-content mx-auto"
       >
         <span>{{
           $t('footer.copyright', { year: new Date().getFullYear() })

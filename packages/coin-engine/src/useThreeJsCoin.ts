@@ -68,6 +68,7 @@ export default function useThreeJsCoin(
     raycaster: THREE.Raycaster,
     mouse: THREE.Vector2,
     resultText: THREE.Mesh | null,
+    textLight: THREE.SpotLight | null,
     font: any,
     controls: OrbitControls | null,
     mainLight: THREE.DirectionalLight,
@@ -82,6 +83,7 @@ export default function useThreeJsCoin(
       setPaused: () => {},
       captureFrame: async (): Promise<Blob | null> => null,
       animationFrameId: ref<number | null>(null),
+      isReady: ref(false),
     };
   }
 
@@ -90,6 +92,7 @@ export default function useThreeJsCoin(
   const DEFAULT_CAMERA_POSITION = new THREE.Vector3(-5, 4, 1);
 
   const animationFrameId = ref<number | null>(null);
+  const isReady = ref(false);
   const geometries: THREE.BufferGeometry[] = [];
 
   const getSize = () => {
@@ -113,7 +116,11 @@ export default function useThreeJsCoin(
       antialias: true,
       alpha: true,
     });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(width, height, false);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.2;
     // make the shadows look softer
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -133,11 +140,12 @@ export default function useThreeJsCoin(
     raycaster = new THREE.Raycaster();
     mouse = new THREE.Vector2();
 
-    // Ambient light
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.1);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
     scene.add(ambientLight);
 
-    // Main directional light (sun-like)
+    const hemi = new THREE.HemisphereLight(0xfff5d6, 0x2a1a05, 2);
+    scene.add(hemi);
+
     mainLight = new THREE.DirectionalLight(0xffffff, 1.1);
     mainLight.position.set(5, 10, 7);
     mainLight.castShadow = true;
@@ -155,8 +163,7 @@ export default function useThreeJsCoin(
 
     scene.add(mainLight);
 
-    // Fill light
-    const fillLight = new THREE.DirectionalLight(0xffffff, 2);
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.7);
     fillLight.position.set(-5, 3, -5);
     scene.add(fillLight);
 
@@ -168,7 +175,7 @@ export default function useThreeJsCoin(
   const createCoin = () => {
     const radius = 1;
     const height = 0.1;
-    const segments = 32;
+    const segments = 96;
 
     const geometry = new THREE.CylinderGeometry(
       radius,
@@ -187,11 +194,28 @@ export default function useThreeJsCoin(
     coinMesh.castShadow = true;
 
     const textureLoader = new THREE.TextureLoader();
-    const headsTexture = textureLoader.load(assets.heads);
-    const tailsTexture = textureLoader.load(assets.tails);
+    const maxAniso = renderer.capabilities.getMaxAnisotropy();
 
-    const headsMaterial = new THREE.MeshStandardMaterial({ map: headsTexture });
-    const tailsMaterial = new THREE.MeshStandardMaterial({ map: tailsTexture });
+    const decorateTexture = (t: THREE.Texture) => {
+      t.colorSpace = THREE.SRGBColorSpace;
+      t.anisotropy = maxAniso;
+      return t;
+    };
+
+    const headsTexture = decorateTexture(textureLoader.load(assets.heads));
+    const tailsTexture = decorateTexture(textureLoader.load(assets.tails));
+
+    const faceMaterialFor = (tex: THREE.Texture) =>
+      new THREE.MeshStandardMaterial({
+        map: tex,
+        bumpMap: tex,
+        bumpScale: 0.025,
+        metalness: 0.55,
+        roughness: 0.42,
+      });
+
+    const headsMaterial = faceMaterialFor(headsTexture);
+    const tailsMaterial = faceMaterialFor(tailsTexture);
 
     coinMesh.material = [
       material, // Side
@@ -290,6 +314,11 @@ export default function useThreeJsCoin(
       scene.remove(resultText);
       resultText = null;
     }
+    if (textLight) {
+      scene.remove(textLight);
+      textLight.dispose();
+      textLight = null;
+    }
   };
 
   const showText = () => {
@@ -350,7 +379,11 @@ export default function useThreeJsCoin(
       ease: 'power1.out',
     });
 
-    const textLight = new THREE.SpotLight(0xffff00, 8.0);
+    if (textLight) {
+      scene.remove(textLight);
+      textLight.dispose();
+    }
+    textLight = new THREE.SpotLight(0xffff00, 8.0);
     textLight.position.set(0, 5, 0);
     textLight.target = resultText;
     textLight.angle = Math.PI / 4;
@@ -489,6 +522,7 @@ export default function useThreeJsCoin(
       createCoin();
       animate();
       initListeners();
+      isReady.value = true;
     });
   }
 
@@ -567,5 +601,6 @@ export default function useThreeJsCoin(
     setPaused,
     captureFrame,
     animationFrameId,
+    isReady,
   };
 }

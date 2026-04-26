@@ -6,10 +6,10 @@
   <FJumbo class="prose dark:prose-invert">
     <ContentRenderer v-if="home" :value="home" />
   </FJumbo>
-  <HomeExtensionPromo />
   <FJumbo class="flex flex-col items-center gap-4">
     <BlogGoToBlogCTA />
   </FJumbo>
+  <HomeExtensionPromo />
   <div class="divider" />
   <FJumbo class="min-h-[400px]">
     <NewsletterForm />

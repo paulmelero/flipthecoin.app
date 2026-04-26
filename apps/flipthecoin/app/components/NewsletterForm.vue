@@ -1,10 +1,14 @@
 <template>
   <FTitle as="h2">Newsletter</FTitle>
-  <p class="prose dark:prose-invert">
-    Want to know more about the science of coin flips or just interesting facts
-    about statistics and how they apply in life?
+  <p class="prose dark:prose-invert max-w-none mb-4">
+    Want to know more about the <strong>science</strong> of coin flips or just
+    interesting <strong>facts</strong>
+    about statistics and how they apply in life? Are you passionate about the
+    <strong>mathematics</strong> of coin flips and want to learn more? If you're
+    interested in the <strong>physics</strong> of coin flips and want to learn
+    more, you're in the right place.
   </p>
-  <p>
+  <p class="max-w-none mb-4 border-b border-base-content/10 pb-4">
     Stay tuned for more articles and resources. Sign up for our newsletter to
     get notified when we launch the <b>game</b>, <b>the browser extension</b>,
     and more!
