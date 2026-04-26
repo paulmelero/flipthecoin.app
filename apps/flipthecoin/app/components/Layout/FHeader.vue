@@ -23,16 +23,16 @@ watch(() => route.path, closeDropdown);
 </script>
 
 <template>
-  <header class="navbar bg-base-100 container mx-auto py-5">
-    <div class="navbar-start">
-      <nuxt-link :to="localePath('/')" class="flex items-center">
+  <header class="navbar container mx-auto py-5">
+    <div class="navbar-start w-full">
+      <nuxt-link :to="localePath('/')">
         <BrandLogo />
       </nuxt-link>
     </div>
-    <nav class="navbar-end w-full flex gap-4 md:gap-2">
-      <div class="isolate z-10">
-        <details ref="dropdownRef" class="dropdown md:hidden">
-          <summary class="btn btn-square md:hidden">
+    <nav class="navbar-end sm:w-full flex gap-4 md:gap-2">
+      <div class="isolate z-10 md:hidden">
+        <details ref="dropdownRef" class="dropdown dropdown-end">
+          <summary class="btn btn-square">
             <span class="sr-only"> open or close </span>
 
             <svg
@@ -50,14 +50,22 @@ watch(() => route.path, closeDropdown);
               ></path>
             </svg>
           </summary>
-          <ul
+          <div
             aria-live="polite"
-            class="dropdown menu gap-2 bg-base-200 rounded-box w-52 p-2 z-1 absolute right-0 top-14 shadow-sm md:hidden"
+            class="dropdown-content bg-base-200 rounded-box w-52 p-2 mt-2 shadow-sm flex flex-col gap-2"
           >
-            <li v-for="link in navLinks" :key="link.to">
-              <nuxt-link :to="link.to">{{ link.label }}</nuxt-link>
-            </li>
-          </ul>
+            <ul class="menu w-full p-0 gap-1">
+              <li v-for="link in navLinks" :key="link.to">
+                <nuxt-link :to="link.to">{{ link.label }}</nuxt-link>
+              </li>
+            </ul>
+            <div
+              class="border-t border-base-content/10 pt-2 px-2 flex items-center justify-between gap-2"
+            >
+              <NavigationLocaleSwitcher />
+              <NavigationThemeSwitcher />
+            </div>
+          </div>
         </details>
       </div>
       <ul class="menu menu-horizontal gap-2 hidden md:inline-flex">
@@ -65,8 +73,10 @@ watch(() => route.path, closeDropdown);
           <nuxt-link :to="link.to">{{ link.label }}</nuxt-link>
         </li>
       </ul>
-      <NavigationLocaleSwitcher />
-      <NavigationThemeSwitcher />
+      <div class="hidden md:flex items-center gap-2">
+        <NavigationLocaleSwitcher />
+        <NavigationThemeSwitcher />
+      </div>
     </nav>
   </header>
 </template>

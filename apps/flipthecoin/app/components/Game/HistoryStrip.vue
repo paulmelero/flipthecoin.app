@@ -58,7 +58,7 @@ const onClear = () => {
 
 <template>
   <section
-    class="rounded-3xl bg-base-100/55 backdrop-blur-xl border border-base-content/10 shadow-2xl px-5 py-4 lg:px-8 lg:py-6"
+    class="rounded-3xl bg-base-100/55 backdrop-blur-xl border border-base-content/10 shadow-2xl px-5 py-4 lg:px-8 lg:py-6 overflow-x-hidden"
   >
     <header class="flex flex-wrap items-end justify-between gap-3 mb-4">
       <div>
@@ -99,51 +99,47 @@ const onClear = () => {
       </dl>
     </header>
 
-    <div class="relative -mx-2 px-2">
-      <ul
-        v-if="recent.length"
-        class="flex gap-2 overflow-x-auto pb-2 scrollbar-thin"
-      >
-        <TransitionGroup name="slide-up">
-          <li
-            v-for="rec in recent"
-            :key="rec.id"
-            :class="chipClass(rec.r)"
-            class="shrink-0 grid place-items-center w-10 h-10 rounded-xl border backdrop-blur-sm font-mono text-sm font-bold shadow-inner"
-            :title="chipLabel(rec.r)"
-            :aria-label="chipLabel(rec.r)"
-          >
-            {{ chipGlyph(rec.r) }}
-          </li>
-        </TransitionGroup>
-      </ul>
-      <p v-else class="text-sm text-base-content/60 italic py-6 text-center">
-        {{ $t('play.history.empty') }}
-      </p>
-    </div>
+    <div class="flex flex-col-reverse md:flex-col gap-4">
+      <div class="relative overflow-x-hidden max-w-full">
+        <ul
+          v-if="recent.length"
+          class="flex gap-2 overflow-x-auto pb-2 scrollbar-thin"
+        >
+          <TransitionGroup name="slide-up">
+            <li
+              v-for="rec in recent"
+              :key="rec.id"
+              :class="chipClass(rec.r)"
+              class="shrink-0 grid place-items-center w-10 h-10 rounded-xl border backdrop-blur-sm font-mono text-sm font-bold shadow-inner"
+              :title="chipLabel(rec.r)"
+              :aria-label="chipLabel(rec.r)"
+            >
+              {{ chipGlyph(rec.r) }}
+            </li>
+          </TransitionGroup>
+        </ul>
+        <p v-else class="text-sm text-base-content/60 italic py-6 text-center">
+          {{ $t('play.history.empty') }}
+        </p>
+      </div>
 
-    <div class="mt-4 flex flex-wrap items-center gap-3">
-      <button
-        class="btn btn-primary btn-lg flex-1 min-w-[200px]"
-        :disabled="isFlipping"
-        @click="emit('flip')"
-      >
-        <span v-if="isFlipping" class="loading loading-spinner"></span>
-        <span>{{ isFlipping ? $t('hero.flipping') : $t('hero.cta') }}</span>
-      </button>
-      <output
-        v-if="result && !isFlipping"
-        class="font-mono text-base-content/80"
-      >
-        {{ $t('hero.result', { result }) }}
-      </output>
-      <button
-        class="btn btn-ghost btn-sm"
-        :disabled="stats.total === 0"
-        @click="onClear"
-      >
-        {{ $t('play.clearHistory') }}
-      </button>
+      <div class="flex flex-wrap items-center gap-3">
+        <button
+          class="btn btn-primary btn-lg flex-1 sm:min-w-[200px]"
+          :disabled="isFlipping"
+          @click="emit('flip')"
+        >
+          <span v-if="isFlipping" class="loading loading-spinner"></span>
+          <span>{{ isFlipping ? $t('hero.flipping') : $t('hero.cta') }}</span>
+        </button>
+        <button
+          class="btn btn-ghost btn-sm"
+          :disabled="stats.total === 0 || isFlipping"
+          @click="onClear"
+        >
+          {{ $t('play.clearHistory') }}
+        </button>
+      </div>
     </div>
   </section>
 </template>
