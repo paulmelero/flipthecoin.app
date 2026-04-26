@@ -1,5 +1,7 @@
 ---
 title: About us
+slug: about-us
+_locale: en
 ---
 
 # About us

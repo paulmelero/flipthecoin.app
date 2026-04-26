@@ -1,3 +1,9 @@
+---
+title: Terms and Conditions
+slug: terms-and-conditions
+_locale: en
+---
+
 # Terms and Conditions
 
 Last updated: March 22, 2025

@@ -1,16 +1,13 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref, watch, computed } from 'vue';
 
-interface NavLink {
-  to: string;
-  label: string;
-}
+const { $t, localePath } = useI18n();
 
-const navLinks: NavLink[] = [
-  { to: '/', label: 'Home' },
-  { to: '/blog', label: 'Blog' },
-  { to: '/extension', label: 'Browser Extension' },
-];
+const navLinks = computed(() => [
+  { to: localePath('/'), label: $t('nav.home') as string },
+  { to: localePath('/blog'), label: $t('nav.blog') as string },
+  { to: localePath('/extension'), label: $t('nav.extension') as string },
+]);
 
 const dropdownRef = ref<HTMLDetailsElement | null>(null);
 const route = useRoute();
@@ -27,7 +24,7 @@ watch(() => route.path, closeDropdown);
 <template>
   <header class="navbar bg-base-100 container mx-auto py-5">
     <div class="navbar-start">
-      <nuxt-link to="/" class="flex items-center">
+      <nuxt-link :to="localePath('/')" class="flex items-center">
         <BrandLogo />
       </nuxt-link>
     </div>
@@ -67,6 +64,7 @@ watch(() => route.path, closeDropdown);
           <nuxt-link :to="link.to">{{ link.label }}</nuxt-link>
         </li>
       </ul>
+      <NavigationLocaleSwitcher />
       <NavigationThemeSwitcher />
     </nav>
   </header>

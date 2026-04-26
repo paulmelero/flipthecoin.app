@@ -30,6 +30,10 @@ export default defineNuxtConfig({
     cloudflareDev: {
       configPath: './wrangler.toml',
     },
+    prerender: {
+      crawlLinks: true,
+      ignore: [/^\/(en|es)\/(en|es)(\/|$)/],
+    },
   },
   compatibilityDate: '2025-01-10',
   modules: [
@@ -38,6 +42,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxt/content',
     '@nuxt/fonts',
+    'nuxt-i18n-micro',
   ],
   mdc: {
     components: {
@@ -78,5 +83,13 @@ export default defineNuxtConfig({
     preference: 'system', // default theme
     dataValue: 'theme', // activate data-theme in <html> tag
     classSuffix: '',
+  },
+  i18n: {
+    locales: [
+      { code: 'en', name: 'English', iso: 'en-US' },
+      { code: 'es', name: 'Español', iso: 'es-ES' },
+    ],
+    defaultLocale: 'en',
+    translationDir: 'app/locales',
   },
 });

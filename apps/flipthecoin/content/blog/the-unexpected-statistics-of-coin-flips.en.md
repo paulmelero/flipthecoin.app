@@ -1,5 +1,8 @@
 ---
 title: The Unexpected Statistics of Coin Flips
+slug: the-unexpected-statistics-of-coin-flips
+_locale: en
+description: A look at what really happens when you flip a coin — the edge cases, the gambler's fallacy, and why fair coins aren't quite as fair as they seem.
 published: true
 date: 2025-03-22T01:00:00Z
 ---

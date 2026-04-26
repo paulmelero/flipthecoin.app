@@ -15,10 +15,8 @@
         ></canvas>
       </ClientOnly>
       <div class="isolate z-10">
-        <FTitle>"Flip The Coin", the online game</FTitle>
-        <p class="mb-3">
-          Have you ever let fate decide for you? You certainly shouldn't!
-        </p>
+        <FTitle>{{ $t('hero.title') }}</FTitle>
+        <p class="mb-3">{{ $t('hero.lead') }}</p>
         <button
           class="btn btn-neutral btn-lg"
           @click="flipCoin"
@@ -26,11 +24,13 @@
         >
           <span v-if="isFlipping" class="loading loading-spinner"></span>
           <span>
-            {{ isFlipping ? 'Flipping...' : 'Flip the coin' }}
+            {{ isFlipping ? $t('hero.flipping') : $t('hero.cta') }}
           </span>
         </button>
         <!-- Keep text for accessibility -->
-        <output class="mt-3 sr-only" v-if="result">Result: {{ result }}</output>
+        <output class="mt-3 sr-only" v-if="result">
+          {{ $t('hero.result', { result }) }}
+        </output>
       </div>
     </div>
   </FJumbo>
@@ -47,6 +47,9 @@
 </template>
 
 <script setup lang="ts">
+const { $t, $getLocale } = useI18n();
+const locale = computed(() => $getLocale());
+
 const canvasRef = ref<HTMLCanvasElement | null>(null);
 const isFlipping = ref(false);
 const result = ref('');
@@ -73,13 +76,19 @@ onBeforeUnmount(() => {
 });
 
 // Content
-const { data: home } = await useAsyncData('home', () => {
-  return queryCollection('pages').path('/pages/').first();
-});
+const { data: home } = await useAsyncData(
+  () => `home-${locale.value}`,
+  () =>
+    queryCollection('pages')
+      .where('slug', '=', 'index')
+      .where('_locale', '=', locale.value)
+      .first(),
+  { watch: [locale] },
+);
 
 useSeoMeta({
-  title: home.value?.title,
-  description: home.value?.description,
+  title: () => home.value?.title,
+  description: () => home.value?.description,
 });
 </script>
 

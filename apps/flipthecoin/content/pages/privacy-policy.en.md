@@ -1,3 +1,9 @@
+---
+title: Privacy Policy
+slug: privacy-policy
+_locale: en
+---
+
 # Privacy Policy
 
 ## Introduction

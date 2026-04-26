@@ -1,5 +1,7 @@
 ---
 title: Probability Basics
+slug: probability-basics
+_locale: en
 description: Learn the basics of probability and how it relates to coin flips.
 published: true
 date: 2026-04-23T01:00:00Z

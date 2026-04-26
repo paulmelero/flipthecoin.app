@@ -3,10 +3,10 @@ const { $getLocale } = useI18n();
 const locale = computed(() => $getLocale());
 
 const { data: page } = await useAsyncData(
-  () => `page-extension-${locale.value}`,
+  () => `page-about-us-${locale.value}`,
   () =>
     queryCollection('pages')
-      .where('slug', '=', 'extension')
+      .where('slug', '=', 'about-us')
       .where('_locale', '=', locale.value)
       .first(),
   { watch: [locale] },
@@ -25,7 +25,5 @@ useSeoMeta({
 <template>
   <div class="prose dark:prose-invert">
     <ContentRenderer v-if="page" :value="page" />
-    <div class="divider" />
-    <NewsletterForm />
   </div>
 </template>

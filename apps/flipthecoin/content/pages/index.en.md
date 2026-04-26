@@ -1,5 +1,7 @@
 ---
 title: Simply –flip the coin
+slug: index
+_locale: en
 ---
 
 ## A Fair fair coin toss

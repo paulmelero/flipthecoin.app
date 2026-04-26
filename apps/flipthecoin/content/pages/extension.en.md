@@ -1,5 +1,7 @@
 ---
 title: Flip The Coin – Browser Extension
+slug: extension
+_locale: en
 description: A fair, random 3D coin flip right in your browser toolbar. Same physics as flipthecoin.app, one click away.
 ---
 

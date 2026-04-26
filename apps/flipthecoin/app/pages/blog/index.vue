@@ -1,29 +1,37 @@
 <script setup lang="ts">
-const { data } = await useAsyncData('blogindex', () => {
-  return queryCollection('blog').all();
-});
+const { $t, $getLocale } = useI18n();
+const locale = computed(() => $getLocale());
 
-const posts = computed(() => data.value?.filter((post) => post.meta.published));
+const { data } = await useAsyncData(
+  () => `blogindex-${locale.value}`,
+  () =>
+    queryCollection('blog')
+      .where('_locale', '=', locale.value)
+      .order('date', 'DESC')
+      .all(),
+  { watch: [locale] },
+);
+
+const posts = computed(() =>
+  data.value?.filter((post) => post.meta.published !== false),
+);
 
 useSeoMeta({
-  title: 'Blog Posts',
-  description:
-    'Statistics curiosities, applied Mathematics, gaming ethics, and more. Stay tuned for the latest blog posts and more to come.',
+  title: () => String($t('blog.seoTitle')),
+  description: () => String($t('blog.seoDescription')),
 });
 </script>
 
 <template>
   <div class="container mx-auto mb-16">
-    <FTitle>Blog Posts</FTitle>
+    <FTitle>{{ $t('blog.title') }}</FTitle>
 
-    <p>
-      Statistics curiosities, applied Mathematics, gaming ethics, and more. Stay
-      tuned for the latest blog posts.
-    </p>
+    <p>{{ $t('blog.subtitle') }}</p>
   </div>
 
   <section class="container mx-auto">
-    <ul class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+    <p v-if="!posts || posts.length === 0">{{ $t('blog.empty') }}</p>
+    <ul v-else class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
       <BlogPost v-for="post in posts" :key="post.path" :post="post" />
     </ul>
   </section>
