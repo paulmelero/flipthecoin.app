@@ -1,15 +1,24 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData('privacy-policy', () => {
-  return queryCollection('pages').path('/pages/privacy-policy').first();
-});
+const { $getLocale } = useI18n();
+const locale = computed(() => $getLocale());
+
+const { data: page } = await useAsyncData(
+  () => `page-privacy-${locale.value}`,
+  () =>
+    queryCollection('pages')
+      .where('slug', '=', 'privacy-policy')
+      .where('_locale', '=', locale.value)
+      .first(),
+  { watch: [locale] },
+);
 
 definePageMeta({
   layout: 'blogpost',
 });
 
 useSeoMeta({
-  title: page.value?.title,
-  description: page.value?.description,
+  title: () => page.value?.title,
+  description: () => page.value?.description,
 });
 </script>
 

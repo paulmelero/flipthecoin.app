@@ -13,19 +13,24 @@
   },
   "dependencies": {
     "@flipthecoin/coin-engine": "workspace:*",
+    "@fontsource/archivo": "^5.0.0",
+    "@fontsource/fira-sans": "^5.0.0",
     "cannon-es": "^0.20.0",
     "gsap": "^3.12.4",
     "three": "^0.162.0",
     "vue": "^3.4.21"
   },
   "devDependencies": {
+    "@types/chrome": "^0.0.260",
     "@types/three": "^0.162.0",
     "@vitejs/plugin-vue": "^5.0.4",
     "autoprefixer": "^10.4.18",
+    "daisyui": "^4.12.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.5.3",
     "vite": "^5.4.2",
+    "vite-svg-loader": "^5.1.1",
     "vue-tsc": "^2.0.6"
   }
 }

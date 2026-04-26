@@ -1,0 +1,27 @@
+{
+  "name": "Flip The Coin",
+  "short_name": "FlipTheCoin",
+  "description": "A 3D coin you can spin, flip, and learn from.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fef3c7",
+  "theme_color": "#f5b806",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ]
+}

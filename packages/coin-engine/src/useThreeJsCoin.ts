@@ -12,6 +12,9 @@ export interface CoinAssetUrls {
   font?: string;
 }
 
+export type CoinResult = 'Heads' | 'Tails' | 'Edge';
+export type CoinPose = 'heads' | 'tails' | 'edge' | 'mid';
+
 export interface CoinEngineOptions {
   /**
    * `'window'` — canvas fills `window.innerWidth` x `window.innerHeight` and
@@ -28,6 +31,8 @@ export interface CoinEngineOptions {
   enableOrbitControls?: boolean;
   /** Override asset URLs; each has a sensible default. */
   assetUrls?: CoinAssetUrls;
+  /** Fired once per flip, after the result is determined. */
+  onResult?: (result: CoinResult) => void;
 }
 
 const DEFAULT_ASSETS: Required<CoinAssetUrls> = {
@@ -73,9 +78,14 @@ export default function useThreeJsCoin(
       setup: () => {},
       disposeSceneResources: () => {},
       flipCoin: () => {},
+      setPose: () => {},
+      setPaused: () => {},
+      captureFrame: async (): Promise<Blob | null> => null,
       animationFrameId: ref<number | null>(null),
     };
   }
+
+  let paused = false;
 
   const DEFAULT_CAMERA_POSITION = new THREE.Vector3(-5, 4, 1);
 
@@ -271,6 +281,8 @@ export default function useThreeJsCoin(
     if (Math.abs(up.y) < 0.1) {
       result.value = 'Edge';
     }
+
+    options.onResult?.(result.value as CoinResult);
   };
 
   const removeText = () => {
@@ -430,7 +442,7 @@ export default function useThreeJsCoin(
   const animate = () => {
     animationFrameId.value = requestAnimationFrame(animate);
 
-    world.step(1 / 60);
+    if (!paused) world.step(1 / 60);
 
     raycaster.setFromCamera(mouse, camera);
 
@@ -480,6 +492,59 @@ export default function useThreeJsCoin(
     });
   }
 
+  const setPaused = (next: boolean) => {
+    paused = next;
+  };
+
+  const setPose = (pose: CoinPose) => {
+    if (!coinBody || !coinMesh) return;
+
+    const q = new THREE.Quaternion();
+    let yPos = 1;
+
+    switch (pose) {
+      case 'heads':
+        q.setFromEuler(new THREE.Euler(0, 0, 0));
+        yPos = 0.05;
+        break;
+      case 'tails':
+        q.setFromEuler(new THREE.Euler(Math.PI, 0, 0));
+        yPos = 0.05;
+        break;
+      case 'edge':
+        q.setFromEuler(new THREE.Euler(0, 0, Math.PI / 2));
+        yPos = 1;
+        break;
+      case 'mid':
+        q.setFromEuler(new THREE.Euler(Math.PI / 3, Math.PI / 6, Math.PI / 5));
+        yPos = 2.5;
+        break;
+    }
+
+    coinBody.position.set(0, yPos, 0);
+    coinBody.velocity.set(0, 0, 0);
+    coinBody.angularVelocity.set(0, 0, 0);
+    coinBody.quaternion.set(q.x, q.y, q.z, q.w);
+    coinMesh.position.copy(coinBody.position as any);
+    coinMesh.quaternion.copy(coinBody.quaternion as any);
+
+    if (camera) {
+      camera.position.set(2.5, 1.8, 2.5);
+      camera.lookAt(0, yPos, 0);
+    }
+  };
+
+  const captureFrame = (): Promise<Blob | null> => {
+    return new Promise((resolve) => {
+      if (!renderer || !canvasRef.value) {
+        resolve(null);
+        return;
+      }
+      renderer.render(scene, camera);
+      renderer.domElement.toBlob((blob) => resolve(blob), 'image/png');
+    });
+  };
+
   function disposeSceneResources() {
     destroyListeners();
     geometries.forEach((geometry) => geometry.dispose());
@@ -498,6 +563,9 @@ export default function useThreeJsCoin(
     setup,
     disposeSceneResources,
     flipCoin,
+    setPose,
+    setPaused,
+    captureFrame,
     animationFrameId,
   };
 }

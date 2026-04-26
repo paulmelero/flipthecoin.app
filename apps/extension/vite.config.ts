@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import svgLoader from 'vite-svg-loader';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
@@ -10,6 +11,12 @@ const rootDir = dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   plugins: [
     vue(),
+    svgLoader({
+      defaultImport: 'component',
+      svgoConfig: {
+        plugins: [{ name: 'preset-default' }, { name: 'prefixIds' }],
+      },
+    }),
     {
       name: 'copy-manifest',
       generateBundle() {
@@ -26,6 +33,11 @@ export default defineConfig({
       },
     },
   ],
+  resolve: {
+    alias: {
+      '@brand': resolve(rootDir, '../flipthecoin/public'),
+    },
+  },
   build: {
     outDir: `dist/${browser}`,
     emptyOutDir: true,

@@ -1,35 +1,50 @@
 <template>
-  <main class="flex flex-col w-[360px] h-[460px] bg-neutral-900 text-white">
-    <div class="relative flex-1 overflow-hidden">
+  <main class="flex flex-col w-[380px] h-[560px] bg-base-100 text-base-content">
+    <PopupHeader />
+
+    <div class="relative h-[260px] overflow-hidden bg-base-200/30">
       <canvas
         ref="canvasRef"
         class="w-full h-full block"
         :class="{ 'cursor-pointer': !isFlipping }"
       ></canvas>
     </div>
-    <div class="p-3 flex flex-col items-center gap-2 bg-neutral-950">
-      <output
-        class="text-sm text-neutral-300 min-h-[1.25rem]"
-        aria-live="polite"
-      >
-        <template v-if="result"
-          >Result: <strong>{{ result }}</strong></template
-        >
+
+    <div
+      class="px-3 py-2 flex items-center gap-2 border-t border-base-content/10"
+    >
+      <output class="text-sm flex-1 min-w-0" aria-live="polite">
+        <template v-if="result">
+          <span class="text-base-content/60">Result:</span>
+          <strong class="ml-1 text-primary">{{ result }}</strong>
+        </template>
+        <template v-else>
+          <span class="text-base-content/40 text-xs">Press flip to begin</span>
+        </template>
       </output>
       <button
-        class="w-full py-2 rounded-md bg-yellow-400 text-black font-semibold hover:bg-yellow-300 disabled:opacity-60 disabled:cursor-not-allowed transition"
+        class="btn btn-primary btn-sm"
         @click="flipCoin"
         :disabled="isFlipping"
       >
-        {{ isFlipping ? 'Flipping…' : 'Flip the coin' }}
+        <span
+          v-if="isFlipping"
+          class="loading loading-spinner loading-xs"
+        ></span>
+        {{ isFlipping ? 'Flipping…' : 'Flip' }}
       </button>
     </div>
+
+    <FlipHistory :entries="history" @clear="clear" />
   </main>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
 import { useThreeJsCoin } from '@flipthecoin/coin-engine';
+import PopupHeader from './components/PopupHeader.vue';
+import FlipHistory from './components/FlipHistory.vue';
+import { useFlipHistory } from './composables/useFlipHistory';
 
 const canvasRef = ref<HTMLCanvasElement | null>(null);
 const isFlipping = ref(false);
@@ -37,6 +52,8 @@ const result = ref('');
 const tossCount = ref(0);
 const previousTossCount = ref(0);
 const isIntersecting = ref(false);
+
+const { history, push, clear } = useFlipHistory();
 
 const { setup, disposeSceneResources, flipCoin } = useThreeJsCoin(
   canvasRef,
@@ -48,6 +65,7 @@ const { setup, disposeSceneResources, flipCoin } = useThreeJsCoin(
   {
     size: 'element',
     enableOrbitControls: false,
+    onResult: (r) => push(r),
   },
 );
 

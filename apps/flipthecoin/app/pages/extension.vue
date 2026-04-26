@@ -1,15 +1,24 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData('extension', () => {
-  return queryCollection('pages').path('/pages/extension').first();
-});
+const { $getLocale } = useI18n();
+const locale = computed(() => $getLocale());
+
+const { data: page } = await useAsyncData(
+  () => `page-extension-${locale.value}`,
+  () =>
+    queryCollection('pages')
+      .where('slug', '=', 'extension')
+      .where('_locale', '=', locale.value)
+      .first(),
+  { watch: [locale] },
+);
 
 definePageMeta({
   layout: 'blogpost',
 });
 
 useSeoMeta({
-  title: page.value?.title,
-  description: page.value?.description,
+  title: () => page.value?.title,
+  description: () => page.value?.description,
 });
 </script>
 

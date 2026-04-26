@@ -1,6 +1,7 @@
 {
   "private": true,
   "name": "flipthecoinapp-monorepo",
+  "description": "The Flip The Coin app monorepo",
   "version": "0.0.0",
   "scripts": {
     "build": "pnpm --filter @flipthecoin/app build",
@@ -20,9 +21,13 @@
     ]
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
-    "prettier": "3.5.3"
+    "png-to-ico": "^3.0.1",
+    "prettier": "3.5.3",
+    "satori": "^0.26.0",
+    "sharp": "^0.34.5"
   },
   "packageManager": "pnpm@9.12.0+sha512.4abf725084d7bcbafbd728bfc7bee61f2f791f977fd87542b3579dcb23504d170d46337945e4c66485cd12d588a0c0e570ed9c477e7ccdd8507cf05f3f92eaca"
 }
