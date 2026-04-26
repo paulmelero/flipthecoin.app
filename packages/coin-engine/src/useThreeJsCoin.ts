@@ -321,6 +321,23 @@ export default function useThreeJsCoin(
     }
   };
 
+  const getAccentColor = (): THREE.Color => {
+    const fallback = new THREE.Color(0xff0000);
+    const raw = getComputedStyle(document.documentElement)
+      .getPropertyValue('--a')
+      .trim();
+    if (!raw) return fallback;
+    const canvas = document.createElement('canvas');
+    canvas.width = 1;
+    canvas.height = 1;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return fallback;
+    ctx.fillStyle = `oklch(${raw})`;
+    ctx.fillRect(0, 0, 1, 1);
+    const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
+    return new THREE.Color(r / 255, g / 255, b / 255);
+  };
+
   const showText = () => {
     const textGeometry = new TextGeometry(result.value, {
       font: font,
@@ -346,11 +363,12 @@ export default function useThreeJsCoin(
 
     textGeometry.translate(-textWidth / 2, -textHeight / 2, -textDepth / 2);
 
+    const accent = getAccentColor();
     const textMaterial = new THREE.MeshStandardMaterial({
-      color: 0x990000,
+      color: accent,
       metalness: 0.1,
       roughness: 0.2,
-      emissive: 0xff0000,
+      emissive: accent,
       emissiveIntensity: 0.2,
     });
 

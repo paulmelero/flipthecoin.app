@@ -24,10 +24,10 @@ const headsPct = computed(() =>
 const chipClass = (r: FlipRecord['r']): string => {
   const result = decodeResult(r);
   if (result === 'Heads')
-    return 'bg-amber-300/30 border-amber-400/50 text-amber-100';
+    return 'bg-amber-300/30 border-amber-400/50 text-primary';
   if (result === 'Tails')
-    return 'bg-zinc-300/20 border-zinc-300/40 text-zinc-100';
-  return 'bg-orange-500/30 border-orange-400/50 text-orange-100';
+    return 'bg-zinc-300/20 border-zinc-300/40 text-secondary';
+  return 'bg-orange-500/30 border-orange-400/50 text-warning';
 };
 
 const chipLabel = (r: FlipRecord['r']): string => {
