@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-const { $getLocale } = useI18n();
+const { $t, $getLocale } = useI18n();
 const locale = computed(() => $getLocale());
 
 const { data: home } = await useAsyncData(
@@ -32,6 +32,6 @@ const { data: home } = await useAsyncData(
 
 useSeoMeta({
   title: () => home.value?.title,
-  description: () => home.value?.description,
+  description: () => home.value?.description ?? $t('app.description'),
 });
 </script>
