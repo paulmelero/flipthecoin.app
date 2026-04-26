@@ -3,3 +3,4 @@ node_modules
 apps/flipthecoin/todos.md
 .claude
 .DS_Store
+apps/flipthecoin/server/assets/_locales/*

@@ -24,12 +24,12 @@ watch(() => route.path, closeDropdown);
 
 <template>
   <header class="navbar container mx-auto py-5">
-    <div class="navbar-start w-full">
+    <div class="navbar-start w-full md:w-fit">
       <nuxt-link :to="localePath('/')">
         <BrandLogo />
       </nuxt-link>
     </div>
-    <nav class="navbar-end sm:w-full flex gap-4 md:gap-2">
+    <nav class="navbar-end md:w-full flex gap-4 md:gap-2">
       <div class="isolate z-10 md:hidden">
         <details ref="dropdownRef" class="dropdown dropdown-end">
           <summary class="btn btn-square">
