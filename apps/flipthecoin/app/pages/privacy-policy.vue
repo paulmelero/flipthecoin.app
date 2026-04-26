@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { $getLocale } = useI18n();
+const { $t, $getLocale } = useI18n();
 const locale = computed(() => $getLocale());
 
 const { data: page } = await useAsyncData(
@@ -18,7 +18,7 @@ definePageMeta({
 
 useSeoMeta({
   title: () => page.value?.title,
-  description: () => page.value?.description,
+  description: () => page.value?.description ?? $t('app.description'),
 });
 </script>
 

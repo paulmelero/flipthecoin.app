@@ -46,7 +46,7 @@ onBeforeUnmount(() => {
         </p>
         <FTitle class="!mb-4">{{ $t('hero.title') }}</FTitle>
         <p class="text-lg lg:text-xl text-base-content/80 mb-8 max-w-2xl">
-          {{ $t('hero.lead') }}
+          {{ $t('app.description') }}
         </p>
         <div class="flex flex-wrap items-center gap-3">
           <button

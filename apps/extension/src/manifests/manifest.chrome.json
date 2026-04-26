@@ -4,7 +4,7 @@
   "short_name": "FlipTheCoin",
   "description": "A fair and random 3D coin flip, right in your browser toolbar. Click the icon, hit the button, let fate decide.",
   "version": "1.0.0",
-  "author": "Paul Melero",
+  "author": "Flip The Coin App",
   "homepage_url": "https://flipthecoin.app",
   "icons": {
     "16": "icons/icon-16.png",
