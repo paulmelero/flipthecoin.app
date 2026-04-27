@@ -20,19 +20,15 @@ const { $t, localePath } = useI18n();
           {{ $t('home.extension.body') }}
         </p>
         <div class="flex flex-wrap gap-3">
-          <NuxtLink
-            :to="localePath({ name: 'extension', hash: '#chrome' })"
-            class="btn btn-primary"
-          >
+          <NuxtLink :to="localePath('/extension')" class="btn btn-primary">
             <ChromeIcon class="size-4 shrink-0" aria-hidden="true" />
             {{ $t('home.extension.installChrome') }}
           </NuxtLink>
-          <NuxtLink
-            :to="localePath({ name: 'extension', hash: '#firefox' })"
-            class="btn btn-outline"
+          <p
+            class="inline-flex items-center sm:px-4 py-3 text-sm font-medium text-base-content/60"
           >
             {{ $t('home.extension.installFirefox') }}
-          </NuxtLink>
+          </p>
         </div>
       </div>
 
