@@ -16,7 +16,6 @@
             $getLocale() === locale.code,
           'hover:opacity-80': $getLocale() !== locale.code,
         }"
-        @click="$switchLocale(locale.code)"
       >
         {{ locale.flag }}
       </NuxtLink>
