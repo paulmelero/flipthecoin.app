@@ -1,39 +1,67 @@
 <script setup lang="ts">
 import ChromeIcon from '@brand/img/icons/google-chrome-logo-svgrepo-com.svg?component';
 
-const { $t, localePath } = useI18n();
+const { $t } = useI18n();
+
+const STORE_URL =
+  'https://chromewebstore.google.com/detail/afkjlnjcpgjiecnfhkokeohlmipchohc?utm_source=item-share-cb';
 </script>
 
 <template>
-  <section class="container mx-auto px-4 lg:px-8 py-16">
+  <section class="container mx-auto px-4 lg:px-8 py-10 lg:py-16">
     <div
       class="relative grid gap-10 lg:grid-cols-2 items-center p-8 lg:p-12 rounded-3xl bg-gradient-to-br from-primary/15 via-primary/5 to-secondary/10 border border-primary/10 overflow-hidden"
     >
+      <!-- Math backdrop decorations -->
+      <span
+        aria-hidden="true"
+        class="absolute left-6 bottom-8 text-xs font-mono opacity-[0.08] dark:opacity-[0.12] -rotate-6 select-none"
+      >
+        P(H) = ½
+      </span>
+      <span
+        aria-hidden="true"
+        class="absolute right-6 lg:right-1/2 top-8 text-xs font-mono opacity-[0.08] dark:opacity-[0.12] rotate-3 select-none"
+      >
+        σ = √(np(1−p))
+      </span>
+
       <div class="relative z-10">
         <p class="text-xs uppercase tracking-[0.2em] text-primary mb-3">
-          {{ $t('home.extension.eyebrow') }}
+          {{ $t('extension.hero.eyebrow') }}
         </p>
-        <h2 class="font-[Archivo] text-3xl lg:text-4xl font-semibold mb-4">
-          {{ $t('home.extension.title') }}
-        </h2>
+        <h1 class="font-[Archivo] text-3xl lg:text-4xl font-semibold mb-4">
+          {{ $t('extension.hero.title') }}
+        </h1>
         <p class="text-base-content/75 text-lg leading-relaxed mb-8 max-w-lg">
-          {{ $t('home.extension.body') }}
+          {{ $t('extension.hero.body') }}
         </p>
-        <div class="flex flex-wrap gap-3">
-          <NuxtLink
-            :to="localePath({ name: 'extension', hash: '#chrome' })"
+        <div class="flex flex-wrap gap-3 mb-4">
+          <a
+            :href="STORE_URL"
+            target="_blank"
+            rel="noopener noreferrer"
             class="btn btn-primary"
           >
-            <ChromeIcon class="size-4 shrink-0" aria-hidden="true" />
-            {{ $t('home.extension.installChrome') }}
-          </NuxtLink>
-          <NuxtLink
-            :to="localePath({ name: 'extension', hash: '#firefox' })"
-            class="btn btn-outline"
-          >
-            {{ $t('home.extension.installFirefox') }}
-          </NuxtLink>
+            <ChromeIcon
+              class="size-4 shrink-0"
+              fill="currentColor"
+              aria-hidden="true"
+            />
+            {{ $t('extension.hero.addToChrome') }}
+          </a>
+          <a href="#install" class="btn btn-outline">
+            <ChromeIcon
+              class="size-4 shrink-0"
+              fill="currentColor"
+              aria-hidden="true"
+            />
+            {{ $t('extension.hero.installFromSource') }}
+          </a>
         </div>
+        <p class="text-sm text-base-content/50 font-mono">
+          {{ $t('extension.hero.firefoxComingSoon') }}
+        </p>
       </div>
 
       <div class="relative flex justify-center lg:justify-end">

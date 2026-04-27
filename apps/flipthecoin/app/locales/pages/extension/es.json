@@ -1,1 +1,8 @@
-{}
+{
+  "extension.hero.eyebrow": "Extensión del navegador",
+  "extension.hero.title": "Flip The Coin App",
+  "extension.hero.body": "Instala la extensión y lanza una moneda desde cualquier pestaña. Misma física, misma imparcialidad, de manera totalmente privada.",
+  "extension.hero.addToChrome": "Añadir a Chrome",
+  "extension.hero.installFromSource": "Instalar desde el código",
+  "extension.hero.firefoxComingSoon": "Firefox — Próximamente"
+}

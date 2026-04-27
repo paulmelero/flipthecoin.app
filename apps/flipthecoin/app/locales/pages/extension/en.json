@@ -1,1 +1,8 @@
-{}
+{
+  "extension.hero.eyebrow": "Browser extension",
+  "extension.hero.title": "Flip The Coin App",
+  "extension.hero.body": "Install the extension and flip a coin from any tab. Same physics as the game in flipthecoin.app, same fairness. No data tracking, only sharing fun for math enthusiasts!",
+  "extension.hero.addToChrome": "Add to Chrome",
+  "extension.hero.installFromSource": "Install from source",
+  "extension.hero.firefoxComingSoon": "Firefox — Coming soon"
+}

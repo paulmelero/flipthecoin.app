@@ -20,11 +20,13 @@ The Flip The Coin browser extension puts the same 3D coin from [flipthecoin.app]
 
 ## Install
 
-### Chrome
+### <span aria-hidden="true" style="display:inline-block;width:20px;height:20px;background-color:currentColor;-webkit-mask:url(/img/icons/google-chrome-logo-svgrepo-com.svg) no-repeat center/contain;mask:url(/img/icons/google-chrome-logo-svgrepo-com.svg) no-repeat center/contain;vertical-align:-3px;margin-right:4px"></span>Chromium browsers (Chrome, Edge, Brave, Arc, Opera…)
 
-🔜 **Coming soon to the Chrome Web Store.** [Subscribe to the newsletter](#newsletter) to be notified when it goes live.
+The extension is available on the **Chrome Web Store** and works in every Chromium-based browser:
 
-In the meantime, you can install it from source:
+**[Add to Chrome (and all Chromium browsers) →](https://chromewebstore.google.com/detail/afkjlnjcpgjiecnfhkokeohlmipchohc?utm_source=item-share-cb)**
+
+#### Or install from source
 
 ```bash
 git clone https://github.com/paulmelero/flipthecoinapp.git
@@ -33,15 +35,11 @@ pnpm install
 pnpm --filter @flipthecoin/extension build:chrome
 ```
 
-Then in Chrome go to `chrome://extensions`, enable **Developer mode**, click **Load unpacked**, and select `apps/extension/dist/chrome/`.
+Then in Chrome (or any Chromium browser) go to `chrome://extensions`, enable **Developer mode**, click **Load unpacked**, and select `apps/extension/dist/chrome/`.
 
 ### Firefox
 
-```bash
-pnpm --filter @flipthecoin/extension build:firefox
-```
-
-Then in Firefox go to `about:debugging#/runtime/this-firefox` → **Load Temporary Add-on…** → pick `apps/extension/dist/firefox/manifest.json`.
+🔜 **Coming soon to Firefox.** [Subscribe to the newsletter](#newsletter) to be notified when it goes live.
 
 ## Privacy
 
