@@ -38,7 +38,7 @@ export interface CoinEngineOptions {
 const DEFAULT_ASSETS: Required<CoinAssetUrls> = {
   heads: '/img/head.webp',
   tails: '/img/tails.webp',
-  font: 'fonts/helvetiker_bold.typeface.json',
+  font: '/fonts/helvetiker_bold.typeface.json',
 };
 
 export default function useThreeJsCoin(
