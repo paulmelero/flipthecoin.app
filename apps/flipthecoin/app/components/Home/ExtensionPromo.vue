@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ChromeIcon from '@brand/img/icons/google-chrome-logo-svgrepo-com.svg?component';
+import FirefoxIcon from '@brand/img/icons/firefox-logo.svg?component';
 
 const { $t, localePath } = useI18n();
 </script>
@@ -24,11 +25,10 @@ const { $t, localePath } = useI18n();
             <ChromeIcon class="size-4 shrink-0" aria-hidden="true" />
             {{ $t('home.extension.installChrome') }}
           </NuxtLink>
-          <p
-            class="inline-flex items-center sm:px-4 py-3 text-sm font-medium text-base-content/60"
-          >
+          <NuxtLink :to="localePath('/extension')" class="btn btn-outline">
+            <FirefoxIcon class="size-4 shrink-0" aria-hidden="true" />
             {{ $t('home.extension.installFirefox') }}
-          </p>
+          </NuxtLink>
         </div>
       </div>
 

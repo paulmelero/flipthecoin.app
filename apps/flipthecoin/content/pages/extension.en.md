@@ -37,9 +37,22 @@ pnpm --filter @flipthecoin/extension build:chrome
 
 Then in Chrome (or any Chromium browser) go to `chrome://extensions`, enable **Developer mode**, click **Load unpacked**, and select `apps/extension/dist/chrome/`.
 
-### Firefox
+### <span aria-hidden="true" style="display:inline-block;width:20px;height:20px;background-color:currentColor;-webkit-mask:url(/img/icons/firefox-logo.svg) no-repeat center/contain;mask:url(/img/icons/firefox-logo.svg) no-repeat center/contain;vertical-align:-3px;margin-right:4px"></span>Firefox
 
-🔜 **Coming soon to Firefox.** [Subscribe to the newsletter](#newsletter) to be notified when it goes live.
+The extension is available on **Firefox Add-ons** (AMO):
+
+**[Add to Firefox →](https://addons.mozilla.org/en-GB/firefox/addon/flip-the-coin/)**
+
+#### Or install from source
+
+```bash
+git clone https://github.com/paulmelero/flipthecoinapp.git
+cd flipthecoinapp
+pnpm install
+pnpm --filter @flipthecoin/extension build:firefox
+```
+
+Then in Firefox go to `about:debugging#/runtime/this-firefox`, click **Load Temporary Add-on…**, and select any file inside `apps/extension/dist/firefox/`.
 
 ## Privacy
 

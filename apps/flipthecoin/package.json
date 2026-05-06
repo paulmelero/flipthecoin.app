@@ -3,6 +3,7 @@
   "description": "The Online Coin Flip App",
   "type": "module",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",

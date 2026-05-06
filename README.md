@@ -9,6 +9,6 @@ https://flipthecoin.app/
 - [x] Terms of service
 - [ ] Contact page
 - [ ] Social media links
-- [ ] OG image
-- [ ] Analytics
+- [x] OG image
+- [ ] ~Analytics~ (not needed for now...)
 - [ ] Sitemap

@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import ChromeIcon from '@brand/img/icons/google-chrome-logo-svgrepo-com.svg?component';
+import FirefoxIcon from '@brand/img/icons/firefox-logo.svg?component';
 
 const { $t } = useI18n();
 
-const STORE_URL =
+const CHROME_STORE_URL =
   'https://chromewebstore.google.com/detail/afkjlnjcpgjiecnfhkokeohlmipchohc?utm_source=item-share-cb';
+const FIREFOX_STORE_URL =
+  'https://addons.mozilla.org/en-GB/firefox/addon/flip-the-coin/';
 </script>
 
 <template>
@@ -36,9 +39,9 @@ const STORE_URL =
         <p class="text-base-content/75 text-lg leading-relaxed mb-8 max-w-lg">
           {{ $t('extension.hero.body') }}
         </p>
-        <div class="flex flex-wrap gap-3 mb-4">
+        <div class="flex flex-wrap gap-3">
           <a
-            :href="STORE_URL"
+            :href="CHROME_STORE_URL"
             target="_blank"
             rel="noopener noreferrer"
             class="btn btn-primary"
@@ -50,18 +53,23 @@ const STORE_URL =
             />
             {{ $t('extension.hero.addToChrome') }}
           </a>
-          <a href="#install" class="btn btn-outline">
-            <ChromeIcon
+          <a
+            :href="FIREFOX_STORE_URL"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+          >
+            <FirefoxIcon
               class="size-4 shrink-0"
               fill="currentColor"
               aria-hidden="true"
             />
+            {{ $t('extension.hero.addToFirefox') }}
+          </a>
+          <a href="#install" class="btn btn-outline">
             {{ $t('extension.hero.installFromSource') }}
           </a>
         </div>
-        <p class="text-sm text-base-content/50 font-mono">
-          {{ $t('extension.hero.firefoxComingSoon') }}
-        </p>
       </div>
 
       <div class="relative flex justify-center lg:justify-end">
