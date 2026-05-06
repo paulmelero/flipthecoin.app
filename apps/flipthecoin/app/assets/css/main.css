@@ -2,3 +2,9 @@ main {
   padding: 0 1em;
   min-height: 100vh;
 }
+
+.light
+  .prose
+  :where(pre):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+  --tw-prose-pre-bg: oklch(0.95 0.01 257.5);
+}
