@@ -1,6 +1,7 @@
 ---
-title: Simplemente, lanza la moneda
+title: Lanzar Moneda Online — Cara o Cruz Gratis
 slug: index
+description: 'Lanza una moneda online con nuestro simulador 3D gratuito. Resultado instantáneo cara o cruz — sin instalar nada. Justo, aleatorio y con física real.'
 _locale: es
 ---
 

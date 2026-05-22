@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /__capture
+
+Sitemap: https://flipthecoin.app/sitemap.xml

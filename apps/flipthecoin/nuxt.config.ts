@@ -64,6 +64,8 @@ export default defineNuxtConfig({
     '/terms': { prerender: true },
     '/about-us': { prerender: true },
     '/blog/**': { prerender: true },
+    '/sitemap.xml': { prerender: true },
+    '/robots.txt': { prerender: true },
   },
   typescript: {
     tsConfig: {

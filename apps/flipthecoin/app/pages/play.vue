@@ -49,7 +49,7 @@ onBeforeUnmount(() => {
 
 useSeoMeta({
   title: () => $t('play.seoTitle') as string,
-  description: () => $t('app.description') as string,
+  description: () => $t('play.seoDescription') as string,
 });
 </script>
 
