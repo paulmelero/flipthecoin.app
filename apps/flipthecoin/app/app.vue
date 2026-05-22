@@ -46,15 +46,15 @@ useHead({
   title: TITLE,
   titleTemplate: (title) => (title ? `${title} -- FlipTheCoin.app` : TITLE),
   meta: [
-    { name: 'description', content: description },
+    { name: 'description', content: description.value as string },
     { property: 'og:title', content: TITLE },
-    { property: 'og:description', content: description },
+    { property: 'og:description', content: description.value as string },
     { property: 'og:type', content: 'website' },
     { property: 'og:image', content: ogImage },
     { property: 'og:url', content: canonicalUrl },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: TITLE },
-    { name: 'twitter:description', content: description },
+    { name: 'twitter:description', content: description.value as string },
     { name: 'twitter:image', content: ogImage },
   ],
   link: computed(() => [
