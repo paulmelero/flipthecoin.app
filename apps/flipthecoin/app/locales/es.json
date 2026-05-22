@@ -66,5 +66,14 @@
   "play.stats.ratio": "{ratio}% caras",
   "play.clearHistory": "Borrar historial",
   "play.confirmClear": "¿Borrar todo el historial? No se puede deshacer.",
-  "play.loading": "Calentando la moneda..."
+  "play.loading": "Calentando la moneda...",
+  "faq.title": "Preguntas frecuentes",
+  "faq.q1": "¿Cómo funciona el lanzamiento de moneda online?",
+  "faq.a1": "FlipTheCoin.app simula un motor de física real. La moneda se lanza con fuerza y giro aleatorios, luego cae bajo la gravedad hasta estabilizarse en cara o cruz, igual que un lanzamiento real, no un simple número aleatorio.",
+  "faq.q2": "¿Es este lanzamiento verdaderamente aleatorio?",
+  "faq.a2": "Sí. Nuestra simulación combina física 3D real con un generador de números aleatorios, haciendo cada lanzamiento no determinista e imposible de manipular. No puede trucarse para que caiga de una manera determinada.",
+  "faq.q3": "¿Puedo usar esto en lugar de una moneda real?",
+  "faq.a3": "Por supuesto. Ya sea para resolver una apuesta, tomar una decisión rápida, elegir lados antes de un partido o hacer un ejercicio en clase, FlipTheCoin.app es un sustituto justo y aceptado del lanzamiento de moneda físico.",
+  "faq.q4": "¿FlipTheCoin.app es gratuito?",
+  "faq.a4": "Completamente gratuito, para siempre. Sin cuenta, sin anuncios, sin rastreo. Accesible desde cualquier navegador en cualquier dispositivo."
 }

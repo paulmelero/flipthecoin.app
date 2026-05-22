@@ -93,3 +93,5 @@ Eso es realmente todo para lo básico:
 4. Los sucesos independientes no se preocupan por la historia del otro.
 
 Con solo esas cuatro ideas puedes razonar sobre casi cualquier pregunta de lanzamiento de moneda — y sobre la mayoría de problemas tipo dados, cartas y lotería también.
+
+Pon la teoría en práctica: [lanza una moneda online](https://flipthecoin.app/es/play) y sigue tu propia racha.

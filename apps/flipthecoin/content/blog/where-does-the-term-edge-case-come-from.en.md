@@ -66,3 +66,5 @@ Would it have been tidier if "edge case" _were_ named after coins? Yes. But then
 ## Conclusion
 
 "Edge case" comes from some other field of engineering, not statistics. But in a coin-flip app, the edge is both.
+
+Speaking of edges — [flip a coin online](https://flipthecoin.app/play) and see if you can land on one.

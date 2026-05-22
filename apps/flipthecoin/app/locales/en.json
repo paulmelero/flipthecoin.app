@@ -66,5 +66,14 @@
   "play.stats.ratio": "{ratio}% heads",
   "play.clearHistory": "Clear history",
   "play.confirmClear": "Erase all flip history? This can't be undone.",
-  "play.loading": "Warming up the coin..."
+  "play.loading": "Warming up the coin...",
+  "faq.title": "Frequently Asked Questions",
+  "faq.q1": "How does the online coin flip work?",
+  "faq.a1": "FlipTheCoin.app simulates a real physics engine. The coin is launched with randomised force and spin, then falls under gravity until it settles on heads or tails — just like a real coin toss, not a simple random number.",
+  "faq.q2": "Is this coin flip truly random?",
+  "faq.a2": "Yes. Our simulation combines real 3D physics with a seeded random number generator, making each flip non-deterministic and tamper-proof. It cannot be rigged to land a specific way.",
+  "faq.q3": "Can I use this instead of a real coin?",
+  "faq.a3": "Absolutely. Whether you need to settle a bet, make a quick decision, pick sides before a game, or run a classroom exercise — FlipTheCoin.app is a fair, accepted substitute for a physical coin flip.",
+  "faq.q4": "Is FlipTheCoin.app free to use?",
+  "faq.a4": "Completely free, forever. No account required, no ads, no tracking. Open and accessible from any browser on any device."
 }

@@ -53,20 +53,66 @@ useHead(
   computed(() => {
     const enSlug = siblings.value?.['en'];
     const esSlug = siblings.value?.['es'];
-    if (!enSlug || !esSlug) return {};
-    const enHref = `${BASE}/blog/${enSlug}`;
-    const esHref = `${BASE}/es/blog/${esSlug}`;
+    const hreflangLinks =
+      enSlug && esSlug
+        ? [
+            {
+              key: 'hreflang-en',
+              rel: 'alternate',
+              hreflang: 'en',
+              href: `${BASE}/blog/${enSlug}`,
+            },
+            {
+              key: 'hreflang-es',
+              rel: 'alternate',
+              hreflang: 'es',
+              href: `${BASE}/es/blog/${esSlug}`,
+            },
+            {
+              key: 'hreflang-xdefault',
+              rel: 'alternate',
+              hreflang: 'x-default',
+              href: `${BASE}/blog/${enSlug}`,
+            },
+          ]
+        : [];
+
+    const articleSchema = post.value
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: post.value.title,
+          description: post.value.description,
+          datePublished: String(post.value.date ?? '').split('T')[0],
+          author: {
+            '@type': 'Organization',
+            name: 'FlipTheCoin.app',
+            url: BASE,
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: 'FlipTheCoin.app',
+            url: BASE,
+            logo: `${BASE}/icon-512.png`,
+          },
+          url:
+            locale.value === 'es'
+              ? `${BASE}/es/blog/${post.value.slug}`
+              : `${BASE}/blog/${post.value.slug}`,
+        }
+      : null;
+
     return {
-      link: [
-        { key: 'hreflang-en', rel: 'alternate', hreflang: 'en', href: enHref },
-        { key: 'hreflang-es', rel: 'alternate', hreflang: 'es', href: esHref },
-        {
-          key: 'hreflang-xdefault',
-          rel: 'alternate',
-          hreflang: 'x-default',
-          href: enHref,
-        },
-      ],
+      link: hreflangLinks,
+      script: articleSchema
+        ? [
+            {
+              key: 'article-schema',
+              type: 'application/ld+json',
+              innerHTML: JSON.stringify(articleSchema),
+            },
+          ]
+        : [],
     };
   }),
 );

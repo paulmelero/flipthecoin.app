@@ -66,3 +66,5 @@ La estadística de los lanzamientos de moneda es un tema fascinante que puede en
 Se usa comúnmente como uno de los primeros ejemplos al enseñar estadística, pero también es un tema que puede explorarse en más profundidad. Es un concepto simple que puede llevar a discusiones complejas sobre independencia, aleatoriedad y la ley de los grandes números. Para algunas personas es solo una forma divertida de tomar decisiones, para otras es una forma de explorar el mundo de la estadística.
 
 Así que la próxima vez que lances una moneda, tómate un momento para apreciar la estadística inesperada detrás de este simple acto.
+
+[Prueba nuestro lanzador de moneda online gratuito](https://flipthecoin.app/es/play) — cara o cruz, decidido por física 3D real.

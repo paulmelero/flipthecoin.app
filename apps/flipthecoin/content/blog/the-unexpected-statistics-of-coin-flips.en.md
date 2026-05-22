@@ -66,3 +66,5 @@ The statistics of coin flips are a fascinating topic that can teach us a lot abo
 It is commonly used as one of the first examples when teaching about statistics, but it is also a topic that can be explored in more depth. It is a simple concept that can lead to complex discussions about independence, randomness, and the law of large numbers. For some people it is just a fun way to make decisions, for others it is a way to explore the world of statistics.
 
 So the next time you flip a coin, take a moment to appreciate the unexpected statistics behind this simple act.
+
+[Try our free online coin flip](https://flipthecoin.app/play) — heads or tails, decided by real 3D physics.

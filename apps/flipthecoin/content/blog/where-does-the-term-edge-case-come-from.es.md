@@ -66,3 +66,5 @@ Este es el tipo de etimología accidental que me parece deliciosa. Dos términos
 ## Conclusión
 
 "Edge case" viene de algún otro campo de la ingeniería, no de la estadística. Pero en una app de lanzar monedas, el borde es las dos cosas.
+
+Hablando de bordes — [lanza una moneda online](https://flipthecoin.app/es/play) y a ver si consigues que caiga en el canto.

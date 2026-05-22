@@ -93,3 +93,5 @@ That's really it for the basics:
 4. Independent events don't care about each other's history.
 
 With just those four ideas you can reason about almost any coin-flip question — and most dice, cards, and lottery-style problems too.
+
+Put the theory to work: [flip a coin online](https://flipthecoin.app/play) and track your own streak.

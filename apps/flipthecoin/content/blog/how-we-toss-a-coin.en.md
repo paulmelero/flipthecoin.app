@@ -81,3 +81,5 @@ Is that "true" randomness? No — it's pseudo-random, like most randomness on a 
 So the next time you toss a coin on the site, here's what's actually happening: a three-number throw (push, drift, spin), a short physics simulation, and a read of which direction the coin's top face is pointing when it stops. No tricks, no pre-picked winner. Just a very tiny world with very normal gravity.
 
 Curious about the maths underneath? Start with [Probability Basics](https://flipthecoin.app/blog/probability-basics). Curious about the weird statistical reality of real coin flips? [The Unexpected Statistics of Coin Flips](https://flipthecoin.app/blog/the-unexpected-statistics-of-coin-flips) is the one for you.
+
+Ready to see the physics in action? [Flip a coin online](https://flipthecoin.app/play) right now.

@@ -81,3 +81,5 @@ La aleatoriedad en nuestro lanzamiento viene de la deriva lateral aleatoria y de
 Así que la próxima vez que lances una moneda en el sitio, esto es lo que pasa en realidad: un lanzamiento de tres números (empujón, deriva, giro), una breve simulación física y una lectura de hacia dónde apunta la cara superior de la moneda cuando se detiene. Sin trucos, sin ganador preseleccionado. Solo un mundo muy pequeño con una gravedad muy normal.
 
 ¿Con curiosidad por las matemáticas de fondo? Empieza por [Fundamentos de probabilidad](https://flipthecoin.app/blog/probability-basics). ¿Con curiosidad por la rarísima realidad estadística de los lanzamientos reales? [La estadística inesperada de los lanzamientos de moneda](https://flipthecoin.app/blog/the-unexpected-statistics-of-coin-flips) es el que buscas.
+
+¿Listo para ver la física en acción? [Lanza una moneda online](https://flipthecoin.app/es/play) ahora mismo.

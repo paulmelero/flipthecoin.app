@@ -51,6 +51,26 @@ useSeoMeta({
   title: () => $t('play.seoTitle') as string,
   description: () => $t('play.seoDescription') as string,
 });
+
+useHead({
+  script: [
+    {
+      key: 'webapp-schema',
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebApplication',
+        name: 'Flip a Coin',
+        url: 'https://flipthecoin.app/play',
+        applicationCategory: 'UtilityApplication',
+        operatingSystem: 'Any',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        description:
+          'Free online 3D coin flipper. Get a fair heads or tails result instantly — powered by real physics simulation.',
+      }),
+    },
+  ],
+});
 </script>
 
 <template>
