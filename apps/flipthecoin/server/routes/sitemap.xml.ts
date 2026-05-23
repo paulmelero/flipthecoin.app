@@ -1,36 +1,46 @@
 const BASE = 'https://flipthecoin.app';
 
 const STATIC_PAGES = [
-  { path: '/', esPart: '/es', priority: '1.0', changefreq: 'weekly' },
-  { path: '/play', esPart: '/es/play', priority: '0.9', changefreq: 'weekly' },
-  { path: '/blog', esPart: '/es/blog', priority: '0.8', changefreq: 'weekly' },
+  { path: '/', esPart: '/es/', priority: '1.0', changefreq: 'weekly' },
   {
-    path: '/about-us',
-    esPart: '/es/about-us',
+    path: '/play/',
+    esPart: '/es/play/',
+    priority: '0.9',
+    changefreq: 'weekly',
+  },
+  {
+    path: '/blog/',
+    esPart: '/es/blog/',
+    priority: '0.8',
+    changefreq: 'weekly',
+  },
+  {
+    path: '/about-us/',
+    esPart: '/es/about-us/',
     priority: '0.6',
     changefreq: 'monthly',
   },
   {
-    path: '/extension',
-    esPart: '/es/extension',
+    path: '/extension/',
+    esPart: '/es/extension/',
     priority: '0.7',
     changefreq: 'monthly',
   },
   {
-    path: '/toss-engine',
-    esPart: '/es/toss-engine',
+    path: '/toss-engine/',
+    esPart: '/es/toss-engine/',
     priority: '0.6',
     changefreq: 'monthly',
   },
   {
-    path: '/privacy-policy',
-    esPart: '/es/privacy-policy',
+    path: '/privacy-policy/',
+    esPart: '/es/privacy-policy/',
     priority: '0.3',
     changefreq: 'yearly',
   },
   {
-    path: '/terms',
-    esPart: '/es/terms',
+    path: '/terms/',
+    esPart: '/es/terms/',
     priority: '0.3',
     changefreq: 'yearly',
   },
@@ -102,12 +112,12 @@ export default defineEventHandler(async (event) => {
       const en = locales['en'];
       const es = locales['es'];
       if (!en && !es) return '';
-      const enHref = en ? `${BASE}/blog/${en.slug}` : '';
-      const esHref = es ? `${BASE}/es/blog/${es.slug}` : '';
+      const enHref = en ? `${BASE}/blog/${en.slug}/` : '';
+      const esHref = es ? `${BASE}/es/blog/${es.slug}/` : '';
       const lastmod = en?.date ?? es?.date ?? today;
       if (!enHref || !esHref) {
         // Only one locale exists — emit without alternate hreflang
-        const href = enHref || esHref;
+        const href = enHref || esHref; // already has trailing slash from above
         return `
   <url>
     <loc>${href}</loc>

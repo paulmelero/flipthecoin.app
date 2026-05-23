@@ -18,20 +18,24 @@ const ogImage = computed(() => `${BASE}/img/og/home-${$getLocale()}.png`);
 const currentPath = computed(() => route.path);
 const isBlogPost = computed(() => /\/blog\/[^/]+/.test(currentPath.value));
 
-const canonicalUrl = computed(() => `${BASE}${currentPath.value}`);
+// Cloudflare Pages serves prerendered pages at trailing-slash URLs (play/index.html → /play/).
+// Canonical and hreflang URLs must match what is actually served — no redirect needed.
+const s = (path: string) => (path.endsWith('/') ? path : `${path}/`);
+
+const canonicalUrl = computed(() => `${BASE}${s(currentPath.value)}`);
 
 const enUrl = computed(() => {
   const path = currentPath.value;
   if (path === '/es') return `${BASE}/`;
-  if (path.startsWith('/es/')) return `${BASE}${path.slice(3)}`;
-  return `${BASE}${path}`;
+  if (path.startsWith('/es/')) return `${BASE}${s(path.slice(3))}`;
+  return `${BASE}${s(path)}`;
 });
 
 const esUrl = computed(() => {
   const path = currentPath.value;
-  if (path.startsWith('/es')) return `${BASE}${path}`;
-  if (path === '/') return `${BASE}/es`;
-  return `${BASE}/es${path}`;
+  if (path.startsWith('/es')) return `${BASE}${s(path)}`;
+  if (path === '/') return `${BASE}/es/`;
+  return `${BASE}/es${s(path)}`;
 });
 
 const organizationSchema = {

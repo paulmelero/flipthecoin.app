@@ -60,19 +60,19 @@ useHead(
               key: 'hreflang-en',
               rel: 'alternate',
               hreflang: 'en',
-              href: `${BASE}/blog/${enSlug}`,
+              href: `${BASE}/blog/${enSlug}/`,
             },
             {
               key: 'hreflang-es',
               rel: 'alternate',
               hreflang: 'es',
-              href: `${BASE}/es/blog/${esSlug}`,
+              href: `${BASE}/es/blog/${esSlug}/`,
             },
             {
               key: 'hreflang-xdefault',
               rel: 'alternate',
               hreflang: 'x-default',
-              href: `${BASE}/blog/${enSlug}`,
+              href: `${BASE}/blog/${enSlug}/`,
             },
           ]
         : [];
@@ -97,8 +97,8 @@ useHead(
           },
           url:
             locale.value === 'es'
-              ? `${BASE}/es/blog/${post.value.slug}`
-              : `${BASE}/blog/${post.value.slug}`,
+              ? `${BASE}/es/blog/${post.value.slug}/`
+              : `${BASE}/blog/${post.value.slug}/`,
         }
       : null;
 
