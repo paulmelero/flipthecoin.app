@@ -18,6 +18,8 @@ The Flip The Coin browser extension puts the same 3D coin from [flipthecoin.app]
 - Shows the result (Heads, Tails, or the occasional Edge) as soon as the coin settles.
 - That's it. No tracking, no analytics, no network calls, no permissions.
 
+Prefer to flip without installing anything? [Try the coin flip game in the browser](https://flipthecoin.app/play) — same physics, same coin.
+
 ## Install
 
 ### <span aria-hidden="true" style="display:inline-block;width:20px;height:20px;background-color:currentColor;-webkit-mask:url(/img/icons/google-chrome-logo-svgrepo-com.svg) no-repeat center/contain;mask:url(/img/icons/google-chrome-logo-svgrepo-com.svg) no-repeat center/contain;vertical-align:-3px;margin-right:4px"></span>Chromium browsers (Chrome, Edge, Brave, Arc, Opera…)

@@ -18,6 +18,8 @@ La extensión de navegador Flip The Coin pone la misma moneda 3D de [flipthecoin
 - Muestra el resultado (Cara, Cruz o, ocasionalmente, Canto) en cuanto la moneda se detiene.
 - Eso es todo. Sin rastreo, sin analítica, sin peticiones de red, sin permisos.
 
+¿Prefieres lanzar sin instalar nada? [Prueba el juego de lanzar moneda en el navegador](https://flipthecoin.app/es/play) — la misma física, la misma moneda.
+
 ## Instalar
 
 ### <span aria-hidden="true" style="display:inline-block;width:20px;height:20px;background-color:currentColor;-webkit-mask:url(/img/icons/google-chrome-logo-svgrepo-com.svg) no-repeat center/contain;mask:url(/img/icons/google-chrome-logo-svgrepo-com.svg) no-repeat center/contain;vertical-align:-3px;margin-right:4px"></span>Navegadores Chromium (Chrome, Edge, Brave, Arc, Opera…)

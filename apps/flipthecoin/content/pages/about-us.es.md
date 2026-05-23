@@ -20,7 +20,7 @@ Consulta, por favor, la [Política de privacidad](/privacy-policy) y los [Térmi
 
 ## Cómo apoyarnos
 
-Si te gusta la app, considera compartirla con amigos, familia y compañeros.
+Si te gusta la app, considera compartirla con amigos, familia y compañeros. O [prueba el juego de lanzar moneda](https://flipthecoin.app/es/play) tú mismo — sin registro.
 
 <!-- También puedes seguirnos en [Bsky](https://bsky.app/flipthecoin) y [Twitter](https://twitter.com/flipthecoinapp) para novedades. -->
 

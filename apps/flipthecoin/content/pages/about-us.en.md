@@ -20,7 +20,7 @@ Please, refer to the [Privacy Policy](/privacy-policy) and [Terms of Service](/t
 
 ## How to support us
 
-If you like the app, please consider sharing it with your friends, family, and colleagues.
+If you like the app, please consider sharing it with your friends, family, and colleagues. Or [try the coin flip game](https://flipthecoin.app/play) yourself — no sign-up needed.
 
 <!-- You can also follow us on [Bsky](https://bsky.app/flipthecoin) and [Twitter](https://twitter.com/flipthecoinapp) for updates and news. -->
 
