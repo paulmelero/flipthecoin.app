@@ -14,38 +14,22 @@ const items = computed(() => [
     <h2 class="font-[Archivo] text-3xl lg:text-4xl font-semibold mb-10">
       {{ $t('faq.title') }}
     </h2>
-    <dl class="grid gap-3 max-w-3xl">
-      <details
+    <div class="grid gap-3 w-full">
+      <div
         v-for="(item, i) in items"
         :key="i"
-        class="group rounded-2xl border border-base-content/10 bg-base-200/50 open:bg-base-200 transition-colors"
+        class="collapse collapse-arrow border border-base-content/10 bg-base-200/50"
       >
-        <summary
-          class="flex cursor-pointer items-center justify-between gap-4 px-6 py-4 font-[Archivo] font-semibold text-base select-none list-none"
+        <input type="radio" name="faq-accordion" :aria-label="item.q" />
+        <div class="collapse-title font-[Archivo] font-semibold text-base">
+          {{ item.q }}
+        </div>
+        <div
+          class="collapse-content text-base-content/75 text-sm leading-relaxed"
         >
-          <dt>{{ item.q }}</dt>
-          <span
-            aria-hidden="true"
-            class="shrink-0 text-primary transition-transform group-open:rotate-45"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-5"
-            >
-              <path d="M12 5v14M5 12h14" />
-            </svg>
-          </span>
-        </summary>
-        <dd class="px-6 pb-5 pt-1 text-base-content/75 text-sm leading-relaxed">
           {{ item.a }}
-        </dd>
-      </details>
-    </dl>
+        </div>
+      </div>
+    </div>
   </section>
 </template>

@@ -30,6 +30,8 @@ useSeoMeta({
     <div class="prose dark:prose-invert container mx-auto px-4 py-16 font-body">
       <ContentRenderer v-if="page" :value="page" />
       <div class="divider" />
+    </div>
+    <div class="container mx-auto px-4 py-16">
       <NewsletterForm />
     </div>
   </div>
