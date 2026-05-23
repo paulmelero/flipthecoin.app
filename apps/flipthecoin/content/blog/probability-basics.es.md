@@ -17,7 +17,7 @@ Este artículo es una introducción al tema de la probabilidad. Nos quedaremos e
 
 Cuando hablamos de probabilidad, estamos hablando de un concepto matemático que se puede representar de varias formas. La manera más común es como una fracción, un decimal o un porcentaje. Por ejemplo, si lanzas una moneda justa, la probabilidad de que caiga en cara es $\frac{1}{2}$, que es lo mismo que **0,5** o **50%**. Las tres representaciones son equivalentes y se pueden usar indistintamente.
 
-Como veremos en [el artículo La estadística inesperada de los lanzamientos de moneda](https://flipthecoin.app/blog/the-unexpected-statistics-of-coin-flips), la probabilidad real de aterrizaje de una moneda no es exactamente 50-50 cada vez.
+Como veremos en [el artículo La estadística inesperada de los lanzamientos de moneda](https://flipthecoin.app/es/blog/la-estadistica-inesperada-de-los-lanzamientos-de-moneda), la probabilidad real de aterrizaje de una moneda no es exactamente 50-50 cada vez.
 
 ## Resultados y sucesos
 
@@ -47,7 +47,7 @@ $$P(\text{no } A) = 1 - P(A)$$
 Para una moneda justa:
 
 - $P(\text{cara}) = 0,5$, así que $P(\text{no cara}) = 1 - 0,5 = 0,5$.
-- $P(\text{cara o cruz}) \approx 1 - \tfrac{1}{6000} \approx 0,99983$, porque la única otra opción es el raro "canto". (Más sobre ese 1 entre 6000 en [La estadística inesperada de los lanzamientos de moneda](https://flipthecoin.app/blog/the-unexpected-statistics-of-coin-flips).)
+- $P(\text{cara o cruz}) \approx 1 - \tfrac{1}{6000} \approx 0,99983$, porque la única otra opción es el raro "canto". (Más sobre ese 1 entre 6000 en [La estadística inesperada de los lanzamientos de moneda](https://flipthecoin.app/es/blog/la-estadistica-inesperada-de-los-lanzamientos-de-moneda).)
 
 La regla del complemento suele ser la forma más fácil de calcular una probabilidad: en lugar de contar todas las formas en que algo _puede_ pasar, cuenta la única forma en que _no puede_ y réstala a 1.
 
@@ -81,7 +81,7 @@ Eso es el **principio de inclusión–exclusión**, y su versión más profunda 
 
 Dos sucesos son **independientes** cuando el resultado de uno no cambia la probabilidad del otro. Los lanzamientos de moneda son el ejemplo de libro: la moneda no tiene memoria, así que una racha de diez caras seguidas no hace que la cruz sea más probable en el undécimo lanzamiento.
 
-Este es el montaje detrás de la famosa **Falacia del jugador**, que desgrano en [el artículo de estadísticas](https://flipthecoin.app/blog/the-unexpected-statistics-of-coin-flips#the-gamblers-fallacy). Por ahora, la versión corta: cada lanzamiento es un nuevo comienzo.
+Este es el montaje detrás de la famosa **Falacia del jugador**, que desgrano en [el artículo de estadísticas](https://flipthecoin.app/es/blog/la-estadistica-inesperada-de-los-lanzamientos-de-moneda#the-gamblers-fallacy). Por ahora, la versión corta: cada lanzamiento es un nuevo comienzo.
 
 ## Conclusión
 

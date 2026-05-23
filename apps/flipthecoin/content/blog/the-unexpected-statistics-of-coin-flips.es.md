@@ -17,9 +17,9 @@ Una moneda tiene dos caras: cara y cruz. Cuando la lanzas, en teoría hay un 50%
 
 Pero hay otro caso en el que la moneda puede caer sobre su canto. Es un suceso raro, pero es posible. La probabilidad de que una moneda caiga sobre su canto es muy baja, pero no es cero. Se estima que la probabilidad de que una moneda caiga sobre su canto es de aproximadamente 1 entre 6000 lanzamientos dependiendo de las condiciones ([fuente](https://ui.adsabs.harvard.edu/abs/1993PhRvE..48.2547M/abstract)).
 
-Este es el verdadero "caso borde" en los lanzamientos de moneda. Pero no te confundas, no está relacionado con el origen de la expresión. Lee más sobre de dónde viene el término ["edge case"](https://flipthecoin.app/blog/where-does-the-term-edge-case-come-from).
+Este es el verdadero "caso borde" en los lanzamientos de moneda. Pero no te confundas, no está relacionado con el origen de la expresión. Lee más sobre de dónde viene el término ["edge case"](https://flipthecoin.app/es/blog/de-donde-viene-el-termino-edge-case).
 
-Aprende más sobre cómo lanzamos una moneda en FlipTheCoin.app [aquí](https://flipthecoin.app/blog/how-we-toss-a-coin).
+Aprende más sobre cómo lanzamos una moneda en FlipTheCoin.app [aquí](https://flipthecoin.app/es/blog/como-lanzamos-una-moneda).
 
 ## La realidad
 
@@ -43,7 +43,7 @@ Está relacionado con un tema estadístico llamado "independencia". En estadíst
 
 Un ejemplo de sucesos dependientes sería sacar cartas de una baraja sin reemplazo. Si sacas una carta de una baraja de 52, la probabilidad de sacar una carta roja es $\tfrac{26}{52}$. Pero si sacas una carta roja y no la repones, la probabilidad de sacar otra roja ahora es $\tfrac{25}{51}$. El primer suceso ha afectado a la probabilidad del segundo.
 
-💡 Si quieres saber más sobre qué significa tener una probabilidad de $\tfrac{26}{52}$ o $\tfrac{25}{51}$, mira el artículo [Fundamentos de probabilidad](https://flipthecoin.app/blog/probability-basics).
+💡 Si quieres saber más sobre qué significa tener una probabilidad de $\tfrac{26}{52}$ o $\tfrac{25}{51}$, mira el artículo [Fundamentos de probabilidad](https://flipthecoin.app/es/blog/fundamentos-de-probabilidad).
 
 ## La ley de los grandes números
 

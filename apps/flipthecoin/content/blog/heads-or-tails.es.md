@@ -27,7 +27,7 @@ $$P(\text{cara}) = 0,5$$
 $$P(\text{cruz}) = 0,5$$
 $$P(\text{cara o cruz}) = 1$$
 
-Esa independencia tiene una implicación famosa: si acabas de sacar diez caras seguidas, el undécimo lanzamiento sigue siendo 50/50. La moneda no tiene memoria. Creer lo contrario es la **Falacia del Jugador** — [explorada en profundidad aquí](https://flipthecoin.app/es/blog/the-unexpected-statistics-of-coin-flips).
+Esa independencia tiene una implicación famosa: si acabas de sacar diez caras seguidas, el undécimo lanzamiento sigue siendo 50/50. La moneda no tiene memoria. Creer lo contrario es la **Falacia del Jugador** — [explorada en profundidad aquí](https://flipthecoin.app/es/blog/la-estadistica-inesperada-de-los-lanzamientos-de-moneda).
 
 El número de caras esperado en _n_ lanzamientos sigue una **distribución binomial** con parámetros _n_ y _p_ = 0,5. Para _n_ grande, esto se aproxima a una distribución normal — razón por la que los lanzamientos de moneda se usan para enseñar el Teorema Central del Límite, el cual explica que la suma de muchas variables aleatorias independientes sigue una distribución normal (forma de campana).
 

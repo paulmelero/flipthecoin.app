@@ -11,7 +11,7 @@ date: 2026-04-23T01:00:00Z
 
 Al llevar un sitio de lanzar monedas, pienso mucho en los bordes.
 
-Está el **borde literal** de una moneda: el fino canto entre cara y cruz. Que una moneda real caiga sobre ese canto es un suceso raro, alrededor de [1 entre 6000 lanzamientos](https://flipthecoin.app/blog/the-unexpected-statistics-of-coin-flips), y sí, nuestra simulación también lo contempla. Y luego está el **"edge case" de la ingeniería de software**: el término que usan los desarrolladores para entradas raras, extremas, en los límites, que las pruebas cotidianas no detectan.
+Está el **borde literal** de una moneda: el fino canto entre cara y cruz. Que una moneda real caiga sobre ese canto es un suceso raro, alrededor de [1 entre 6000 lanzamientos](https://flipthecoin.app/es/blog/la-estadistica-inesperada-de-los-lanzamientos-de-moneda), y sí, nuestra simulación también lo contempla. Y luego está el **"edge case" de la ingeniería de software**: el término que usan los desarrolladores para entradas raras, extremas, en los límites, que las pruebas cotidianas no detectan.
 
 ¿Están relacionados los dos?
 
@@ -55,7 +55,7 @@ El software heredó el lenguaje cuando la ingeniería informática creció a par
 Aquí está la parte divertida. En **nuestra** app, el "canto" literal de una moneda — el fino borde sobre el que a veces cae — es _también_ un edge case en el sentido software:
 
 - Está en el **extremo** del espacio de resultados posibles. La mayoría de lanzamientos caen sólidamente en cara o cruz; solo una fracción mínima de todos los estados físicos posibles resulta en "canto".
-- Nuestro código tiene que manejarlo específicamente. Una vez que la física se estabiliza, comprobamos cómo de cerca está la parte superior de la moneda de apuntar de lado, y si está dentro de un pequeño umbral lo llamamos "Canto". (Si tienes curiosidad por esa comprobación, escribí [cómo lanzamos una moneda](https://flipthecoin.app/blog/how-we-toss-a-coin), que incluye los detalles.)
+- Nuestro código tiene que manejarlo específicamente. Una vez que la física se estabiliza, comprobamos cómo de cerca está la parte superior de la moneda de apuntar de lado, y si está dentro de un pequeño umbral lo llamamos "Canto". (Si tienes curiosidad por esa comprobación, escribí [cómo lanzamos una moneda](https://flipthecoin.app/es/blog/como-lanzamos-una-moneda), que incluye los detalles.)
 
 Así que aunque la _palabra_ "edge" en "edge case" no tiene nada que ver con cantos de moneda, en nuestro pequeño rincón del universo los dos significados se han fundido calladamente. El raro canto físico de la moneda es el raro edge case que tenemos que programar.
 

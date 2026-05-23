@@ -39,7 +39,7 @@ Eso significa que la animación es la física, no decoración. El resultado no s
 
 Para decisiones simples: sí. Para resolver una disputa al mejor de varios, quizás quieras varios lanzamientos.
 
-Algo a tener en cuenta: cada lanzamiento es estadísticamente independiente. Una racha de cinco caras seguidas no hace que cruz sea más probable en el sexto lanzamiento. Esa intuición — "tiene que equilibrarse pronto" — se llama la [Falacia del Jugador](https://flipthecoin.app/es/blog/the-unexpected-statistics-of-coin-flips) y es incorrecta. La moneda no tiene memoria.
+Algo a tener en cuenta: cada lanzamiento es estadísticamente independiente. Una racha de cinco caras seguidas no hace que cruz sea más probable en el sexto lanzamiento. Esa intuición — "tiene que equilibrarse pronto" — se llama la [Falacia del Jugador](https://flipthecoin.app/es/blog/la-estadistica-inesperada-de-los-lanzamientos-de-moneda) y es incorrecta. La moneda no tiene memoria.
 
 ## ¿Importa qué aplicación se use?
 

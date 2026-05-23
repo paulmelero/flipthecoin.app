@@ -64,7 +64,7 @@ El truco es tomar una flecha virtual que apunte justo _hacia arriba desde la car
 - Si apunta más o menos **hacia abajo** — la cara superior ahora está boca abajo en el suelo — es **cruz**.
 - Si apunta más o menos **de lado** — la moneda ha quedado apoyada sobre su canto — es **canto**.
 
-Ese último es el raro "canto" mencionado en el [artículo de estadísticas](https://flipthecoin.app/blog/the-unexpected-statistics-of-coin-flips) — la moneda equilibrada sobre su borde — y ocurre en la simulación por la misma razón que ocurre en la vida real: a veces el tumbo simplemente sale así. Si tienes curiosidad por saber por qué llamarlo "edge case" es un gran juego de palabras, escribí sobre ello [aquí](https://flipthecoin.app/blog/where-does-the-term-edge-case-come-from).
+Ese último es el raro "canto" mencionado en el [artículo de estadísticas](https://flipthecoin.app/es/blog/la-estadistica-inesperada-de-los-lanzamientos-de-moneda) — la moneda equilibrada sobre su borde — y ocurre en la simulación por la misma razón que ocurre en la vida real: a veces el tumbo simplemente sale así. Si tienes curiosidad por saber por qué llamarlo "edge case" es un gran juego de palabras, escribí sobre ello [aquí](https://flipthecoin.app/es/blog/de-donde-viene-el-termino-edge-case).
 
 ## ¿Entonces es realmente aleatorio?
 
@@ -80,6 +80,6 @@ La aleatoriedad en nuestro lanzamiento viene de la deriva lateral aleatoria y de
 
 Así que la próxima vez que lances una moneda en el sitio, esto es lo que pasa en realidad: un lanzamiento de tres números (empujón, deriva, giro), una breve simulación física y una lectura de hacia dónde apunta la cara superior de la moneda cuando se detiene. Sin trucos, sin ganador preseleccionado. Solo un mundo muy pequeño con una gravedad muy normal.
 
-¿Con curiosidad por las matemáticas de fondo? Empieza por [Fundamentos de probabilidad](https://flipthecoin.app/blog/probability-basics). ¿Con curiosidad por la rarísima realidad estadística de los lanzamientos reales? [La estadística inesperada de los lanzamientos de moneda](https://flipthecoin.app/blog/the-unexpected-statistics-of-coin-flips) es el que buscas.
+¿Con curiosidad por las matemáticas de fondo? Empieza por [Fundamentos de probabilidad](https://flipthecoin.app/es/blog/fundamentos-de-probabilidad). ¿Con curiosidad por la rarísima realidad estadística de los lanzamientos reales? [La estadística inesperada de los lanzamientos de moneda](https://flipthecoin.app/es/blog/la-estadistica-inesperada-de-los-lanzamientos-de-moneda) es el que buscas.
 
 ¿Listo para ver la física en acción? [Lanza una moneda online](https://flipthecoin.app/es/play) ahora mismo.
