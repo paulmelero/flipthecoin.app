@@ -11,6 +11,8 @@ date: 2025-03-22T01:00:00Z
 
 You have probably flipped a coin at some point in your life. Maybe you flipped a coin to decide who would go first in a game, or maybe you flipped a coin to decide where to go for dinner. But have you ever stopped to think about the statistics of coin flips?
 
+<!--more-->
+
 ## The Basics
 
 A coin has two sides: heads and tails. When you flip a coin, theoretically there is a 50% chance that it will land on heads and a 50% chance that it will land on tails. This is because the coin has two sides, and each side has an equal chance of landing face up.

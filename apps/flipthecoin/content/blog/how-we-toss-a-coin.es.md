@@ -7,11 +7,11 @@ published: true
 date: 2026-04-23T01:00:00Z
 ---
 
+# Cómo lanzamos una moneda en FlipTheCoin.app
+
 Las matemáticas detrás de un lanzamiento de moneda son simples: una moneda tiene dos caras, cara y cruz, y cada cara tiene la misma probabilidad de quedar hacia arriba. Pero, ¿cómo lanzamos una moneda de verdad? En este artículo exploraremos la ciencia detrás de los lanzamientos y cómo nos aseguramos de que cada uno sea justo y aleatorio.
 
 <!--more-->
-
-# Cómo lanzamos una moneda
 
 Se te perdonaría pensar que un lanzamiento de moneda en un navegador no es más que `Math.random()` disfrazado de animación bonita. Es una forma de hacerlo — y de hecho ofrecemos ese modo en el [motor de lanzamiento](https://flipthecoin.app/toss-engine) si quieres un 50/50 limpio sin dramas.
 

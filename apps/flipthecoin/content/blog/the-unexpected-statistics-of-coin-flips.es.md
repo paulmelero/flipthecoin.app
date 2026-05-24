@@ -11,6 +11,8 @@ date: 2025-03-22T01:00:00Z
 
 Probablemente hayas lanzado una moneda en algún momento de tu vida. Quizás la lanzaste para decidir quién empezaba en un juego, o para decidir dónde ir a cenar. Pero, ¿te has parado alguna vez a pensar en la estadística de los lanzamientos de moneda?
 
+<!--more-->
+
 ## Lo básico
 
 Una moneda tiene dos caras: cara y cruz. Cuando la lanzas, en teoría hay un 50% de probabilidad de que caiga en cara y un 50% de que caiga en cruz. Esto es porque la moneda tiene dos caras y cada una tiene la misma probabilidad de quedar arriba.

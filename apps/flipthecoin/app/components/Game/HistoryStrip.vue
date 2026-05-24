@@ -39,8 +39,8 @@ const chipLabel = (r: FlipRecord['r']): string => {
 
 const chipGlyph = (r: FlipRecord['r']): string => {
   const result = decodeResult(r);
-  if (result === 'Heads') return 'H';
-  if (result === 'Tails') return 'T';
+  if (result === 'Heads') return 'O';
+  if (result === 'Tails') return 'X';
   return 'E';
 };
 

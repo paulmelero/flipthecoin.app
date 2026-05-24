@@ -7,6 +7,8 @@ published: true
 date: 2026-05-22T12:00:00Z
 ---
 
+# Cara o Cruz — La Guía Completa sobre el Lanzamiento de Moneda
+
 "¿Cara o cruz?" Tres palabras que han resuelto disputas, iniciado juegos y tomado decisiones durante miles de años. Pero ¿de dónde viene esa frase? ¿Y es la moneda realmente justa?
 
 <!--more-->

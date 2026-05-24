@@ -33,6 +33,8 @@ export interface CoinEngineOptions {
   assetUrls?: CoinAssetUrls;
   /** Fired once per flip, after the result is determined. */
   onResult?: (result: CoinResult) => void;
+  /** Override the 3D text label shown above the coin after a flip. */
+  displayText?: (result: CoinResult) => string;
 }
 
 const DEFAULT_ASSETS: Required<CoinAssetUrls> = {
@@ -339,7 +341,9 @@ export default function useThreeJsCoin(
   };
 
   const showText = () => {
-    const textGeometry = new TextGeometry(result.value, {
+    const label =
+      options.displayText?.(result.value as CoinResult) ?? result.value;
+    const textGeometry = new TextGeometry(label, {
       font: font,
       size: 0.8,
       height: 0.2,

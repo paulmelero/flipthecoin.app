@@ -7,6 +7,8 @@ published: true
 date: 2026-05-22T12:00:00Z
 ---
 
+# Heads or Tails — The Complete Guide to the Coin Toss
+
 "Heads or tails?" Three words that have settled disputes, started games, and made decisions for thousands of years. But where does that phrase actually come from? And is the coin really fair?
 
 <!--more-->

@@ -13,6 +13,8 @@ Probability is a branch of mathematics that deals with the likelihood of an even
 
 This article is an introduction to the topic of probability. We will stick to plain language and use a coin as the only example. More advanced statistics will come in future articles.
 
+<!--more-->
+
 ## The Basics
 
 When we talk about probability, this is a mathematical concept that can be represented in a few different ways. The most common way to represent probability is as a fraction, decimal, or percentage. For example, if you flip a fair coin, the probability of it landing on heads is $\frac{1}{2}$, which is the same as **0.5**, or also **50%**. The three representations are equivalent and can be used interchangeably.

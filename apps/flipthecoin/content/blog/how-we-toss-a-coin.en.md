@@ -7,11 +7,11 @@ published: true
 date: 2026-04-23T01:00:00Z
 ---
 
+# How we toss a coin in FlipTheCoin.app
+
 The mathematics behind a coin flip is simple: a coin has two sides, heads and tails, and each side has an equal chance of landing face up. But how do we actually toss a coin? In this article, we'll explore the science behind coin flips and how we ensure that each flip is fair and random.
 
 <!--more-->
-
-# How we toss a coin
 
 You'd be forgiven for thinking a coin flip in a browser is just `Math.random()` dressed up with a pretty animation. That's one way to do it — and we actually offer that flavour in the [toss engine](https://flipthecoin.app/toss-engine) if you want a clean 50/50 result with no drama.
 

@@ -13,6 +13,8 @@ La probabilidad es una rama de las matemáticas que se ocupa de la verosimilitud
 
 Este artículo es una introducción al tema de la probabilidad. Nos quedaremos en lenguaje llano y usaremos una moneda como único ejemplo. Estadísticas más avanzadas llegarán en futuros artículos.
 
+<!--more-->
+
 ## Lo básico
 
 Cuando hablamos de probabilidad, estamos hablando de un concepto matemático que se puede representar de varias formas. La manera más común es como una fracción, un decimal o un porcentaje. Por ejemplo, si lanzas una moneda justa, la probabilidad de que caiga en cara es $\frac{1}{2}$, que es lo mismo que **0,5** o **50%**. Las tres representaciones son equivalentes y se pueden usar indistintamente.

@@ -32,6 +32,15 @@ const {
     onResult: (r: CoinResult) => {
       void history.record(r);
     },
+    displayText: (r: CoinResult) => {
+      const key =
+        r === 'Heads'
+          ? 'play.stats.heads'
+          : r === 'Tails'
+            ? 'play.stats.tails'
+            : 'play.stats.edge';
+      return $t(key) as string;
+    },
   },
 );
 
