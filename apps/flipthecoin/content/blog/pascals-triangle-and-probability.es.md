@@ -9,7 +9,7 @@ date: 2026-05-24T10:00:00Z
 
 # ¿Qué tienen en común el triángulo de Tartaglia y una moneda?
 
-Existe un triángulo de números que lleva siglos fascinando a matemáticos de todo el mundo. Su construcción es tan sencilla que un niño podría dibujarlo en un cuaderno. Y sin embargo, dentro de sus filas se esconde una conexión profunda entre tres ramas de las matemáticas que, a primera vista, no parecen tener nada que ver entre sí: la combinatoria, el álgebra y la probabilidad. Lo más sorprendente es que esa conexión se revela con algo tan cotidiano como lanzar una moneda al aire.
+Existe un triángulo de números que lleva siglos fascinando a matemáticos y matemáticas de todo el mundo. Su construcción es tan sencilla que un niño o niña podría dibujarlo en un cuaderno. Y sin embargo, dentro de sus filas se esconde una conexión profunda entre tres ramas de las matemáticas que, a primera vista, no parecen tener nada que ver entre sí: la combinatoria, el álgebra y la probabilidad. Lo más sorprendente es que esa conexión se revela con algo tan cotidiano como lanzar una moneda.
 
 <!--more-->
 
