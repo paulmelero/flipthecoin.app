@@ -9,13 +9,13 @@ date: 2026-04-23T01:00:00Z
 
 # ¿De dónde viene el término "edge case"?
 
-Al llevar un sitio de lanzar monedas, pienso mucho en los bordes.
+Te ha caído una moneda sobre su canto? Has tenido una moneda en tus manos y te has preguntado por qué se llama "canto" y no "borde"? ¿O has oído el término "edge case" y te has preguntado de dónde viene?
 
 Está el **borde literal** de una moneda: el fino canto entre cara y cruz. Que una moneda real caiga sobre ese canto es un suceso raro, alrededor de [1 entre 6000 lanzamientos](https://flipthecoin.app/es/blog/la-estadistica-inesperada-de-los-lanzamientos-de-moneda), y sí, nuestra simulación también lo contempla. Y luego está el **"edge case" de la ingeniería de software**: el término que usan los desarrolladores para entradas raras, extremas, en los límites, que las pruebas cotidianas no detectan.
 
 ¿Están relacionados los dos?
 
-**Respuesta corta**: no. El "edge" en "edge case" no tiene nada que ver con monedas, cantos ni finas piezas de metal. Pero el hecho de que una app de lanzar monedas tenga que manejar ambos — un canto literal _y_ un edge case — es una coincidencia que no puedo dejar pasar. Así que aquí va la historia.
+**Respuesta corta**: no. El "edge" en "edge case" no tiene nada que ver con el canto de las monedas. Pero el hecho de que una app de lanzar monedas tenga que manejar ambos — un canto literal y un _edge case_ — es una coincidencia que no puedo dejar pasar. Así que aquí va la historia.
 
 <!--more-->
 

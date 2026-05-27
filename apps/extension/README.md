@@ -37,11 +37,21 @@ Then in Firefox:
 
 ```bash
 pnpm --filter @flipthecoin/extension build:chrome
-cd apps/extension/dist/chrome
-zip -r ../flipthecoin-chrome.zip .
+cd apps/extension/dist
+zip -r flipthecoin-chrome.zip chrome
 ```
 
 Upload `apps/extension/dist/flipthecoin-chrome.zip` on the [Chrome Web Store developer dashboard](https://chrome.google.com/webstore/devconsole).
+
+### Packaging for the Firefox Add-ons Store
+
+```bash
+pnpm --filter @flipthecoin/extension build:firefox
+cd apps/extension/dist/firefox
+zip -r ../flipthecoin-firefox.zip .
+```
+
+Upload `apps/extension/dist/flipthecoin-firefox.zip` on the [Firefox Add-ons Store developer dashboard](https://addons.mozilla.org/en-US/developers/).
 
 ## Development
 
