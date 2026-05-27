@@ -59,4 +59,12 @@ describe('flipHistoryDb', () => {
     await clearAll();
     expect(await loadRecent(10)).toEqual([]);
   });
+
+  it('DB is append-only — loadRecent does not prune old entries', async () => {
+    for (let i = 0; i < 10; i++) await addFlip('Heads');
+
+    expect(await loadAll()).toHaveLength(10);
+    expect(await loadRecent(5)).toHaveLength(5);
+    expect(await loadAll()).toHaveLength(10);
+  });
 });

@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { IDBFactory } from 'fake-indexeddb';
 import { useFlipHistory } from '../../app/composables/useFlipHistory';
-import { __resetDbForTests } from '../../app/lib/flipHistoryDb';
+import { __resetDbForTests, loadAll } from '../../app/lib/flipHistoryDb';
 
 beforeEach(() => {
   globalThis.indexedDB = new IDBFactory();
@@ -65,5 +65,58 @@ describe('useFlipHistory', () => {
     await b.load();
     expect(b.recent.value).toHaveLength(2);
     expect(b.recent.value[0].r).toBe(1);
+  });
+
+  describe('eviction at recentLimit', () => {
+    it('recent has exactly recentLimit entries when more are recorded', async () => {
+      const h = useFlipHistory({ recentLimit: 3 });
+      await h.record('Heads');
+      await h.record('Tails');
+      await h.record('Edge');
+      await h.record('Heads');
+      await h.record('Tails');
+
+      expect(h.recent.value).toHaveLength(3);
+    });
+
+    it('evicts the oldest entry, keeping newest-first order', async () => {
+      const h = useFlipHistory({ recentLimit: 3 });
+      await h.record('Heads');
+      await h.record('Tails');
+      await h.record('Edge');
+      await h.record('Heads');
+
+      expect(h.recent.value).toHaveLength(3);
+      expect(h.recent.value.map((r) => r.r)).toEqual([0, 2, 1]);
+    });
+
+    it('DB retains all flips even after in-memory eviction', async () => {
+      const h = useFlipHistory({ recentLimit: 3 });
+      await h.record('Heads');
+      await h.record('Tails');
+      await h.record('Edge');
+      await h.record('Heads');
+      await h.record('Tails');
+
+      expect(h.recent.value).toHaveLength(3);
+      expect(await loadAll()).toHaveLength(5);
+    });
+
+    it('load() after overflow returns the newest limit entries', async () => {
+      const a = useFlipHistory({ recentLimit: 3 });
+      await a.record('Heads');
+      await a.record('Tails');
+      await a.record('Edge');
+      await a.record('Heads');
+      await a.record('Tails');
+
+      const lastThreeIds = a.recent.value.map((r) => r.id);
+
+      const b = useFlipHistory({ recentLimit: 3 });
+      await b.load();
+
+      expect(b.recent.value).toHaveLength(3);
+      expect(b.recent.value.map((r) => r.id)).toEqual(lastThreeIds);
+    });
   });
 });

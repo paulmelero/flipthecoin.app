@@ -8,12 +8,14 @@ import {
 } from '../lib/flipHistoryDb';
 import { computeStats, type FlipRecord } from '../lib/flipStats';
 
+export const DEFAULT_RECENT_LIMIT = 3000;
+
 export interface UseFlipHistoryOptions {
   recentLimit?: number;
 }
 
 export function useFlipHistory(opts: UseFlipHistoryOptions = {}) {
-  const recentLimit = opts.recentLimit ?? 50;
+  const recentLimit = opts.recentLimit ?? DEFAULT_RECENT_LIMIT;
   const recent = ref<FlipRecord[]>([]);
   const isReady = ref(false);
   const stats = computed(() => computeStats(recent.value));

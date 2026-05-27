@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import type { CoinResult } from '@flipthecoin/coin-engine';
 import type { FlipRecord, HistoryStats } from '../../lib/flipStats';
 import { decodeResult } from '../../lib/flipStats';
+
+const CHIP_SIZE = 40;
+const CHIP_GAP = 8;
+const CHIP_STRIDE = CHIP_SIZE + CHIP_GAP;
+const BUFFER = 5;
 
 const props = defineProps<{
   recent: readonly FlipRecord[];
@@ -16,6 +20,74 @@ const emit = defineEmits<{
 }>();
 
 const { $t } = useI18n();
+
+const containerRef = ref<HTMLElement | null>(null);
+const containerWidth = ref(0);
+const scrollLeft = ref(0);
+
+const startIdx = computed(() =>
+  Math.max(0, Math.floor(scrollLeft.value / CHIP_STRIDE) - BUFFER),
+);
+const endIdx = computed(() =>
+  Math.min(
+    props.recent.length,
+    Math.ceil((scrollLeft.value + containerWidth.value) / CHIP_STRIDE) + BUFFER,
+  ),
+);
+const visibleChips = computed(() =>
+  props.recent.slice(startIdx.value, endIdx.value).map((rec, i) => ({
+    rec,
+    idx: startIdx.value + i,
+  })),
+);
+const totalWidth = computed(() =>
+  Math.max(0, props.recent.length * CHIP_STRIDE - CHIP_GAP),
+);
+
+const newestId = computed(() => props.recent[0]?.id ?? null);
+let initialized = false;
+let prevNewestId: number | null = null;
+const animatingId = ref<number | null>(null);
+
+watch(newestId, (id) => {
+  if (!initialized) {
+    initialized = true;
+    prevNewestId = id;
+    return;
+  }
+  if (id !== null && id !== prevNewestId) {
+    animatingId.value = id;
+  }
+  prevNewestId = id;
+});
+
+function onAnimationEnd(rec: FlipRecord) {
+  if (rec.id === animatingId.value) {
+    animatingId.value = null;
+  }
+}
+
+let resizeObserver: ResizeObserver | null = null;
+
+watch(containerRef, (el, _oldEl, onCleanup) => {
+  resizeObserver?.disconnect();
+  resizeObserver = null;
+  if (!el) return;
+  containerWidth.value = el.clientWidth;
+  resizeObserver = new ResizeObserver(([entry]) => {
+    containerWidth.value = entry.contentRect.width;
+  });
+  resizeObserver.observe(el);
+  onCleanup(() => resizeObserver?.disconnect());
+});
+
+onBeforeUnmount(() => {
+  resizeObserver?.disconnect();
+});
+
+function onScroll(e: Event) {
+  scrollLeft.value = (e.target as HTMLElement).scrollLeft;
+}
 
 const headsPct = computed(() =>
   props.stats.total === 0 ? 0 : Math.round(props.stats.headsRatio * 100),
@@ -101,26 +173,43 @@ const onClear = () => {
 
     <div class="flex flex-col-reverse md:flex-col gap-4">
       <div class="relative overflow-x-hidden max-w-full">
-        <ul
-          v-if="recent.length"
-          class="flex gap-2 overflow-x-auto pb-2 scrollbar-thin"
+        <div
+          ref="containerRef"
+          class="overflow-x-auto pb-2 scrollbar-thin"
+          @scroll="onScroll"
         >
-          <TransitionGroup name="slide-up">
+          <ul
+            v-if="recent.length"
+            class="relative"
+            :style="{ width: totalWidth + 'px', height: CHIP_SIZE + 'px' }"
+          >
             <li
-              v-for="rec in recent"
+              v-for="{ rec, idx } in visibleChips"
               :key="rec.id"
-              :class="chipClass(rec.r)"
-              class="shrink-0 grid place-items-center w-10 h-10 rounded-xl border backdrop-blur-sm font-mono text-sm font-bold shadow-inner"
+              :class="[
+                chipClass(rec.r),
+                { 'animate-slide-up': rec.id === animatingId },
+              ]"
+              class="absolute top-0 grid place-items-center rounded-xl border backdrop-blur-sm font-mono text-sm font-bold shadow-inner"
+              :style="{
+                left: idx * CHIP_STRIDE + 'px',
+                width: CHIP_SIZE + 'px',
+                height: CHIP_SIZE + 'px',
+              }"
               :title="chipLabel(rec.r)"
               :aria-label="chipLabel(rec.r)"
+              @animationend="onAnimationEnd(rec)"
             >
               {{ chipGlyph(rec.r) }}
             </li>
-          </TransitionGroup>
-        </ul>
-        <p v-else class="text-sm text-base-content/60 italic py-6 text-center">
-          {{ $t('play.history.empty') }}
-        </p>
+          </ul>
+          <p
+            v-else
+            class="text-sm text-base-content/60 italic py-6 text-center"
+          >
+            {{ $t('play.history.empty') }}
+          </p>
+        </div>
       </div>
 
       <div class="flex flex-wrap items-center gap-3">
@@ -145,12 +234,16 @@ const onClear = () => {
 </template>
 
 <style scoped>
-.slide-up-enter-active,
-.slide-up-leave-active {
-  transition: transform 0.3s ease;
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
-.slide-up-enter-from {
-  transform: translateY(100%);
+.animate-slide-up {
+  animation: slide-up 0.3s ease;
 }
 </style>
