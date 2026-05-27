@@ -1,9 +1,19 @@
 import svgLoader from 'vite-svg-loader';
 import { fileURLToPath } from 'node:url';
+import { rehypeKatexClassify } from './app/lib/mdc/rehypeKatexClassify';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  css: ['~/assets/css/main.css', 'katex/dist/katex.min.css'],
+  alias: {
+    rehypeKatexClassify: fileURLToPath(
+      new URL('./app/lib/mdc/rehypeKatexClassify.ts', import.meta.url),
+    ),
+  },
+  css: [
+    '~/assets/css/main.css',
+    'katex/dist/katex.min.css',
+    '~/assets/css/katex-reset.css',
+  ],
   vite: {
     plugins: [
       svgLoader({
@@ -117,6 +127,7 @@ export default defineNuxtConfig({
         },
         rehypePlugins: {
           'rehype-katex': {},
+          rehypeKatexClassify: { instance: rehypeKatexClassify },
         },
       },
     },

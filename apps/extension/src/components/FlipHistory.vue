@@ -59,7 +59,7 @@ const isEmpty = computed(() => props.entries.length === 0);
           }"
         >
           {{
-            entry.result === 'Edge' ? 'E' : entry.result === 'Heads' ? 'H' : 'T'
+            entry.result === 'Edge' ? 'E' : entry.result === 'Heads' ? 'O' : 'X'
           }}
         </span>
         <span class="text-xs flex-1">{{ entry.result }}</span>

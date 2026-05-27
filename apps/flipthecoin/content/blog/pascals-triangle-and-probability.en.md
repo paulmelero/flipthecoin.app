@@ -70,7 +70,7 @@ $$\binom{n}{0},\; \binom{n}{1},\; \binom{n}{2},\; \ldots,\; \binom{n}{n}$$
 
 **Combinatorics** is the branch of mathematics that studies how many distinct ways there are to arrange, group, or choose elements. Its power lies in letting us know the number of possibilities _without having to list them one by one_.
 
-To see why this is useful, consider flipping a coin. Each flip has two possible outcomes: **heads** (H) or **tails** (T). If we flip the coin once, there are $2$ outcomes. If we flip it twice, each of the 2 outcomes of the first flip combines with the 2 outcomes of the second, giving $2 \times 2 = 4$ outcomes. With three flips, $2 \times 2 \times 2 = 8$.
+To see why this is useful, consider flipping a coin. Each flip has two possible outcomes: **heads** (O) or **tails** (X). If we flip the coin once, there are $2$ outcomes. If we flip it twice, each of the 2 outcomes of the first flip combines with the 2 outcomes of the second, giving $2 \times 2 = 4$ outcomes. With three flips, $2 \times 2 \times 2 = 8$.
 
 That pattern is expressed with an **exponent**:
 
@@ -95,17 +95,17 @@ If you need a refresher on what probability means and how it is measured, check 
 Let's connect everything with a concrete example. We flip a coin 3 times. We know there are $2^3 = 8$ possible outcomes. Here they all are:
 
 ```text
-HHH    HHT    HTH    THH    HTT    THT    TTH    TTT
+OOO    OOX    OXO    XOO    OXX    XOX    XXO    XXX
 ```
 
 Now let's group these results by the **number of heads**:
 
 | Heads | Combinations  | Count |
 | :---: | :------------ | :---: |
-|   0   | TTT           |   1   |
-|   1   | HTT, THT, TTH |   3   |
-|   2   | HHT, HTH, THH |   3   |
-|   3   | HHH           |   1   |
+|   0   | XXX           |   1   |
+|   1   | OXX, XOX, XXO |   3   |
+|   2   | OOX, OXO, XOO |   3   |
+|   3   | OOO           |   1   |
 
 Look at the count column: $1, 3, 3, 1$. Sound familiar? It is exactly **row 3** of Pascal's triangle.
 
@@ -147,8 +147,8 @@ and the total number of possible outcomes is $2^5 = 32$.
 Let's look at some concrete examples. How many ways can we get exactly **2 heads**? The triangle tells us $\binom{5}{2} = 10$. Here are all 10 combinations:
 
 ```text
-HHTTT   HTHTT   HTTHT   HTTTH   THHTT
-THTHT   THTTH   TTHHT   TTHTH   TTTHH
+OOXXX   OXOXX   OXXOX   OXXXO   XOOXX
+XOXOX   XOXXO   XXOOX   XXOXO   XXXOO
 ```
 
 And exactly **3 heads**? Also $\binom{5}{3} = 10$. The triangle is symmetric: there are just as many ways to get 2 heads (and 3 tails) as 3 heads (and 2 tails).

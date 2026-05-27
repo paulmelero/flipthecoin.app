@@ -15,7 +15,9 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@iconify-json/material-symbols-light": "^1.2.74",
     "@iconify-json/octicon": "^1.1.48",
+    "@iconify/vue": "^5.0.1",
     "@nuxt/devtools": "^2.6.2",
     "@nuxt/kit": "4.4.2",
     "@nuxtjs/tailwindcss": "^6.14.0",
@@ -46,6 +48,7 @@
     "nuxt-i18n-micro": "^1.102.0",
     "rehype-katex": "^7.0.0",
     "remark-math": "^6.0.0",
-    "three": "^0.162.0"
+    "three": "^0.162.0",
+    "unist-util-visit": "^5.1.0"
   }
 }

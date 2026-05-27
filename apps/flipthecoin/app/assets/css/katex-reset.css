@@ -1,0 +1,10 @@
+.prose p.math-block {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.prose p.math-block > .katex {
+  font-size: 1.35rem;
+  display: inline-block;
+  width: 100%;
+}

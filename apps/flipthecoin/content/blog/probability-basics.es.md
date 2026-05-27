@@ -61,8 +61,8 @@ La cosa se pone interesante cuando preguntamos por más de un lanzamiento a la v
 
 Los lanzamientos de moneda no se influyen entre sí (son **independientes**). En este caso, **multiplicas** sus probabilidades:
 
-- $P(\text{CC}) = 0,5 \times 0,5 = 0,25$, o 25%.
-- $P(\text{CCC}) = 0,5 \times 0,5 \times 0,5 = 0,125$, o 12,5%.
+- $P(\text{OO}) = 0,5 \times 0,5 = 0,25$, o 25%.
+- $P(\text{OOO}) = 0,5 \times 0,5 \times 0,5 = 0,125$, o 12,5%.
 
 Cada lanzamiento extra reduce la probabilidad a la mitad. Por eso las rachas largas resultan sorprendentes — no porque la moneda esté "tocada" para el otro lado, sino porque cada nuevo lanzamiento añade otro $\tfrac{1}{2}$ al producto.
 
@@ -70,7 +70,7 @@ Cada lanzamiento extra reduce la probabilidad a la mitad. Por eso las rachas lar
 
 Si dos resultados **no pueden ocurrir al mismo tiempo** (son **mutuamente excluyentes**), **sumas** sus probabilidades:
 
-- $P(\text{C} \cup \text{X}) = 0,5 + 0,5 = 1$. Nada sorprendente — eso es cualquier resultado no-canto.
+- $P(\text{O} \cup \text{X}) = 0,5 + 0,5 = 1$. Nada sorprendente — eso es cualquier resultado no-canto.
 - $P(1 \cup 2) = \tfrac{1}{6} + \tfrac{1}{6} = \tfrac{2}{6}$ (sacar un 1 o un 2 en un dado de seis caras).
 
 Si los sucesos _pueden_ solaparse, la simple suma cuenta doble el solape y tienes que restarlo:

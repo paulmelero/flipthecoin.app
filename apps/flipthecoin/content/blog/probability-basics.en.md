@@ -61,8 +61,8 @@ Things get interesting when we ask about more than one flip at a time. Two rules
 
 Coin flips don't influence each other (they are **independent**). In this case, you **multiply** their probabilities:
 
-- $P(\text{HH}) = 0.5 \times 0.5 = 0.25$, or 25%.
-- $P(\text{HHH}) = 0.5 \times 0.5 \times 0.5 = 0.125$, or 12.5%.
+- $P(\text{OO}) = 0.5 \times 0.5 = 0.25$, or 25%.
+- $P(\text{OOO}) = 0.5 \times 0.5 \times 0.5 = 0.125$, or 12.5%.
 
 Each extra flip halves the probability. That's why long streaks feel surprising — not because the coin is "due" for the other side, but because each new flip piles another $\tfrac{1}{2}$ onto the product.
 
@@ -70,7 +70,7 @@ Each extra flip halves the probability. That's why long streaks feel surprising 
 
 If two outcomes **can't happen at the same time** (they're **mutually exclusive**), you **add** their probabilities:
 
-- $P(\text{H} \cup \text{T}) = 0.5 + 0.5 = 1$. Unsurprising — that's every non-edge outcome.
+- $P(\text{O} \cup \text{X}) = 0.5 + 0.5 = 1$. Unsurprising — that's every non-edge outcome.
 - $P(1 \cup 2) = \tfrac{1}{6} + \tfrac{1}{6} = \tfrac{2}{6}$ (rolling a 1 or a 2 on a six-sided die).
 
 If the events _can_ overlap, simple addition double-counts the overlap and you have to subtract it back out:

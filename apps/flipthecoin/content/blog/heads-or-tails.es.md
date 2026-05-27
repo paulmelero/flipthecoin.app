@@ -26,7 +26,9 @@ La versión romana evolucionó hasta el juego que Julio César hizo famoso: cuan
 En teoría de la probabilidad, el lanzamiento de una moneda justa es el ejemplo por excelencia de un **ensayo de Bernoulli**: un experimento aleatorio con exactamente dos resultados igualmente probables (1 ó 0). La probabilidad de cara es 0,5, la probabilidad de cruz es 0,5, y cada lanzamiento es independiente de todos los demás. En notación matemática, se representa como:
 
 $$P(\text{cara}) = 0,5$$
+
 $$P(\text{cruz}) = 0,5$$
+
 $$P(\text{cara o cruz}) = 1$$
 
 Esa independencia tiene una implicación famosa: si acabas de sacar diez caras seguidas, el undécimo lanzamiento sigue siendo 50/50. La moneda no tiene memoria. Creer lo contrario es la **Falacia del Jugador** — [explorada en profundidad aquí](https://flipthecoin.app/es/blog/la-estadistica-inesperada-de-los-lanzamientos-de-moneda).

@@ -26,7 +26,9 @@ The modern pairing "heads or tails" became widespread in English by the 17th cen
 In probability theory, a fair coin toss is the textbook example of a **Bernoulli trial**: a random experiment with exactly two equally-likely outcomes (1 or 0). The probability of heads is 0.5, the probability of tails is 0.5, and each toss is independent of every other. In mathematical notation, it is represented as:
 
 $$P(\text{heads}) = 0,5$$
+
 $$P(\text{tails}) = 0,5$$
+
 $$P(\text{heads or tails}) = 1$$
 
 That independence has a famous implication: if you've just flipped ten heads in a row, the eleventh flip is still 50/50. The coin has no memory. Believing otherwise is the **Gambler's Fallacy** — [explored in depth here](https://flipthecoin.app/blog/the-unexpected-statistics-of-coin-flips).

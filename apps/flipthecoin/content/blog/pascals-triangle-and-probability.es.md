@@ -70,7 +70,7 @@ $$\binom{n}{0},\; \binom{n}{1},\; \binom{n}{2},\; \ldots,\; \binom{n}{n}$$
 
 La **combinatoria** es la rama de las matemáticas que estudia cuántas maneras distintas existen de organizar, agrupar o elegir elementos. Su poder reside en que nos permite conocer el número de posibilidades _sin tener que listarlas una por una_.
 
-Para entender por qué esto es útil, pensemos en lanzar una moneda. Cada lanzamiento tiene dos resultados posibles: **cara** (C) o **cruz** (X). Si lanzamos la moneda una vez, hay $2$ resultados. Si la lanzamos dos veces, cada uno de los 2 resultados del primer lanzamiento se combina con los 2 del segundo, dando $2 \times 2 = 4$ resultados. Con tres lanzamientos, $2 \times 2 \times 2 = 8$.
+Para entender por qué esto es útil, pensemos en lanzar una moneda. Cada lanzamiento tiene dos resultados posibles: **cara** (O) o **cruz** (X). Si lanzamos la moneda una vez, hay $2$ resultados. Si la lanzamos dos veces, cada uno de los 2 resultados del primer lanzamiento se combina con los 2 del segundo, dando $2 \times 2 = 4$ resultados. Con tres lanzamientos, $2 \times 2 \times 2 = 8$.
 
 Ese patrón se expresa con un **exponente**:
 
@@ -95,7 +95,7 @@ Si necesitas repasar qué es la probabilidad y cómo se mide, echa un vistazo a 
 Vamos a conectar todo con un ejemplo concreto. Lanzamos una moneda 3 veces. Sabemos que hay $2^3 = 8$ resultados posibles. Aquí están todos:
 
 ```text
-CCC    CCX    CXC    XCC    CXX    XCX    XXC    XXX
+OOO    OOX    OXO    XOO    OXX    XOX    XXO    XXX
 ```
 
 Ahora agrupemos estos resultados según el **número de caras** obtenidas:
@@ -103,9 +103,9 @@ Ahora agrupemos estos resultados según el **número de caras** obtenidas:
 | Caras | Combinaciones | Cantidad |
 | :---: | :------------ | :------: |
 |   0   | XXX           |    1     |
-|   1   | CXX, XCX, XXC |    3     |
-|   2   | CCX, CXC, XCC |    3     |
-|   3   | CCC           |    1     |
+|   1   | OXX, XOX, XXO |    3     |
+|   2   | OOX, OXO, XOO |    3     |
+|   3   | OOO           |    1     |
 
 Mira la columna de cantidades: $1, 3, 3, 1$. ¿Te suena? Es exactamente la **fila 3** del triángulo de Tartaglia.
 
@@ -147,8 +147,8 @@ y el total de resultados posibles es $2^5 = 32$.
 Veamos algunos ejemplos concretos. ¿De cuántas formas podemos obtener exactamente **2 caras**? El triángulo nos dice $\binom{5}{2} = 10$. Estas son las 10 combinaciones:
 
 ```text
-CCXXX   CXCXX   CXXCX   CXXXC   XCCXX
-XCXCX   XCXXC   XXCCX   XXCXC   XXXCC
+OOXXX   OXOXX   OXXOX   OXXXO   XOOXX
+XOXOX   XOXXO   XXOOX   XXOXO   XXXOO
 ```
 
 ¿Y exactamente **3 caras**? También $\binom{5}{3} = 10$. El triángulo es simétrico: hay tantas formas de obtener 2 caras (y 3 cruces) como 3 caras (y 2 cruces).
