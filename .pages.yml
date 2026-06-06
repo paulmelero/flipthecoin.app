@@ -1,6 +1,6 @@
 media:
-  input: apps/flipthecoin/assets/img
-  output: /img
+  input: public/img/uploads
+  output: /img/uploads
 content:
   - name: blog
     label: Blog
