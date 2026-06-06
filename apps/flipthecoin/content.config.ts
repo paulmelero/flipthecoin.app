@@ -22,6 +22,10 @@ export default defineContentConfig({
         published: z.boolean().optional(),
         date: z.string(),
         _locale: z.enum(['en', 'es']),
+        excerpt: z.object({
+          type: z.string(),
+          children: z.any(),
+        }),
       }),
     }),
   },
