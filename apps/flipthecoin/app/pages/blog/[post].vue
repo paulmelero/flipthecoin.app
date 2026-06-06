@@ -75,9 +75,22 @@ const renderDoc = computed(() => {
   return { ...p, body: { ...body, value } };
 });
 
+// Per-post OG image generated locally by scripts/generate-blog-og-images.mjs
+// (named `{slug}-{locale}.png`). This overrides the site-wide og:image set in
+// app/app.vue.
+const ogImage = computed(() =>
+  post.value?.slug
+    ? `${BASE}/img/og/blog/${post.value.slug}-${locale.value}.png`
+    : undefined,
+);
+
 useSeoMeta({
   title: () => post.value?.title,
   description: () => post.value?.description,
+  ogType: 'article',
+  ogImage: () => ogImage.value,
+  twitterImage: () => ogImage.value,
+  twitterCard: 'summary_large_image',
 });
 
 useHead(
@@ -114,6 +127,7 @@ useHead(
           '@type': 'Article',
           headline: post.value.title,
           description: post.value.description,
+          image: ogImage.value,
           datePublished: String(post.value.date ?? '').split('T')[0],
           author: {
             '@type': 'Organization',

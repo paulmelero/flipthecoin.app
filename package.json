@@ -6,6 +6,7 @@
   "scripts": {
     "build": "pnpm --filter @flipthecoin/app build",
     "dev": "pnpm --filter @flipthecoin/app dev",
+    "og:blog": "node scripts/generate-blog-og-images.mjs",
     "prepare": "husky"
   },
   "lint-staged": {

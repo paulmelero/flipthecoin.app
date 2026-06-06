@@ -1,1 +1,10 @@
+# Regenerate blog OG images when blog posts change, then stage them.
+# Blog files are flat (content/blog/<slug>.<locale>.md), so a *.md glob is used
+# — `**` is not magic in git pathspecs by default.
+CHANGED=$(git diff --cached --name-only --diff-filter=ACMR -- 'apps/flipthecoin/content/blog/*.md')
+if [ -n "$CHANGED" ]; then
+  echo "$CHANGED" | xargs node scripts/generate-blog-og-images.mjs
+  git add apps/flipthecoin/public/img/og/blog/
+fi
+
 pnpm exec lint-staged
