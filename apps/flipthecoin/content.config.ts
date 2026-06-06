@@ -34,6 +34,7 @@ export default defineContentConfig({
       source: 'authors/**.yml',
       schema: z.object({
         name: z.string().min(1),
+        slug: z.string().min(1),
         url: z.string().url(),
         avatar: z.string(),
       }),

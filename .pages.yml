@@ -40,6 +40,17 @@ content:
       - name: published
         label: Published
         type: boolean
+      - name: author
+        label: Author
+        # Optional (matches author?: optional in content.config.ts). Stores the
+        # author's slug; `label` shows the human name (the default `{name}` would
+        # show the filename, so it's set explicitly to the name field).
+        type: reference
+        options:
+          collection: authors
+          value: '{fields.slug}'
+          label: '{fields.name}'
+          search: 'fields.name'
       - name: date
         label: Date
         type: date
@@ -64,16 +75,23 @@ content:
     # Data collection: .yml files with no body (matches the `authors` Nuxt
     # Content collection, type: data, source: authors/**.yml).
     format: yaml
-    # Pages CMS slugifies field values used in filename templates, so
-    # `{fields.name}` -> e.g. "Paul Melero" -> paul-melero.yml.
-    filename: '{fields.name}.yml'
+    # Filename is derived from `slug` so the on-disk stem always equals the
+    # stored slug (the blog `author` reference stores this same slug, and the
+    # app resolves authors by matching post.author against the file stem).
+    filename: '{fields.slug}.yml'
     view:
-      fields: [name, url]
+      fields: [name, slug, url]
       primary: name
     fields:
       - name: name
         label: Name
         type: string
+      - name: slug
+        label: Slug
+        type: string
+        pattern:
+          regex: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+          message: Lowercase letters, numbers and hyphens only (e.g. paul-melero)
       - name: url
         label: URL
         type: string
