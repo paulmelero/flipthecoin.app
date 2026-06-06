@@ -1,49 +1,324 @@
 media:
-  input: public/img/uploads
+  # `input` is a repo-root-relative path (no leading/trailing slash) to where
+  # files are physically stored. The Nuxt app lives in apps/flipthecoin/.
+  input: apps/flipthecoin/public/img/uploads
+  # `output` is the path as referenced in content (matches /img/uploads/... in markdown).
   output: /img/uploads
+
 content:
   - name: blog
     label: Blog
     type: collection
     path: apps/flipthecoin/content/blog
+    # No native i18n in Pages CMS: each locale file (*.en.md / *.es.md) shows as
+    # its own entry. New entries follow the existing slug.locale.md convention.
+    filename: '{fields.slug}.{fields._locale}.md'
     view:
-      fields: [title]
+      fields: [title, _locale, published, date]
       primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
     fields:
       - name: title
         label: Title
-        type: text
-      - name: date
-        label: Date
-        type: date
-      - name: author
-        label: Author
-        type: text
+        type: string
+      - name: slug
+        label: Slug
+        type: string
+      - name: _locale
+        label: Locale
+        type: select
+        options:
+          values: [en, es]
       - name: description
         label: Description
         type: text
         options:
           maxlength: 180
+      - name: published
+        label: Published
+        type: boolean
+      - name: date
+        label: Date
+        type: date
+        # Content stores full ISO timestamps (e.g. 2026-06-06T10:00:00Z); time:true
+        # + format keep them parseable and prevent the time part being dropped on save.
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm:ssXXX"
       - name: body
         label: Body
-        type: rich-text
-      - name: image
-        label: Image
-        type: image
-        required: false
-  - name: homepage
-    label: Home Page
+        # `code` (raw markdown) instead of `rich-text`: the WYSIWYG editor is
+        # Tiptap and would strip LaTeX ($...$), raw HTML (<sup>, target="_blank"),
+        # and the <!--more--> excerpt marker on save. `code` round-trips verbatim.
+        type: code
+        options:
+          format: markdown
+
+  # Pages are localized as <name>.<locale>.md, so each needs its own file entry.
+  - name: homepage-en
+    label: Home Page (EN)
     type: file
-    path: apps/flipthecoin/content/pages/index.md
-  - name: aboutus
-    label: About Us
+    path: apps/flipthecoin/content/pages/index.en.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: slug
+        label: Slug
+        type: string
+      - name: description
+        label: Description
+        type: text
+        options:
+          maxlength: 180
+      - name: _locale
+        label: Locale
+        type: select
+        options:
+          values: [en, es]
+      - name: body
+        label: Body
+        # `code` (raw markdown) instead of `rich-text`: the WYSIWYG editor is
+        # Tiptap and would strip LaTeX ($...$), raw HTML (<sup>, target="_blank"),
+        # and the <!--more--> excerpt marker on save. `code` round-trips verbatim.
+        type: code
+        options:
+          format: markdown
+  - name: homepage-es
+    label: Home Page (ES)
     type: file
-    path: apps/flipthecoin/content/pages/about-us.md
-  - name: extension
-    label: Extension Home Page
+    path: apps/flipthecoin/content/pages/index.es.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: slug
+        label: Slug
+        type: string
+      - name: description
+        label: Description
+        type: text
+        options:
+          maxlength: 180
+      - name: _locale
+        label: Locale
+        type: select
+        options:
+          values: [en, es]
+      - name: body
+        label: Body
+        # `code` (raw markdown) instead of `rich-text`: the WYSIWYG editor is
+        # Tiptap and would strip LaTeX ($...$), raw HTML (<sup>, target="_blank"),
+        # and the <!--more--> excerpt marker on save. `code` round-trips verbatim.
+        type: code
+        options:
+          format: markdown
+
+  - name: extension-en
+    label: Extension Home Page (EN)
     type: file
-    path: apps/flipthecoin/content/pages/extension.md
-  - name: privacy
-    label: Privacy Policy
+    path: apps/flipthecoin/content/pages/extension.en.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: slug
+        label: Slug
+        type: string
+      - name: description
+        label: Description
+        type: text
+        options:
+          maxlength: 180
+      - name: _locale
+        label: Locale
+        type: select
+        options:
+          values: [en, es]
+      - name: body
+        label: Body
+        # `code` (raw markdown) instead of `rich-text`: the WYSIWYG editor is
+        # Tiptap and would strip LaTeX ($...$), raw HTML (<sup>, target="_blank"),
+        # and the <!--more--> excerpt marker on save. `code` round-trips verbatim.
+        type: code
+        options:
+          format: markdown
+  - name: extension-es
+    label: Extension Home Page (ES)
     type: file
-    path: apps/flipthecoin/content/pages/privacy-policy.md
+    path: apps/flipthecoin/content/pages/extension.es.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: slug
+        label: Slug
+        type: string
+      - name: description
+        label: Description
+        type: text
+        options:
+          maxlength: 180
+      - name: _locale
+        label: Locale
+        type: select
+        options:
+          values: [en, es]
+      - name: body
+        label: Body
+        # `code` (raw markdown) instead of `rich-text`: the WYSIWYG editor is
+        # Tiptap and would strip LaTeX ($...$), raw HTML (<sup>, target="_blank"),
+        # and the <!--more--> excerpt marker on save. `code` round-trips verbatim.
+        type: code
+        options:
+          format: markdown
+
+  - name: aboutus-en
+    label: About Us (EN)
+    type: file
+    path: apps/flipthecoin/content/pages/about-us.en.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: slug
+        label: Slug
+        type: string
+      - name: _locale
+        label: Locale
+        type: select
+        options:
+          values: [en, es]
+      - name: body
+        label: Body
+        # `code` (raw markdown) instead of `rich-text`: the WYSIWYG editor is
+        # Tiptap and would strip LaTeX ($...$), raw HTML (<sup>, target="_blank"),
+        # and the <!--more--> excerpt marker on save. `code` round-trips verbatim.
+        type: code
+        options:
+          format: markdown
+  - name: aboutus-es
+    label: About Us (ES)
+    type: file
+    path: apps/flipthecoin/content/pages/about-us.es.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: slug
+        label: Slug
+        type: string
+      - name: _locale
+        label: Locale
+        type: select
+        options:
+          values: [en, es]
+      - name: body
+        label: Body
+        # `code` (raw markdown) instead of `rich-text`: the WYSIWYG editor is
+        # Tiptap and would strip LaTeX ($...$), raw HTML (<sup>, target="_blank"),
+        # and the <!--more--> excerpt marker on save. `code` round-trips verbatim.
+        type: code
+        options:
+          format: markdown
+
+  - name: privacy-en
+    label: Privacy Policy (EN)
+    type: file
+    path: apps/flipthecoin/content/pages/privacy-policy.en.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: slug
+        label: Slug
+        type: string
+      - name: _locale
+        label: Locale
+        type: select
+        options:
+          values: [en, es]
+      - name: body
+        label: Body
+        # `code` (raw markdown) instead of `rich-text`: the WYSIWYG editor is
+        # Tiptap and would strip LaTeX ($...$), raw HTML (<sup>, target="_blank"),
+        # and the <!--more--> excerpt marker on save. `code` round-trips verbatim.
+        type: code
+        options:
+          format: markdown
+  - name: privacy-es
+    label: Privacy Policy (ES)
+    type: file
+    path: apps/flipthecoin/content/pages/privacy-policy.es.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: slug
+        label: Slug
+        type: string
+      - name: _locale
+        label: Locale
+        type: select
+        options:
+          values: [en, es]
+      - name: body
+        label: Body
+        # `code` (raw markdown) instead of `rich-text`: the WYSIWYG editor is
+        # Tiptap and would strip LaTeX ($...$), raw HTML (<sup>, target="_blank"),
+        # and the <!--more--> excerpt marker on save. `code` round-trips verbatim.
+        type: code
+        options:
+          format: markdown
+
+  - name: terms-en
+    label: Terms and Conditions (EN)
+    type: file
+    path: apps/flipthecoin/content/pages/terms-and-conditions.en.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: slug
+        label: Slug
+        type: string
+      - name: _locale
+        label: Locale
+        type: select
+        options:
+          values: [en, es]
+      - name: body
+        label: Body
+        # `code` (raw markdown) instead of `rich-text`: the WYSIWYG editor is
+        # Tiptap and would strip LaTeX ($...$), raw HTML (<sup>, target="_blank"),
+        # and the <!--more--> excerpt marker on save. `code` round-trips verbatim.
+        type: code
+        options:
+          format: markdown
+  - name: terms-es
+    label: Terms and Conditions (ES)
+    type: file
+    path: apps/flipthecoin/content/pages/terms-and-conditions.es.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: slug
+        label: Slug
+        type: string
+      - name: _locale
+        label: Locale
+        type: select
+        options:
+          values: [en, es]
+      - name: body
+        label: Body
+        # `code` (raw markdown) instead of `rich-text`: the WYSIWYG editor is
+        # Tiptap and would strip LaTeX ($...$), raw HTML (<sup>, target="_blank"),
+        # and the <!--more--> excerpt marker on save. `code` round-trips verbatim.
+        type: code
+        options:
+          format: markdown
