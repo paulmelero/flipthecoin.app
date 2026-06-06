@@ -26,5 +26,6 @@
     "titleBar.inactiveForeground": "#15202b99"
   },
   "peacock.color": "#c0ab07",
-  "prettier.singleQuote": true
+  "prettier.singleQuote": true,
+  "folder-color.pathColors": []
 }

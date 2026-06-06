@@ -44,6 +44,37 @@ const { data: siblings } = await useAsyncData(
   { watch: [slug, locale] },
 );
 
+// Resolve the post's author from the authors data collection.
+const { data: authors } = await useAsyncData('post-authors', () =>
+  queryCollection('authors').all(),
+);
+
+const author = computed(() => {
+  const list = authors.value ?? [];
+  const slug =
+    (post.value?.meta?.author as string | undefined) ?? 'paul-melero';
+  return (
+    list.find(
+      (a) =>
+        String(a.stem ?? '')
+          .split('/')
+          .pop() === slug,
+    ) ?? list[0]
+  );
+});
+
+// The hero now shows the title, so strip the leading H1 from the rendered
+// body to avoid duplicating it. The body tree is a Nuxt Content v3 minimal
+// tree: `{ type, value: [["h1", props, ...], ...] }`.
+const renderDoc = computed(() => {
+  const p = post.value;
+  const body = p?.body as { type?: string; value?: unknown[] } | undefined;
+  if (!Array.isArray(body?.value)) return p;
+  const isH1 = (n: unknown) => Array.isArray(n) && n[0] === 'h1';
+  const value = body.value.filter((n, i) => !(i === 0 && isH1(n)));
+  return { ...p, body: { ...body, value } };
+});
+
 useSeoMeta({
   title: () => post.value?.title,
   description: () => post.value?.description,
@@ -119,8 +150,9 @@ useHead(
 </script>
 
 <template>
-  <div class="mb-16" v-if="post && post.body">
-    <ContentRenderer :value="post" />
+  <div class="mb-16" v-if="post && renderDoc">
+    <BlogPostHero :post="post" :author="author" class="mb-12" />
+    <ContentRenderer :value="renderDoc" />
   </div>
   <div class="mb-16" v-else>
     <p>{{ $t('blog.notFound') }}</p>

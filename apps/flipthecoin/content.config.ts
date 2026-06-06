@@ -22,10 +22,20 @@ export default defineContentConfig({
         published: z.boolean().optional(),
         date: z.string(),
         _locale: z.enum(['en', 'es']),
+        author: z.string().optional(),
         excerpt: z.object({
           type: z.string(),
           children: z.any(),
         }),
+      }),
+    }),
+    authors: defineCollection({
+      type: 'data',
+      source: 'authors/**.yml',
+      schema: z.object({
+        name: z.string().min(1),
+        url: z.string().url(),
+        avatar: z.string(),
       }),
     }),
   },

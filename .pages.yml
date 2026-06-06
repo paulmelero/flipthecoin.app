@@ -57,6 +57,33 @@ content:
         options:
           format: markdown
 
+  - name: authors
+    label: Authors
+    type: collection
+    path: apps/flipthecoin/content/authors
+    # Data collection: .yml files with no body (matches the `authors` Nuxt
+    # Content collection, type: data, source: authors/**.yml).
+    format: yaml
+    # Pages CMS slugifies field values used in filename templates, so
+    # `{fields.name}` -> e.g. "Paul Melero" -> paul-melero.yml.
+    filename: '{fields.name}.yml'
+    view:
+      fields: [name, url]
+      primary: name
+    fields:
+      - name: name
+        label: Name
+        type: string
+      - name: url
+        label: URL
+        type: string
+        pattern:
+          regex: '^https?://.+'
+          message: Must be a valid URL starting with http:// or https://
+      - name: avatar
+        label: Avatar
+        type: image
+
   # Pages are localized as <name>.<locale>.md, so each needs its own file entry.
   - name: homepage-en
     label: Home Page (EN)
