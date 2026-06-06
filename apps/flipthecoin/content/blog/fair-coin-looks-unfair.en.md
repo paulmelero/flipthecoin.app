@@ -13,8 +13,8 @@ Here is a question that sounds simple and isn't. Suppose two friends, Alice and 
 
 <!--more-->
 
-- **(A)** The lead changes hands often, so each player leads for roughly half the year.
-- **(B)** One player grabs the lead early and keeps it for almost the entire year, while the other spends month after month behind.
+- A) The lead changes hands often, so each player leads for roughly half the year.
+- B) One player grabs the lead early and keeps it for almost the entire year, while the other spends month after month behind.
 
 Almost everyone picks (A). It feels obvious: the coin is fair, so the lead should be shared fairly. Yet the surprising truth — proven in the middle of the twentieth century — is that **(B) is far more likely than (A)**. A perfectly fair coin spends most of its life looking deeply unfair.
 

@@ -13,8 +13,8 @@ Aquí va una pregunta que suena sencilla y no lo es. Imagina que dos amigos, Ali
 
 <!--more-->
 
-- **(A)** El liderazgo cambia de manos a menudo, así que cada jugador va en cabeza durante aproximadamente la mitad del año.
-- **(B)** Un jugador toma la delantera pronto y la mantiene durante casi todo el año, mientras el otro pasa mes tras mes por detrás.
+- A) El liderazgo cambia de manos a menudo, así que cada jugador va en cabeza durante aproximadamente la mitad del año.
+- B) Un jugador toma la delantera pronto y la mantiene durante casi todo el año, mientras el otro pasa mes tras mes por detrás.
 
 Casi todo el mundo elige (A). Parece evidente: la moneda es justa, así que el liderazgo debería repartirse de forma justa. Y sin embargo, la verdad sorprendente — demostrada a mediados del siglo XX — es que **(B) es mucho más probable que (A)**. Una moneda perfectamente justa pasa casi toda su vida pareciendo profundamente injusta.
 
