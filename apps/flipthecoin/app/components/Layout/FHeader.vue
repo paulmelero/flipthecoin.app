@@ -23,15 +23,15 @@ watch(() => route.path, closeDropdown);
 </script>
 
 <template>
-  <header class="navbar container mx-auto py-5">
+  <header class="navbar container mx-auto py-5 relative z-20">
     <div class="navbar-start w-full md:w-fit">
       <nuxt-link :to="localePath('/')">
         <BrandLogo />
       </nuxt-link>
     </div>
     <nav class="navbar-end md:w-full flex gap-4 md:gap-2">
-      <div class="isolate z-10 md:hidden">
-        <details ref="dropdownRef" class="dropdown dropdown-end">
+      <div class="md:hidden">
+        <details ref="dropdownRef" class="dropdown dropdown-end isolate z-20">
           <summary class="btn btn-square">
             <span class="sr-only"> open or close </span>
 
@@ -52,7 +52,7 @@ watch(() => route.path, closeDropdown);
           </summary>
           <div
             aria-live="polite"
-            class="dropdown-content bg-base-200 rounded-box w-52 p-2 mt-2 shadow-sm flex flex-col gap-2"
+            class="dropdown-content bg-base-200 rounded-box w-52 p-2 mt-2 shadow-xl flex flex-col gap-2"
           >
             <ul class="menu w-full p-0 gap-1">
               <li v-for="link in navLinks" :key="link.to">
