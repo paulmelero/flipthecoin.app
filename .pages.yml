@@ -67,6 +67,10 @@ content:
         type: code
         options:
           format: markdown
+      - name: tags
+        label: Tags
+        type: string
+        list: true
 
   - name: authors
     label: Authors

@@ -5,6 +5,17 @@ _locale: en
 description: 'A fair coin tends to finish near a tie — yet it spends most of its life with one side in the lead. The story of random walks, Brownian motion, and the arcsine laws.'
 published: true
 date: 2026-06-06T10:00:00Z
+tags:
+  - random walk
+  - arcsine law
+  - central limit theorem
+  - brownian motion
+  - bell curve
+  - probability distribution
+  - galton board
+  - fair coin
+  - fairness
+  - streaks
 ---
 
 # How a Fair Coin Spends Most of Its Life Looking Unfair?

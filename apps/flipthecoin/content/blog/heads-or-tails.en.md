@@ -5,6 +5,9 @@ description: 'Why do we call it heads or tails? A look at the history, mathemati
 _locale: en
 published: true
 date: 2026-05-22T12:00:00Z
+tags:
+  - coin toss
+  - probability basics
 ---
 
 # Heads or Tails — The Complete Guide to the Coin Toss

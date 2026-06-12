@@ -27,6 +27,7 @@ export default defineContentConfig({
           type: z.string(),
           children: z.any(),
         }),
+        tags: z.array(z.string()).optional(),
       }),
     }),
     authors: defineCollection({

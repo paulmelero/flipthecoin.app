@@ -5,6 +5,18 @@ _locale: es
 description: 'Una moneda justa tiende a acabar casi en empate, pero pasa casi toda su vida con una cara en cabeza. La historia de los paseos aleatorios, el movimiento browniano y las leyes del arcoseno.'
 published: true
 date: 2026-06-06T10:00:00Z
+tags:
+  - paseo aleatorio
+  - movimiento browniano
+  - ley del arcoseno
+  - teorema central del límite
+  - campana de Gauss
+  - distribución normal
+  - distribución binomial
+  - distribución de probabilidad
+  - tablero de Galton
+  - moneda justa
+  - rachas
 ---
 
 # Por qué una moneda justa pasa casi toda su vida pareciendo injusta?
