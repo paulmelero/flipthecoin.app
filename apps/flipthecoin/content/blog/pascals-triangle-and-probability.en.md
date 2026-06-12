@@ -1,12 +1,18 @@
 ---
-title: "What Do Pascal's Triangle and a Coin Have in Common?"
+title: What Do Pascal's Triangle and a Coin Have in Common?
 slug: pascals-triangle-combinatorics-and-coin-flips
 _locale: en
-description: "Discover how Pascal's triangle connects combinatorics, algebra, and probability — explained step by step through coin flips."
+description: Discover how Pascal's triangle connects combinatorics, algebra, and
+  probability — explained step by step through coin flips.
 published: true
 date: 2026-05-24T10:00:00Z
+tags:
+  - Pascal's triangle
+  - Bell curve
+  - Omar Khayyam
+  - Jia Xian
+  - Blaise Pascal
 ---
-
 # What Do Pascal's Triangle and a Coin Have in Common?
 
 There is a triangle of numbers that has fascinated mathematicians across the globe for centuries. Its construction is so simple a child could draw it in a notebook. And yet, hidden within its rows lies a deep connection between three branches of mathematics that, at first glance, seem to have nothing in common: combinatorics, algebra, and probability. The most surprising part? That connection reveals itself through something as ordinary as flipping a coin.
