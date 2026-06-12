@@ -10,6 +10,9 @@ date: 2026-05-27T10:00:00Z
 tags:
   - pi
   - fair coin
+  - arcsine
+  - catalan numbers
+  - pascal triangle
 ---
 # Flipping a Coin Until You Get Pi
 
