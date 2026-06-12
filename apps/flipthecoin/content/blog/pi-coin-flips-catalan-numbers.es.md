@@ -1,12 +1,18 @@
 ---
-title: 'Lanzando una moneda hasta que obtenemos PI'
+title: Lanzando una moneda hasta que obtenemos PI
 slug: lanzando-una-moneda-hasta-obtener-pi
 _locale: es
-description: 'Descubre cómo lanzar una moneda hasta que haya más caras que cruces conduce, inesperadamente, al número π — a través de los números de Catalan y la serie del arcoseno.'
+description: Descubre cómo lanzar una moneda hasta que haya más caras que cruces
+  conduce, inesperadamente, al número π — a través de los números de Catalan y
+  la serie del arcoseno.
 published: true
 date: 2026-05-27T10:00:00Z
+tags:
+  - pi
+  - moneda justa
+  - números de Catalan
+  - triángulo de Tartaglia
 ---
-
 # Lanzando una moneda hasta que obtenemos PI
 
 Matt Parker, del canal [Stand-up Maths](https://www.youtube.com/@standupmaths), publicó recientemente [un vídeo](https://www.youtube.com/watch?v=kahGSss6SsU) con una premisa tan simple de enunciar como difícil de creer: si lanzamos una moneda repetidamente hasta que haya más caras que cruces, y calculamos la proporción media de caras respecto al total de lanzamientos... el resultado es $\frac{\pi}{4}$.
