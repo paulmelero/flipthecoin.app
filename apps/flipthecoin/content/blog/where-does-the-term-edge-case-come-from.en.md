@@ -4,6 +4,7 @@ slug: where-does-the-term-edge-case-come-from
 _locale: en
 description: '"Edge case" in software has nothing to do with a coin landing on its edge — but in a coin-flip app, the two happen to collide.'
 published: true
+level: beginner
 date: 2026-04-23T01:00:00Z
 ---
 

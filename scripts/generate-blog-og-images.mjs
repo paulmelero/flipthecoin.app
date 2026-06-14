@@ -20,9 +20,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, '..');
 const APP = resolve(repoRoot, 'apps/flipthecoin');
 const BLOG_DIR = resolve(APP, 'content/blog');
+const SERIES_DIR = resolve(APP, 'content/series');
 const AUTHORS_DIR = resolve(APP, 'content/authors');
 const PUBLIC_DIR = resolve(APP, 'public');
 const OUT_DIR = resolve(PUBLIC_DIR, 'img/og/blog');
+const OUT_DIR_SERIES = resolve(PUBLIC_DIR, 'img/og/series');
 
 // Dark (Dracula) theme tokens — the app's dark daisyui theme.
 const COLORS = {
@@ -125,7 +127,9 @@ async function resolveAuthor(slug) {
 }
 
 // ── Card template ───────────────────────────────────────────────────────────
-function card({ title, author }) {
+// `badge` is optional: when present (series OGs) a pill is shown above the
+// title, marking the card as a series and differentiating it from post OGs.
+function card({ title, author, badge }) {
   const decorStyle = {
     position: 'absolute',
     fontFamily: 'KaTeX_Main',
@@ -235,7 +239,7 @@ function card({ title, author }) {
             children: 'P(k) = ½',
           },
         },
-        // title
+        // title (with optional series pill above it)
         {
           type: 'div',
           props: {
@@ -249,12 +253,44 @@ function card({ title, author }) {
               type: 'div',
               props: {
                 style: {
-                  fontFamily: 'Archivo',
-                  fontWeight: 600,
-                  fontSize: '72px',
-                  lineHeight: 1.08,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '28px',
                 },
-                children: title,
+                children: [
+                  badge && {
+                    type: 'div',
+                    props: {
+                      style: {
+                        display: 'flex',
+                        alignSelf: 'flex-start',
+                        padding: '10px 26px',
+                        borderRadius: '999px',
+                        background: `rgba(${COLORS.primary},0.18)`,
+                        border: `1px solid rgba(${COLORS.primary},0.5)`,
+                        fontFamily: 'Fira Sans',
+                        fontSize: '26px',
+                        letterSpacing: '2px',
+                        color: COLORS.baseContent,
+                        opacity: 0.85,
+                      },
+                      children: badge,
+                    },
+                  },
+                  {
+                    type: 'div',
+                    props: {
+                      style: {
+                        display: 'flex',
+                        fontFamily: 'Archivo',
+                        fontWeight: 600,
+                        fontSize: '72px',
+                        lineHeight: 1.08,
+                      },
+                      children: title,
+                    },
+                  },
+                ].filter(Boolean),
               },
             },
           },
@@ -311,6 +347,79 @@ async function render(file) {
   console.log(`✔ ${outPath}`);
 }
 
+// ── Series OG images ─────────────────────────────────────────────────────────
+// Localized pill label, e.g. "SERIES · 3 ARTICLES" / "SERIE · 3 ARTÍCULOS".
+function seriesBadge(locale, n) {
+  if (locale === 'es') {
+    return `SERIE · ${n} ${n === 1 ? 'ARTÍCULO' : 'ARTÍCULOS'}`;
+  }
+  return `SERIES · ${n} ${n === 1 ? 'ARTICLE' : 'ARTICLES'}`;
+}
+
+// Build a map of `${series}|${locale}` → ordered member frontmatters, by reading
+// every blog post's frontmatter once. Used to count members and find the first
+// member's author for each series.
+async function loadSeriesMembers() {
+  const entries = await readdir(BLOG_DIR);
+  const map = new Map();
+  for (const e of entries) {
+    if (!e.endsWith('.md')) continue;
+    const fm = parseFrontmatter(await readFile(resolve(BLOG_DIR, e), 'utf8'));
+    if (!fm.series || !fm._locale) continue;
+    if (fm.published === 'false') continue;
+    const key = `${fm.series}|${fm._locale}`;
+    const arr = map.get(key) ?? [];
+    arr.push({
+      author: fm.author,
+      order: Number(fm.seriesOrder ?? Number.MAX_SAFE_INTEGER),
+    });
+    map.set(key, arr);
+  }
+  for (const arr of map.values()) arr.sort((a, b) => a.order - b.order);
+  return map;
+}
+
+async function renderSeries(file, members) {
+  // Series files are plain YAML (no `---` fences), so parse scalars directly.
+  const fm = parseScalars(await readFile(file, 'utf8'));
+  if (!fm.slug || !fm._locale) {
+    console.warn(`⚠ skipping ${basename(file)} — missing slug/_locale`);
+    return;
+  }
+  const memberList = members.get(`${fm.slug}|${fm._locale}`) ?? [];
+  if (!memberList.length) {
+    console.warn(`⚠ skipping series ${fm.slug} (${fm._locale}) — no members`);
+    return;
+  }
+  const author = await resolveAuthor(memberList[0].author);
+  const svg = await satori(
+    card({
+      title: fm.title || fm.slug,
+      author,
+      badge: seriesBadge(fm._locale, memberList.length),
+    }),
+    { width: 1200, height: 630, fonts },
+  );
+  const png = new Resvg(svg).render().asPng();
+  const outPath = resolve(OUT_DIR_SERIES, `${fm.slug}-${fm._locale}.png`);
+  await writeFile(outPath, png);
+  console.log(`✔ ${outPath}`);
+}
+
+async function renderAllSeries() {
+  const members = await loadSeriesMembers();
+  const entries = await readdir(SERIES_DIR);
+  const files = entries
+    .filter((e) => e.endsWith('.yml'))
+    .map((e) => resolve(SERIES_DIR, e));
+  if (!files.length) {
+    console.log('No series to render.');
+    return;
+  }
+  await mkdir(OUT_DIR_SERIES, { recursive: true });
+  for (const f of files) await renderSeries(f, members);
+}
+
 // ── Resolve input files ──────────────────────────────────────────────────────
 async function resolveInputs(argv) {
   if (argv.length) {
@@ -324,10 +433,17 @@ async function resolveInputs(argv) {
     .map((e) => resolve(BLOG_DIR, e));
 }
 
-const files = await resolveInputs(process.argv.slice(2));
-if (!files.length) {
-  console.log('No blog posts to render.');
-  process.exit(0);
+// Branch on `--series` BEFORE resolveInputs — that helper treats any argv as a
+// file path and filters out non-.md, so an unguarded `--series` yields nothing.
+const argv = process.argv.slice(2);
+if (argv.includes('--series')) {
+  await renderAllSeries();
+} else {
+  const files = await resolveInputs(argv);
+  if (!files.length) {
+    console.log('No blog posts to render.');
+    process.exit(0);
+  }
+  await mkdir(OUT_DIR, { recursive: true });
+  for (const f of files) await render(f);
 }
-await mkdir(OUT_DIR, { recursive: true });
-for (const f of files) await render(f);

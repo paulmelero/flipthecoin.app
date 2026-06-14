@@ -28,6 +28,22 @@ export default defineContentConfig({
           children: z.any(),
         }),
         tags: z.array(z.string()).optional(),
+        level: z.enum(['beginner', 'intermediate', 'advanced']),
+        series: z.string().optional(),
+        seriesOrder: z.number().optional(),
+      }),
+    }),
+    series: defineCollection({
+      type: 'data',
+      source: 'series/**.yml',
+      schema: z.object({
+        slug: z.string().min(1),
+        title: z.string().min(1),
+        description: z.string(),
+        // Optional: pins the series block's position in the blog list. When set,
+        // it overrides the default "anchor at newest member" sorting.
+        date: z.string().optional(),
+        _locale: z.enum(['en', 'es']),
       }),
     }),
     authors: defineCollection({

@@ -4,6 +4,7 @@ slug: como-lanzar-una-moneda-online
 description: 'Guía práctica para lanzar una moneda online, por qué un simulador basado en física es más imparcial que una moneda real, y cuándo usarlo.'
 _locale: es
 published: true
+level: beginner
 date: 2026-05-22T10:00:00Z
 ---
 

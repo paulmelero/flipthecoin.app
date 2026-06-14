@@ -1,9 +1,12 @@
 ---
 title: 'How a Fair Coin Spends Most of Its Life Looking Unfair?'
 slug: fair-coin-random-walk-arcsine-law
+series: random-walks
+seriesOrder: 2
 _locale: en
 description: 'A fair coin tends to finish near a tie — yet it spends most of its life with one side in the lead. The story of random walks, Brownian motion, and the arcsine laws.'
 published: true
+level: advanced
 date: 2026-06-06T10:00:00Z
 tags:
   - random walk

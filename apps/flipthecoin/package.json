@@ -41,7 +41,6 @@
     "@nuxt/content": "^3.2.2",
     "@nuxt/fonts": "^0.10.3",
     "@nuxtjs/color-mode": "^3.5.2",
-    "cannon-es": "^0.20.0",
     "gsap": "^3.12.4",
     "idb": "^8.0.3",
     "katex": "^0.16.10",

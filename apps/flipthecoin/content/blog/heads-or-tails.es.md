@@ -1,9 +1,12 @@
 ---
 title: Cara o Cruz — La Guía Completa sobre el Lanzamiento de Moneda
 slug: cara-o-cruz
+series: probability-basics
+seriesOrder: 2
 description: '¿Por qué se llama cara o cruz? Historia, matemáticas y la sorprendente ciencia del lanzamiento de moneda — de Julio César a la física moderna.'
 _locale: es
 published: true
+level: beginner
 date: 2026-05-22T12:00:00Z
 ---
 

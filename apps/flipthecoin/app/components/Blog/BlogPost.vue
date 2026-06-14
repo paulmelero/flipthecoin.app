@@ -7,7 +7,10 @@
     <div
       class="flex shrink-0 flex-col justify-between gap-4 md:w-48 md:border-r md:border-base-content/10 md:pr-4"
     >
-      <div v-if="author" class="flex items-center justify-between gap-3">
+      <div
+        v-if="author && !inSeries"
+        class="flex items-center justify-between gap-3"
+      >
         <div class="avatar" :class="{ 'avatar-placeholder': !author.avatar }">
           <div
             class="size-16 rounded-full bg-slate-100/20 dark:bg-base-300/20 text-base-content/70"
@@ -30,9 +33,21 @@
         </div>
       </div>
 
-      <span class="text-xs uppercase tracking-wider text-primary/80 text-end">
-        {{ formattedDate }}
-      </span>
+      <div class="flex flex-col items-end gap-2">
+        <p
+          v-if="level"
+          class="badge badge-md badge-soft text-sm capitalize"
+          :class="levelClass"
+        >
+          {{ $t('blog.level.' + level) }}
+        </p>
+        <time
+          datetime="formattedDate"
+          class="text-xs uppercase tracking-wider text-primary/80 text-end"
+        >
+          {{ formattedDate }}
+        </time>
+      </div>
     </div>
 
     <!-- main column -->
@@ -69,6 +84,9 @@ type Author = { name: string; url?: string; avatar?: string };
 const props = defineProps<{
   post: BlogCollectionItem & { date?: string; slug?: string };
   author?: Author;
+  // When the post is rendered inside a series block, the author is shown once
+  // in the series header — so suppress the per-post byline here.
+  inSeries?: boolean;
 }>();
 
 const { $t, $getLocale, localePath } = useI18n();
@@ -85,6 +103,24 @@ const formattedDate = computed(() => {
     day: 'numeric',
   }).format(new Date(raw));
 });
+
+const level = computed(
+  () =>
+    (props.post.meta?.level ?? (props.post as { level?: string }).level) as
+      | 'beginner'
+      | 'intermediate'
+      | 'advanced'
+      | undefined,
+);
+
+const levelClass = computed(
+  () =>
+    ({
+      beginner: 'badge-info',
+      intermediate: 'badge-success',
+      advanced: 'badge-warning',
+    })[level.value ?? 'beginner'],
+);
 
 const postPath = computed(() => {
   const slug = (props.post.meta?.slug ?? props.post.slug) as string | undefined;

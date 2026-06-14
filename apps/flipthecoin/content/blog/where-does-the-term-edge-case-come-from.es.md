@@ -4,6 +4,7 @@ slug: de-donde-viene-el-termino-edge-case
 _locale: es
 description: '"Edge case" en software no tiene nada que ver con una moneda cayendo sobre su canto — pero en una app de lanzar monedas, los dos significados se cruzan.'
 published: true
+level: beginner
 date: 2026-04-23T01:00:00Z
 ---
 

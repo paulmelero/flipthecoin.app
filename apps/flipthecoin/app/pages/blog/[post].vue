@@ -44,6 +44,36 @@ const { data: siblings } = await useAsyncData(
   { watch: [slug, locale] },
 );
 
+// When the post belongs to a series, fetch its (published, ordered) members and
+// the series meta so we can render the series navigation block.
+const { data: seriesData } = await useAsyncData(
+  () => `blog-series-nav-${locale.value}-${slug.value}`,
+  async () => {
+    const seriesSlug = (post.value?.meta?.series ??
+      (post.value as { series?: string } | null)?.series) as string | undefined;
+    if (!seriesSlug) return null;
+    const [members, meta] = await Promise.all([
+      queryCollection('blog')
+        .where('series', '=', seriesSlug)
+        .where('_locale', '=', locale.value)
+        .all(),
+      queryCollection('series')
+        .where('slug', '=', seriesSlug)
+        .where('_locale', '=', locale.value)
+        .first(),
+    ]);
+    const published = (members ?? []).filter((m) => m.meta.published !== false);
+    // `seriesOrder` lands top-level (not under `.meta`); read both to be safe.
+    const orderOf = (m: (typeof published)[number]) =>
+      (m.meta?.seriesOrder ??
+        (m as { seriesOrder?: number }).seriesOrder ??
+        Number.MAX_SAFE_INTEGER) as number;
+    published.sort((a, b) => orderOf(a) - orderOf(b));
+    return { members: published, meta, seriesSlug };
+  },
+  { watch: [slug, locale] },
+);
+
 // Resolve the post's author from the authors data collection.
 const { data: authors } = await useAsyncData('post-authors', () =>
   queryCollection('authors').all(),
@@ -170,6 +200,14 @@ useHead(
   </div>
   <div class="mb-16" v-else>
     <p>{{ $t('blog.notFound') }}</p>
+  </div>
+
+  <div v-if="seriesData?.members?.length" class="mb-16">
+    <BlogSeriesNav
+      :series="{ title: seriesData.meta?.title ?? seriesData.seriesSlug }"
+      :members="seriesData.members"
+      :current-slug="slug"
+    />
   </div>
 
   <div class="mb-16">

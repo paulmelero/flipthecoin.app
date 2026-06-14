@@ -1,9 +1,12 @@
 ---
 title: Fundamentos de probabilidad
 slug: fundamentos-de-probabilidad
+series: probability-basics
+seriesOrder: 1
 _locale: es
 description: Aprende los fundamentos de la probabilidad y cómo se relacionan con los lanzamientos de moneda.
 published: true
+level: beginner
 date: 2026-04-23T01:00:00Z
 ---
 

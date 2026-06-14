@@ -1,9 +1,12 @@
 ---
 title: 'Por qué una moneda justa pasa casi toda su vida pareciendo injusta?'
 slug: moneda-justa-paseo-aleatorio-ley-del-arcoseno
+series: random-walks
+seriesOrder: 2
 _locale: es
 description: 'Una moneda justa tiende a acabar casi en empate, pero pasa casi toda su vida con una cara en cabeza. La historia de los paseos aleatorios, el movimiento browniano y las leyes del arcoseno.'
 published: true
+level: advanced
 date: 2026-06-06T10:00:00Z
 tags:
   - paseo aleatorio

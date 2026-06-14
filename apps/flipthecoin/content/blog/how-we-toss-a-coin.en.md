@@ -4,6 +4,7 @@ slug: how-we-toss-a-coin
 _locale: en
 description: A plain-language tour of the physics behind every coin flip in FlipTheCoin.app — the push, the spin, and the gravity that decides heads or tails.
 published: true
+level: beginner
 date: 2026-04-23T01:00:00Z
 ---
 

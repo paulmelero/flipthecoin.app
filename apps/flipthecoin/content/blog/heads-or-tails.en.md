@@ -1,9 +1,12 @@
 ---
 title: Heads or Tails — The Complete Guide to the Coin Toss
 slug: heads-or-tails
+series: probability-basics
+seriesOrder: 2
 description: 'Why do we call it heads or tails? A look at the history, mathematics, and surprising science of the coin toss — from Julius Caesar to modern physics.'
 _locale: en
 published: true
+level: beginner
 date: 2026-05-22T12:00:00Z
 tags:
   - coin toss

@@ -15,6 +15,12 @@ const STATIC_PAGES = [
     changefreq: 'weekly',
   },
   {
+    path: '/blog/series/',
+    esPart: '/es/blog/series/',
+    priority: '0.7',
+    changefreq: 'weekly',
+  },
+  {
     path: '/about-us/',
     esPart: '/es/about-us/',
     priority: '0.6',
@@ -130,6 +136,30 @@ export default defineEventHandler(async (event) => {
     })
     .join('');
 
+  // Series listing pages (/blog/series/:slug/). Series share one slug across
+  // locales, so pair them by slug. `date` (when set) anchors lastmod.
+  const seriesRows = await queryCollection(event, 'series').all();
+  const seriesBySlug = new Map<string, Record<string, { date: string }>>();
+  for (const row of seriesRows) {
+    const slug = (row.slug as string) ?? '';
+    if (!slug) continue;
+    if (!seriesBySlug.has(slug)) seriesBySlug.set(slug, {});
+    const locale = (row._locale as string) ?? 'en';
+    const date = row.date ? String(row.date).split('T')[0]! : today;
+    seriesBySlug.get(slug)![locale] = { date };
+  }
+
+  const seriesEntries = [...seriesBySlug.entries()]
+    .map(([slug, locales]) => {
+      const en = locales['en'];
+      const es = locales['es'];
+      const enHref = `${BASE}/blog/series/${slug}/`;
+      const esHref = `${BASE}/es/blog/series/${slug}/`;
+      const lastmod = en?.date ?? es?.date ?? today;
+      return urlEntry(enHref, esHref, lastmod, 'weekly', '0.7');
+    })
+    .join('');
+
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -137,6 +167,7 @@ export default defineEventHandler(async (event) => {
 >
 ${staticEntries}
 ${blogEntries}
+${seriesEntries}
 </urlset>`;
 
   setHeader(event, 'Content-Type', 'application/xml');

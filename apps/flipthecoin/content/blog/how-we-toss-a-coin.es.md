@@ -4,6 +4,7 @@ slug: como-lanzamos-una-moneda
 _locale: es
 description: Un paseo en lenguaje llano por la física de cada lanzamiento de moneda en FlipTheCoin.app — el empujón, el giro y la gravedad que decide cara o cruz.
 published: true
+level: beginner
 date: 2026-04-23T01:00:00Z
 ---
 

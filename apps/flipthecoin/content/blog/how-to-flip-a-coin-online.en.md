@@ -4,6 +4,7 @@ slug: how-to-flip-a-coin-online
 description: 'A practical guide to flipping a coin online, why a physics-based simulator is more impartial than a real coin, and when to use one.'
 _locale: en
 published: true
+level: beginner
 date: 2026-05-22T10:00:00Z
 ---
 

@@ -4,6 +4,7 @@ slug: la-estadistica-inesperada-de-los-lanzamientos-de-moneda
 _locale: es
 description: Un vistazo a lo que realmente ocurre cuando lanzas una moneda — los casos extremos, la falacia del jugador y por qué las monedas justas no lo son tanto.
 published: true
+level: intermediate
 date: 2025-03-22T01:00:00Z
 ---
 

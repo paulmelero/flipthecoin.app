@@ -7,28 +7,24 @@
     "build": "pnpm --filter @flipthecoin/app build",
     "dev": "pnpm --filter @flipthecoin/app dev",
     "og:blog": "node scripts/generate-blog-og-images.mjs",
+    "og:series": "node scripts/generate-blog-og-images.mjs --series",
+    "og": "pnpm og:blog && pnpm og:series",
     "prepare": "husky"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "better-sqlite3",
-      "esbuild",
-      "sharp",
-      "workerd"
-    ]
-  },
   "devDependencies": {
+    "@fontsource/archivo": "^5.0.0",
+    "@fontsource/fira-sans": "^5.0.0",
     "@resvg/resvg-js": "^2.6.2",
     "husky": "^9.1.7",
+    "katex": "^0.16.10",
     "lint-staged": "^15.4.3",
     "png-to-ico": "^3.0.1",
     "prettier": "3.5.3",
     "satori": "^0.26.0",
     "sharp": "^0.34.5"
   },
-  "packageManager": "pnpm@9.12.0+sha512.4abf725084d7bcbafbd728bfc7bee61f2f791f977fd87542b3579dcb23504d170d46337945e4c66485cd12d588a0c0e570ed9c477e7ccdd8507cf05f3f92eaca"
+  "packageManager": "pnpm@11.6.0"
 }

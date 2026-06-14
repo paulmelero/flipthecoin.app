@@ -1,9 +1,12 @@
 ---
 title: Probability Basics
 slug: probability-basics
+series: probability-basics
+seriesOrder: 1
 _locale: en
 description: Learn the basics of probability and how it relates to coin flips.
 published: true
+level: beginner
 date: 2026-04-23T01:00:00Z
 ---
 

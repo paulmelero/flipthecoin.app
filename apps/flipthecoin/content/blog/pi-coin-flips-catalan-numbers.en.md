@@ -1,11 +1,14 @@
 ---
 title: Flipping a Coin Until You Get Pi
 slug: flipping-a-coin-until-you-get-pi
+series: random-walks
+seriesOrder: 3
 _locale: en
 description: Discover how flipping a coin until heads outnumber tails leads,
   unexpectedly, to the number π — through the Catalan numbers and the arcsine
   series.
 published: true
+level: advanced
 date: 2026-05-27T10:00:00Z
 tags:
   - pi
@@ -14,6 +17,7 @@ tags:
   - catalan numbers
   - pascal triangle
 ---
+
 # Flipping a Coin Until You Get Pi
 
 Matt Parker, from the [Stand-up Maths](https://www.youtube.com/@standupmaths) channel, recently published [a video](https://www.youtube.com/watch?v=kahGSss6SsU) with a premise as simple to state as it is hard to believe: if you flip a coin repeatedly until heads outnumber tails, and compute the average ratio of heads to total flips... the result is $\frac{\pi}{4}$.

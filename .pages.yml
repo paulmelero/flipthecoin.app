@@ -71,6 +71,67 @@ content:
         label: Tags
         type: string
         list: true
+      - name: level
+        label: Level
+        type: select
+        options:
+          values: [beginner, intermediate, advanced]
+      - name: series
+        label: Series
+        # Locale-neutral slug of the series this post belongs to (matches a
+        # series entry's `slug`). Leave empty for standalone posts.
+        type: string
+      - name: seriesOrder
+        label: Series Order
+        # Position of this post within its series (1, 2, 3 …). Drives the
+        # reading order in the series block; ignored when `series` is empty.
+        type: number
+
+  - name: series
+    label: Series
+    type: collection
+    path: apps/flipthecoin/content/series
+    # Per-locale yml (like blog posts, not authors): title/description are
+    # translatable prose, so each series has a <slug>.<locale>.yml variant.
+    format: yaml
+    filename: '{fields.slug}.{fields._locale}.yml'
+    view:
+      fields: [title, slug, _locale, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: slug
+        label: Slug
+        # Locale-neutral: identical across the .en/.es variants. Blog posts
+        # reference this value in their `series` field.
+        type: string
+        pattern:
+          regex: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+          message: Lowercase letters, numbers and hyphens only (e.g. random-walks)
+      - name: _locale
+        label: Locale
+        type: select
+        options:
+          values: [en, es]
+      - name: title
+        label: Title
+        type: string
+      - name: description
+        label: Description
+        type: text
+        options:
+          maxlength: 240
+      - name: date
+        label: Date
+        # Optional. Pins where the series block sits in the blog list. Leave
+        # empty to anchor it at its most-recent member's date.
+        type: date
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm:ssXXX"
 
   - name: authors
     label: Authors
