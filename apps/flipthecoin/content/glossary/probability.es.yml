@@ -1,0 +1,13 @@
+slug: probabilidad
+_locale: es
+title: Probabilidad
+description: >-
+  Un número entre 0 y 1 que mide cómo de probable es que ocurra un evento. 0
+  significa imposible, 1 significa seguro y 0,5 (o 50 %) significa igual de
+  probable en ambos sentidos, como que una moneda justa caiga en cara. Puede
+  leerse como una frecuencia a largo plazo: lanza una moneda justa muchas veces
+  y aproximadamente la mitad de los lanzamientos saldrán cara.
+link: https://es.wikipedia.org/wiki/Probabilidad
+aka:
+  - posibilidad
+  - verosimilitud

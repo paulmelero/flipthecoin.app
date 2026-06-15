@@ -1,0 +1,13 @@
+slug: numeros-de-catalan
+_locale: es
+title: Números de Catalan
+description: >-
+  Una famosa sucesión de números enteros (1, 1, 2, 5, 14, 42 y así
+  sucesivamente) que cuenta una sorprendente variedad de estructuras
+  equilibradas o recursivas. Aparecen en problemas de lanzamientos y de votos,
+  por ejemplo al contar trayectorias de caras y cruces en las que un lado nunca
+  queda por detrás del otro. Surgen de forma natural en los paseos aleatorios y
+  en muchos problemas de combinatoria.
+link: https://es.wikipedia.org/wiki/N%C3%BAmero_de_Catalan
+aka:
+  - sucesión de catalan

@@ -133,6 +133,60 @@ content:
           time: true
           format: "yyyy-MM-dd'T'HH:mm:ssXXX"
 
+  - name: glossary
+    label: Glossary
+    type: collection
+    path: apps/flipthecoin/content/glossary
+    # Per-locale yml (like series): title/description are translatable prose, so
+    # each term has a <slug>.<locale>.yml variant.
+    format: yaml
+    filename: '{fields.slug}.{fields._locale}.yml'
+    view:
+      fields: [title, slug, _locale]
+      primary: title
+      sort: [title, slug]
+      default:
+        sort: title
+        order: asc
+    fields:
+      - name: slug
+        label: Slug
+        # Per-locale (like blog posts): the EN and ES variants use their own
+        # localized slug (e.g. random-walk / paseo-aleatorio). Drives the
+        # /glossary/<slug>/ URL and the :term[...]{slug=...} blog references.
+        # The .en/.es files share one filename stem so the app can pair them.
+        type: string
+        pattern:
+          regex: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+          message: Lowercase letters, numbers and hyphens only (e.g. paseo-aleatorio)
+      - name: _locale
+        label: Locale
+        type: select
+        options:
+          values: [en, es]
+      - name: title
+        label: Title
+        type: string
+      - name: description
+        label: Description
+        # Short, plain-language definition (no LaTeX — deeper math lives in the
+        # linked blog posts). Shown in the hover preview and the term page.
+        type: text
+        options:
+          maxlength: 500
+      - name: link
+        label: Source link
+        # Authoritative source — usually Wikipedia, sometimes another reference.
+        type: string
+        pattern:
+          regex: '^https?://.+'
+          message: Must be a valid URL starting with http:// or https://
+      - name: aka
+        label: Also known as
+        # Alternative names / aliases (e.g. "CLT", "triangle of Tartaglia").
+        type: string
+        list: true
+
   - name: authors
     label: Authors
     type: collection

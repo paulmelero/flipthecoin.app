@@ -38,7 +38,7 @@ That is the whole idea. Distributions get interesting not when one event happens
 
 ## The binomial distribution
 
-Now flip a fair coin $n$ times and count the heads. The number of heads can be anything from $0$ to $n$, and the probabilities of each count form the **binomial distribution** — the distribution of "how many successes in $n$ independent yes/no trials".
+Now flip a fair coin $n$ times and count the heads. The number of heads can be anything from $0$ to $n$, and the probabilities of each count form the :term[binomial distribution]{slug="binomial-distribution"} — the distribution of "how many successes in $n$ independent yes/no trials".
 
 For a fair coin its formula is:
 
@@ -50,7 +50,7 @@ $$P(k) = \binom{n}{k}\, p^{k} (1-p)^{n-k}$$
 
 The interesting part is the **shape**. Extreme results — all heads or all tails — are rare, because there is only _one_ way to get each of them. Middle results are common, because there are _many_ different orderings that land there. Plot the probabilities and you get a hump that is tall in the centre and thin at the edges: the beginnings of the famous **bell curve**.
 
-Why exactly those $\binom{n}{k}$ counts appear — and why they are the rows of Pascal's triangle — is a story in itself, told in [What Do Pascal's Triangle and a Coin Have in Common?](https://flipthecoin.app/blog/pascals-triangle-combinatorics-and-coin-flips/). Here we just need the punchline: **add up enough fair, independent choices and the results pile up into a bell.**
+Why exactly those $\binom{n}{k}$ counts appear — and why they are the rows of :term[Pascal's triangle]{slug="pascals-triangle"} — is a story in itself, told in [What Do Pascal's Triangle and a Coin Have in Common?](https://flipthecoin.app/blog/pascals-triangle-combinatorics-and-coin-flips/). Here we just need the punchline: **add up enough fair, independent choices and the results pile up into a bell.**
 
 ## Enter: Francis Galton
 

@@ -1,0 +1,12 @@
+slug: random-walk
+_locale: en
+title: Random walk
+description: >-
+  A path built from a sequence of random steps. A simple example uses a coin:
+  step right on heads, left on tails, and watch where you end up after many
+  flips. Even though each step is fair, the walker can wander far from the
+  start. Random walks model everything from diffusing particles to stock prices,
+  and they connect directly to coin-flip probability.
+link: https://en.wikipedia.org/wiki/Random_walk
+aka:
+  - drunkard's walk

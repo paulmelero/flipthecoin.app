@@ -1,0 +1,14 @@
+slug: teorema-central-del-limite
+_locale: es
+title: Teorema Central del Límite
+description: >-
+  Un resultado fundamental que afirma que, al sumar o promediar muchas
+  variables aleatorias independientes, el resultado tiende a una distribución
+  normal con forma de campana, sin importar cómo fuera la distribución original.
+  Es la razón por la que el número de caras en muchos lanzamientos se acumula de
+  forma simétrica en torno al valor esperado y dibuja una suave curva de campana
+  a medida que crece el número de lanzamientos.
+link: https://es.wikipedia.org/wiki/Teorema_del_l%C3%ADmite_central
+aka:
+  - tcl
+  - teorema del límite central

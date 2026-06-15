@@ -8,7 +8,8 @@
     "dev": "pnpm --filter @flipthecoin/app dev",
     "og:blog": "node scripts/generate-blog-og-images.mjs",
     "og:series": "node scripts/generate-blog-og-images.mjs --series",
-    "og": "pnpm og:blog && pnpm og:series",
+    "og:glossary": "node scripts/generate-blog-og-images.mjs --glossary",
+    "og": "pnpm og:blog && pnpm og:series && pnpm og:glossary",
     "prepare": "husky"
   },
   "lint-staged": {

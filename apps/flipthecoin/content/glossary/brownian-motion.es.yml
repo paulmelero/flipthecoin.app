@@ -1,0 +1,13 @@
+slug: movimiento-browniano
+_locale: es
+title: Movimiento browniano
+description: >-
+  El movimiento aleatorio y tembloroso de partículas diminutas suspendidas en un
+  fluido, causado por los choques constantes con las moléculas que las rodean.
+  Matemáticamente es el límite en tiempo continuo de un paseo aleatorio: si
+  haces los pasos del lanzamiento cada vez más pequeños y das muchos más, la
+  trayectoria irregular se suaviza hasta convertirse en movimiento browniano.
+  Sustenta modelos de difusión y de mercados financieros.
+link: https://es.wikipedia.org/wiki/Movimiento_browniano
+aka:
+  - proceso de wiener

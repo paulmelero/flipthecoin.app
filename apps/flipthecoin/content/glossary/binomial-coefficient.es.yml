@@ -1,0 +1,13 @@
+slug: coeficiente-binomial
+_locale: es
+title: Coeficiente binomial
+description: >-
+  Un recuento de cuántas maneras hay de elegir k elementos de un conjunto de n
+  cuando el orden no importa. Se lee como "n sobre k" y responde preguntas como
+  de cuántas formas distintas se pueden obtener exactamente k caras en n
+  lanzamientos. Para 10 lanzamientos hay 252 maneras de sacar exactamente cinco
+  caras, y por eso ese resultado es el más frecuente.
+link: https://es.wikipedia.org/wiki/Coeficiente_binomial
+aka:
+  - combinaciones
+  - número combinatorio

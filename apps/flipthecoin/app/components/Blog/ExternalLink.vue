@@ -1,6 +1,6 @@
 <template>
   <a
-    :href="href"
+    :href
     :title="String(attrs.title) || href"
     target="_blank"
     rel="me noopener noreferer"

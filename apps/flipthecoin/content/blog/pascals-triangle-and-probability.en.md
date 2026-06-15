@@ -19,7 +19,7 @@ tags:
 
 # What Do Pascal's Triangle and a Coin Have in Common?
 
-There is a triangle of numbers that has fascinated mathematicians across the globe for centuries. Its construction is so simple a child could draw it in a notebook. And yet, hidden within its rows lies a deep connection between three branches of mathematics that, at first glance, seem to have nothing in common: combinatorics, algebra, and probability. The most surprising part? That connection reveals itself through something as ordinary as flipping a coin.
+There is a triangle of numbers that has fascinated mathematicians across the globe for centuries. Its construction is so simple a child could draw it in a notebook. And yet, hidden within its rows lies a deep connection between three branches of mathematics that, at first glance, seem to have nothing in common: :term[combinatorics]{slug="combinatorics"}, algebra, and probability. The most surprising part? That connection reveals itself through something as ordinary as flipping a coin.
 
 <!--more-->
 
@@ -56,7 +56,7 @@ Look at row 4: $1, 4, 6, 4, 1$. The $6$ in the center comes from adding the two 
 
 ### Binomial coefficients
 
-Every number in the triangle has a formal name: it is a **binomial coefficient**. It is written as:
+Every number in the triangle has a formal name: it is a :term[binomial coefficient]{slug="binomial-coefficient"}. It is written as:
 
 $$\binom{n}{k}$$
 
@@ -82,7 +82,7 @@ $$\binom{n}{0},\; \binom{n}{1},\; \binom{n}{2},\; \ldots,\; \binom{n}{n}$$
 
 To see why this is useful, consider flipping a coin. Each flip has two possible outcomes: **heads** (O) or **tails** (X). If we flip the coin once, there are $2$ outcomes. If we flip it twice, each of the 2 outcomes of the first flip combines with the 2 outcomes of the second, giving $2 \times 2 = 4$ outcomes. With three flips, $2 \times 2 \times 2 = 8$.
 
-That pattern is expressed with an **exponent**:
+That pattern is expressed with an :term[exponent]{slug="exponent"}:
 
 $$2^n$$
 

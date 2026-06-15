@@ -1,0 +1,14 @@
+slug: paseo-aleatorio
+_locale: es
+title: Paseo aleatorio
+description: >-
+  Una trayectoria construida a partir de una sucesión de pasos al azar. Un
+  ejemplo sencillo usa una moneda: das un paso a la derecha si sale cara y a la
+  izquierda si sale cruz, y observas dónde acabas tras muchos lanzamientos.
+  Aunque cada paso es justo, el caminante puede alejarse mucho del punto de
+  partida. Los paseos aleatorios modelan desde partículas que se difunden hasta
+  precios de bolsa.
+link: https://es.wikipedia.org/wiki/Camino_aleatorio
+aka:
+  - camino aleatorio
+  - marcha aleatoria

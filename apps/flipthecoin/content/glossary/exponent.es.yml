@@ -1,0 +1,13 @@
+slug: exponente
+_locale: es
+title: Exponente
+description: >-
+  Un pequeño número elevado que indica cuántas veces hay que multiplicar una
+  base por sí misma. Dos con exponente tres significa dos por dos por dos, que
+  es ocho. Los exponentes explican por qué las posibilidades se disparan con los
+  lanzamientos: el número de resultados igualmente probables de n lanzamientos
+  es dos elevado a n, así que diez lanzamientos dan 1024 secuencias distintas de
+  caras y cruces.
+link: https://es.wikipedia.org/wiki/Exponenciaci%C3%B3n
+aka:
+  - potencia

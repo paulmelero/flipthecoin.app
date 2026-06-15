@@ -23,7 +23,7 @@ Matt Parker, del canal [Stand-up Maths](https://www.youtube.com/@standupmaths), 
 
 Sí, $\pi$. _El número de los círculos_. Escondido dentro de lanzamientos de moneda.
 
-En nuestro [artículo anterior sobre el triángulo de Tartaglia](https://flipthecoin.app/es/blog/triangulo-de-tartaglia-combinatoria-y-probabilidad/) vimos cómo un triángulo de sumas sencillas contenía, en su interior, la combinatoria, el álgebra y la probabilidad. Hoy vamos a tirar del mismo hilo. Y nos va a llevar a un lugar que nadie esperaba.
+En nuestro [artículo anterior sobre el triángulo de Tartaglia](https://flipthecoin.app/es/blog/triangulo-de-tartaglia-combinatoria-y-probabilidad/) vimos cómo un triángulo de sumas sencillas contenía, en su interior, la :term[combinatoria]{slug="combinatoria"}, el álgebra y la probabilidad. Hoy vamos a tirar del mismo hilo. Y nos va a llevar a un lugar que nadie esperaba.
 
 <!--more-->
 
@@ -118,11 +118,11 @@ Su historia es en sí misma una historia de conexiones inesperadas. El matemáti
 
 La misma secuencia, descubierta de forma independiente en tres partes del mundo y a lo largo de tres siglos, cada vez en un contexto completamente distinto. Si ese patrón te suena familiar... sigue leyendo.
 
-El $n$-ésimo número de Catalan se define como:
+El $n$-ésimo :term[número de Catalan]{slug="numeros-de-catalan"} se define como:
 
 $$C_n = \frac{1}{n+1}\binom{2n}{n}$$
 
-donde $\binom{2n}{n}$ — se lee «$2n$ sobre $n$» — es el **coeficiente binomial**: el número de formas de elegir $n$ elementos de un conjunto de $2n$. En la práctica, responde a preguntas como «¿de cuántas formas puedo distribuir $n$ caras en $2n$ lanzamientos?» Exploramos esta notación en detalle en el [artículo sobre el triángulo de Tartaglia](https://flipthecoin.app/es/blog/triangulo-de-tartaglia-combinatoria-y-probabilidad/).
+donde $\binom{2n}{n}$ — se lee «$2n$ sobre $n$» — es el :term[coeficiente binomial]{slug="coeficiente-binomial"}: el número de formas de elegir $n$ elementos de un conjunto de $2n$. En la práctica, responde a preguntas como «¿de cuántas formas puedo distribuir $n$ caras en $2n$ lanzamientos?» Exploramos esta notación en detalle en el [artículo sobre el triángulo de Tartaglia](https://flipthecoin.app/es/blog/triangulo-de-tartaglia-combinatoria-y-probabilidad/).
 
 Comprobemos con nuestros datos:
 
@@ -136,7 +136,7 @@ Exacto. Los números de Catalan cuentan precisamente cuántas secuencias de lanz
 
 ## La conexión con el triángulo de Tartaglia
 
-Hay otra forma de ver por qué aparecen los números de Catalan aquí. Pensemos en cada secuencia de lanzamientos como un **camino** en una retícula: cara sube un paso, cruz baja un paso. El número total de caminos de longitud $2n+1$ que terminan un paso por encima de cero es el coeficiente binomial $\binom{2n+1}{n+1}$ — una entrada del triángulo de Tartaglia. Los números de Catalan cuentan sólo los caminos que nunca cruzan por encima de cero antes del paso final. Son, literalmente, una selección filtrada dentro del triángulo — la misma herramienta que usamos en el [artículo anterior](https://flipthecoin.app/es/blog/triangulo-de-tartaglia-combinatoria-y-probabilidad/) para contar combinaciones de monedas, ahora con una restricción adicional. Si quieres explorar esta conexión en más detalle, Matt Parker la explica de forma brillante en [su vídeo](https://www.youtube.com/watch?v=kahGSss6SsU).
+Hay otra forma de ver por qué aparecen los números de Catalan aquí. Pensemos en cada secuencia de lanzamientos como un **camino** en una retícula: cara sube un paso, cruz baja un paso. El número total de caminos de longitud $2n+1$ que terminan un paso por encima de cero es el coeficiente binomial $\binom{2n+1}{n+1}$ — una entrada del :term[triángulo de Tartaglia]{slug="triangulo-de-pascal"}. Los números de Catalan cuentan sólo los caminos que nunca cruzan por encima de cero antes del paso final. Son, literalmente, una selección filtrada dentro del triángulo — la misma herramienta que usamos en el [artículo anterior](https://flipthecoin.app/es/blog/triangulo-de-tartaglia-combinatoria-y-probabilidad/) para contar combinaciones de monedas, ahora con una restricción adicional. Si quieres explorar esta conexión en más detalle, Matt Parker la explica de forma brillante en [su vídeo](https://www.youtube.com/watch?v=kahGSss6SsU).
 
 ## La serie infinita
 

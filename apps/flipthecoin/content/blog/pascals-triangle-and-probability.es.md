@@ -19,7 +19,7 @@ tags:
 
 # ¿Qué tienen en común el triángulo de Tartaglia y una moneda?
 
-Existe un triángulo de números que lleva siglos fascinando a matemáticos y matemáticas de todo el mundo. Su construcción es tan sencilla que un niño o niña podría dibujarlo en un cuaderno. Y sin embargo, dentro de sus filas se esconde una conexión profunda entre tres ramas de las matemáticas que, a primera vista, no parecen tener nada que ver entre sí: la combinatoria, el álgebra y la probabilidad. Lo más sorprendente es que esa conexión se revela con algo tan cotidiano como lanzar una moneda.
+Existe un triángulo de números que lleva siglos fascinando a matemáticos y matemáticas de todo el mundo. Su construcción es tan sencilla que un niño o niña podría dibujarlo en un cuaderno. Y sin embargo, dentro de sus filas se esconde una conexión profunda entre tres ramas de las matemáticas que, a primera vista, no parecen tener nada que ver entre sí: la :term[combinatoria]{slug="combinatoria"}, el álgebra y la probabilidad. Lo más sorprendente es que esa conexión se revela con algo tan cotidiano como lanzar una moneda.
 
 <!--more-->
 
@@ -56,7 +56,7 @@ Fíjate en la fila 4: $1, 4, 6, 4, 1$. El $6$ del centro viene de sumar los dos 
 
 ### Los coeficientes binomiales
 
-Cada número del triángulo tiene un nombre formal: es un **coeficiente binomial**. Se escribe así:
+Cada número del triángulo tiene un nombre formal: es un :term[coeficiente binomial]{slug="coeficiente-binomial"}. Se escribe así:
 
 $$\binom{n}{k}$$
 
@@ -82,7 +82,7 @@ La **combinatoria** es la rama de las matemáticas que estudia cuántas maneras 
 
 Para entender por qué esto es útil, pensemos en lanzar una moneda. Cada lanzamiento tiene dos resultados posibles: **cara** (O) o **cruz** (X). Si lanzamos la moneda una vez, hay $2$ resultados. Si la lanzamos dos veces, cada uno de los 2 resultados del primer lanzamiento se combina con los 2 del segundo, dando $2 \times 2 = 4$ resultados. Con tres lanzamientos, $2 \times 2 \times 2 = 8$.
 
-Ese patrón se expresa con un **exponente**:
+Ese patrón se expresa con un :term[exponente]{slug="exponente"}:
 
 $$2^n$$
 

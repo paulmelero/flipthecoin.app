@@ -86,7 +86,7 @@ That's the **inclusion–exclusion principle**, and the deeper version is a topi
 
 Two events are **independent** when the outcome of one doesn't change the probability of the other. Coin flips are the textbook example: the coin has no memory, so a run of ten heads in a row doesn't make tails any more likely on the eleventh flip.
 
-This is the setup behind the famous **Gambler's Fallacy**, which I unpack in [the statistics article](https://flipthecoin.app/blog/the-unexpected-statistics-of-coin-flips#the-gamblers-fallacy). For now, the short version: each flip is a fresh start.
+This is the setup behind the famous :term[Gambler's Fallacy]{slug="gamblers-fallacy"}, which I unpack in [the statistics article](https://flipthecoin.app/blog/the-unexpected-statistics-of-coin-flips#the-gamblers-fallacy). For now, the short version: each flip is a fresh start.
 
 ## Conclusion
 

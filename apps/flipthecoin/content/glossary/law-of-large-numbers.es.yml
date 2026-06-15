@@ -1,0 +1,14 @@
+slug: ley-de-los-grandes-numeros
+_locale: es
+title: La ley de los grandes números
+description: >-
+  A medida que repites un experimento aleatorio más y más veces, el promedio
+  observado se acerca al valor esperado. Lanza una moneda justa muchas veces y
+  la proporción de caras tiende a 0,5. Es clave que no "compensa" las rachas
+  cortas: una racha de caras nunca se corrige con lanzamientos futuros. Solo la
+  proporción a largo plazo se estabiliza, mientras el recuento de caras puede
+  seguir desviándose.
+link: https://es.wikipedia.org/wiki/Ley_de_losw_grandes_n%C3%BAmeros
+aka:
+  - ley de los grandes números
+  - lgn

@@ -1,0 +1,13 @@
+slug: pascals-triangle
+_locale: en
+title: Pascal's triangle
+description: >-
+  A triangular array of numbers where each entry is the sum of the two directly
+  above it, starting from a single 1 at the top. Each row lists the binomial
+  coefficients, which count the head-and-tail combinations for a given number of
+  flips: row four, for example, reads 1, 4, 6, 4, 1 — the number of ways to get
+  zero, one, two, three or four heads in four coin flips.
+link: https://en.wikipedia.org/wiki/Pascal%27s_triangle
+aka:
+  - triangle of tartaglia
+  - tartaglia's triangle

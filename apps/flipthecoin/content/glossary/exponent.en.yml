@@ -1,0 +1,12 @@
+slug: exponent
+_locale: en
+title: Exponent
+description: >-
+  A small raised number that tells you how many times to multiply a base by
+  itself. Two with an exponent of three means two times two times two, which is
+  eight. Exponents explain why possibilities explode with coin flips: the number
+  of equally likely outcomes of n flips is two to the power n, so ten flips give
+  1024 distinct head-and-tail sequences.
+link: https://en.wikipedia.org/wiki/Exponentiation
+aka:
+  - power

@@ -11,4 +11,10 @@ https://flipthecoin.app/
 - [ ] Social media links
 - [x] OG image
 - [ ] ~Analytics~ (not needed for now...)
-- [ ] Sitemap
+- [x] Sitemap
+
+## Development
+
+### Series and Glossary terms
+
+- When adding new terms or series, re-run `pnpm og` to update the OG images.

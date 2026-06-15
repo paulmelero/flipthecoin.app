@@ -74,6 +74,7 @@ export default defineNuxtConfig({
     '/terms': { prerender: true },
     '/about-us': { prerender: true },
     '/blog/**': { prerender: true },
+    '/glossary/**': { prerender: true },
     '/sitemap.xml': { prerender: true },
     '/robots.txt': { prerender: true },
   },
@@ -95,7 +96,14 @@ export default defineNuxtConfig({
     },
     prerender: {
       crawlLinks: true,
-      ignore: [/^\/(en|es)\/(en|es)(\/|$)/],
+      // Skip invalid double-locale paths and locale-prefixed API routes: the
+      // i18n module mirrors `prerender.routes` under /es, but the glossary API
+      // isn't localized, so /es/api/glossary/* 404s. The canonical
+      // /api/glossary/{en,es} (what useGlossary fetches) still prerenders.
+      ignore: [/^\/(en|es)\/(en|es)(\/|$)/, /^\/(en|es)\/api\//],
+      // Glossary index JSON is fetched client-side on hover, so it is never
+      // crawled from a link — list it explicitly so it ships as a static asset.
+      routes: ['/api/glossary/en', '/api/glossary/es'],
     },
   },
   compatibilityDate: '2025-01-10',

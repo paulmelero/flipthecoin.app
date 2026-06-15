@@ -1,0 +1,13 @@
+slug: distribucion-binomial
+_locale: es
+title: Distribución binomial
+description: >-
+  La distribución de probabilidad del número de éxitos en un número fijo de
+  ensayos independientes de sí/no, cada uno con la misma probabilidad de éxito.
+  El ejemplo clásico es el número de caras en 10 lanzamientos de una moneda
+  justa: obtener cero o diez caras es raro, mientras que los recuentos cercanos
+  a cinco son los más probables. Su forma es simétrica y acampanada cuando la
+  probabilidad de éxito es un medio.
+link: https://es.wikipedia.org/wiki/Distribuci%C3%B3n_binomial
+aka:
+  - ley binomial

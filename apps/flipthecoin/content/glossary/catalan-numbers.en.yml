@@ -1,0 +1,12 @@
+slug: catalan-numbers
+_locale: en
+title: Catalan numbers
+description: >-
+  A famous sequence of whole numbers — 1, 1, 2, 5, 14, 42 and so on — that
+  counts a surprising range of balanced or recursive structures. They appear in
+  coin-flip and ballot problems, for instance counting paths of heads and tails
+  that never let one side fall behind the other. They turn up naturally in
+  random walks and in many counting puzzles across combinatorics.
+link: https://en.wikipedia.org/wiki/Catalan_number
+aka:
+  - catalan sequence

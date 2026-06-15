@@ -40,7 +40,7 @@ For this study, they were condecorated with the [Ig Nobel Prize](https://improba
 
 ## The Gambler's Fallacy
 
-One common misconception about coin flips is known as The Gambler's Fallacy. This is the misconception that if a coin has landed on heads several times in a row, it is more likely to land on tails on the next flip. In reality, each coin flip is independent of the ones that came before it, and the outcome of one flip does not affect the outcome of the next flip.
+One common misconception about coin flips is known as The :term[Gambler's Fallacy]{slug="gamblers-fallacy"}. This is the misconception that if a coin has landed on heads several times in a row, it is more likely to land on tails on the next flip. In reality, each coin flip is independent of the ones that came before it, and the outcome of one flip does not affect the outcome of the next flip.
 
 It is related to a statistics topic called "independence". In statistics, two events are said to be **independent** if the occurrence of one event does not affect the probability of the other event. In the case of coin flips, each flip is an independent event, and the outcome of one flip does not affect the outcome of the next flip.
 
@@ -50,7 +50,7 @@ An example of dependant events would be drawing cards from a deck without replac
 
 ## The Law of Large Numbers
 
-The law of large numbers states that the more times you flip a coin, the closer the results will get to the theoretical 50/50 split. For example, if you flip a coin 10 times, you might get 6 heads and 4 tails. But if you flip a coin 1 million times, you are more likely to get closer to a 50/50 split.
+The :term[law of large numbers]{slug="law-of-large-numbers"} states that the more times you flip a coin, the closer the results will get to the theoretical 50/50 split. For example, if you flip a coin 10 times, you might get 6 heads and 4 tails. But if you flip a coin 1 million times, you are more likely to get closer to a 50/50 split.
 
 In practice, the law of large numbers is not always perfect. There will still be some variation in the results, even with a **very large** number of flips. But the more times you flip the coin, the closer the results will get to the theoretical 50/50 split.
 
@@ -58,9 +58,9 @@ In practice, the law of large numbers is not always perfect. There will still be
 
 In theory, the more times you flip a coin, the closer the results will get to a 50/50 split. But do you reach a point where the results are exactly 50/50?
 
-The answer is no. Even if you flip a coin an infinite number of times, you will never get exactly a 50/50 split. This is related to the concept of **standard deviation** in statistics. The standard deviation measures how spread out the values in a data set are. In the case of coin flips, the standard deviation measures how far the results are from the theoretical 50/50 split.
+The answer is no. Even if you flip a coin an infinite number of times, you will never get exactly a 50/50 split. This is related to the concept of :term[standard deviation]{slug="standard-deviation"} in statistics. The standard deviation measures how spread out the values in a data set are. In the case of coin flips, the standard deviation measures how far the results are from the theoretical 50/50 split.
 
-Imagine we toss the coin 1000 times. The probability of getting **exactly** 500 heads and 500 tails is very low. In fact, it is somewhere around 2.5% ([source](https://www.wolframalpha.com/input?i=probability+of+getting+exactly+500+heads+and+500+tails+in+1000+flips+of+a+fair+coin)). The ranges, such as 95% of the time falling between 469 and 530 heads or 99% of the time between 450 and 550 heads, are derived using the **binomial distribution** and **standard deviation**. These statistical tools help describe the spread of outcomes in repeated trials. To clarify, this means 99% of the times you flip a coin 1000 times, the result will fall within this range.
+Imagine we toss the coin 1000 times. The probability of getting **exactly** 500 heads and 500 tails is very low. In fact, it is somewhere around 2.5% ([source](https://www.wolframalpha.com/input?i=probability+of+getting+exactly+500+heads+and+500+tails+in+1000+flips+of+a+fair+coin)). The ranges, such as 95% of the time falling between 469 and 530 heads or 99% of the time between 450 and 550 heads, are derived using the :term[binomial distribution]{slug="binomial-distribution"} and **standard deviation**. These statistical tools help describe the spread of outcomes in repeated trials. To clarify, this means 99% of the times you flip a coin 1000 times, the result will fall within this range.
 
 ## Conclusion
 

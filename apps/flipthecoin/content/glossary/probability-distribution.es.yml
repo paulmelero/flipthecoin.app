@@ -1,0 +1,13 @@
+slug: distribucion-de-probabilidad
+_locale: es
+title: Distribución de probabilidad
+description: >-
+  Una descripción que asigna una probabilidad a cada resultado posible de un
+  proceso aleatorio, de modo que todas las probabilidades suman 1. Para el
+  lanzamiento de una sola moneda justa la distribución es simplemente cara 0,5 y
+  cruz 0,5. En situaciones más ricas, como el número de caras en muchos
+  lanzamientos, reparte la probabilidad entre muchos resultados y revela cuáles
+  son frecuentes y cuáles raros.
+link: https://es.wikipedia.org/wiki/Distribuci%C3%B3n_de_probabilidad
+aka:
+  - distribución

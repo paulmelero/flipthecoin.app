@@ -45,24 +45,39 @@ const locales = [
 
 type LocaleCode = (typeof locales)[number]['code'];
 
-const blogPathPattern = /\/blog\/([^/?#]+)\/?$/;
+// Collections whose detail pages use per-locale slugs. Switching locale on these
+// must map to the SIBLING's translated slug (via the shared filename stem), not
+// reuse the current slug under the other prefix — that would link to a
+// non-existent page and get crawled into soft-404 ghosts at build time.
+const SLUG_ROUTES = [
+  { collection: 'blog', prefix: '/blog', pattern: /\/blog\/([^/?#]+)\/?$/ },
+  {
+    collection: 'glossary',
+    prefix: '/glossary',
+    pattern: /\/glossary\/([^/?#]+)\/?$/,
+  },
+] as const;
 
-const currentBlogSlug = computed(() => {
-  const match = route.path.match(blogPathPattern);
-  return match ? decodeURIComponent(match[1] ?? '') : null;
+const matchedRoute = computed(() => {
+  for (const cfg of SLUG_ROUTES) {
+    const match = route.path.match(cfg.pattern);
+    if (match) return { ...cfg, slug: decodeURIComponent(match[1] ?? '') };
+  }
+  return null;
 });
 
-const { data: blogSiblings } = await useAsyncData(
-  () => `locale-switcher-blog-${$getLocale()}-${currentBlogSlug.value}`,
+const { data: siblings } = await useAsyncData(
+  () => `locale-switcher-${$getLocale()}-${route.path}`,
   async () => {
-    if (!currentBlogSlug.value) return null;
-    const current = await queryCollection('blog')
-      .where('slug', '=', currentBlogSlug.value)
+    const ctx = matchedRoute.value;
+    if (!ctx) return null;
+    const current = await queryCollection(ctx.collection)
+      .where('slug', '=', ctx.slug)
       .where('_locale', '=', $getLocale())
       .first();
     if (!current?.stem) return null;
     const baseStem = String(current.stem).replace(/\.[a-z]{2}$/i, '');
-    const rows = await queryCollection('blog')
+    const rows = await queryCollection(ctx.collection)
       .where('stem', 'LIKE', `${baseStem}.%`)
       .all();
     const map: Record<string, string> = {};
@@ -73,18 +88,21 @@ const { data: blogSiblings } = await useAsyncData(
     }
     return map;
   },
-  { watch: [currentBlogSlug, () => $getLocale()] },
+  { watch: [() => route.path, () => $getLocale()] },
 );
 
 const targetsFor = (code: LocaleCode) => {
   if ($getLocale() === code) return route.path;
 
-  const siblingSlug = blogSiblings.value?.[code];
-  if (siblingSlug) {
-    return pathForLocale(code, `/blog/${siblingSlug}`);
-  }
-  if (currentBlogSlug.value) {
-    return pathForLocale(code, '/blog');
+  const ctx = matchedRoute.value;
+  if (ctx) {
+    const siblingSlug = siblings.value?.[code];
+    // Translated slug when the sibling exists; otherwise fall back to the
+    // section index rather than emitting a wrong-slug (soft-404) link.
+    return pathForLocale(
+      code,
+      siblingSlug ? `${ctx.prefix}/${siblingSlug}` : ctx.prefix,
+    );
   }
   return $switchLocaleRoute(code);
 };

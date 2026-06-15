@@ -21,6 +21,12 @@ const STATIC_PAGES = [
     changefreq: 'weekly',
   },
   {
+    path: '/glossary/',
+    esPart: '/es/glossary/',
+    priority: '0.7',
+    changefreq: 'weekly',
+  },
+  {
     path: '/about-us/',
     esPart: '/es/about-us/',
     priority: '0.6',
@@ -160,6 +166,40 @@ export default defineEventHandler(async (event) => {
     })
     .join('');
 
+  // Glossary term pages (/glossary/:slug/). Terms use per-locale slugs but share
+  // one filename stem across locales, so pair en↔es by base stem (like blog).
+  const glossaryRows = await queryCollection(event, 'glossary').all();
+  const glossaryByStem = new Map<string, Record<string, { slug: string }>>();
+  for (const row of glossaryRows) {
+    const slug = (row.slug as string) ?? '';
+    if (!slug) continue;
+    const baseStem = String(row.stem ?? '').replace(/\.[a-z]{2}$/i, '');
+    if (!glossaryByStem.has(baseStem)) glossaryByStem.set(baseStem, {});
+    const locale = (row._locale as string) ?? 'en';
+    glossaryByStem.get(baseStem)![locale] = { slug };
+  }
+
+  const glossaryEntries = [...glossaryByStem.values()]
+    .map((locales) => {
+      const en = locales['en'];
+      const es = locales['es'];
+      if (!en && !es) return '';
+      const enHref = en ? `${BASE}/glossary/${en.slug}/` : '';
+      const esHref = es ? `${BASE}/es/glossary/${es.slug}/` : '';
+      if (!enHref || !esHref) {
+        const href = enHref || esHref;
+        return `
+  <url>
+    <loc>${href}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>`;
+      }
+      return urlEntry(enHref, esHref, today, 'monthly', '0.6');
+    })
+    .join('');
+
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -168,6 +208,7 @@ export default defineEventHandler(async (event) => {
 ${staticEntries}
 ${blogEntries}
 ${seriesEntries}
+${glossaryEntries}
 </urlset>`;
 
   setHeader(event, 'Content-Type', 'application/xml');

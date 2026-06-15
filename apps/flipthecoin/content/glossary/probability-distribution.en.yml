@@ -1,0 +1,12 @@
+slug: probability-distribution
+_locale: en
+title: Probability distribution
+description: >-
+  A description that assigns a probability to each possible outcome of a random
+  process, with all the probabilities adding up to 1. For a single fair coin
+  flip the distribution is simply heads 0.5 and tails 0.5. For richer setups,
+  like the number of heads in many flips, it spreads probability across many
+  outcomes and reveals which results are common and which are rare.
+link: https://en.wikipedia.org/wiki/Probability_distribution
+aka:
+  - distribution

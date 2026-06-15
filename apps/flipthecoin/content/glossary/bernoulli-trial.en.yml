@@ -1,0 +1,12 @@
+slug: bernoulli-trial
+_locale: en
+title: Bernoulli trial
+description: >-
+  A single random experiment with exactly two possible outcomes, usually called
+  success and failure. A single coin flip is the textbook example: heads or
+  tails, with a fixed probability for each. String many independent Bernoulli
+  trials together and you build up richer ideas like the binomial distribution,
+  which counts the successes across a whole batch of flips.
+link: https://en.wikipedia.org/wiki/Bernoulli_trial
+aka:
+  - binomial trial

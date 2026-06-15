@@ -1,0 +1,12 @@
+slug: central-limit-theorem
+_locale: en
+title: Central Limit Theorem
+description: >-
+  A cornerstone result saying that when you add up or average many independent
+  random variables, the result tends toward a normal, bell-shaped distribution —
+  no matter what the original distribution looked like. It is why the count of
+  heads over many coin flips piles up symmetrically around the expected value
+  and traces out a smooth bell curve as the number of flips grows.
+link: https://en.wikipedia.org/wiki/Central_limit_theorem
+aka:
+  - clt

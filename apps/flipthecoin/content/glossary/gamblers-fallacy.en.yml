@@ -1,0 +1,12 @@
+slug: gamblers-fallacy
+_locale: en
+title: The gambler's fallacy
+description: >-
+  The mistaken belief that past independent results change the odds of what
+  comes next. After a run of heads, it feels like tails is "due" — but a fair
+  coin has no memory, so every flip stays an even 50/50. Streaks happen by
+  chance and do not make the opposite outcome more likely on the next toss.
+link: https://en.wikipedia.org/wiki/Gambler%27s_fallacy
+aka:
+  - monte carlo fallacy
+  - fallacy of the maturity of chances

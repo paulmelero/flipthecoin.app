@@ -21,10 +21,12 @@ const repoRoot = resolve(__dirname, '..');
 const APP = resolve(repoRoot, 'apps/flipthecoin');
 const BLOG_DIR = resolve(APP, 'content/blog');
 const SERIES_DIR = resolve(APP, 'content/series');
+const GLOSSARY_DIR = resolve(APP, 'content/glossary');
 const AUTHORS_DIR = resolve(APP, 'content/authors');
 const PUBLIC_DIR = resolve(APP, 'public');
 const OUT_DIR = resolve(PUBLIC_DIR, 'img/og/blog');
 const OUT_DIR_SERIES = resolve(PUBLIC_DIR, 'img/og/series');
+const OUT_DIR_GLOSSARY = resolve(PUBLIC_DIR, 'img/og/glossary');
 
 // Dark (Dracula) theme tokens — the app's dark daisyui theme.
 const COLORS = {
@@ -420,6 +422,78 @@ async function renderAllSeries() {
   for (const f of files) await renderSeries(f, members);
 }
 
+// ── Glossary OG images ───────────────────────────────────────────────────────
+// Reuses the shared card with a "DEFINITION" / "DEFINICIÓN" pill, mirroring the
+// "definition" badge shown next to the term title on /glossary/:term.
+function glossaryBadge(locale) {
+  return locale === 'es' ? 'DEFINICIÓN' : 'DEFINITION';
+}
+
+// Localized title for the glossary index OG (index-<locale>.png), referenced by
+// app/pages/glossary/index.vue.
+function glossaryIndexTitle(locale) {
+  return locale === 'es'
+    ? 'Glosario de probabilidad y estadística'
+    : 'Glossary of probability & statistics';
+}
+
+async function renderGlossaryTerm(file) {
+  // Glossary files are plain YAML (like series); only title/slug/_locale are
+  // single-line scalars, which parseScalars handles (the folded `description`
+  // block is ignored, and unused here).
+  const fm = parseScalars(await readFile(file, 'utf8'));
+  if (!fm.slug || !fm._locale) {
+    console.warn(`⚠ skipping ${basename(file)} — missing slug/_locale`);
+    return;
+  }
+  const author = await resolveAuthor(fm.author);
+  const svg = await satori(
+    card({
+      title: fm.title || fm.slug,
+      author,
+      badge: glossaryBadge(fm._locale),
+    }),
+    { width: 1200, height: 630, fonts },
+  );
+  const png = new Resvg(svg).render().asPng();
+  const outPath = resolve(OUT_DIR_GLOSSARY, `${fm.slug}-${fm._locale}.png`);
+  await writeFile(outPath, png);
+  console.log(`✔ ${outPath}`);
+}
+
+async function renderGlossaryIndex(locale) {
+  const author = await resolveAuthor();
+  const svg = await satori(
+    card({
+      title: glossaryIndexTitle(locale),
+      author,
+      badge: glossaryBadge(locale),
+    }),
+    { width: 1200, height: 630, fonts },
+  );
+  const png = new Resvg(svg).render().asPng();
+  const outPath = resolve(OUT_DIR_GLOSSARY, `index-${locale}.png`);
+  await writeFile(outPath, png);
+  console.log(`✔ ${outPath}`);
+}
+
+async function renderAllGlossary() {
+  let entries;
+  try {
+    entries = await readdir(GLOSSARY_DIR);
+  } catch {
+    console.log('No glossary directory to render.');
+    return;
+  }
+  const files = entries
+    .filter((e) => e.endsWith('.yml'))
+    .map((e) => resolve(GLOSSARY_DIR, e));
+  await mkdir(OUT_DIR_GLOSSARY, { recursive: true });
+  await renderGlossaryIndex('en');
+  await renderGlossaryIndex('es');
+  for (const f of files) await renderGlossaryTerm(f);
+}
+
 // ── Resolve input files ──────────────────────────────────────────────────────
 async function resolveInputs(argv) {
   if (argv.length) {
@@ -438,6 +512,8 @@ async function resolveInputs(argv) {
 const argv = process.argv.slice(2);
 if (argv.includes('--series')) {
   await renderAllSeries();
+} else if (argv.includes('--glossary')) {
+  await renderAllGlossary();
 } else {
   const files = await resolveInputs(argv);
   if (!files.length) {

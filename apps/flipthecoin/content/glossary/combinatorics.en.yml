@@ -1,0 +1,12 @@
+slug: combinatorics
+_locale: en
+title: Combinatorics
+description: >-
+  The branch of mathematics concerned with counting, arranging and combining
+  things. It is the toolkit behind probability: before you can say how likely a
+  pattern of coin flips is, you often have to count how many ways it can happen.
+  Combinatorics answers questions like how many distinct sequences of heads and
+  tails exist, or how many of them contain exactly three heads.
+link: https://en.wikipedia.org/wiki/Combinatorics
+aka:
+  - counting

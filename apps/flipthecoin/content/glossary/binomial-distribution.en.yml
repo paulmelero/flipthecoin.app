@@ -1,0 +1,12 @@
+slug: binomial-distribution
+_locale: en
+title: Binomial distribution
+description: >-
+  The probability distribution of the number of successes in a fixed number of
+  independent yes/no trials, each with the same probability of success. The
+  classic example is the number of heads in 10 fair coin flips: getting zero or
+  ten heads is rare, while counts near five are most likely. Its shape is
+  symmetric and bell-like when the success probability is one half.
+link: https://en.wikipedia.org/wiki/Binomial_distribution
+aka:
+  - binomial law

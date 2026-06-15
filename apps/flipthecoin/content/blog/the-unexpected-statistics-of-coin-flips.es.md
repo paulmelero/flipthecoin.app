@@ -40,7 +40,7 @@ Por este estudio, fueron condecorados con el [Premio Ig Nobel](https://improbabl
 
 ## La falacia del jugador
 
-Una idea equivocada común sobre los lanzamientos de moneda se conoce como la Falacia del Jugador. Es la creencia errónea de que, si una moneda ha caído en cara varias veces seguidas, es más probable que caiga en cruz en el siguiente lanzamiento. En realidad, cada lanzamiento es independiente de los anteriores, y el resultado de uno no afecta al resultado del siguiente.
+Una idea equivocada común sobre los lanzamientos de moneda se conoce como la :term[Falacia del Jugador]{slug="falacia-del-jugador"}. Es la creencia errónea de que, si una moneda ha caído en cara varias veces seguidas, es más probable que caiga en cruz en el siguiente lanzamiento. En realidad, cada lanzamiento es independiente de los anteriores, y el resultado de uno no afecta al resultado del siguiente.
 
 Está relacionado con un tema estadístico llamado "independencia". En estadística, dos sucesos se consideran **independientes** si la ocurrencia de uno no afecta a la probabilidad del otro. En el caso de los lanzamientos de moneda, cada lanzamiento es un suceso independiente, y el resultado de uno no afecta al resultado del siguiente.
 
@@ -50,7 +50,7 @@ Un ejemplo de sucesos dependientes sería sacar cartas de una baraja sin reempla
 
 ## La ley de los grandes números
 
-La ley de los grandes números dice que, cuantas más veces lances una moneda, más se acercarán los resultados a la partición teórica 50/50. Por ejemplo, si lanzas una moneda 10 veces, podrías obtener 6 caras y 4 cruces. Pero si la lanzas 1 millón de veces, es más probable que te acerques al 50/50.
+La :term[ley de los grandes números]{slug="ley-de-los-grandes-numeros"} dice que, cuantas más veces lances una moneda, más se acercarán los resultados a la partición teórica 50/50. Por ejemplo, si lanzas una moneda 10 veces, podrías obtener 6 caras y 4 cruces. Pero si la lanzas 1 millón de veces, es más probable que te acerques al 50/50.
 
 En la práctica, la ley de los grandes números no es siempre perfecta. Seguirá habiendo algo de variación en los resultados, incluso con un **número muy grande** de lanzamientos. Pero cuantas más veces lances la moneda, más se acercarán los resultados a la partición teórica 50/50.
 
@@ -58,9 +58,9 @@ En la práctica, la ley de los grandes números no es siempre perfecta. Seguirá
 
 En teoría, cuantas más veces la lances, más se acercarán los resultados a un 50/50. Pero, ¿llegas a un punto en que los resultados son exactamente 50/50?
 
-La respuesta es no. Incluso si lanzas una moneda un número infinito de veces, nunca obtendrás exactamente un 50/50. Esto está relacionado con el concepto de **desviación estándar** en estadística. La desviación estándar mide cómo de dispersos están los valores en un conjunto de datos. En el caso de los lanzamientos, mide cuánto se alejan los resultados de la partición teórica 50/50.
+La respuesta es no. Incluso si lanzas una moneda un número infinito de veces, nunca obtendrás exactamente un 50/50. Esto está relacionado con el concepto de :term[desviación estándar]{slug="desviacion-estandar"} en estadística. La desviación estándar mide cómo de dispersos están los valores en un conjunto de datos. En el caso de los lanzamientos, mide cuánto se alejan los resultados de la partición teórica 50/50.
 
-Imagina que lanzamos la moneda 1000 veces. La probabilidad de obtener **exactamente** 500 caras y 500 cruces es muy baja. De hecho, está alrededor del 2,5% ([fuente](https://www.wolframalpha.com/input?i=probability+of+getting+exactly+500+heads+and+500+tails+in+1000+flips+of+a+fair+coin)). Los rangos, como que el 95% de las veces caiga entre 469 y 530 caras, o el 99% entre 450 y 550, se derivan usando la **distribución binomial** y la **desviación estándar**. Estas herramientas estadísticas ayudan a describir la dispersión de resultados en ensayos repetidos. Para aclarar: esto significa que el 99% de las veces que lanzas una moneda 1000 veces, el resultado cae en ese rango.
+Imagina que lanzamos la moneda 1000 veces. La probabilidad de obtener **exactamente** 500 caras y 500 cruces es muy baja. De hecho, está alrededor del 2,5% ([fuente](https://www.wolframalpha.com/input?i=probability+of+getting+exactly+500+heads+and+500+tails+in+1000+flips+of+a+fair+coin)). Los rangos, como que el 95% de las veces caiga entre 469 y 530 caras, o el 99% entre 450 y 550, se derivan usando la :term[distribución binomial]{slug="distribucion-binomial"} y la **desviación estándar**. Estas herramientas estadísticas ayudan a describir la dispersión de resultados en ensayos repetidos. Para aclarar: esto significa que el 99% de las veces que lanzas una moneda 1000 veces, el resultado cae en ese rango.
 
 ## Conclusión
 

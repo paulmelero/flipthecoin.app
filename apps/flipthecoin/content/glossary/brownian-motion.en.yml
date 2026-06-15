@@ -1,0 +1,12 @@
+slug: brownian-motion
+_locale: en
+title: Brownian motion
+description: >-
+  The random, jittery movement of tiny particles suspended in a fluid, caused by
+  constant collisions with the surrounding molecules. Mathematically it is the
+  continuous-time limit of a random walk: shrink the coin-flip steps smaller and
+  smaller and take more and more of them, and the jagged path smooths into
+  Brownian motion. It underpins models of diffusion and financial markets.
+link: https://en.wikipedia.org/wiki/Brownian_motion
+aka:
+  - wiener process

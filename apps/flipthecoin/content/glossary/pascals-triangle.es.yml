@@ -1,0 +1,13 @@
+slug: triangulo-de-pascal
+_locale: es
+title: Triángulo de Pascal
+description: >-
+  Una disposición triangular de números en la que cada entrada es la suma de las
+  dos que tiene justo encima, partiendo de un único 1 en la cúspide. Cada fila
+  enumera los coeficientes binomiales, que cuentan las combinaciones de caras y
+  cruces para un número dado de lanzamientos: la fila cuatro, por ejemplo, dice
+  1, 4, 6, 4, 1, es decir, las formas de obtener cero, una, dos, tres o cuatro
+  caras en cuatro lanzamientos.
+link: https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_Pascal
+aka:
+  - triángulo de tartaglia

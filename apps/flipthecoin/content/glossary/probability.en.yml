@@ -1,0 +1,13 @@
+slug: probability
+_locale: en
+title: Probability
+description: >-
+  A number between 0 and 1 that measures how likely an event is to happen. 0
+  means impossible, 1 means certain, and 0.5 (or 50%) means equally likely
+  either way — like a single fair coin landing on heads. It can be read as a
+  long-run frequency: flip a fair coin many times and roughly half the tosses
+  come up heads.
+link: https://en.wikipedia.org/wiki/Probability
+aka:
+  - chance
+  - likelihood

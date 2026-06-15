@@ -1,0 +1,13 @@
+slug: standard-deviation
+_locale: en
+title: Standard deviation
+description: >-
+  A measure of how spread out a set of values is around their average. A small
+  standard deviation means most values sit close to the mean; a large one means
+  they are widely scattered. For coin flips it tells you how far the number of
+  heads typically strays from the expected count — for example, in 100 fair
+  flips the head count usually lands within about 5 of fifty.
+link: https://en.wikipedia.org/wiki/Standard_deviation
+aka:
+  - sigma
+  - sd

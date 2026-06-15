@@ -1,0 +1,13 @@
+slug: combinatoria
+_locale: es
+title: Combinatoria
+description: >-
+  La rama de las matemáticas que se ocupa de contar, ordenar y combinar
+  objetos. Es la caja de herramientas que hay detrás de la probabilidad: antes
+  de decir cómo de probable es un patrón de lanzamientos, a menudo hay que
+  contar de cuántas maneras puede ocurrir. La combinatoria responde preguntas
+  como cuántas secuencias distintas de caras y cruces existen, o cuántas de
+  ellas contienen exactamente tres caras.
+link: https://es.wikipedia.org/wiki/Combinatoria
+aka:
+  - análisis combinatorio

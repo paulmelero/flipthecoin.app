@@ -86,7 +86,7 @@ Eso es el **principio de inclusión–exclusión**, y su versión más profunda 
 
 Dos sucesos son **independientes** cuando el resultado de uno no cambia la probabilidad del otro. Los lanzamientos de moneda son el ejemplo de libro: la moneda no tiene memoria, así que una racha de diez caras seguidas no hace que la cruz sea más probable en el undécimo lanzamiento.
 
-Este es el montaje detrás de la famosa **Falacia del jugador**, que desgrano en [el artículo de estadísticas](https://flipthecoin.app/es/blog/la-estadistica-inesperada-de-los-lanzamientos-de-moneda#the-gamblers-fallacy). Por ahora, la versión corta: cada lanzamiento es un nuevo comienzo.
+Este es el montaje detrás de la famosa :term[Falacia del jugador]{slug="falacia-del-jugador"}, que desgrano en [el artículo de estadísticas](https://flipthecoin.app/es/blog/la-estadistica-inesperada-de-los-lanzamientos-de-moneda#the-gamblers-fallacy). Por ahora, la versión corta: cada lanzamiento es un nuevo comienzo.
 
 ## Conclusión
 

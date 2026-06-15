@@ -1,0 +1,12 @@
+slug: law-of-large-numbers
+_locale: en
+title: The law of large numbers
+description: >-
+  As you repeat a random trial more and more times, the observed average gets
+  closer to the expected value. Flip a fair coin many times and the proportion
+  of heads tends toward 0.5. Importantly, it does not "balance out" short runs:
+  a streak of heads is never corrected by future flips. Only the long-run
+  proportion settles down, while the raw count of heads can keep drifting.
+link: https://en.wikipedia.org/wiki/Law_of_large_numbers
+aka:
+  - lln

@@ -32,6 +32,9 @@ const { $t, localePath } = useI18n();
             <span class="text-lg font-bold">{{ $t('footer.projects') }}</span>
           </h4>
           <NuxtLink :to="localePath('/blog')">{{ $t('footer.blog') }}</NuxtLink>
+          <NuxtLink :to="localePath('/glossary')">{{
+            $t('footer.glossary')
+          }}</NuxtLink>
           <NuxtLink :to="localePath('/extension')">{{
             $t('footer.extension')
           }}</NuxtLink>

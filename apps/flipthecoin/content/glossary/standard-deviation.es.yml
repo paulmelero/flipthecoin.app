@@ -1,0 +1,14 @@
+slug: desviacion-estandar
+_locale: es
+title: Desviación estándar
+description: >-
+  Una medida de cuán dispersos están los valores de un conjunto en torno a su
+  media. Una desviación estándar pequeña indica que la mayoría de los valores
+  están cerca de la media; una grande, que están muy repartidos. En los
+  lanzamientos de moneda indica cuánto suele alejarse el número de caras del
+  valor esperado: por ejemplo, en 100 lanzamientos justos el recuento de caras
+  suele quedar a unas 5 unidades de cincuenta.
+link: https://es.wikipedia.org/wiki/Desviaci%C3%B3n_t%C3%ADpica
+aka:
+  - desviación típica
+  - sigma

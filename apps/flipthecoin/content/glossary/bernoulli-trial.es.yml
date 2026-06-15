@@ -1,0 +1,13 @@
+slug: ensayo-de-bernoulli
+_locale: es
+title: Ensayo de Bernoulli
+description: >-
+  Un único experimento aleatorio con exactamente dos resultados posibles,
+  normalmente llamados éxito y fracaso. El lanzamiento de una sola moneda es el
+  ejemplo de manual: cara o cruz, con una probabilidad fija para cada uno. Si
+  encadenas muchos ensayos de Bernoulli independientes, construyes ideas más
+  ricas como la distribución binomial, que cuenta los éxitos en todo un conjunto
+  de lanzamientos.
+link: https://es.wikipedia.org/wiki/Ensayo_de_Bernoulli
+aka:
+  - prueba de bernoulli

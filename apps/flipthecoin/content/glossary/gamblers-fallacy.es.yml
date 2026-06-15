@@ -1,0 +1,12 @@
+slug: falacia-del-jugador
+_locale: es
+title: La falacia del jugador
+description: >-
+  La creencia errónea de que los resultados pasados, siendo independientes,
+  cambian las probabilidades de lo que viene después. Tras una racha de caras,
+  parece que la cruz "ya toca", pero una moneda justa no tiene memoria: cada
+  lanzamiento sigue siendo un 50/50 exacto. Las rachas surgen por azar y no
+  hacen más probable el resultado contrario en el siguiente lanzamiento.
+link: https://es.wikipedia.org/wiki/Falacia_del_jugador
+aka:
+  - falacia de monte carlo
