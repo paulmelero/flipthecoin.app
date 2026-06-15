@@ -7,9 +7,6 @@ main = ".output/server/index.mjs"
 
 assets = { directory = ".output/public", binding = "ASSETS" }
 
-[build]
-command = "pnpm build"
-
 [[kv_namespaces]]
 binding = "flipthecoin_emails_list"
 id = "a456c36d4e14411a8a8a9f6c8d3ff224"
