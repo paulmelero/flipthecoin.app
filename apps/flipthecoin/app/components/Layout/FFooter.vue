@@ -18,7 +18,7 @@ const { $t, localePath } = useI18n();
           <BrandLogo />
         </aside>
 
-        <nav class="mb-4">
+        <nav class="mb-4 gap-4">
           <h4 class="footer-title">
             <span class="text-lg font-bold">{{ $t('footer.company') }}</span>
           </h4>
@@ -27,10 +27,11 @@ const { $t, localePath } = useI18n();
           }}</NuxtLink>
         </nav>
 
-        <nav class="mb-4">
+        <nav class="mb-4 gap-4">
           <h4 class="footer-title">
             <span class="text-lg font-bold">{{ $t('footer.projects') }}</span>
           </h4>
+          <NuxtLink :to="localePath('/play')">{{ $t('footer.play') }}</NuxtLink>
           <NuxtLink :to="localePath('/blog')">{{ $t('footer.blog') }}</NuxtLink>
           <NuxtLink :to="localePath('/glossary')">{{
             $t('footer.glossary')
@@ -40,7 +41,7 @@ const { $t, localePath } = useI18n();
           }}</NuxtLink>
         </nav>
 
-        <nav class="mb-4">
+        <nav class="mb-4 gap-4">
           <h4 class="footer-title">
             <span class="text-lg font-bold">{{ $t('footer.legal') }}</span>
           </h4>

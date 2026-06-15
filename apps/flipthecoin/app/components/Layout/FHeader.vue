@@ -7,7 +7,7 @@ const navLinks = computed(() => [
   { to: localePath('/'), label: $t('nav.home') as string },
   { to: localePath('/play'), label: $t('nav.play') as string },
   { to: localePath('/blog'), label: $t('nav.blog') as string },
-  { to: localePath('/glossary'), label: $t('nav.glossary') as string },
+  // { to: localePath('/glossary'), label: $t('nav.glossary') as string },
   { to: localePath('/extension'), label: $t('nav.extension') as string },
 ]);
 
