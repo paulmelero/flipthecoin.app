@@ -60,7 +60,7 @@ Para demostrar cómo el orden surge del azar, Galton construyó un aparato que l
 
 ## Míralo suceder
 
-Pulsa **Soltar bolas** y observa cómo crece el montón. Cada bola es un pequeño experimento; las pilas que se elevan son la distribución dibujándose a sí misma. Pulsa **Reiniciar** para empezar de nuevo.
+Pulsa **Dejar caer bolas** y observa cómo crece el montón. Cada bola es un pequeño experimento; las pilas que se elevan son la distribución dibujándose a sí misma. Pulsa **Reiniciar** para empezar de nuevo.
 
 ::galton-board
 ::

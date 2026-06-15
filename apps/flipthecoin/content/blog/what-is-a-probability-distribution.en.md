@@ -60,7 +60,7 @@ To demonstrate how order emerges from randomness, Galton built a device he calle
 
 ## See it happen
 
-Press **Drop balls** and watch the pile build. Each ball is one little experiment; the growing stacks are the distribution drawing itself. Press **Reset** to start over.
+Press **Release balls** and watch the pile build. Each ball is one little experiment; the growing stacks are the distribution drawing itself. Press **Reset** to start over.
 
 ::galton-board
 ::
