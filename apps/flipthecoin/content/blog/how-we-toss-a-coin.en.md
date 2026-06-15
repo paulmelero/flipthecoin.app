@@ -14,7 +14,7 @@ The mathematics behind a coin flip is simple: a coin has two sides, heads and ta
 
 <!--more-->
 
-You'd be forgiven for thinking a coin flip in a browser is just `Math.random()` dressed up with a pretty animation. That's one way to do it — and we actually offer that flavour in the [toss engine](https://flipthecoin.app/toss-engine) if you want a clean 50/50 result with no drama.
+You'd be forgiven for thinking a coin flip in a browser is just Javascript's `Math.random()` dressed up with a pretty animation. That's one way to do it — and we actually offer that flavour in the [toss engine](https://flipthecoin.app/toss-engine) if you want a clean 50/50 result with no drama.
 
 But the coin you see on the homepage and in our browser extension isn't "a glorified random number". It's an actual little physics simulation: a disc, a floor, gravity, and a push. Whichever face ends up looking at the ceiling wins. Let's walk through what that means.
 

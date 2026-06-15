@@ -25,7 +25,7 @@ export interface GaltonBoardOptions {
   rows?: number;
   /** Hard cap on simultaneous balls. Default 120. */
   maxBalls?: number;
-  /** Balls released per "Drop balls" press, staggered. Default 60. */
+  /** Balls released per "Release balls" press, staggered. Default 60. */
   ballsPerDrop?: number;
 }
 

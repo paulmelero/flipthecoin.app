@@ -46,6 +46,24 @@ export default defineContentConfig({
         _locale: z.enum(['en', 'es']),
       }),
     }),
+    glossary: defineCollection({
+      type: 'data',
+      source: 'glossary/**.yml',
+      schema: z.object({
+        slug: z.string().min(1),
+        title: z.string().min(1),
+        // Short, plain-language definition shown in the hover preview and on the
+        // standalone term page. Capped at 500 chars (see .pages.yml). Deeper
+        // treatment lives in the linked blog posts / `link` source.
+        description: z.string().min(10).max(500),
+        _locale: z.enum(['en', 'es']),
+        // Authoritative source (usually Wikipedia, sometimes another reference).
+        link: z.string().url().optional(),
+        // Alternative names the term is known by (e.g. "CLT", "triangle of
+        // Tartaglia"). Used for lookups and shown as "also known as".
+        aka: z.array(z.string()).optional(),
+      }),
+    }),
     authors: defineCollection({
       type: 'data',
       source: 'authors/**.yml',

@@ -52,7 +52,7 @@ The interesting part is the **shape**. Extreme results — all heads or all tail
 
 Why exactly those $\binom{n}{k}$ counts appear — and why they are the rows of Pascal's triangle — is a story in itself, told in [What Do Pascal's Triangle and a Coin Have in Common?](https://flipthecoin.app/blog/pascals-triangle-combinatorics-and-coin-flips/). Here we just need the punchline: **add up enough fair, independent choices and the results pile up into a bell.**
 
-## Who was Francis Galton?
+## Enter: Francis Galton
 
 The most charming way to _see_ a binomial distribution was dreamed up by **Sir Francis Galton** (1822–1911), a restless Victorian polymath and a half-cousin of Charles Darwin (they shared a grandfather, Erasmus Darwin). Galton explored south-west Africa as a young man, then spent the rest of his life measuring and counting almost everything he could — weather (he drew the first newspaper weather map), fingerprints, even the supposed "efficacy" of prayer. Along the way he pioneered statistical ideas we still use daily, including **correlation** and **regression toward the mean**.
 
