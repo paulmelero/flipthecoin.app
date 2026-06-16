@@ -116,5 +116,6 @@
   "demo.galton.dropButton": "Dejar caer bolas",
   "demo.galton.dropping": "Cayendo…",
   "demo.galton.full": "Tablero lleno — reinicia para soltar más",
-  "demo.galton.resetButton": "Reiniciar"
+  "demo.galton.resetButton": "Reiniciar",
+  "tryThis.label": "🧪 ¡Inténtalo!"
 }

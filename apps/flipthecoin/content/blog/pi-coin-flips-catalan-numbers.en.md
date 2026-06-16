@@ -38,9 +38,22 @@ The question is: if we repeat this process infinitely many times and compute the
 
 Before answering, let's think about what range that ratio can take. In the best case, the very first flip is heads: we stop immediately and the ratio is $\frac{1}{1} = 1$ (100% heads). In the worst case, we need thousands of flips before heads finally edges ahead by one, and the ratio will be barely above $\frac{1}{2}$. So the average must land somewhere between $0.5$ and $1$. Let's find out exactly where.
 
+## ::try-this
+
+## title: Run it before you read on…
+
+All you need is a coin — or the [flip simulator](/play/).
+
+1. Flip repeatedly, **stop the first time heads outnumber tails**.
+2. Write down the ratio: _heads / total flips_.
+3. Repeat 20 times (💡 _in a class, one run per person works great_).
+
+What is your average ratio across all trials?
+::
+
 ## Building the sequences, step by step
 
-Let's construct the possible sequences starting from the shortest ones. We will use **O** for heads and **X** for tails — the same notation we use in [our coin flip tool](https://flipthecoin.app/play/).
+Let's construct the possible sequences starting from the shortest ones. We will use **O** for heads and **X** for tails — the same notation we use in [our coin flip simulator](https://flipthecoin.app/play/).
 
 ### Length 1
 

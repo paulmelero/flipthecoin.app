@@ -116,5 +116,6 @@
   "demo.galton.dropButton": "Release balls",
   "demo.galton.dropping": "Falling…",
   "demo.galton.full": "Board full — reset to drop more",
-  "demo.galton.resetButton": "Reset"
+  "demo.galton.resetButton": "Reset",
+  "tryThis.label": "🧪 Try This!"
 }

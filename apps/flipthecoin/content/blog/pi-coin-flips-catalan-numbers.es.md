@@ -37,9 +37,22 @@ La pregunta del artículo será: si repetimos este proceso infinitas veces y cal
 
 Antes de responder, pensemos en qué rango puede moverse esa proporción. En el mejor de los casos, el primer lanzamiento es cara: paramos inmediatamente y la proporción es $\frac{1}{1} = 1$ (el 100 % son caras). En el peor, necesitamos miles de lanzamientos hasta que las caras superen a las cruces por uno, y la proporción será apenas superior a $\frac{1}{2}$. Así que la media estará en algún punto entre $0{,}5$ y $1$. Veamos exactamente dónde.
 
+## ::try-this
+
+## title: Pruébalo antes de seguir leyendo…
+
+Solo necesitas una moneda o nuestro [simulador de lanzamientos](/es/play/).
+
+1. Lanza repetidamente, **para la primera vez que las caras superen a las cruces**.
+2. Anota el cociente: _caras / lanzamientos totales_.
+3. Repite 20 veces (💡 _en un instituto, puede hacerse entre todos en clase_).
+
+¿Cuál es tu cociente medio?
+::
+
 ## Construyendo las secuencias, paso a paso
 
-Vamos a construir las secuencias posibles empezando por las más cortas. Usaremos **O** para cara y **X** para cruz — la misma notación que usamos en [nuestra herramienta de lanzamiento](https://flipthecoin.app/es/play/).
+Vamos a construir las secuencias posibles empezando por las más cortas. Usaremos **O** para cara y **X** para cruz — la misma notación que usamos en [nuestro simulador de lanzamientos](https://flipthecoin.app/es/play/).
 
 ### Longitud 1
 
@@ -142,7 +155,7 @@ Hay otra forma de ver por qué aparecen los números de Catalan aquí. Pensemos 
 
 Volvamos a nuestra tabla. La contribución de las secuencias de longitud $2n+1$ al promedio total es:
 
-$$\underbrace{\left(\frac{1}{2}\right)^{2n+1}}_{\text{probabilidad}} \times \underbrace{C_n}_{\text{n.º de secuencias}} \times \underbrace{\frac{n+1}{2n+1}}_{\text{proporción de caras}}$$
+$$\underbrace{\left(\frac{1}{2}\right)^{2n+1}}_{\text{probabilidad}} \times \underbrace{C_n}_{\text{número de secuencias}} \times \underbrace{\frac{n+1}{2n+1}}_{\text{proporción de caras}}$$
 
 Y la proporción media global es la suma de **todas** estas contribuciones, desde $n = 0$ hasta el infinito:
 
