@@ -38,7 +38,7 @@ Esa es toda la idea. Las distribuciones se vuelven interesantes no cuando ocurre
 
 ## La distribución binomial
 
-Ahora lanza una moneda justa $n$ veces y cuenta las caras. El número de caras puede ser cualquier valor entre $0$ y $n$, y las probabilidades de cada conteo forman la :term[distribución binomial]{slug="distribucion-binomial"}: la distribución de "cuántos éxitos hay en $n$ pruebas independientes de sí/no".
+Ahora lanza una moneda justa $n$ veces y cuenta las caras. El número de caras puede ser cualquier valor entre $0$ y $n$, y las probabilidades de cada conteo forman la :term[distribución binomial]{slug='distribucion-binomial'}: la distribución de "cuántos éxitos hay en $n$ pruebas independientes de sí/no".
 
 Para una moneda justa, su fórmula es:
 
@@ -50,7 +50,7 @@ $$P(k) = \binom{n}{k}\, p^{k} (1-p)^{n-k}$$
 
 Lo interesante es la **forma**. Los resultados extremos —todo caras o todo cruces— son raros, porque solo hay _una_ manera de obtener cada uno. Los resultados intermedios son frecuentes, porque hay _muchas_ ordenaciones distintas que caen ahí. Si dibujas las probabilidades obtienes una joroba alta en el centro y fina en los bordes: el comienzo de la famosa **campana de Gauss**.
 
-Por qué aparecen exactamente esos conteos $\binom{n}{k}$ —y por qué son las filas del :term[triángulo de Tartaglia]{slug="triangulo-de-pascal"}— es una historia en sí misma, contada en [¿Qué tienen en común el triángulo de Tartaglia y una moneda?](https://flipthecoin.app/es/blog/triangulo-de-tartaglia-combinatoria-y-probabilidad/). Aquí solo necesitamos la conclusión: **suma suficientes elecciones justas e independientes y los resultados se acumulan formando una campana.**
+Por qué aparecen exactamente esos conteos $\binom{n}{k}$ —y por qué son las filas del :term[triángulo de Tartaglia]{slug='triangulo-de-pascal'}— es una historia en sí misma, contada en [¿Qué tienen en común el triángulo de Tartaglia y una moneda?](https://flipthecoin.app/es/blog/triangulo-de-tartaglia-combinatoria-y-probabilidad/). Aquí solo necesitamos la conclusión: **suma suficientes elecciones justas e independientes y los resultados se acumulan formando una campana.**
 
 ## ¿Quién fue Francis Galton?
 

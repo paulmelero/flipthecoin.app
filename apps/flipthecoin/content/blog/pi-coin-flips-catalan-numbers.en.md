@@ -24,7 +24,7 @@ Matt Parker, from the [Stand-up Maths](https://www.youtube.com/@standupmaths) ch
 
 Yes, $\pi$. _The number that belongs to circles_. Hiding inside coin flips.
 
-In our [previous article on Pascal's triangle](https://flipthecoin.app/blog/pascals-triangle-combinatorics-and-coin-flips/) we saw how a triangle built from simple addition contained, within its rows, the seeds of :term[combinatorics]{slug="combinatorics"}, algebra, and probability. Today we are going to pull on that same thread. And it will take us somewhere no one expected.
+In our [previous article on Pascal's triangle](https://flipthecoin.app/blog/pascals-triangle-combinatorics-and-coin-flips/) we saw how a triangle built from simple addition contained, within its rows, the seeds of :term[combinatorics]{slug='combinatorics'}, algebra, and probability. Today we are going to pull on that same thread. And it will take us somewhere no one expected.
 
 <!--more-->
 
@@ -38,10 +38,10 @@ The question is: if we repeat this process infinitely many times and compute the
 
 Before answering, let's think about what range that ratio can take. In the best case, the very first flip is heads: we stop immediately and the ratio is $\frac{1}{1} = 1$ (100% heads). In the worst case, we need thousands of flips before heads finally edges ahead by one, and the ratio will be barely above $\frac{1}{2}$. So the average must land somewhere between $0.5$ and $1$. Let's find out exactly where.
 
-## ::try-this
-
-## title: Run it before you read on…
-
+::try-this
+---
+title: Run it before you read on…
+---
 All you need is a coin — or the [flip simulator](/play/).
 
 1. Flip repeatedly, **stop the first time heads outnumber tails**.
@@ -132,11 +132,11 @@ Their history is itself a story of unexpected connections. The Mongolian mathema
 
 The same sequence, discovered independently across three corners of the world and three centuries, each time in a completely different context. If that pattern sounds familiar... keep reading.
 
-The $n$-th :term[Catalan number]{slug="catalan-numbers"} is defined as:
+The $n$-th :term[Catalan number]{slug='catalan-numbers'} is defined as:
 
 $$C_n = \frac{1}{n+1}\binom{2n}{n}$$
 
-where $\binom{2n}{n}$ — read "$2n$ choose $n$" — is the :term[binomial coefficient]{slug="binomial-coefficient"}: the number of ways to pick $n$ elements from a set of $2n$. In practice, it answers questions like "how many ways can I arrange $n$ heads among $2n$ flips?" We explored this notation in detail in the [article on Pascal's triangle](https://flipthecoin.app/blog/pascals-triangle-combinatorics-and-coin-flips/).
+where $\binom{2n}{n}$ — read "$2n$ choose $n$" — is the :term[binomial coefficient]{slug='binomial-coefficient'}: the number of ways to pick $n$ elements from a set of $2n$. In practice, it answers questions like "how many ways can I arrange $n$ heads among $2n$ flips?" We explored this notation in detail in the [article on Pascal's triangle](https://flipthecoin.app/blog/pascals-triangle-combinatorics-and-coin-flips/).
 
 Let's verify against our data:
 
@@ -150,7 +150,7 @@ A perfect match. The Catalan numbers count precisely how many flip sequences end
 
 ## The connection to Pascal's triangle
 
-There is another way to see why the Catalan numbers appear here. Think of each flip sequence as a **path** on a lattice: heads moves one step up, tails moves one step down. The total number of paths of length $2n+1$ that end one step above zero is the binomial coefficient $\binom{2n+1}{n+1}$ — an entry in :term[Pascal's triangle]{slug="pascals-triangle"}. The Catalan numbers count only the paths that never cross above zero before the final step. They are, quite literally, a filtered selection within the triangle — the same tool we used in the [previous article](https://flipthecoin.app/blog/pascals-triangle-combinatorics-and-coin-flips/) to count coin combinations, now with an additional constraint. If you want to explore this connection in more depth, Matt Parker covers it brilliantly in [his video](https://www.youtube.com/watch?v=kahGSss6SsU).
+There is another way to see why the Catalan numbers appear here. Think of each flip sequence as a **path** on a lattice: heads moves one step up, tails moves one step down. The total number of paths of length $2n+1$ that end one step above zero is the binomial coefficient $\binom{2n+1}{n+1}$ — an entry in :term[Pascal's triangle]{slug='pascals-triangle'}. The Catalan numbers count only the paths that never cross above zero before the final step. They are, quite literally, a filtered selection within the triangle — the same tool we used in the [previous article](https://flipthecoin.app/blog/pascals-triangle-combinatorics-and-coin-flips/) to count coin combinations, now with an additional constraint. If you want to explore this connection in more depth, Matt Parker covers it brilliantly in [his video](https://www.youtube.com/watch?v=kahGSss6SsU).
 
 ## The infinite series
 

@@ -31,6 +31,9 @@ importers:
       prettier:
         specifier: 3.5.3
         version: 3.5.3
+      prettier-plugin-mdc:
+        specifier: ^0.2.1
+        version: 0.2.1(prettier@3.5.3)
       satori:
         specifier: ^0.26.0
         version: 0.26.0
@@ -106,7 +109,7 @@ importers:
         version: 3.4.0(magicast@0.5.2)(typescript@5.8.2)
       '@nuxt/fonts':
         specifier: ^0.10.3
-        version: 0.10.3(@netlify/blobs@9.1.2)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))
+        version: 0.10.3(@netlify/blobs@9.1.2)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))
       '@nuxtjs/color-mode':
         specifier: ^3.5.2
         version: 3.5.2(magicast@0.5.2)
@@ -121,7 +124,7 @@ importers:
         version: 0.16.45
       nuxt-i18n-micro:
         specifier: ^1.102.0
-        version: 1.102.0(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(vue-router@5.0.6(@vue/compiler-sfc@3.5.33)(vue@3.5.33(typescript@5.8.2)))
+        version: 1.102.0(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(vue-router@5.0.6(@vue/compiler-sfc@3.5.33)(vue@3.5.33(typescript@5.8.2)))
       rehype-katex:
         specifier: ^7.0.0
         version: 7.0.1
@@ -146,7 +149,7 @@ importers:
         version: 5.0.1(vue@3.5.33(typescript@5.8.2))
       '@nuxt/devtools':
         specifier: ^2.6.2
-        version: 2.6.2(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(vue@3.5.33(typescript@5.8.2))
+        version: 2.6.2(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(vue@3.5.33(typescript@5.8.2))
       '@nuxt/kit':
         specifier: 4.4.2
         version: 4.4.2(magicast@0.5.2)
@@ -164,7 +167,7 @@ importers:
         version: 0.156.0
       '@vitejs/plugin-vue':
         specifier: ^5.0.4
-        version: 5.2.3(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(vue@3.5.33(typescript@5.8.2))
+        version: 5.2.3(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(vue@3.5.33(typescript@5.8.2))
       '@vue/test-utils':
         specifier: ^2.4.8
         version: 2.4.8(@vue/compiler-dom@3.5.33)(@vue/server-renderer@3.5.33(vue@3.5.33(typescript@5.8.2)))(vue@3.5.33(typescript@5.8.2))
@@ -182,7 +185,7 @@ importers:
         version: 0.2.2
       nuxt:
         specifier: 4.4.2
-        version: 4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.4.5)(@emnapi/runtime@1.10.0)(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.6)(@types/node@24.0.15)(@vue/compiler-sfc@3.5.33)(better-sqlite3@11.9.1)(cac@6.7.14)(commander@13.1.0)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(yaml@2.8.3)
+        version: 4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.4.5)(@emnapi/runtime@1.10.0)(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.6)(@types/node@24.0.15)(@vue/compiler-sfc@3.5.33)(better-sqlite3@11.9.1)(cac@6.7.14)(commander@13.1.0)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(yaml@2.8.3)
       playwright:
         specifier: ^1.59.1
         version: 1.59.1
@@ -191,7 +194,7 @@ importers:
         version: 5.1.1(vue@3.5.33(typescript@5.8.2))
       vitest:
         specifier: ^4.1.5
-        version: 4.1.5(@types/node@24.0.15)(happy-dom@20.9.0)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))
+        version: 4.1.5(@types/node@24.0.15)(happy-dom@20.9.0)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))
       wrangler:
         specifier: ^4.4.0
         version: 4.4.0
@@ -5583,6 +5586,12 @@ packages:
         integrity: sha512-GwLTyxkCXjXbxqIhTsMI2Nui8huMPtnxg7krajPJAjnEG/iiOS7i+zCtWGZR9G0NBKbXKh6X9m9UIsYX/N6vvQ==,
       }
 
+  fault@2.0.1:
+    resolution:
+      {
+        integrity: sha512-WtySTkS4OKev5JtpHXnib4Gxiurzh5NCGvWrFaZ34m6JehfTUhKZvn9njTfw48t6JumVQOmrKqpmGcdwxnhqBQ==,
+      }
+
   fdir@6.5.0:
     resolution:
       {
@@ -5660,6 +5669,13 @@ packages:
         integrity: sha512-gIXjKqtFuWEgzFRJA9WCQeSJLZDjgJUOMCMzxtvFq/37KojM1BFGufqsCy0r4qSQmYLsZYMeyRqzIWOMup03sw==,
       }
     engines: { node: '>=14' }
+
+  format@0.2.2:
+    resolution:
+      {
+        integrity: sha512-wzsgA6WOq+09wrU1tsJ09udeR/YZRaeArL9e1wPbFg3GG2yDnC2ldKpxs4xunpFF9DgqCqOIra3bc1HWrJ37Ww==,
+      }
+    engines: { node: '>=0.4.x' }
 
   formdata-polyfill@4.0.10:
     resolution:
@@ -6885,6 +6901,18 @@ packages:
         integrity: sha512-uZhTV/8NBuw0WHkPTrCqDOl0zVe1BIng5ZtHoDk49ME1qqcjYmmLmOf0gELgcRMxN4w2iuIeVso5/6QymSrgmA==,
       }
 
+  mdast-util-from-markdown@2.0.3:
+    resolution:
+      {
+        integrity: sha512-W4mAWTvSlKvf8L6J+VN9yLSqQ9AOAAvHuoDAmPkz4dHf553m5gVj2ejadHJhoJmcmxEnOv6Pa8XJhpxE93kb8Q==,
+      }
+
+  mdast-util-frontmatter@2.0.1:
+    resolution:
+      {
+        integrity: sha512-LRqI9+wdgC25P0URIJY9vwocIzCcksduHQ9OF2joxQoyTNVduwLAFUzjoopuRJbJAReaKrNQKAZKL3uCMugWJA==,
+      }
+
   mdast-util-gfm-autolink-literal@2.0.1:
     resolution:
       {
@@ -7012,6 +7040,12 @@ packages:
     resolution:
       {
         integrity: sha512-RDBrHEMSxVFLg6xvnXmb1Ayr2WzLAWjeSATAoxwKYJV94TeNavgoIdA0a9ytzDSVzBy2YKFK+emCPOEibLeCrg==,
+      }
+
+  micromark-extension-frontmatter@2.0.0:
+    resolution:
+      {
+        integrity: sha512-C4AkuM3dA58cgZha7zVnuVxBhDsbttIMiytjgsM2XbHAB2faRVaHRle40558FBN+DJcrLNCoqG5mlrpdU4cRtg==,
       }
 
   micromark-extension-gfm-autolink-literal@2.1.0:
@@ -8390,6 +8424,14 @@ packages:
     deprecated: No longer maintained. Please contact the author of the relevant native addon; alternatives are available.
     hasBin: true
 
+  prettier-plugin-mdc@0.2.1:
+    resolution:
+      {
+        integrity: sha512-7LGSWB+9rWcSLAE7TQ1XcAW2VcfgDrXHi7MPO1h480Nrog2rBemT5DfAnosNfExcPGwlNucQCozsrShQdAxe6w==,
+      }
+    peerDependencies:
+      prettier: '>=3.6.0'
+
   prettier@3.5.3:
     resolution:
       {
@@ -8663,6 +8705,12 @@ packages:
     resolution:
       {
         integrity: sha512-MMqgnP74Igy+S3WwnhQ7kqGlEerTETXMvJhrUzDikVZ2/uogJCb+WHUg97hK9/jcfc0dkD73s3LN8zU49cTEtA==,
+      }
+
+  remark-mdc@3.11.0:
+    resolution:
+      {
+        integrity: sha512-xFrKmGRa+xgsfAZPA2CDaKILSHSOhX2irjJBrrPLxNrxaz2NFI+gXuVjo6Bkbh2vx7fKKTB5S9yyKyIwJh+FsQ==,
       }
 
   remark-mdc@3.5.3:
@@ -9758,6 +9806,12 @@ packages:
         integrity: sha512-L/PqWzfTP9lzzEa6CKs0k2nARxTdZduw3zyh8d2NVBnsyvHjSX4TWse388YrrQKbvI8w20fGjGlhgT96WwKykw==,
       }
 
+  unist-util-visit-parents@6.0.2:
+    resolution:
+      {
+        integrity: sha512-goh1s1TBrqSqukSc8wrjwWhL0hiJxgA8m4kFxGlQ+8FYQ3C/m11FcTs4YYem7V664AhHVvgoQLk890Ssdsr2IQ==,
+      }
+
   unist-util-visit@5.1.0:
     resolution:
       {
@@ -10471,6 +10525,14 @@ packages:
     resolution:
       {
         integrity: sha512-AvbaCLOO2Otw/lW5bmh9d/WEdcDFdQp2Z2ZUH3pX9U2ihyUY0nvLv7J6TrWowklRGPYbB/IuIMfYgxaCPg5Bpg==,
+      }
+    engines: { node: '>= 14.6' }
+    hasBin: true
+
+  yaml@2.9.0:
+    resolution:
+      {
+        integrity: sha512-2AvhNX3mb8zd6Zy7INTtSpl1F15HW6Wnqj0srWlkKLcpYl/gMIMJiyuGq2KeI2YFxUPjdlB+3Lc10seMLtL4cA==,
       }
     engines: { node: '>= 14.6' }
     hasBin: true
@@ -11490,36 +11552,36 @@ snapshots:
 
   '@nuxt/devalue@2.0.2': {}
 
-  '@nuxt/devtools-kit@1.7.0(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))':
+  '@nuxt/devtools-kit@1.7.0(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))':
     dependencies:
       '@nuxt/kit': 3.17.7(magicast@0.5.2)
       '@nuxt/schema': 3.16.1
       execa: 7.2.0
-      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
+      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)
     transitivePeerDependencies:
       - magicast
 
-  '@nuxt/devtools-kit@2.6.2(magicast@0.3.5)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))':
+  '@nuxt/devtools-kit@2.6.2(magicast@0.3.5)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))':
     dependencies:
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
       execa: 8.0.1
-      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
+      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)
     transitivePeerDependencies:
       - magicast
 
-  '@nuxt/devtools-kit@2.7.0(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))':
+  '@nuxt/devtools-kit@2.7.0(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))':
     dependencies:
       '@nuxt/kit': 3.21.2(magicast@0.5.2)
       execa: 8.0.1
-      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
+      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)
     transitivePeerDependencies:
       - magicast
 
-  '@nuxt/devtools-kit@3.2.4(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))':
+  '@nuxt/devtools-kit@3.2.4(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))':
     dependencies:
       '@nuxt/kit': 4.4.2(magicast@0.5.2)
       execa: 8.0.1
-      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
+      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)
     transitivePeerDependencies:
       - magicast
 
@@ -11545,12 +11607,12 @@ snapshots:
       pkg-types: 2.3.0
       semver: 7.7.4
 
-  '@nuxt/devtools@2.6.2(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(vue@3.5.33(typescript@5.8.2))':
+  '@nuxt/devtools@2.6.2(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(vue@3.5.33(typescript@5.8.2))':
     dependencies:
-      '@nuxt/devtools-kit': 2.6.2(magicast@0.3.5)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))
+      '@nuxt/devtools-kit': 2.6.2(magicast@0.3.5)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))
       '@nuxt/devtools-wizard': 2.6.2
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
-      '@vue/devtools-core': 7.7.7(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(vue@3.5.33(typescript@5.8.2))
+      '@vue/devtools-core': 7.7.7(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(vue@3.5.33(typescript@5.8.2))
       '@vue/devtools-kit': 7.7.7
       birpc: 2.9.0
       consola: 3.4.2
@@ -11575,9 +11637,9 @@ snapshots:
       sirv: 3.0.2
       structured-clone-es: 1.0.0
       tinyglobby: 0.2.16
-      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
-      vite-plugin-inspect: 11.3.3(@nuxt/kit@3.17.7(magicast@0.3.5))(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))
-      vite-plugin-vue-tracer: 1.3.0(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(vue@3.5.33(typescript@5.8.2))
+      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)
+      vite-plugin-inspect: 11.3.3(@nuxt/kit@3.17.7(magicast@0.3.5))(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))
+      vite-plugin-vue-tracer: 1.3.0(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(vue@3.5.33(typescript@5.8.2))
       which: 5.0.0
       ws: 8.20.0
     transitivePeerDependencies:
@@ -11586,9 +11648,9 @@ snapshots:
       - utf-8-validate
       - vue
 
-  '@nuxt/devtools@3.2.4(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(vue@3.5.33(typescript@5.8.2))':
+  '@nuxt/devtools@3.2.4(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(vue@3.5.33(typescript@5.8.2))':
     dependencies:
-      '@nuxt/devtools-kit': 3.2.4(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))
+      '@nuxt/devtools-kit': 3.2.4(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))
       '@nuxt/devtools-wizard': 3.2.4
       '@nuxt/kit': 4.4.2(magicast@0.5.2)
       '@vue/devtools-core': 8.1.1(vue@3.5.33(typescript@5.8.2))
@@ -11616,9 +11678,9 @@ snapshots:
       sirv: 3.0.2
       structured-clone-es: 2.0.0
       tinyglobby: 0.2.16
-      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
-      vite-plugin-inspect: 11.3.3(@nuxt/kit@4.4.2(magicast@0.5.2))(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))
-      vite-plugin-vue-tracer: 1.3.0(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(vue@3.5.33(typescript@5.8.2))
+      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)
+      vite-plugin-inspect: 11.3.3(@nuxt/kit@4.4.2(magicast@0.5.2))(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))
+      vite-plugin-vue-tracer: 1.3.0(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(vue@3.5.33(typescript@5.8.2))
       which: 6.0.1
       ws: 8.20.0
     transitivePeerDependencies:
@@ -11627,9 +11689,9 @@ snapshots:
       - utf-8-validate
       - vue
 
-  '@nuxt/fonts@0.10.3(@netlify/blobs@9.1.2)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))':
+  '@nuxt/fonts@0.10.3(@netlify/blobs@9.1.2)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))':
     dependencies:
-      '@nuxt/devtools-kit': 1.7.0(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))
+      '@nuxt/devtools-kit': 1.7.0(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))
       '@nuxt/kit': 3.17.7(magicast@0.5.2)
       chalk: 5.4.1
       css-tree: 3.1.0
@@ -11778,7 +11840,7 @@ snapshots:
     transitivePeerDependencies:
       - magicast
 
-  '@nuxt/nitro-server@4.4.2(@babel/core@7.29.0)(@netlify/blobs@9.1.2)(better-sqlite3@11.9.1)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(nuxt@4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.4.5)(@emnapi/runtime@1.10.0)(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.6)(@types/node@24.0.15)(@vue/compiler-sfc@3.5.33)(better-sqlite3@11.9.1)(cac@6.7.14)(commander@13.1.0)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(yaml@2.8.3))(typescript@5.8.2)':
+  '@nuxt/nitro-server@4.4.2(@babel/core@7.29.0)(@netlify/blobs@9.1.2)(better-sqlite3@11.9.1)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(nuxt@4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.4.5)(@emnapi/runtime@1.10.0)(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.6)(@types/node@24.0.15)(@vue/compiler-sfc@3.5.33)(better-sqlite3@11.9.1)(cac@6.7.14)(commander@13.1.0)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(yaml@2.8.3))(typescript@5.8.2)':
     dependencies:
       '@babel/plugin-syntax-typescript': 7.28.6(@babel/core@7.29.0)
       '@nuxt/devalue': 2.0.2
@@ -11797,7 +11859,7 @@ snapshots:
       klona: 2.0.6
       mocked-exports: 0.1.1
       nitropack: 2.13.3(@netlify/blobs@9.1.2)(better-sqlite3@11.9.1)
-      nuxt: 4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.4.5)(@emnapi/runtime@1.10.0)(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.6)(@types/node@24.0.15)(@vue/compiler-sfc@3.5.33)(better-sqlite3@11.9.1)(cac@6.7.14)(commander@13.1.0)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(yaml@2.8.3)
+      nuxt: 4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.4.5)(@emnapi/runtime@1.10.0)(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.6)(@types/node@24.0.15)(@vue/compiler-sfc@3.5.33)(better-sqlite3@11.9.1)(cac@6.7.14)(commander@13.1.0)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(yaml@2.8.3)
       nypm: 0.6.5
       ohash: 2.0.11
       pathe: 2.0.3
@@ -11868,12 +11930,12 @@ snapshots:
       rc9: 3.0.1
       std-env: 4.1.0
 
-  '@nuxt/vite-builder@4.4.2(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@types/node@24.0.15)(magicast@0.5.2)(nuxt@4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.4.5)(@emnapi/runtime@1.10.0)(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.6)(@types/node@24.0.15)(@vue/compiler-sfc@3.5.33)(better-sqlite3@11.9.1)(cac@6.7.14)(commander@13.1.0)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(yaml@2.8.3))(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vue@3.5.33(typescript@5.8.2))(yaml@2.8.3)':
+  '@nuxt/vite-builder@4.4.2(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@types/node@24.0.15)(magicast@0.5.2)(nuxt@4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.4.5)(@emnapi/runtime@1.10.0)(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.6)(@types/node@24.0.15)(@vue/compiler-sfc@3.5.33)(better-sqlite3@11.9.1)(cac@6.7.14)(commander@13.1.0)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(yaml@2.8.3))(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vue@3.5.33(typescript@5.8.2))(yaml@2.8.3)':
     dependencies:
       '@nuxt/kit': 4.4.2(magicast@0.5.2)
       '@rollup/plugin-replace': 6.0.3(rollup@4.60.2)
-      '@vitejs/plugin-vue': 6.0.6(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(vue@3.5.33(typescript@5.8.2))
-      '@vitejs/plugin-vue-jsx': 5.1.5(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(vue@3.5.33(typescript@5.8.2))
+      '@vitejs/plugin-vue': 6.0.6(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(vue@3.5.33(typescript@5.8.2))
+      '@vitejs/plugin-vue-jsx': 5.1.5(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(vue@3.5.33(typescript@5.8.2))
       autoprefixer: 10.5.0(postcss@8.5.10)
       consola: 3.4.2
       cssnano: 7.1.7(postcss@8.5.10)
@@ -11886,7 +11948,7 @@ snapshots:
       magic-string: 0.30.21
       mlly: 1.8.2
       mocked-exports: 0.1.1
-      nuxt: 4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.4.5)(@emnapi/runtime@1.10.0)(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.6)(@types/node@24.0.15)(@vue/compiler-sfc@3.5.33)(better-sqlite3@11.9.1)(cac@6.7.14)(commander@13.1.0)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(yaml@2.8.3)
+      nuxt: 4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.4.5)(@emnapi/runtime@1.10.0)(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.6)(@types/node@24.0.15)(@vue/compiler-sfc@3.5.33)(better-sqlite3@11.9.1)(cac@6.7.14)(commander@13.1.0)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(yaml@2.8.3)
       nypm: 0.6.5
       pathe: 2.0.3
       pkg-types: 2.3.0
@@ -11897,7 +11959,7 @@ snapshots:
       unenv: 2.0.0-rc.24
       vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
       vite-node: 5.3.0(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
-      vite-plugin-checker: 0.12.0(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))
+      vite-plugin-checker: 0.12.0(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))
       vue: 3.5.33(typescript@5.8.2)
       vue-bundle-renderer: 2.2.0
     optionalDependencies:
@@ -12670,14 +12732,14 @@ snapshots:
       - rollup
       - supports-color
 
-  '@vitejs/plugin-vue-jsx@5.1.5(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(vue@3.5.33(typescript@5.8.2))':
+  '@vitejs/plugin-vue-jsx@5.1.5(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(vue@3.5.33(typescript@5.8.2))':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/plugin-syntax-typescript': 7.28.6(@babel/core@7.29.0)
       '@babel/plugin-transform-typescript': 7.28.6(@babel/core@7.29.0)
       '@rolldown/pluginutils': 1.0.0-rc.17
       '@vue/babel-plugin-jsx': 2.0.1(@babel/core@7.29.0)
-      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
+      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)
       vue: 3.5.33(typescript@5.8.2)
     transitivePeerDependencies:
       - supports-color
@@ -12687,15 +12749,15 @@ snapshots:
       vite: 5.4.14(@types/node@24.0.15)(terser@5.39.0)
       vue: 3.5.33(typescript@5.8.2)
 
-  '@vitejs/plugin-vue@5.2.3(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(vue@3.5.33(typescript@5.8.2))':
+  '@vitejs/plugin-vue@5.2.3(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(vue@3.5.33(typescript@5.8.2))':
     dependencies:
-      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
+      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)
       vue: 3.5.33(typescript@5.8.2)
 
-  '@vitejs/plugin-vue@6.0.6(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(vue@3.5.33(typescript@5.8.2))':
+  '@vitejs/plugin-vue@6.0.6(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(vue@3.5.33(typescript@5.8.2))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-rc.13
-      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
+      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)
       vue: 3.5.33(typescript@5.8.2)
 
   '@vitest/expect@4.1.5':
@@ -12707,13 +12769,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@4.1.5(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))':
+  '@vitest/mocker@4.1.5(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))':
     dependencies:
       '@vitest/spy': 4.1.5
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
+      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)
 
   '@vitest/pretty-format@4.1.5':
     dependencies:
@@ -12829,14 +12891,14 @@ snapshots:
     dependencies:
       '@vue/devtools-kit': 8.1.1
 
-  '@vue/devtools-core@7.7.7(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(vue@3.5.33(typescript@5.8.2))':
+  '@vue/devtools-core@7.7.7(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(vue@3.5.33(typescript@5.8.2))':
     dependencies:
       '@vue/devtools-kit': 7.7.7
       '@vue/devtools-shared': 7.7.7
       mitt: 3.0.1
       nanoid: 5.1.5
       pathe: 2.0.3
-      vite-hot-client: 2.1.0(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))
+      vite-hot-client: 2.1.0(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))
       vue: 3.5.33(typescript@5.8.2)
     transitivePeerDependencies:
       - vite
@@ -13889,6 +13951,10 @@ snapshots:
     dependencies:
       reusify: 1.1.0
 
+  fault@2.0.1:
+    dependencies:
+      format: 0.2.2
+
   fdir@6.5.0(picomatch@4.0.4):
     optionalDependencies:
       picomatch: 4.0.4
@@ -13946,6 +14012,8 @@ snapshots:
     dependencies:
       cross-spawn: 7.0.6
       signal-exit: 4.1.0
+
+  format@0.2.2: {}
 
   formdata-polyfill@4.0.10:
     dependencies:
@@ -14789,6 +14857,34 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  mdast-util-from-markdown@2.0.3:
+    dependencies:
+      '@types/mdast': 4.0.4
+      '@types/unist': 3.0.3
+      decode-named-character-reference: 1.1.0
+      devlop: 1.1.0
+      mdast-util-to-string: 4.0.0
+      micromark: 4.0.2
+      micromark-util-decode-numeric-character-reference: 2.0.2
+      micromark-util-decode-string: 2.0.1
+      micromark-util-normalize-identifier: 2.0.1
+      micromark-util-symbol: 2.0.1
+      micromark-util-types: 2.0.2
+      unist-util-stringify-position: 4.0.0
+    transitivePeerDependencies:
+      - supports-color
+
+  mdast-util-frontmatter@2.0.1:
+    dependencies:
+      '@types/mdast': 4.0.4
+      devlop: 1.1.0
+      escape-string-regexp: 5.0.0
+      mdast-util-from-markdown: 2.0.2
+      mdast-util-to-markdown: 2.1.2
+      micromark-extension-frontmatter: 2.0.0
+    transitivePeerDependencies:
+      - supports-color
+
   mdast-util-gfm-autolink-literal@2.0.1:
     dependencies:
       '@types/mdast': 4.0.4
@@ -14926,6 +15022,13 @@ snapshots:
       micromark-util-normalize-identifier: 2.0.1
       micromark-util-resolve-all: 2.0.1
       micromark-util-subtokenize: 2.1.0
+      micromark-util-symbol: 2.0.1
+      micromark-util-types: 2.0.2
+
+  micromark-extension-frontmatter@2.0.0:
+    dependencies:
+      fault: 2.0.1
+      micromark-util-character: 2.1.1
       micromark-util-symbol: 2.0.1
       micromark-util-types: 2.0.2
 
@@ -15421,9 +15524,9 @@ snapshots:
 
   nuxt-i18n-micro-types@1.0.3: {}
 
-  nuxt-i18n-micro@1.102.0(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(vue-router@5.0.6(@vue/compiler-sfc@3.5.33)(vue@3.5.33(typescript@5.8.2))):
+  nuxt-i18n-micro@1.102.0(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(vue-router@5.0.6(@vue/compiler-sfc@3.5.33)(vue@3.5.33(typescript@5.8.2))):
     dependencies:
-      '@nuxt/devtools-kit': 2.7.0(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))
+      '@nuxt/devtools-kit': 2.7.0(magicast@0.5.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))
       '@nuxt/kit': 4.4.2(magicast@0.5.2)
       chokidar: 3.6.0
       globby: 14.1.0
@@ -15440,16 +15543,16 @@ snapshots:
       - magicast
       - vite
 
-  nuxt@4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.4.5)(@emnapi/runtime@1.10.0)(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.6)(@types/node@24.0.15)(@vue/compiler-sfc@3.5.33)(better-sqlite3@11.9.1)(cac@6.7.14)(commander@13.1.0)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(yaml@2.8.3):
+  nuxt@4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.4.5)(@emnapi/runtime@1.10.0)(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.6)(@types/node@24.0.15)(@vue/compiler-sfc@3.5.33)(better-sqlite3@11.9.1)(cac@6.7.14)(commander@13.1.0)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(yaml@2.8.3):
     dependencies:
       '@dxup/nuxt': 0.4.1(magicast@0.5.2)(typescript@5.8.2)
       '@nuxt/cli': 3.34.0(@nuxt/schema@4.4.2)(cac@6.7.14)(commander@13.1.0)(magicast@0.5.2)
-      '@nuxt/devtools': 3.2.4(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(vue@3.5.33(typescript@5.8.2))
+      '@nuxt/devtools': 3.2.4(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(vue@3.5.33(typescript@5.8.2))
       '@nuxt/kit': 4.4.2(magicast@0.5.2)
-      '@nuxt/nitro-server': 4.4.2(@babel/core@7.29.0)(@netlify/blobs@9.1.2)(better-sqlite3@11.9.1)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(nuxt@4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.4.5)(@emnapi/runtime@1.10.0)(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.6)(@types/node@24.0.15)(@vue/compiler-sfc@3.5.33)(better-sqlite3@11.9.1)(cac@6.7.14)(commander@13.1.0)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(yaml@2.8.3))(typescript@5.8.2)
+      '@nuxt/nitro-server': 4.4.2(@babel/core@7.29.0)(@netlify/blobs@9.1.2)(better-sqlite3@11.9.1)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(nuxt@4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.4.5)(@emnapi/runtime@1.10.0)(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.6)(@types/node@24.0.15)(@vue/compiler-sfc@3.5.33)(better-sqlite3@11.9.1)(cac@6.7.14)(commander@13.1.0)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(yaml@2.8.3))(typescript@5.8.2)
       '@nuxt/schema': 4.4.2
       '@nuxt/telemetry': 2.8.0(@nuxt/kit@4.4.2(magicast@0.5.2))
-      '@nuxt/vite-builder': 4.4.2(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@types/node@24.0.15)(magicast@0.5.2)(nuxt@4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.4.5)(@emnapi/runtime@1.10.0)(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.6)(@types/node@24.0.15)(@vue/compiler-sfc@3.5.33)(better-sqlite3@11.9.1)(cac@6.7.14)(commander@13.1.0)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(yaml@2.8.3))(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vue@3.5.33(typescript@5.8.2))(yaml@2.8.3)
+      '@nuxt/vite-builder': 4.4.2(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@types/node@24.0.15)(magicast@0.5.2)(nuxt@4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.4.5)(@emnapi/runtime@1.10.0)(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.6)(@types/node@24.0.15)(@vue/compiler-sfc@3.5.33)(better-sqlite3@11.9.1)(cac@6.7.14)(commander@13.1.0)(db0@0.3.4(better-sqlite3@11.9.1))(ioredis@5.10.1)(magicast@0.5.2)(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(yaml@2.8.3))(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.39.0)(typescript@5.8.2)(vue@3.5.33(typescript@5.8.2))(yaml@2.8.3)
       '@unhead/vue': 2.1.13(vue@3.5.33(typescript@5.8.2))
       '@vue/shared': 3.5.33
       c12: 3.3.4(magicast@0.5.2)
@@ -16090,6 +16193,22 @@ snapshots:
       tar-fs: 2.1.2
       tunnel-agent: 0.6.0
 
+  prettier-plugin-mdc@0.2.1(prettier@3.5.3):
+    dependencies:
+      '@types/mdast': 4.0.4
+      '@types/unist': 3.0.3
+      mdast-util-from-markdown: 2.0.2
+      mdast-util-frontmatter: 2.0.1
+      mdast-util-gfm: 3.1.0
+      mdast-util-math: 3.0.0
+      micromark-extension-frontmatter: 2.0.0
+      micromark-extension-gfm: 3.0.0
+      micromark-extension-math: 3.1.0
+      prettier: 3.5.3
+      remark-mdc: 3.11.0
+    transitivePeerDependencies:
+      - supports-color
+
   prettier@3.5.3: {}
 
   pretty-bytes@7.1.0: {}
@@ -16283,6 +16402,29 @@ snapshots:
       mdast-util-math: 3.0.0
       micromark-extension-math: 3.1.0
       unified: 11.0.5
+    transitivePeerDependencies:
+      - supports-color
+
+  remark-mdc@3.11.0:
+    dependencies:
+      '@types/mdast': 4.0.4
+      '@types/unist': 3.0.3
+      flat: 6.0.1
+      mdast-util-from-markdown: 2.0.3
+      mdast-util-to-markdown: 2.1.2
+      micromark: 4.0.2
+      micromark-core-commonmark: 2.0.3
+      micromark-factory-space: 2.0.1
+      micromark-factory-whitespace: 2.0.1
+      micromark-util-character: 2.1.1
+      micromark-util-types: 2.0.2
+      parse-entities: 4.0.2
+      scule: 1.3.0
+      stringify-entities: 4.0.4
+      unified: 11.0.5
+      unist-util-visit: 5.1.0
+      unist-util-visit-parents: 6.0.2
+      yaml: 2.9.0
     transitivePeerDependencies:
       - supports-color
 
@@ -17110,6 +17252,11 @@ snapshots:
       '@types/unist': 3.0.3
       unist-util-is: 6.0.0
 
+  unist-util-visit-parents@6.0.2:
+    dependencies:
+      '@types/unist': 3.0.3
+      unist-util-is: 6.0.0
+
   unist-util-visit@5.1.0:
     dependencies:
       '@types/unist': 3.0.3
@@ -17231,15 +17378,15 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vite-dev-rpc@1.1.0(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)):
+  vite-dev-rpc@1.1.0(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)):
     dependencies:
       birpc: 2.9.0
-      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
-      vite-hot-client: 2.1.0(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))
+      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)
+      vite-hot-client: 2.1.0(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))
 
-  vite-hot-client@2.1.0(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)):
+  vite-hot-client@2.1.0(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)):
     dependencies:
-      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
+      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)
 
   vite-node@5.3.0(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3):
     dependencies:
@@ -17261,7 +17408,7 @@ snapshots:
       - tsx
       - yaml
 
-  vite-plugin-checker@0.12.0(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)):
+  vite-plugin-checker@0.12.0(typescript@5.8.2)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)):
     dependencies:
       '@babel/code-frame': 7.29.0
       chokidar: 4.0.3
@@ -17270,12 +17417,12 @@ snapshots:
       picomatch: 4.0.4
       tiny-invariant: 1.3.3
       tinyglobby: 0.2.16
-      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
+      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)
       vscode-uri: 3.1.0
     optionalDependencies:
       typescript: 5.8.2
 
-  vite-plugin-inspect@11.3.3(@nuxt/kit@3.17.7(magicast@0.3.5))(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)):
+  vite-plugin-inspect@11.3.3(@nuxt/kit@3.17.7(magicast@0.3.5))(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)):
     dependencies:
       ansis: 4.1.0
       debug: 4.4.3
@@ -17285,14 +17432,14 @@ snapshots:
       perfect-debounce: 2.1.0
       sirv: 3.0.2
       unplugin-utils: 0.3.1
-      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
-      vite-dev-rpc: 1.1.0(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))
+      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)
+      vite-dev-rpc: 1.1.0(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))
     optionalDependencies:
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
     transitivePeerDependencies:
       - supports-color
 
-  vite-plugin-inspect@11.3.3(@nuxt/kit@4.4.2(magicast@0.5.2))(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)):
+  vite-plugin-inspect@11.3.3(@nuxt/kit@4.4.2(magicast@0.5.2))(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)):
     dependencies:
       ansis: 4.1.0
       debug: 4.4.3
@@ -17302,21 +17449,21 @@ snapshots:
       perfect-debounce: 2.1.0
       sirv: 3.0.2
       unplugin-utils: 0.3.1
-      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
-      vite-dev-rpc: 1.1.0(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))
+      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)
+      vite-dev-rpc: 1.1.0(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))
     optionalDependencies:
       '@nuxt/kit': 4.4.2(magicast@0.5.2)
     transitivePeerDependencies:
       - supports-color
 
-  vite-plugin-vue-tracer@1.3.0(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))(vue@3.5.33(typescript@5.8.2)):
+  vite-plugin-vue-tracer@1.3.0(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))(vue@3.5.33(typescript@5.8.2)):
     dependencies:
       estree-walker: 3.0.3
       exsolve: 1.0.8
       magic-string: 0.30.21
       pathe: 2.0.3
       source-map-js: 1.2.1
-      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
+      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)
       vue: 3.5.33(typescript@5.8.2)
 
   vite-svg-loader@5.1.1(vue@3.5.33(typescript@5.8.2)):
@@ -17352,10 +17499,25 @@ snapshots:
       terser: 5.39.0
       yaml: 2.8.3
 
-  vitest@4.1.5(@types/node@24.0.15)(happy-dom@20.9.0)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)):
+  vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0):
+    dependencies:
+      esbuild: 0.27.7
+      fdir: 6.5.0(picomatch@4.0.4)
+      picomatch: 4.0.4
+      postcss: 8.5.10
+      rollup: 4.60.2
+      tinyglobby: 0.2.16
+    optionalDependencies:
+      '@types/node': 24.0.15
+      fsevents: 2.3.3
+      jiti: 2.6.1
+      terser: 5.39.0
+      yaml: 2.9.0
+
+  vitest@4.1.5(@types/node@24.0.15)(happy-dom@20.9.0)(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)):
     dependencies:
       '@vitest/expect': 4.1.5
-      '@vitest/mocker': 4.1.5(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3))
+      '@vitest/mocker': 4.1.5(vite@7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0))
       '@vitest/pretty-format': 4.1.5
       '@vitest/runner': 4.1.5
       '@vitest/snapshot': 4.1.5
@@ -17372,7 +17534,7 @@ snapshots:
       tinyexec: 1.1.1
       tinyglobby: 0.2.16
       tinyrainbow: 3.1.0
-      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.8.3)
+      vite: 7.3.2(@types/node@24.0.15)(jiti@2.6.1)(terser@5.39.0)(yaml@2.9.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 24.0.15
@@ -17548,6 +17710,8 @@ snapshots:
   yallist@5.0.0: {}
 
   yaml@2.8.3: {}
+
+  yaml@2.9.0: {}
 
   yargs-parser@21.1.1: {}
 
