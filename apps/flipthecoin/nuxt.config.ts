@@ -28,6 +28,9 @@ export default defineNuxtConfig({
         '@brand': fileURLToPath(new URL('./public', import.meta.url)),
       },
     },
+    optimizeDeps: {
+      include: [],
+    },
   },
   app: {
     head: {
@@ -106,7 +109,7 @@ export default defineNuxtConfig({
       routes: ['/api/glossary/en', '/api/glossary/es'],
     },
   },
-  compatibilityDate: '2025-01-10',
+  compatibilityDate: '2026-08-14',
   modules: [
     'nitro-cloudflare-dev',
     '@nuxtjs/color-mode',

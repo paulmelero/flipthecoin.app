@@ -84,7 +84,7 @@ useHead({
 
 <template>
   <div
-    class="grid grid-rows-[auto_auto] lg:grid-rows-[1fr_auto] gap-4 lg:gap-6 lg:min-h-[calc(100dvh-7rem)]"
+    class="grid grid-rows-[auto_auto] lg:grid-rows-[1fr_auto] gap-4 lg:gap-6 max-h-[calc(100dvh-7rem)]"
   >
     <div
       class="relative rounded-3xl overflow-hidden border border-base-content/5 aspect-square lg:aspect-auto"
