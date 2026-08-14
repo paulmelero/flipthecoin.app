@@ -3,7 +3,7 @@ const { $t, localePath } = useI18n();
 </script>
 
 <template>
-  <section class="relative isolate overflow-hidden bg-base-200/60 rounded-2xl">
+  <section class="relative isolate overflow-hidden rounded-2xl">
     <HomeHeroMathBackdrop class="text-base-content" />
 
     <div
@@ -31,9 +31,8 @@ const { $t, localePath } = useI18n();
       </div>
 
       <div class="lg:col-span-5 order-1 lg:order-2">
-        <NuxtLink
-          :to="localePath('/play')"
-          class="group relative block w-full max-w-[460px] aspect-square mx-auto rounded-3xl bg-gradient-to-br from-primary/25 via-primary/5 to-secondary/20 border border-primary/15 shadow-2xl backdrop-blur-sm transition-transform duration-500 hover:-rotate-2 hover:scale-[1.02] overflow-hidden"
+        <div
+          class="group relative block w-full max-w-[460px] aspect-square mx-auto rounded-3xl overflow-hidden"
         >
           <div
             aria-hidden="true"
@@ -55,15 +54,34 @@ const { $t, localePath } = useI18n();
           <img
             src="/img/head.webp"
             alt=""
-            class="absolute inset-0 m-auto w-2/3 h-2/3 object-contain drop-shadow-[0_20px_30px_rgba(212,175,55,0.45)] transition-transform duration-500 group-hover:scale-105"
+            class="hero-coin-poster absolute inset-0 m-auto w-2/3 h-2/3 object-contain drop-shadow-[0_20px_30px_rgba(212,175,55,0.45)]"
           />
+          <NuxtLink
+            :to="localePath('/play')"
+            class="absolute inset-0 z-10"
+            :aria-label="$t('home.hero.playHint') as string"
+          ></NuxtLink>
           <span
-            class="absolute bottom-4 inset-x-4 text-center text-xs font-mono uppercase tracking-[0.25em] text-base-content/70 group-hover:text-primary transition"
+            class="absolute bottom-4 inset-x-4 text-center text-xs font-mono uppercase tracking-[0.25em] text-base-content/70"
           >
             {{ $t('home.hero.playHint') }}
           </span>
-        </NuxtLink>
+        </div>
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+.hero-coin-poster {
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+/* When the live 3D coin scene is ready, fade the poster out so the fixed
+   canvas behind the hero takes over seamlessly. */
+:global(html[data-coin-ready='true']) .hero-coin-poster {
+  opacity: 0;
+  transform: scale(1.04);
+}
+</style>

@@ -1,20 +1,24 @@
 <template>
+  <HomeCoinCanvas />
   <HomeHero id="hero" />
-  <HomeFeaturesTriptych />
-  <HomeRecentArticles />
-  <HomeMathMotifDivider />
-  <FJumbo class="prose dark:prose-invert">
-    <ContentRenderer v-if="home" :value="home" />
-  </FJumbo>
-  <FJumbo class="flex flex-col items-center gap-4">
-    <BlogGoToBlogCTA />
-  </FJumbo>
-  <HomeExtensionPromo />
-  <HomeFaq />
-  <div class="divider" />
-  <FJumbo class="min-h-[400px]">
-    <NewsletterForm />
-  </FJumbo>
+  <HomeFlipTheUnknown id="flip-the-unknown" />
+  <div class="relative z-10 bg-base-100">
+    <HomeFeaturesTriptych />
+    <HomeRecentArticles />
+    <HomeMathMotifDivider />
+    <FJumbo class="prose dark:prose-invert">
+      <ContentRenderer v-if="home" :value="home" />
+    </FJumbo>
+    <FJumbo class="flex flex-col items-center gap-4">
+      <BlogGoToBlogCTA />
+    </FJumbo>
+    <HomeExtensionPromo />
+    <HomeFaq />
+    <div class="divider" />
+    <FJumbo class="min-h-[400px]">
+      <NewsletterForm />
+    </FJumbo>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -33,7 +37,8 @@ const { data: home } = await useAsyncData(
 
 useSeoMeta({
   title: () => home.value?.title,
-  description: () => home.value?.description ?? $t('app.description'),
+  description: () =>
+    home.value?.description ?? ($t('app.description') as string),
 });
 
 const faqSchema = computed(() => ({

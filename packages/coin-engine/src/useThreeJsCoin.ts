@@ -5,12 +5,14 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { gsap } from 'gsap';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
+import {
+  createSceneLighting,
+  createCoinMesh,
+  DEFAULT_COIN_ASSETS,
+  type CoinAssetUrls,
+} from './coin-scene';
 
-export interface CoinAssetUrls {
-  heads?: string;
-  tails?: string;
-  font?: string;
-}
+export type { CoinAssetUrls } from './coin-scene';
 
 export type CoinResult = 'Heads' | 'Tails' | 'Edge';
 export type CoinPose = 'heads' | 'tails' | 'edge' | 'mid';
@@ -37,12 +39,6 @@ export interface CoinEngineOptions {
   displayText?: (result: CoinResult) => string;
 }
 
-const DEFAULT_ASSETS: Required<CoinAssetUrls> = {
-  heads: '/img/head.webp',
-  tails: '/img/tails.webp',
-  font: '/fonts/helvetiker_bold.typeface.json',
-};
-
 export default function useThreeJsCoin(
   canvasRef: Ref<HTMLCanvasElement | null>,
   isFlipping: Ref<boolean>,
@@ -55,7 +51,7 @@ export default function useThreeJsCoin(
   const sizeSource = options.size ?? 'window';
   const enableOrbitControls = options.enableOrbitControls ?? true;
   const assets: Required<CoinAssetUrls> = {
-    ...DEFAULT_ASSETS,
+    ...DEFAULT_COIN_ASSETS,
     ...(options.assetUrls ?? {}),
   };
 
@@ -96,6 +92,7 @@ export default function useThreeJsCoin(
   const animationFrameId = ref<number | null>(null);
   const isReady = ref(false);
   const geometries: THREE.BufferGeometry[] = [];
+  const coinMaterials: THREE.Material[] = [];
 
   const getSize = () => {
     if (sizeSource === 'element' && canvasRef.value) {
@@ -142,32 +139,8 @@ export default function useThreeJsCoin(
     raycaster = new THREE.Raycaster();
     mouse = new THREE.Vector2();
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
-    scene.add(ambientLight);
-
-    const hemi = new THREE.HemisphereLight(0xfff5d6, 0x2a1a05, 2);
-    scene.add(hemi);
-
-    mainLight = new THREE.DirectionalLight(0xffffff, 1.1);
-    mainLight.position.set(5, 10, 7);
-    mainLight.castShadow = true;
-    mainLight.shadow.mapSize.width = 2048;
-    mainLight.shadow.mapSize.height = 2048;
-
-    mainLight.shadow.bias = 0.02;
-    mainLight.shadow.radius = 4;
-
-    mainLight.shadow.camera.left = -10;
-    mainLight.shadow.camera.right = 10;
-    mainLight.shadow.camera.top = 10;
-    mainLight.shadow.camera.bottom = -10;
-    mainLight.shadow.camera.far = 100;
-
-    scene.add(mainLight);
-
-    const fillLight = new THREE.DirectionalLight(0xffffff, 0.7);
-    fillLight.position.set(-5, 3, -5);
-    scene.add(fillLight);
+    const lighting = createSceneLighting(scene);
+    mainLight = lighting.mainLight;
 
     // Adjust camera position
     camera.position.copy(DEFAULT_CAMERA_POSITION);
@@ -179,51 +152,10 @@ export default function useThreeJsCoin(
     const height = 0.1;
     const segments = 96;
 
-    const geometry = new THREE.CylinderGeometry(
-      radius,
-      radius,
-      height,
-      segments,
-    );
-    geometries.push(geometry);
-    const material = new THREE.MeshStandardMaterial({
-      color: 0xd4af37,
-      metalness: 0.7,
-      roughness: 0.3,
-    });
-
-    coinMesh = new THREE.Mesh(geometry, material);
-    coinMesh.castShadow = true;
-
-    const textureLoader = new THREE.TextureLoader();
-    const maxAniso = renderer.capabilities.getMaxAnisotropy();
-
-    const decorateTexture = (t: THREE.Texture) => {
-      t.colorSpace = THREE.SRGBColorSpace;
-      t.anisotropy = maxAniso;
-      return t;
-    };
-
-    const headsTexture = decorateTexture(textureLoader.load(assets.heads));
-    const tailsTexture = decorateTexture(textureLoader.load(assets.tails));
-
-    const faceMaterialFor = (tex: THREE.Texture) =>
-      new THREE.MeshStandardMaterial({
-        map: tex,
-        bumpMap: tex,
-        bumpScale: 0.025,
-        metalness: 0.55,
-        roughness: 0.42,
-      });
-
-    const headsMaterial = faceMaterialFor(headsTexture);
-    const tailsMaterial = faceMaterialFor(tailsTexture);
-
-    coinMesh.material = [
-      material, // Side
-      headsMaterial, // Top
-      tailsMaterial, // Bottom
-    ];
+    const built = createCoinMesh({ assets, renderer });
+    coinMesh = built.coinMesh;
+    for (const g of built.geometries) geometries.push(g);
+    for (const m of built.materials) coinMaterials.push(m);
 
     coinMesh.position.set(0, 1, 0);
     scene.add(coinMesh);
@@ -604,6 +536,7 @@ export default function useThreeJsCoin(
   function disposeSceneResources() {
     destroyListeners();
     geometries.forEach((geometry) => geometry.dispose());
+    coinMaterials.forEach((material) => material.dispose());
     if (animationFrameId.value !== null) {
       cancelAnimationFrame(animationFrameId.value);
       animationFrameId.value = null;

@@ -5,3 +5,6 @@ export type {
   CoinResult,
   CoinPose,
 } from './useThreeJsCoin';
+
+export { default as useCoinNarrative } from './useCoinNarrative';
+export type { CoinNarrativeOptions } from './useCoinNarrative';
