@@ -1,7 +1,8 @@
 <template>
-  <HomeCoinCanvas />
-  <HomeHero id="hero" />
-  <HomeFlipTheUnknown id="flip-the-unknown" />
+  <HomeCoinNarrative>
+    <HomeHero id="hero" />
+    <HomeFlipTheUnknown id="flip-the-unknown" />
+  </HomeCoinNarrative>
   <div class="relative z-10 bg-base-100">
     <HomeFeaturesTriptych />
     <HomeRecentArticles />
@@ -24,6 +25,10 @@
 <script setup lang="ts">
 const { $t, $getLocale } = useI18n();
 const locale = computed(() => $getLocale());
+
+definePageMeta({
+  layout: 'home',
+});
 
 const { data: home } = await useAsyncData(
   () => `home-${locale.value}`,

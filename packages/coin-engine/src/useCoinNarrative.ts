@@ -10,13 +10,7 @@ import {
 export type { CoinAssetUrls } from './coin-scene';
 
 export interface CoinNarrativeOptions {
-  /** Override asset URLs; each has a sensible default. */
   assetUrls?: CoinAssetUrls;
-  /**
-   * `'window'` fills the viewport and reacts to `window` resize.
-   * `'element'` uses the canvas element's own size via ResizeObserver.
-   * Default: `'window'`.
-   */
   size?: 'window' | 'element';
 }
 
@@ -38,6 +32,8 @@ export default function useCoinNarrative(
       setProgress: (_p: number) => {},
       setIllumination: (_p: number) => {},
       setIdle: () => {},
+      setHeroPosition: (_pos: { x: number; y: number }, _scale?: number) => {},
+      screenToWorld: (_x: number, _y: number) => ({ x: 0, y: 0 }),
       isReady: ref(false),
     };
   }
@@ -52,23 +48,36 @@ export default function useCoinNarrative(
   let coinLight: THREE.PointLight;
   let starfield: THREE.Points;
   let starMaterial: THREE.PointsMaterial;
+  let starTexture: THREE.Texture;
   let resizeObserver: ResizeObserver | null;
 
   const geometries: THREE.BufferGeometry[] = [];
   const materials: THREE.Material[] = [];
+  const textures: THREE.Texture[] = [];
 
-  // Hero rest pose — coin floats upper-right, gently tilted (matches the
-  // "mid" tilt spirit of the physics composable's setPose).
-  const HERO_POS = new THREE.Vector3(2.6, 1.4, 0);
-  const HERO_QUAT = new THREE.Quaternion().setFromEuler(
-    new THREE.Euler(Math.PI / 3, Math.PI / 6, Math.PI / 5),
-  );
+  // Face-on idle rotation: X=π/2 tilts the cylinder so heads (+Y face)
+  // points toward the camera. Y=π/2 rotates it so the heads image is
+  // upright. Together: heads face-on, upright, looking at the camera.
+  const IDLE_ROT_X = Math.PI / 2;
+  const IDLE_ROT_Y = Math.PI / 2;
+  const IDLE_ROT_Z = 0;
 
-  // Section travel endpoints (world space). Left = night, right = day.
-  const LEFT_POS = new THREE.Vector3(-3.2, 0.6, 0);
-  const RIGHT_POS = new THREE.Vector3(3.2, 0.6, 0);
+  // Hero rest pose — set dynamically from the actual hero coin frame position.
+  let heroPos = new THREE.Vector3(2.4, 0, 0);
 
-  const getSize = () => {
+  // Section travel endpoints. Left = night, right = day.
+  const LEFT_POS = new THREE.Vector3(-2.8, 0, 0);
+  const RIGHT_POS = new THREE.Vector3(2.8, 0, 0);
+  const ARC_HEIGHT = 1.8;
+
+  // Fly curve control point — computed from heroPos when set.
+  let flyControl = new THREE.Vector3(0, 1.5, 0);
+
+  // Rotation: fly covers a quarter turn, arc covers one full revolution.
+  const FLY_ROT = Math.PI / 4;
+  const ARC_ROT = Math.PI * 2;
+
+  function getSize() {
     if (sizeSource === 'element' && canvasRef.value) {
       const { clientWidth, clientHeight } = canvasRef.value;
       if (clientWidth > 0 && clientHeight > 0) {
@@ -76,48 +85,102 @@ export default function useCoinNarrative(
       }
     }
     return { width: window.innerWidth, height: window.innerHeight };
-  };
+  }
 
-  const applySize = () => {
+  function applySize() {
     const { width, height } = getSize();
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
     renderer.setSize(width, height, false);
-  };
+  }
 
-  const createStarfield = () => {
-    const count = 420;
+  /**
+   * Converts screen pixel coordinates (viewport-relative) to 3D world
+   * coordinates at z=0. Accounts for the canvas's actual position in the
+   * viewport (it may be offset by header/main padding).
+   */
+  function screenToWorld(clientX: number, clientY: number) {
+    const canvasRect = canvasRef.value!.getBoundingClientRect();
+    const ndcX = ((clientX - canvasRect.left) / canvasRect.width) * 2 - 1;
+    const ndcY = -(((clientY - canvasRect.top) / canvasRect.height) * 2 - 1);
+
+    const visibleHeight =
+      2 * camera.position.z * Math.tan((camera.fov * Math.PI) / 360);
+    const visibleWidth = visibleHeight * camera.aspect;
+
+    return {
+      x: (ndcX * visibleWidth) / 2,
+      y: (ndcY * visibleHeight) / 2,
+    };
+  }
+
+  /**
+   * Sets the hero idle position from screen coordinates and recomputes
+   * the fly curve control point. Also scales the coin to match the
+   * poster image's pixel size.
+   */
+  function setHeroPosition(pos: { x: number; y: number }, scale = 1) {
+    heroPos = new THREE.Vector3(pos.x, pos.y, 0);
+    if (coinMesh) coinMesh.scale.setScalar(scale);
+    // Control point for the fly bezier: midpoint lifted into an arc.
+    const mid = new THREE.Vector3()
+      .addVectors(heroPos, LEFT_POS)
+      .multiplyScalar(0.5);
+    flyControl = new THREE.Vector3(mid.x, mid.y + 1.8, 0);
+    setIdle();
+  }
+
+  function createStarTexture(): THREE.Texture {
+    const canvas = document.createElement('canvas');
+    canvas.width = 64;
+    canvas.height = 64;
+    const ctx = canvas.getContext('2d')!;
+    const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+    gradient.addColorStop(0.25, 'rgba(255, 245, 214, 0.9)');
+    gradient.addColorStop(0.5, 'rgba(255, 245, 214, 0.3)');
+    gradient.addColorStop(1, 'rgba(255, 245, 214, 0)');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 64, 64);
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    return tex;
+  }
+
+  function createStarfield() {
+    const count = 350;
     const positions = new Float32Array(count * 3);
-    const sizes = new Float32Array(count);
 
     for (let i = 0; i < count; i++) {
-      // Spread stars across a wide plane, biased to the left (night) half.
-      positions[i * 3] = (Math.random() * 2 - 1) * 9;
-      positions[i * 3 + 1] = (Math.random() * 2 - 1) * 5;
-      positions[i * 3 + 2] = (Math.random() * 2 - 1) * 4 - 2;
-      sizes[i] = Math.random() * 0.6 + 0.2;
+      positions[i * 3] = (Math.random() * 2 - 1) * 8;
+      positions[i * 3 + 1] = (Math.random() * 2 - 1) * 4.5;
+      positions[i * 3 + 2] = (Math.random() * 2 - 1) * 3 - 4;
     }
 
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
     geometries.push(geometry);
 
+    starTexture = createStarTexture();
+    textures.push(starTexture);
+
     starMaterial = new THREE.PointsMaterial({
+      map: starTexture,
       color: 0xfff5d6,
-      size: 0.06,
+      size: 0.12,
       sizeAttenuation: true,
       transparent: true,
-      opacity: 1,
+      opacity: 0,
       depthWrite: false,
+      blending: THREE.AdditiveBlending,
     });
     materials.push(starMaterial);
 
     starfield = new THREE.Points(geometry, starMaterial);
     scene.add(starfield);
-  };
+  }
 
-  const setup = () => {
+  function setup() {
     const { width, height } = getSize();
 
     scene = new THREE.Scene();
@@ -127,7 +190,6 @@ export default function useCoinNarrative(
       canvas: canvasRef.value!,
       antialias: true,
       alpha: true,
-      premultipliedAlpha: false,
     });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(width, height, false);
@@ -138,29 +200,23 @@ export default function useCoinNarrative(
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.setClearColor(0x000000, 0);
 
-    // Shared lighting rig (same look as the game coin).
     createSceneLighting(scene);
 
-    // The coin itself — visually identical to the game.
     const built = createCoinMesh({ assets, renderer });
     coinMesh = built.coinMesh;
     for (const g of built.geometries) geometries.push(g);
     for (const m of built.materials) materials.push(m);
     scene.add(coinMesh);
 
-    // A warm point light parented to the coin's neighbourhood — this is the
-    // "light from the coin itself" that grows as it travels into the day half.
     coinLight = new THREE.PointLight(0xffd27a, 0, 14, 1.6);
     scene.add(coinLight);
 
     createStarfield();
 
-    // Camera framing: pulled back so the left→right travel reads across the
-    // viewport and the hero rest pose sits in the upper-right.
-    camera.position.set(0, 1.6, 9);
-    camera.lookAt(0, 0.6, 0);
+    // Camera: straight on, eye-level. Coin faces camera directly.
+    camera.position.set(0, 0, 6);
+    camera.lookAt(0, 0, 0);
 
-    // Start at the hero idle pose.
     setIdle();
 
     if (sizeSource === 'window') {
@@ -172,83 +228,81 @@ export default function useCoinNarrative(
 
     animate();
     isReady.value = true;
-  };
+  }
 
-  const animate = () => {
+  function animate() {
     animationFrameId.value = requestAnimationFrame(animate);
-    // Gentle idle drift on the starfield for life.
-    if (starfield) {
-      starfield.rotation.y += 0.0004;
-    }
     renderer.render(scene, camera);
-  };
+  }
 
-  const setIdle = () => {
+  function setIdle() {
     if (!coinMesh) return;
-    coinMesh.position.copy(HERO_POS);
-    coinMesh.quaternion.copy(HERO_QUAT);
+    coinMesh.position.copy(heroPos);
+    coinMesh.rotation.set(IDLE_ROT_X, IDLE_ROT_Y, IDLE_ROT_Z);
     if (coinLight) {
-      coinLight.position.set(HERO_POS.x, HERO_POS.y, HERO_POS.z + 1.5);
+      coinLight.position.set(heroPos.x, heroPos.y, 2);
       coinLight.intensity = 0;
     }
-    if (starMaterial) starMaterial.opacity = 1;
-  };
+    if (starMaterial) starMaterial.opacity = 0;
+  }
 
   /**
-   * Flies the coin from the hero rest pose (upper-right) down to the left
-   * (night) end of the section. `p` 0 = hero pose, 1 = at the left end.
-   * No illumination change here — the night half stays dark.
+   * Fly phase: coin travels from hero position to the left (night) end of
+   * the flip section via a quadratic bezier curve. Rotation begins.
+   * Stars fade in as we enter the night section.
    */
-  const setFlyProgress = (p: number) => {
+  function setFlyProgress(p: number) {
     if (!coinMesh) return;
     const t = Math.min(1, Math.max(0, p));
-    coinMesh.position.lerpVectors(HERO_POS, LEFT_POS, t);
-    // Ease the tilt from the idle quaternion toward the flat face-on
-    // orientation that begins the left→right travel.
-    const endQuat = new THREE.Quaternion();
-    coinMesh.quaternion.copy(HERO_QUAT).slerp(endQuat, t);
+
+    // Quadratic bezier: P0=hero, P1=control, P2=left
+    const u = 1 - t;
+    coinMesh.position.set(
+      u * u * heroPos.x + 2 * u * t * flyControl.x + t * t * LEFT_POS.x,
+      u * u * heroPos.y + 2 * u * t * flyControl.y + t * t * LEFT_POS.y,
+      0,
+    );
+
+    // Rotation: starts from idle (π/2, π/2, 0), adds FLY_ROT on X
+    coinMesh.rotation.x = IDLE_ROT_X + t * FLY_ROT;
+
     if (coinLight) {
-      coinLight.position.set(
-        coinMesh.position.x,
-        coinMesh.position.y,
-        coinMesh.position.z + 1.5,
-      );
+      coinLight.position.set(coinMesh.position.x, coinMesh.position.y, 2);
     }
-  };
+
+    // Stars fade in only during the second half of fly, so they don't
+    // appear over the hero section.
+    if (starMaterial) starMaterial.opacity = Math.max(0, (t - 0.5) * 2);
+  }
 
   /**
-   * Drives the coin's horizontal travel + one full revolution.
-   * `progress` is the post-"fly" timeline value (0 = at left/night,
-   * 1 = at right/day). The fly-from-hero leg is handled by the caller
-   * mapping scroll into a 0→1 that covers both legs.
+   * Arc phase: coin follows a parabolic arc left→right with one full
+   * revolution. Illumination grows, stars fade out.
    */
-  const setProgress = (p: number) => {
+  function setProgress(p: number) {
     if (!coinMesh) return;
     const t = Math.min(1, Math.max(0, p));
-    const e = t;
-    coinMesh.position.lerpVectors(LEFT_POS, RIGHT_POS, e);
-    // One full revolution around the flip axis (X) as it travels.
-    coinMesh.rotation.x = e * Math.PI * 2;
-    if (coinLight) {
-      coinLight.position.set(
-        coinMesh.position.x,
-        coinMesh.position.y,
-        coinMesh.position.z + 1.5,
-      );
-    }
-  };
 
-  /**
-   * Grows the illumination: the coin's own light intensifies, the starfield
-   * fades out. `p` 0 = night, 1 = full sunrise.
-   */
-  const setIllumination = (p: number) => {
+    // Parabolic arc: x linear, y = 4*h*t*(1-t) peaking at t=0.5
+    const x = LEFT_POS.x + (RIGHT_POS.x - LEFT_POS.x) * t;
+    const y = ARC_HEIGHT * 4 * t * (1 - t);
+    coinMesh.position.set(x, y, 0);
+
+    // One full revolution, continuing from where fly left off
+    coinMesh.rotation.x = IDLE_ROT_X + FLY_ROT + t * ARC_ROT;
+
+    if (coinLight) {
+      coinLight.position.set(x, y, 2);
+    }
+  }
+
+  function setIllumination(p: number) {
     const t = Math.min(1, Math.max(0, p));
     if (coinLight) coinLight.intensity = t * 6;
-    if (starMaterial) starMaterial.opacity = 1 - t;
-  };
+    if (starMaterial) starMaterial.opacity = Math.max(0, 1 - t * 1.5);
+  }
 
-  const dispose = () => {
+  function dispose() {
     if (sizeSource === 'window') {
       window.removeEventListener('resize', applySize);
     }
@@ -262,8 +316,9 @@ export default function useCoinNarrative(
     }
     geometries.forEach((g) => g.dispose());
     materials.forEach((m) => m.dispose());
+    textures.forEach((t) => t.dispose());
     if (renderer) renderer.dispose();
-  };
+  }
 
   return {
     setup,
@@ -272,6 +327,8 @@ export default function useCoinNarrative(
     setProgress,
     setIllumination,
     setIdle,
+    setHeroPosition,
+    screenToWorld,
     isReady,
   };
 }

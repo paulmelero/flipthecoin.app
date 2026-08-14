@@ -1,9 +1,23 @@
 <script setup lang="ts">
 const { $t, localePath } = useI18n();
+
+const coinReady = ref(false);
+
+onMounted(() => {
+  const observer = new MutationObserver(() => {
+    coinReady.value = document.documentElement.dataset.coinReady === 'true';
+  });
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-coin-ready'],
+  });
+  coinReady.value = document.documentElement.dataset.coinReady === 'true';
+  onBeforeUnmount(() => observer.disconnect());
+});
 </script>
 
 <template>
-  <section class="relative isolate overflow-hidden rounded-2xl">
+  <section class="relative isolate overflow-hidden rounded-2xl bg-transparent">
     <HomeHeroMathBackdrop class="text-base-content" />
 
     <div
@@ -31,8 +45,10 @@ const { $t, localePath } = useI18n();
       </div>
 
       <div class="lg:col-span-5 order-1 lg:order-2">
-        <div
-          class="group relative block w-full max-w-[460px] aspect-square mx-auto rounded-3xl overflow-hidden"
+        <NuxtLink
+          id="hero-coin-frame"
+          :to="localePath('/play')"
+          class="group relative block w-full max-w-[460px] aspect-square mx-auto rounded-3xl bg-gradient-to-br from-primary/25 via-primary/5 to-secondary/20 border border-primary/15 shadow-2xl transition-transform duration-500 hover:-rotate-2 hover:scale-[1.02] overflow-hidden"
         >
           <div
             aria-hidden="true"
@@ -54,19 +70,15 @@ const { $t, localePath } = useI18n();
           <img
             src="/img/head.webp"
             alt=""
-            class="hero-coin-poster absolute inset-0 m-auto w-2/3 h-2/3 object-contain drop-shadow-[0_20px_30px_rgba(212,175,55,0.45)]"
+            class="hero-coin-poster absolute inset-0 m-auto w-2/3 h-2/3 object-contain drop-shadow-[0_20px_30px_rgba(212,175,55,0.45)] transition-transform duration-500 group-hover:scale-105"
+            :class="{ 'is-hidden': coinReady }"
           />
-          <NuxtLink
-            :to="localePath('/play')"
-            class="absolute inset-0 z-10"
-            :aria-label="$t('home.hero.playHint') as string"
-          ></NuxtLink>
           <span
-            class="absolute bottom-4 inset-x-4 text-center text-xs font-mono uppercase tracking-[0.25em] text-base-content/70"
+            class="absolute bottom-4 inset-x-4 text-center text-xs font-mono uppercase tracking-[0.25em] text-base-content/70 group-hover:text-primary transition"
           >
             {{ $t('home.hero.playHint') }}
           </span>
-        </div>
+        </NuxtLink>
       </div>
     </div>
   </section>
@@ -76,12 +88,9 @@ const { $t, localePath } = useI18n();
 .hero-coin-poster {
   transition:
     opacity 0.8s ease,
-    transform 0.8s ease;
+    transform 0.5s ease;
 }
-/* When the live 3D coin scene is ready, fade the poster out so the fixed
-   canvas behind the hero takes over seamlessly. */
-:global(html[data-coin-ready='true']) .hero-coin-poster {
+.hero-coin-poster.is-hidden {
   opacity: 0;
-  transform: scale(1.04);
 }
 </style>
