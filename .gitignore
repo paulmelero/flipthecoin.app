@@ -5,3 +5,4 @@ apps/flipthecoin/todos.md
 # macOS Finder metadata
 .DS_Store
 apps/flipthecoin/server/assets/_locales/*
+.opencode
