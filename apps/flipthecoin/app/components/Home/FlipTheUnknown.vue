@@ -5,37 +5,49 @@ const { $t } = useI18n();
 <template>
   <section
     id="flip-the-unknown"
-    class="flip-section relative min-h-[100dvh] overflow-hidden"
+    class="flip-section bg-transparent rounded-3xl relative min-h-[100dvh] overflow-hidden"
     style="--illumination: 0"
   >
-    <!-- Night base (above canvas, below text) -->
-    <div aria-hidden="true" class="night-layer absolute inset-0"></div>
-    <!-- Dawn glow -->
-    <div aria-hidden="true" class="dawn-layer absolute inset-0"></div>
-    <!-- Animated gradient border frame -->
-    <div aria-hidden="true" class="border-frame absolute inset-0"></div>
+    <!-- bgs: night base + border frame (bottom) -->
+    <div aria-hidden="true" class="night-layer absolute inset-0 z-0"></div>
+    <div
+      aria-hidden="true"
+      class="border-frame rounded-3xl absolute inset-0 z-0"
+    ></div>
 
+    <!-- stars (same bg layer as mountains) -->
+    <div aria-hidden="true" class="absolute inset-0 z-[1] pointer-events-none">
+      <HomeStarfield />
+    </div>
+
+    <!-- mountains (dawn backdrop) -->
+    <div aria-hidden="true" class="dawn-bg absolute inset-0 z-[2]"></div>
+
+    <!-- sun light (dawn glow) -->
+    <div aria-hidden="true" class="dawn-layer absolute inset-0 z-[3]"></div>
+
+    <!-- text content -->
     <div
       class="relative z-10 container mx-auto px-4 lg:px-8 min-h-[100dvh] flex flex-col justify-end items-center text-center pb-20 lg:pb-32"
     >
       <div
-        class="grid grid-cols-2 gap-4 w-full mb-auto mt-10 text-sm font-mono uppercase tracking-[0.2em]"
+        class="grid grid-cols-2 gap-4 w-full mb-auto mt-10 text-sm font-mono uppercase tracking-[0.2em] text-center"
       >
         <span class="left-label">{{ $t('home.flip.left') }}</span>
-        <span class="right-label text-right">{{ $t('home.flip.right') }}</span>
+        <span class="right-label">{{ $t('home.flip.right') }}</span>
       </div>
 
-      <h2
+      <FTitleH2
         class="font-headings font-[500] tracking-tight text-4xl md:text-6xl leading-[1.05] max-w-3xl"
       >
         {{ $t('home.flip.title') }}
-      </h2>
+      </FTitleH2>
 
-      <p
+      <h3
         class="mt-5 text-lg lg:text-xl text-base-content/85 max-w-xl leading-relaxed"
       >
         {{ $t('home.flip.subtitle') }}
-      </p>
+      </h3>
 
       <p
         class="mt-8 max-w-2xl text-base lg:text-lg leading-relaxed mission-line"
@@ -55,8 +67,13 @@ const { $t } = useI18n();
 </style>
 
 <style scoped>
-.flip-section {
-  background: transparent;
+.dawn-bg {
+  background-image: url('/images/home/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(calc(0.12 + 0.88 * var(--illumination, 0)))
+    saturate(calc(0.2 + 0.8 * var(--illumination, 0)));
 }
 
 .night-layer {
@@ -94,7 +111,6 @@ const { $t } = useI18n();
         calc(0.12 + 0.06 * var(--illumination, 0))
         calc(85 + 10 * var(--illumination, 0))
     );
-  border-radius: 1rem;
   margin: 0.5rem;
   pointer-events: none;
   box-shadow: 0 0 calc(40px * var(--illumination, 0))

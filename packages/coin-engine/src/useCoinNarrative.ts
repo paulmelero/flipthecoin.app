@@ -28,8 +28,8 @@ export default function useCoinNarrative(
     return {
       setup: () => {},
       dispose: () => {},
-      setFlyProgress: (_p: number) => {},
-      setProgress: (_p: number) => {},
+      setFlyTrajectoryProgress: (_p: number) => {},
+      setArcTrajectoryProgress: (_p: number) => {},
       setIllumination: (_p: number) => {},
       setIdle: () => {},
       setHeroPosition: (_pos: { x: number; y: number }, _scale?: number) => {},
@@ -46,21 +46,27 @@ export default function useCoinNarrative(
   let renderer: THREE.WebGLRenderer;
   let coinMesh: THREE.Mesh;
   let coinLight: THREE.PointLight;
-  let starfield: THREE.Points;
-  let starMaterial: THREE.PointsMaterial;
-  let starTexture: THREE.Texture;
   let resizeObserver: ResizeObserver | null;
 
   const geometries: THREE.BufferGeometry[] = [];
   const materials: THREE.Material[] = [];
   const textures: THREE.Texture[] = [];
 
-  // Face-on idle rotation: X=π/2 tilts the cylinder so heads (+Y face)
-  // points toward the camera. Y=π/2 rotates it so the heads image is
-  // upright. Together: heads face-on, upright, looking at the camera.
-  const IDLE_ROT_X = Math.PI / 2;
-  const IDLE_ROT_Y = Math.PI / 2;
-  const IDLE_ROT_Z = 0;
+  // Idle orientation as a quaternion: heads face-on, upright, toward
+  // camera. Euler (π/2, π/2, 0) tilts the cylinder axis (Y) toward Z
+  // and rotates the heads image upright.
+  const IDLE_EULER = new THREE.Euler(Math.PI / 2, Math.PI / 2, 0);
+  const IDLE_QUAT = new THREE.Quaternion().setFromEuler(IDLE_EULER);
+
+  // Flip axis — world X. Rotating around X makes the coin tumble
+  // end-over-end (heads → edge → tails → edge → heads), exactly like
+  // the physics-driven flip in the /play scene.
+  const FLIP_AXIS = new THREE.Vector3(1, 0, 0);
+
+  // Fly does a quarter flip (heads → edge-on, laying flat).
+  // Arc does one full revolution and ends at the same edge-on pose.
+  const FLY_ROT = Math.PI / 2;
+  const ARC_ROT = 2 * Math.PI;
 
   // Hero rest pose — set dynamically from the actual hero coin frame position.
   let heroPos = new THREE.Vector3(2.4, 0, 0);
@@ -73,9 +79,8 @@ export default function useCoinNarrative(
   // Fly curve control point — computed from heroPos when set.
   let flyControl = new THREE.Vector3(0, 1.5, 0);
 
-  // Rotation: fly covers a quarter turn, arc covers one full revolution.
-  const FLY_ROT = Math.PI / 4;
-  const ARC_ROT = Math.PI * 2;
+  // Reusable quaternion for flip composition (avoid GC churn).
+  const flipQuat = new THREE.Quaternion();
 
   function getSize() {
     if (sizeSource === 'element' && canvasRef.value) {
@@ -95,14 +100,36 @@ export default function useCoinNarrative(
   }
 
   /**
-   * Converts screen pixel coordinates (viewport-relative) to 3D world
-   * coordinates at z=0. Accounts for the canvas's actual position in the
-   * viewport (it may be offset by header/main padding).
+   * Walks the offsetParent chain to get an element's document-relative
+   * position. Unlike getBoundingClientRect(), these values don't change
+   * with scroll — essential because the canvas is position:sticky.
    */
-  function screenToWorld(clientX: number, clientY: number) {
-    const canvasRect = canvasRef.value!.getBoundingClientRect();
-    const ndcX = ((clientX - canvasRect.left) / canvasRect.width) * 2 - 1;
-    const ndcY = -(((clientY - canvasRect.top) / canvasRect.height) * 2 - 1);
+  function getDocOffset(el: HTMLElement): { top: number; left: number } {
+    let top = 0;
+    let left = 0;
+    let node: HTMLElement | null = el;
+    while (node) {
+      top += node.offsetTop;
+      left += node.offsetLeft;
+      node = node.offsetParent as HTMLElement | null;
+    }
+    return { top, left };
+  }
+
+  /**
+   * Converts document-relative pixel coordinates to 3D world coordinates
+   * at z=0. Uses offsetTop/offsetLeft (not getBoundingClientRect) so the
+   * result is stable regardless of scroll position — the canvas is
+   * position:sticky, so its viewport rect shifts when scrolling.
+   */
+  function screenToWorld(docX: number, docY: number) {
+    const canvas = canvasRef.value!;
+    const offset = getDocOffset(canvas);
+    const w = canvas.offsetWidth;
+    const h = canvas.offsetHeight;
+
+    const ndcX = ((docX - offset.left) / w) * 2 - 1;
+    const ndcY = -(((docY - offset.top) / h) * 2 - 1);
 
     const visibleHeight =
       2 * camera.position.z * Math.tan((camera.fov * Math.PI) / 360);
@@ -127,57 +154,7 @@ export default function useCoinNarrative(
       .addVectors(heroPos, LEFT_POS)
       .multiplyScalar(0.5);
     flyControl = new THREE.Vector3(mid.x, mid.y + 1.8, 0);
-    setIdle();
-  }
-
-  function createStarTexture(): THREE.Texture {
-    const canvas = document.createElement('canvas');
-    canvas.width = 64;
-    canvas.height = 64;
-    const ctx = canvas.getContext('2d')!;
-    const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-    gradient.addColorStop(0.25, 'rgba(255, 245, 214, 0.9)');
-    gradient.addColorStop(0.5, 'rgba(255, 245, 214, 0.3)');
-    gradient.addColorStop(1, 'rgba(255, 245, 214, 0)');
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, 64, 64);
-    const tex = new THREE.CanvasTexture(canvas);
-    tex.colorSpace = THREE.SRGBColorSpace;
-    return tex;
-  }
-
-  function createStarfield() {
-    const count = 350;
-    const positions = new Float32Array(count * 3);
-
-    for (let i = 0; i < count; i++) {
-      positions[i * 3] = (Math.random() * 2 - 1) * 8;
-      positions[i * 3 + 1] = (Math.random() * 2 - 1) * 4.5;
-      positions[i * 3 + 2] = (Math.random() * 2 - 1) * 3 - 4;
-    }
-
-    const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometries.push(geometry);
-
-    starTexture = createStarTexture();
-    textures.push(starTexture);
-
-    starMaterial = new THREE.PointsMaterial({
-      map: starTexture,
-      color: 0xfff5d6,
-      size: 0.12,
-      sizeAttenuation: true,
-      transparent: true,
-      opacity: 0,
-      depthWrite: false,
-      blending: THREE.AdditiveBlending,
-    });
-    materials.push(starMaterial);
-
-    starfield = new THREE.Points(geometry, starMaterial);
-    scene.add(starfield);
+    // Caller is responsible for calling setIdle() when appropriate.
   }
 
   function setup() {
@@ -211,8 +188,6 @@ export default function useCoinNarrative(
     coinLight = new THREE.PointLight(0xffd27a, 0, 14, 1.6);
     scene.add(coinLight);
 
-    createStarfield();
-
     // Camera: straight on, eye-level. Coin faces camera directly.
     camera.position.set(0, 0, 6);
     camera.lookAt(0, 0, 0);
@@ -238,20 +213,19 @@ export default function useCoinNarrative(
   function setIdle() {
     if (!coinMesh) return;
     coinMesh.position.copy(heroPos);
-    coinMesh.rotation.set(IDLE_ROT_X, IDLE_ROT_Y, IDLE_ROT_Z);
+    coinMesh.quaternion.copy(IDLE_QUAT);
     if (coinLight) {
       coinLight.position.set(heroPos.x, heroPos.y, 2);
       coinLight.intensity = 0;
     }
-    if (starMaterial) starMaterial.opacity = 0;
   }
 
   /**
-   * Fly phase: coin travels from hero position to the left (night) end of
-   * the flip section via a quadratic bezier curve. Rotation begins.
-   * Stars fade in as we enter the night section.
+   * Fly phase: coin travels from hero position to the left (night) end
+   * of the flip section via a quadratic bezier curve. A quarter-turn
+   * flip begins (heads → edge).
    */
-  function setFlyProgress(p: number) {
+  function setFlyTrajectoryProgress(p: number) {
     if (!coinMesh) return;
     const t = Math.min(1, Math.max(0, p));
 
@@ -263,23 +237,23 @@ export default function useCoinNarrative(
       0,
     );
 
-    // Rotation: starts from idle (π/2, π/2, 0), adds FLY_ROT on X
-    coinMesh.rotation.x = IDLE_ROT_X + t * FLY_ROT;
+    // Flip: world-space rotation around X composed with idle quat.
+    // At t=0 → idle (heads). At t=1 → edge-on (quarter turn).
+    flipQuat.setFromAxisAngle(FLIP_AXIS, t * FLY_ROT);
+    coinMesh.quaternion.copy(flipQuat).multiply(IDLE_QUAT);
 
     if (coinLight) {
       coinLight.position.set(coinMesh.position.x, coinMesh.position.y, 2);
     }
-
-    // Stars fade in only during the second half of fly, so they don't
-    // appear over the hero section.
-    if (starMaterial) starMaterial.opacity = Math.max(0, (t - 0.5) * 2);
   }
 
   /**
-   * Arc phase: coin follows a parabolic arc left→right with one full
-   * revolution. Illumination grows, stars fade out.
+   * Arc phase: coin follows a parabolic arc left→right. The flip
+   * continues from where fly left off and completes a full 2π
+   * revolution, ending face-on (idle orientation). Illumination
+   * grows via setIllumination().
    */
-  function setProgress(p: number) {
+  function setArcTrajectoryProgress(p: number) {
     if (!coinMesh) return;
     const t = Math.min(1, Math.max(0, p));
 
@@ -288,8 +262,9 @@ export default function useCoinNarrative(
     const y = ARC_HEIGHT * 4 * t * (1 - t);
     coinMesh.position.set(x, y, 0);
 
-    // One full revolution, continuing from where fly left off
-    coinMesh.rotation.x = IDLE_ROT_X + FLY_ROT + t * ARC_ROT;
+    // Flip continues: FLY_ROT → 2π. At t=1, total = 2π = idle.
+    flipQuat.setFromAxisAngle(FLIP_AXIS, FLY_ROT + t * ARC_ROT);
+    coinMesh.quaternion.copy(flipQuat).multiply(IDLE_QUAT);
 
     if (coinLight) {
       coinLight.position.set(x, y, 2);
@@ -299,7 +274,6 @@ export default function useCoinNarrative(
   function setIllumination(p: number) {
     const t = Math.min(1, Math.max(0, p));
     if (coinLight) coinLight.intensity = t * 6;
-    if (starMaterial) starMaterial.opacity = Math.max(0, 1 - t * 1.5);
   }
 
   function dispose() {
@@ -323,8 +297,8 @@ export default function useCoinNarrative(
   return {
     setup,
     dispose,
-    setFlyProgress,
-    setProgress,
+    setFlyTrajectoryProgress,
+    setArcTrajectoryProgress,
     setIllumination,
     setIdle,
     setHeroPosition,

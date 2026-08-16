@@ -13,8 +13,8 @@ const wrapRef = ref<HTMLElement | null>(null);
 const {
   setup,
   dispose,
-  setFlyProgress,
-  setProgress,
+  setFlyTrajectoryProgress,
+  setArcTrajectoryProgress,
   setIllumination,
   setIdle,
   setHeroPosition,
@@ -25,13 +25,16 @@ const {
 let flyTrigger: ScrollTrigger | null = null;
 let arcTrigger: ScrollTrigger | null = null;
 
-/** Find the hero coin frame element and align the 3D coin to its centre. */
+/** Find the hero coin frame element and align the 3D coin to its centre.
+ * Uses document-relative coordinates (rect + scroll) so the result is
+ * stable regardless of how far the page has been scrolled. */
 const alignToHero = () => {
   const frame = document.getElementById('hero-coin-frame');
   if (!frame) return;
   const rect = frame.getBoundingClientRect();
-  const cx = rect.left + rect.width / 2;
-  const cy = rect.top + rect.height / 2;
+  // Document-relative centre — constant regardless of scroll position.
+  const cx = rect.left + window.scrollX + rect.width / 2;
+  const cy = rect.top + window.scrollY + rect.height / 2;
   const world = screenToWorld(cx, cy);
 
   // The poster image is w-2/3 of the frame. Compute the world-space
@@ -65,9 +68,13 @@ const setupScroll = () => {
     scrub: 1,
     invalidateOnRefresh: true,
     onUpdate: (self) => {
-      setFlyProgress(self.progress);
+      // Recalculate origin every scroll tick — if the user scrolled
+      // before the coin was ready, the initial alignment was stale.
+      alignToHero();
+      setFlyTrajectoryProgress(self.progress);
     },
     onLeaveBack: () => {
+      alignToHero();
       setIdle();
     },
     onRefresh: () => {
@@ -86,15 +93,17 @@ const setupScroll = () => {
     scrub: 1,
     invalidateOnRefresh: true,
     onUpdate: (self) => {
-      setProgress(self.progress);
+      setArcTrajectoryProgress(self.progress);
       setIllumination(self.progress);
       section.style.setProperty('--illumination', String(self.progress));
     },
     onLeaveBack: () => {
+      alignToHero();
       setIdle();
       section.style.setProperty('--illumination', '0');
     },
     onRefresh: () => {
+      alignToHero();
       section.style.setProperty('--illumination', '0');
     },
   });
@@ -106,6 +115,7 @@ watch(isReady, (ready) => {
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       alignToHero();
+      setIdle();
       document.documentElement.dataset.coinReady = 'true';
       requestAnimationFrame(() => requestAnimationFrame(setupScroll));
     });
@@ -114,7 +124,10 @@ watch(isReady, (ready) => {
 
 // Re-align on resize — the hero frame position shifts with viewport width.
 const onResize = () => {
-  if (isReady.value) alignToHero();
+  if (isReady.value) {
+    alignToHero();
+    setIdle();
+  }
 };
 if (typeof window !== 'undefined') {
   window.addEventListener('resize', onResize);
@@ -137,7 +150,10 @@ onMounted(() => {
   // Re-align after fonts load (webfont swap shifts the hero layout).
   if (document.fonts) {
     document.fonts.ready.then(() => {
-      if (isReady.value) alignToHero();
+      if (isReady.value) {
+        alignToHero();
+        setIdle();
+      }
     });
   }
 });
@@ -161,8 +177,9 @@ onBeforeUnmount(() => {
 
 <template>
   <div ref="wrapRef" class="relative">
+    <!-- Coin: sticky canvas, below content -->
     <div
-      class="sticky top-0 h-[100dvh] z-0 pointer-events-none"
+      class="sticky top-0 h-[100dvh] z-[1] pointer-events-none"
       style="background: transparent"
     >
       <canvas

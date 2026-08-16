@@ -31,10 +31,10 @@ onMounted(() => {
           flipthecoin.app
         </p>
         <FTitle class="!mb-4">{{ $t('hero.title') }}</FTitle>
-        <p class="text-lg lg:text-xl text-base-content/80 mb-8 max-w-2xl">
-          {{ $t('app.description') }}
-        </p>
-        <div class="flex flex-wrap items-center gap-3">
+        <h2 class="text-lg lg:text-xl text-base-content/80 mb-8 max-w-2xl">
+          {{ $t('home.hero.subtitle') }}
+        </h2>
+        <div class="flex flex-wrap items-center gap-3 mb-8">
           <NuxtLink :to="localePath('/play')" class="btn btn-primary btn-lg">
             {{ $t('home.hero.playCta') }}
           </NuxtLink>
