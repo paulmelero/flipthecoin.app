@@ -56,35 +56,39 @@ const setupScroll = () => {
   const reduceMotion = window.matchMedia(
     '(prefers-reduced-motion: reduce)',
   ).matches;
+  if (reduceMotion) return;
+
   const isDesktop = window.matchMedia('(min-width: 768px)').matches;
-  if (reduceMotion || !isDesktop) return;
 
-  // Phase 1 — Fly: starts as soon as the hero scrolls away. The coin
-  // follows a bezier curve from its hero position to the left (night) end.
-  flyTrigger = ScrollTrigger.create({
-    trigger: hero,
-    start: 'top top',
-    end: 'bottom top',
-    scrub: 1,
-    invalidateOnRefresh: true,
-    onUpdate: (self) => {
-      // Recalculate origin every scroll tick — if the user scrolled
-      // before the coin was ready, the initial alignment was stale.
-      alignToHero();
-      setFlyTrajectoryProgress(self.progress);
-    },
-    onLeaveBack: () => {
-      alignToHero();
-      setIdle();
-    },
-    onRefresh: () => {
-      alignToHero();
-      setIdle();
-    },
-  });
+  if (isDesktop) {
+    // Phase 1 — Fly: starts as soon as the hero scrolls away. The coin
+    // follows a bezier curve from its hero position to the left (night) end.
+    flyTrigger = ScrollTrigger.create({
+      trigger: hero,
+      start: 'top top',
+      end: 'bottom top',
+      scrub: 1,
+      invalidateOnRefresh: true,
+      onUpdate: (self) => {
+        // Recalculate origin every scroll tick — if the user scrolled
+        // before the coin was ready, the initial alignment was stale.
+        alignToHero();
+        setFlyTrajectoryProgress(self.progress);
+      },
+      onLeaveBack: () => {
+        alignToHero();
+        setIdle();
+      },
+      onRefresh: () => {
+        alignToHero();
+        setIdle();
+      },
+    });
+  }
 
-  // Phase 2 — Arc: pin the flip section, coin arcs left→right with
-  // one full revolution + illumination.
+  // Phase 2 — Arc: pin the flip section (scroll hijack) + bg gradient.
+  // Desktop also drives the 3D coin arc + illumination; mobile only
+  // does the pin and the CSS --illumination gradient.
   arcTrigger = ScrollTrigger.create({
     trigger: section,
     start: 'top top',
@@ -93,17 +97,21 @@ const setupScroll = () => {
     scrub: 1,
     invalidateOnRefresh: true,
     onUpdate: (self) => {
-      setArcTrajectoryProgress(self.progress);
-      setIllumination(self.progress);
+      if (isDesktop) {
+        setArcTrajectoryProgress(self.progress);
+        setIllumination(self.progress);
+      }
       section.style.setProperty('--illumination', String(self.progress));
     },
     onLeaveBack: () => {
-      alignToHero();
-      setIdle();
+      if (isDesktop) {
+        alignToHero();
+        setIdle();
+      }
       section.style.setProperty('--illumination', '0');
     },
     onRefresh: () => {
-      alignToHero();
+      if (isDesktop) alignToHero();
       section.style.setProperty('--illumination', '0');
     },
   });
@@ -139,22 +147,29 @@ onMounted(() => {
     '(prefers-reduced-motion: reduce)',
   ).matches;
   const isDesktop = window.matchMedia('(min-width: 768px)').matches;
-  if (reduceMotion || !isDesktop) return;
+  if (reduceMotion) return;
 
-  try {
-    setup();
-  } catch (err) {
-    console.error('[CoinNarrative] Three.js setup failed:', err);
-  }
+  if (isDesktop) {
+    try {
+      setup();
+    } catch (err) {
+      console.error('[CoinNarrative] Three.js setup failed:', err);
+    }
 
-  // Re-align after fonts load (webfont swap shifts the hero layout).
-  if (document.fonts) {
-    document.fonts.ready.then(() => {
-      if (isReady.value) {
-        alignToHero();
-        setIdle();
-      }
-    });
+    // Re-align after fonts load (webfont swap shifts the hero layout).
+    if (document.fonts) {
+      document.fonts.ready.then(() => {
+        if (isReady.value) {
+          alignToHero();
+          setIdle();
+        }
+      });
+    }
+  } else {
+    // Mobile: no 3D coin, but still set up scroll hijack + bg gradient.
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => requestAnimationFrame(setupScroll)),
+    );
   }
 });
 

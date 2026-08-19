@@ -103,6 +103,11 @@ const { $t } = useI18n();
   );
   opacity: var(--illumination, 0);
 }
+@media (max-width: 767px) {
+  .dawn-layer {
+    opacity: calc(var(--illumination, 0) * 0.75);
+  }
+}
 
 .border-frame {
   border: 1px solid
