@@ -119,8 +119,7 @@ onMounted(() => {
   const reduceMotion = window.matchMedia(
     '(prefers-reduced-motion: reduce)',
   ).matches;
-  const isDesktop = window.matchMedia('(min-width: 768px)').matches;
-  if (reduceMotion || !isDesktop) return;
+  if (reduceMotion) return;
 
   try {
     setup();
