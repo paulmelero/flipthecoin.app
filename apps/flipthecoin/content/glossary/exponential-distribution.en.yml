@@ -1,0 +1,13 @@
+slug: exponential-distribution
+_locale: en
+title: Exponential distribution
+description: >-
+  The continuous probability distribution of the waiting time until the next
+  event in a process where events occur independently at a constant average
+  rate. Its density is e^(-λt), and it is the continuous counterpart of the
+  geometric distribution. It is the only continuous distribution that is
+  memoryless, which is why it appears whenever the past stops mattering —
+  radioactive decay, inter-arrival times, and so on.
+link: https://en.wikipedia.org/wiki/Exponential_distribution
+aka:
+  - negative exponential distribution

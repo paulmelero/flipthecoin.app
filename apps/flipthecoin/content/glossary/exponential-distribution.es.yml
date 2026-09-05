@@ -1,0 +1,13 @@
+slug: distribucion-exponencial
+_locale: es
+title: Distribución exponencial
+description: >-
+  La distribución de probabilidad continua del tiempo de espera hasta el
+  siguiente evento en un proceso donde los eventos ocurren de forma
+  independiente a una tasa media constante. Su densidad es e^(-λt), y es la
+  contraparte continua de la distribución geométrica. Es la única distribución
+  continua que es sin memoria, por lo que aparece siempre que el pasado deja
+  de importar — desintegración radiactiva, tiempos entre llegadas, etc.
+link: https://es.wikipedia.org/wiki/Distribuci%C3%B3n_exponencial
+aka:
+  - distribución exponencial negativa

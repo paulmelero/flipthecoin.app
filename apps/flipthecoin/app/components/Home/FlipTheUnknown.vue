@@ -5,7 +5,7 @@ const { $t } = useI18n();
 <template>
   <section
     id="flip-the-unknown"
-    class="flip-section bg-transparent rounded-3xl relative min-h-[100svh] overflow-hidden"
+    class="flip-section bg-transparent rounded-3xl relative min-h-[100svh] overflow-hidden w-full lg:w-1/2 lg:mx-auto"
     style="--illumination: 0"
   >
     <!-- bgs: night base + border frame (bottom) -->
@@ -28,7 +28,7 @@ const { $t } = useI18n();
 
     <!-- text content -->
     <div
-      class="relative z-10 container mx-auto px-4 lg:px-8 min-h-[100svh] flex flex-col justify-end items-center text-center pb-20 lg:pb-32"
+      class="relative z-10 w-full px-6 lg:px-12 min-h-[100svh] flex flex-col justify-end items-center text-center pb-20 lg:pb-32"
     >
       <div
         class="grid grid-cols-2 gap-4 w-full mb-auto mt-10 text-sm font-mono uppercase tracking-[0.2em] text-center"
@@ -68,7 +68,7 @@ const { $t } = useI18n();
 
 <style scoped>
 .dawn-bg {
-  background-image: url('/images/home/bg.png');
+  background-image: url('/images/home/mountains.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

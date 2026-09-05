@@ -36,14 +36,16 @@ const postHref = (post: (typeof posts.value)[number]) => {
 </script>
 
 <template>
-  <section v-if="posts.length" class="container mx-auto px-4 lg:px-8 py-16">
-    <div class="flex items-end justify-between mb-8 flex-wrap gap-3">
-      <h2 class="font-[Archivo] text-3xl lg:text-4xl font-semibold">
+  <section v-if="posts.length" class="container mx-auto px-4 lg:px-8 py-24">
+    <div class="flex items-center justify-between mb-8 flex-wrap gap-3">
+      <h2
+        class="font-[Archivo] text-3xl lg:text-4xl font-semibold [text-box-trim:trim-both]"
+      >
         {{ $t('home.recent.title') }}
       </h2>
       <NuxtLink
         :to="localePath('/blog')"
-        class="link link-hover text-base-content/70 hover:text-primary"
+        class="btn btn-hover text-base-content/70 hover:text-primary"
       >
         {{ $t('home.recent.viewAll') }}
       </NuxtLink>

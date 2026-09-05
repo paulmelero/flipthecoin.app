@@ -18,6 +18,7 @@ const {
   setIllumination,
   setIdle,
   setHeroPosition,
+  setArcBounds,
   screenToWorld,
   isReady,
 } = useCoinNarrative(canvasRef, { size: 'window' });
@@ -46,6 +47,23 @@ const alignToHero = () => {
   const scale = worldRadius / 1;
 
   setHeroPosition(world, scale);
+  // Re-derive arc endpoints: the inset depends on the hero scale that
+  // was just set (coin radius at arc size).
+  alignArcBounds();
+};
+
+/** Align the coin's fly/arc travel endpoints to the flip section's real
+ * horizontal bounds (document-relative, scroll-stable), so the coin
+ * enters/exits at the section card's edges even when the card is not
+ * full-width. */
+const alignArcBounds = () => {
+  const section = document.getElementById('flip-the-unknown');
+  if (!section) return;
+  const rect = section.getBoundingClientRect();
+  const cy = rect.top + window.scrollY + rect.height / 2;
+  const leftDocX = rect.left + window.scrollX;
+  const rightDocX = rect.left + window.scrollX + rect.width;
+  setArcBounds(screenToWorld(leftDocX, cy).x, screenToWorld(rightDocX, cy).x);
 };
 
 const setupScroll = () => {
@@ -59,6 +77,8 @@ const setupScroll = () => {
   if (reduceMotion) return;
 
   const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+
+  alignArcBounds();
 
   if (isDesktop) {
     // Phase 1 — Fly: starts as soon as the hero scrolls away. The coin
@@ -80,6 +100,7 @@ const setupScroll = () => {
         setIdle();
       },
       onRefresh: () => {
+        alignArcBounds();
         alignToHero();
         setIdle();
       },
@@ -111,6 +132,7 @@ const setupScroll = () => {
       section.style.setProperty('--illumination', '0');
     },
     onRefresh: () => {
+      alignArcBounds();
       if (isDesktop) alignToHero();
       section.style.setProperty('--illumination', '0');
     },
@@ -133,6 +155,7 @@ watch(isReady, (ready) => {
 // Re-align on resize — the hero frame position shifts with viewport width.
 const onResize = () => {
   if (isReady.value) {
+    alignArcBounds();
     alignToHero();
     setIdle();
   }

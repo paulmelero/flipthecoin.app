@@ -1,0 +1,13 @@
+slug: proceso-de-markov
+_locale: es
+title: Proceso de Markov
+description: >-
+  Un proceso estocástico cuyo futuro depende sólo de su estado presente, no de
+  toda la historia que lo produjo. Conocer el presente basta; el pasado no
+  aporta información adicional sobre lo que ocurre después. Esta propiedad «sin
+  memoria» es la característica definitoria de una familia amplia y práctica de
+  modelos, desde los paseos aleatorios a las cadenas de climas o al algoritmo
+  PageRank.
+link: https://es.wikipedia.org/wiki/Cadena_de_Markov
+aka:
+  - cadena de Markov

@@ -12,6 +12,7 @@ export default defineNuxtConfig({
   css: [
     '~/assets/css/main.css',
     'katex/dist/katex.min.css',
+    '~/assets/css/prose-reset.css',
     '~/assets/css/katex-reset.css',
   ],
   vite: {
@@ -123,6 +124,7 @@ export default defineNuxtConfig({
       map: {
         h1: 'FTitle',
         h2: 'FTitleH2',
+        h3: 'FTitleH3',
       },
     },
   },

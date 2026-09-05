@@ -1,0 +1,12 @@
+slug: stochastic-process
+_locale: en
+title: Stochastic process
+description: >-
+  A system that evolves over time with an element of randomness built in. At
+  each step the next state is determined partly by a rule and partly by
+  chance. Random walks, Markov chains, Brownian motion, and stock prices are
+  all examples. The flip sequence of a fair coin is the simplest one: each
+  toss is a new random nudge on top of the running total.
+link: https://en.wikipedia.org/wiki/Stochastic_process
+aka:
+  - random process

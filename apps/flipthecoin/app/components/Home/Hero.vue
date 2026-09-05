@@ -17,7 +17,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="relative isolate overflow-hidden rounded-2xl bg-transparent">
+  <section
+    class="relative isolate overflow-hidden rounded-2xl bg-transparent min-h-[calc(100svh-68px)] md:min-h-[calc(100svh-92px)] flex items-center"
+  >
     <HomeHeroMathBackdrop class="text-base-content" />
 
     <div

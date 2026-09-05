@@ -21,7 +21,11 @@ const classes = computed(() => {
       ? 'md:text-3xl text-2xl'
       : props.as === 'h2'
         ? 'md:text-2xl text-xl'
-        : '';
+        : props.as === 'h3'
+          ? 'md:text-xl text-lg'
+          : props.as === 'h4'
+            ? 'md:text-lg text-base'
+            : '';
 
   return [size];
 });

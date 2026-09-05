@@ -1,0 +1,12 @@
+slug: markov-process
+_locale: en
+title: Markov process
+description: >-
+  A stochastic process whose future depends only on its present state, not on
+  the full history that produced it. Knowing the present is enough; the past
+  offers no extra information about what happens next. This "memoryless"
+  property is the defining feature of a large and practical family of models,
+  from random walks to weather chains to page-rank algorithms.
+link: https://en.wikipedia.org/wiki/Markov_chain
+aka:
+  - markov chain

@@ -1,0 +1,13 @@
+slug: ausencia-de-memoria
+_locale: es
+title: Ausencia de memoria
+description: >-
+  La propiedad de un proceso cuyo comportamiento futuro no depende de cuánto
+  tiempo lleve ejecutándose ni de lo que ya haya ocurrido. Conocer el tiempo de
+  espera transcurrido no da información sobre el tiempo de espera restante. La
+  distribución geométrica es el caso discreto; la distribución exponencial es
+  el continuo. Ambas comparten la ecuación P(X > s + t | X > s) = P(X > t).
+link: https://es.wikipedia.org/wiki/Propiedad_de_falta_de_memoria
+aka:
+  - propiedad sin memoria
+  - falta de memoria

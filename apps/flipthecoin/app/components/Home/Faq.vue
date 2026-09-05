@@ -10,7 +10,7 @@ const items = computed(() => [
 </script>
 
 <template>
-  <section class="container mx-auto px-4 lg:px-8 py-16">
+  <section class="container mx-auto px-4 lg:px-8 py-24">
     <h2 class="font-[Archivo] text-3xl lg:text-4xl font-semibold mb-10">
       {{ $t('faq.title') }}
     </h2>

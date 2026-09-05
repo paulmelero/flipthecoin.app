@@ -1,0 +1,12 @@
+slug: geometric-distribution
+_locale: en
+title: Geometric distribution
+description: >-
+  The discrete probability distribution of the number of independent yes/no
+  trials needed until the first success. For a fair coin, it counts how many
+  flips until the first heads. It is the discrete counterpart of the
+  exponential distribution and, like it, is memoryless: waiting n failures
+  already does not change the odds of the next trial succeeding.
+link: https://en.wikipedia.org/wiki/Geometric_distribution
+aka:
+  - geometric law

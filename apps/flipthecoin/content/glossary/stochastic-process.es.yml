@@ -1,0 +1,13 @@
+slug: proceso-estocastico
+_locale: es
+title: Proceso estocástico
+description: >-
+  Un sistema que evoluciona en el tiempo con un elemento de aleatoriedad
+  incorporado. En cada paso, el siguiente estado se determina en parte por una
+  regla y en parte por azar. Los paseos aleatorios, las cadenas de Markov, el
+  movimiento browniano y los precios de las acciones son ejemplos. La secuencia
+  de lanzamientos de una moneda justa es el más sencillo: cada lanzamiento es
+  un nuevo empujón al azar sobre el total acumulado.
+link: https://es.wikipedia.org/wiki/Proceso_estoc%C3%A1stico
+aka:
+  - proceso aleatorio

@@ -1,0 +1,14 @@
+slug: memorylessness
+_locale: en
+title: Memorylessness
+description: >-
+  The property of a process whose future behavior does not depend on how long
+  it has already been running or on what has already happened. Knowing the
+  elapsed waiting time gives no information about the remaining waiting time.
+  The geometric distribution is the discrete case; the exponential
+  distribution is the continuous one. Both share the equation P(X > s + t | X >
+  s) = P(X > t).
+link: https://en.wikipedia.org/wiki/Memorylessness
+aka:
+  - memoryless property
+  - lack of memory

@@ -33,6 +33,7 @@ export default function useCoinNarrative(
       setIllumination: (_p: number) => {},
       setIdle: () => {},
       setHeroPosition: (_pos: { x: number; y: number }, _scale?: number) => {},
+      setArcBounds: (_leftX: number, _rightX: number) => {},
       screenToWorld: (_x: number, _y: number) => ({ x: 0, y: 0 }),
       isReady: ref(false),
     };
@@ -71,7 +72,12 @@ export default function useCoinNarrative(
   // Hero rest pose — set dynamically from the actual hero coin frame position.
   let heroPos = new THREE.Vector3(2.4, 0, 0);
 
-  // Section travel endpoints. Left = night, right = day.
+  // Hero rest scale — set from setHeroPosition, restored by setIdle().
+  let heroScale = 1;
+
+  // Section travel endpoints. Left = night, right = day. Mutable —
+  // updated from the section's real on-screen bounds via setArcBounds()
+  // so the coin tracks the section card instead of hardcoded positions.
   const LEFT_POS = new THREE.Vector3(-2.8, 0, 0);
   const RIGHT_POS = new THREE.Vector3(2.8, 0, 0);
   const ARC_HEIGHT = 1.8;
@@ -81,6 +87,9 @@ export default function useCoinNarrative(
 
   // Reusable quaternion for flip composition (avoid GC churn).
   const flipQuat = new THREE.Quaternion();
+
+  // Coin materials, collected at setup — used for end-of-arc fade.
+  let coinMaterials: THREE.Material[] = [];
 
   function getSize() {
     if (sizeSource === 'element' && canvasRef.value) {
@@ -148,6 +157,7 @@ export default function useCoinNarrative(
    */
   function setHeroPosition(pos: { x: number; y: number }, scale = 1) {
     heroPos = new THREE.Vector3(pos.x, pos.y, 0);
+    heroScale = scale;
     if (coinMesh) coinMesh.scale.setScalar(scale);
     // Control point for the fly bezier: midpoint lifted into an arc.
     const mid = new THREE.Vector3()
@@ -155,6 +165,24 @@ export default function useCoinNarrative(
       .multiplyScalar(0.5);
     flyControl = new THREE.Vector3(mid.x, mid.y + 1.8, 0);
     // Caller is responsible for calling setIdle() when appropriate.
+  }
+
+  /**
+   * Sets the arc travel endpoints from screen (document-relative)
+   * coordinates and recomputes the fly control point. No-op before setup.
+   */
+  function setArcBounds(leftX: number, rightX: number) {
+    if (!coinMesh) return;
+    // Inset the endpoints by the coin's radius at arc size (half of the
+    // hero scale) so the coin's edge stays inside the section card.
+    const radius = heroScale * 0.5;
+    LEFT_POS.x = leftX + radius;
+    RIGHT_POS.x = rightX - radius;
+    // Re-derive the fly control point for the (possibly new) left end.
+    const mid = new THREE.Vector3()
+      .addVectors(heroPos, LEFT_POS)
+      .multiplyScalar(0.5);
+    flyControl = new THREE.Vector3(mid.x, mid.y + 1.8, 0);
   }
 
   function setup() {
@@ -181,6 +209,19 @@ export default function useCoinNarrative(
 
     const built = createCoinMesh({ assets, renderer });
     coinMesh = built.coinMesh;
+    coinMaterials = [];
+    coinMesh.traverse((obj) => {
+      const mesh = obj as THREE.Mesh;
+      if (mesh.isMesh && mesh.material) {
+        const mats = Array.isArray(mesh.material)
+          ? mesh.material
+          : [mesh.material];
+        for (const m of mats) {
+          (m as THREE.MeshStandardMaterial).transparent = true;
+          coinMaterials.push(m);
+        }
+      }
+    });
     for (const g of built.geometries) geometries.push(g);
     for (const m of built.materials) materials.push(m);
     scene.add(coinMesh);
@@ -213,6 +254,8 @@ export default function useCoinNarrative(
   function setIdle() {
     if (!coinMesh) return;
     coinMesh.position.copy(heroPos);
+    coinMesh.scale.setScalar(heroScale);
+    for (const m of coinMaterials) m.opacity = 1;
     coinMesh.quaternion.copy(IDLE_QUAT);
     if (coinLight) {
       coinLight.position.set(heroPos.x, heroPos.y, 2);
@@ -239,8 +282,11 @@ export default function useCoinNarrative(
 
     // Flip: world-space rotation around X composed with idle quat.
     // At t=0 → idle (heads). At t=1 → edge-on (quarter turn).
+    // Scale shrinks from hero size to half across the fly so the coin
+    // arrives at the section card at its (smaller) arc size.
     flipQuat.setFromAxisAngle(FLIP_AXIS, t * FLY_ROT);
     coinMesh.quaternion.copy(flipQuat).multiply(IDLE_QUAT);
+    coinMesh.scale.setScalar(heroScale * (1 - 0.5 * t));
 
     if (coinLight) {
       coinLight.position.set(coinMesh.position.x, coinMesh.position.y, 2);
@@ -261,6 +307,15 @@ export default function useCoinNarrative(
     const x = LEFT_POS.x + (RIGHT_POS.x - LEFT_POS.x) * t;
     const y = ARC_HEIGHT * 4 * t * (1 - t);
     coinMesh.position.set(x, y, 0);
+    coinMesh.scale.setScalar(heroScale * 0.5);
+
+    // Fade out over the last 12% of the arc: the coin "lands" behind
+    // the section card, whose backgrounds are partly translucent, so a
+    // hard stop would leave it bleeding through the card edge.
+    const FADE_START = 0.88;
+    const opacity =
+      t <= FADE_START ? 1 : 1 - (t - FADE_START) / (1 - FADE_START);
+    for (const m of coinMaterials) m.opacity = opacity;
 
     // Flip continues: FLY_ROT → 2π. At t=1, total = 2π = idle.
     flipQuat.setFromAxisAngle(FLIP_AXIS, FLY_ROT + t * ARC_ROT);
@@ -302,6 +357,7 @@ export default function useCoinNarrative(
     setIllumination,
     setIdle,
     setHeroPosition,
+    setArcBounds,
     screenToWorld,
     isReady,
   };

@@ -1,0 +1,13 @@
+slug: distribucion-geometrica
+_locale: es
+title: Distribución geométrica
+description: >-
+  La distribución de probabilidad discreta del número de pruebas independientes
+  sí/no necesarias hasta el primer éxito. Para una moneda justa, cuenta cuántos
+  lanzamientos hasta la primera cara. Es la contraparte discreta de la
+  distribución exponencial y, como ella, es sin memoria: haber esperado n
+  fracasos ya no cambia la probabilidad de que el siguiente intento sea un
+  éxito.
+link: https://es.wikipedia.org/wiki/Distribuci%C3%B3n_geom%C3%A9trica
+aka:
+  - ley geométrica
