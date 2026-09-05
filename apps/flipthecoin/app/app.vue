@@ -58,10 +58,6 @@ useHead({
     { property: 'og:image:width', content: 1200 },
     { property: 'og:image:height', content: 630 },
     { property: 'og:url', content: canonicalUrl },
-    {
-      property: 'og:locale',
-      content: $getLocale() === 'es' ? 'es_ES' : 'en_US',
-    },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: TITLE },
     { name: 'twitter:description', content: description.value as string },
