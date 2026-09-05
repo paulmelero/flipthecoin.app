@@ -24,8 +24,8 @@ watch(() => route.path, closeDropdown);
 </script>
 
 <template>
-  <header class="navbar container mx-auto py-5 relative z-20">
-    <div class="navbar-start w-full md:w-fit">
+  <header class="navbar container mx-auto py-5 relative z-20 justify-evenly">
+    <div class="navbar-start w-auto md:w-fit">
       <nuxt-link :to="localePath('/')">
         <BrandLogo />
       </nuxt-link>

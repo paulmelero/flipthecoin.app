@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import * as THREE from 'three';
+
+// three.js is imported dynamically in onMounted so it never lands in the
+// shared vendor bundle — pages that don't render the starfield (and the
+// critical path of the home page itself) don't pay for it.
+type Three = typeof import('three');
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -9,20 +13,25 @@ if (typeof window !== 'undefined') {
 
 const canvasRef = ref<HTMLCanvasElement | null>(null);
 
-let scene: THREE.Scene;
-let camera: THREE.PerspectiveCamera;
-let renderer: THREE.WebGLRenderer;
-let starfield: THREE.Points;
-let starMaterial: THREE.PointsMaterial;
+let THREE: Three;
+let scene: Three['Scene'] | undefined;
+let camera: Three['PerspectiveCamera'] | undefined;
+let renderer: Three['WebGLRenderer'] | undefined;
+let starfield: Three['Points'] | undefined;
+let starMaterial: Three['PointsMaterial'] | undefined;
 let animationId: number | null = null;
 let trigger: ScrollTrigger | null = null;
 let resizeObserver: ResizeObserver | null;
 
-const geometries: THREE.BufferGeometry[] = [];
-const materials: THREE.Material[] = [];
-const textures: THREE.Texture[] = [];
+type BufferGeometry = Three['BufferGeometry'];
+type Material = Three['Material'];
+type Texture = Three['Texture'];
 
-function createStarTexture(): THREE.Texture {
+const geometries: BufferGeometry[] = [];
+const materials: Material[] = [];
+const textures: Texture[] = [];
+
+function createStarTexture(): Texture {
   const canvas = document.createElement('canvas');
   canvas.width = 64;
   canvas.height = 64;
@@ -110,16 +119,23 @@ function setup() {
 
 function animate() {
   animationId = requestAnimationFrame(animate);
-  renderer.render(scene, camera);
+  if (renderer && scene && camera) renderer.render(scene, camera);
 }
 
-onMounted(() => {
+async function init() {
   if (!canvasRef.value) return;
 
   const reduceMotion = window.matchMedia(
     '(prefers-reduced-motion: reduce)',
   ).matches;
   if (reduceMotion) return;
+
+  try {
+    THREE = await import('three');
+  } catch (err) {
+    console.error('[HomeStarfield] failed to load three.js:', err);
+    return;
+  }
 
   try {
     setup();
@@ -137,11 +153,13 @@ onMounted(() => {
     end: 'bottom top',
     scrub: 1,
     onUpdate: (self) => {
-      starfield.rotation.z = (self.progress * Math.PI * 2) / 10;
-      starMaterial.opacity = (1 - self.progress) * 0.8;
+      starfield!.rotation.z = (self.progress * Math.PI * 2) / 10;
+      starMaterial!.opacity = (1 - self.progress) * 0.8;
     },
   });
-});
+}
+
+onMounted(() => void init());
 
 onBeforeUnmount(() => {
   if (trigger) {

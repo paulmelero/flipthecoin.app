@@ -6,9 +6,9 @@ const { $t, localePath } = useI18n();
 </script>
 
 <template>
-  <section class="container mx-auto px-16">
+  <section class="container mx-auto px-4 sm:px-16 py-24">
     <div
-      class="relative grid gap-10 lg:grid-cols-2 items-center p-8 lg:p-12 rounded-3xl bg-gradient-to-br from-primary/15 via-primary/5 to-secondary/10 border border-primary/10 overflow-hidden"
+      class="relative grid gap-10 lg:grid-cols-2 items-center p-6 sm:p-8 lg:p-12 rounded-3xl bg-gradient-to-br from-primary/15 via-primary/5 to-secondary/10 border border-primary/10 overflow-hidden"
     >
       <div class="relative z-10">
         <p class="text-xs uppercase tracking-[0.2em] text-primary mb-3">
@@ -34,7 +34,7 @@ const { $t, localePath } = useI18n();
 
       <div class="relative flex justify-center lg:justify-end">
         <div
-          class="relative w-[260px] h-[360px] rounded-3xl bg-base-100 shadow-2xl border border-base-content/10 p-3 flex flex-col gap-3 -rotate-3 hover:rotate-0 transition-transform duration-500"
+          class="relative w-[min(260px,62vw)] h-[360px] rounded-3xl bg-base-100 shadow-2xl border border-base-content/10 p-3 flex flex-col gap-3 -rotate-3 hover:rotate-0 transition-transform duration-500"
         >
           <div
             class="flex items-center justify-between px-2 py-1 border-b border-base-content/5"
