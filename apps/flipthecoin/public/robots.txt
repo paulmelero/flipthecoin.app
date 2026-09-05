@@ -2,4 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /__capture
 
+User-agent: WhatsApp
+Allow: /
+
 Sitemap: https://flipthecoin.app/sitemap.xml
