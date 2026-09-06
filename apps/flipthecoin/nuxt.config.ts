@@ -172,5 +172,8 @@ export default defineNuxtConfig({
     ],
     defaultLocale: 'en',
     translationDir: 'app/locales',
+    // Persist the chosen locale so redirect logic doesn't flip users back
+    // (recommended for prefix strategies with redirects).
+    localeCookie: 'user-locale',
   },
 });
