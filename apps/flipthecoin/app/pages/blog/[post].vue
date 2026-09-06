@@ -188,6 +188,14 @@ useHead(
             },
           ]
         : [],
+      meta: [
+        ...(post.value?.title
+          ? [{ property: 'og:title', content: post.value?.title }]
+          : []),
+        ...(post.value?.title
+          ? [{ name: 'twitter:title', content: post.value?.title }]
+          : []),
+      ],
     };
   }),
 );

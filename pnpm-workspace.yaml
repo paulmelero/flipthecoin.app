@@ -8,3 +8,7 @@ allowBuilds:
   esbuild: true
   sharp: true
   workerd: true
+
+minimumReleaseAgeExclude:
+  - '@i18n-micro/route-strategy@1.1.18'
+  - nuxt-i18n-micro@3.28.5
