@@ -1,7 +1,7 @@
 ---
 title: 'La moneda que recuerda'
 slug: la-moneda-que-recuerda
-series: chaos
+series: Chaos
 seriesOrder: 4
 _locale: es
 description: 'Una moneda tiene un pasado, pero cuando estudiamos probabilidad, tratamos habitualmente los lanzamientos sucesivos como independientes.'
@@ -28,6 +28,8 @@ tags:
 # La moneda que recuerda
 
 Voy a introducir el concepto de "ausencia de memoria". A menudo decimos que una moneda no tiene memoria. Pero me gustaría explicarla mejor. A algun@s les sonará quizás el concepto de "Propiedad de Markov". Si no es así, no os preocupéis, vamos a paso a paso.
+
+<!--more-->
 
 Lanza una moneda **justa** y saca cara. Lánzala de nuevo, y el resultado anterior no debería importar. Saca cara diez veces seguidas y, en el undécimo lanzamiento, cara sigue siendo exactamente igual de probable que cruz. La probabilidad de tener un hijo cuando tus dos primeaos hijas fueron niñas [sigue siendo $\tfrac{1}{2}$](https://woddsup.com/e/1/5/third-child-same-sex).
 

@@ -1,7 +1,7 @@
 ---
 title: 'The Coin That Remembers'
 slug: the-coin-that-remembers
-series: chaos
+series: Chaos
 seriesOrder: 4
 _locale: en
 description: 'A coin has a past, but when we study probability, we routinely treat successive coin tosses as independent.'
@@ -28,6 +28,8 @@ tags:
 # The Coin That Remembers
 
 I would like to introduce the concept of "memorylessness". We often say that a coin has no memory. But let me explain it better. Some of you may already be familiar with the concept of "Markov property". If not, don't worry, we will go step by step.
+
+<!--more-->
 
 Flip a **fair** coin and get heads. Flip it again, and the previous result shouldn't matter. Get heads ten times in a row and, on the eleventh flip, heads is still just as likely as tails. The chance of having a son when your first two children were girls [is still $\tfrac{1}{2}$](https://woddsup.com/e/1/5/third-child-same-sex).
 
