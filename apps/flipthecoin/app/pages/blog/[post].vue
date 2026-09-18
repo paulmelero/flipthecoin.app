@@ -114,6 +114,11 @@ const ogImage = computed(() =>
     : undefined,
 );
 
+// Comments are scoped per locale so EN and ES discussions stay separate.
+const commentsResource = computed(() =>
+  locale.value === 'es' ? `es/blog/${slug.value}` : `blog/${slug.value}`,
+);
+
 useSeoMeta({
   title: () => post.value?.title,
   description: () => post.value?.description,
@@ -208,6 +213,15 @@ useHead(
   </div>
   <div class="mb-16" v-else>
     <p>{{ $t('blog.notFound') }}</p>
+  </div>
+
+  <div v-if="post" class="mb-16">
+    <ClientOnly>
+      <BlogComments :resource="commentsResource" />
+      <template #fallback>
+        <div class="skeleton h-32 w-full" />
+      </template>
+    </ClientOnly>
   </div>
 
   <div v-if="seriesData?.members?.length" class="mb-16">

@@ -93,8 +93,19 @@ export default defineNuxtConfig({
     enabled: true,
   },
   watch: ['!./content/**/.*.md'],
+  runtimeConfig: {
+    public: {
+      siteUrl: '', // mapped from NUXT_PUBLIC_SITE_URL; required on Workers
+    },
+  },
   nitro: {
     preset: 'cloudflare-module',
+    // The FS payload cache stores a route's payload at its URL path, so the
+    // `/glossary` index (file) collides with `/glossary/<term>` (directory)
+    // and throws ENOTDIR. Memory storage in dev avoids the collision; dev-only.
+    devStorage: {
+      'cache:nuxt:payload': { driver: 'memory' },
+    },
     cloudflareDev: {
       configPath: './wrangler.toml',
     },
@@ -118,7 +129,15 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxt/fonts',
     'nuxt-i18n-micro',
+    '@nuxtjs/better-auth', // also auto-added by @graficos/nuxt-comments
+    '@graficos/nuxt-comments',
   ],
+  comments: {
+    database: { binding: 'DB' },
+    auth: { database: { binding: 'DB' } }, // D1-backed Better Auth (opt-in)
+    components: { prefix: '' }, // <Comments> instead of <NuxtComments>
+    reactions: { enabled: true, types: ['like'] },
+  },
   mdc: {
     components: {
       map: {

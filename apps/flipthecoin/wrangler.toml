@@ -2,6 +2,7 @@ compatibility_date = "2026-08-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 name = "flipthecoin-app"
+account_id = "81bb9e915adce027f7f72b700da03532"
 
 main = ".output/server/index.mjs"
 
@@ -16,6 +17,16 @@ preview_id = "84542cf8ed754a35a8cfbcdd32aa9d7e"
 binding = "cf_d1_flipthecoin_content"
 database_name = "cf_d1_flipthecoin_content"
 database_id = "742ff927-04aa-4c68-9ff9-6e45833c3216"
+
+# Comments + Better Auth.
+[[d1_databases]]
+binding = "DB"
+database_name = "flipthecoin-comments"
+database_id = "b1839714-ae76-4383-b640-c61a2c7c61a3"
+migrations_dir = "./migrations"
+
+[vars]
+NUXT_PUBLIC_SITE_URL = "https://flipthecoin.app"
 
 [observability]
 enabled = true

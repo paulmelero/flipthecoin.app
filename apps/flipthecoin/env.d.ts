@@ -3,6 +3,7 @@ import {
   Request,
   ExecutionContext,
   KVNamespace,
+  D1Database,
 } from '@cloudflare/workers-types';
 
 declare module 'h3' {
@@ -13,6 +14,7 @@ declare module 'h3' {
       env: {
         flipthecoin_emails_list: KVNamespace;
         'flipthecoin-app-flipthecoin_emails_list_local': KVNamespace;
+        DB: D1Database;
       };
       context: ExecutionContext;
     };
