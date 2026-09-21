@@ -10,6 +10,7 @@
     "prepare": "nuxt prepare",
     "cf:preview": "npx wrangler --cwd ./ dev",
     "cf:logs": "pnpx wrangler pages deployment tail",
+    "comments:clear-local": "wrangler d1 execute flipthecoin-comments --local --command \"PRAGMA defer_foreign_keys=ON; DELETE FROM comments;\"",
     "test": "vitest",
     "test:run": "vitest run",
     "postinstall": "nuxt prepare"
@@ -40,7 +41,7 @@
   },
   "dependencies": {
     "@flipthecoin/coin-engine": "workspace:*",
-    "@graficos/nuxt-comments": "0.1.0",
+    "@graficos/nuxt-comments": "0.3.0",
     "@nuxt/content": "^3.2.2",
     "@nuxt/fonts": "^0.10.3",
     "@nuxtjs/better-auth": "^0.3.3",
