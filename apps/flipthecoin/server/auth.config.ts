@@ -5,6 +5,10 @@ import { defineServerAuth } from '@nuxtjs/better-auth/config';
 // @nuxtjs/better-auth). Do not set `database` here — the module's provider
 // takes precedence and setting both is unsupported.
 export default defineServerAuth({
+  // Self-service account deletion (profile page). Requires a session newer
+  // than the default `session.freshAge` (1 day); stale sessions are prompted
+  // to sign in again.
+  user: { deleteUser: { enabled: true } },
   socialProviders: {
     github: {
       clientId: process.env.GITHUB_CLIENT_ID!,

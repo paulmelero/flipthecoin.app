@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { commentsMessagesEs } from '~/lib/comments/messages.es';
+import { commentsMessagesEs } from '../../lib/comments/messages.es';
 
 const { t } = useCommentsMessages();
 const config = useRuntimeConfig();
-const { $getLocale } = useI18n();
+const { $getLocale, localePath } = useI18n();
 
 withDefaults(
   defineProps<{
@@ -20,10 +20,17 @@ const providerMeta: Record<string, { icon: string; label: string }> = {
   google: { icon: 'logos:google-icon', label: 'Google' },
 };
 
-// Actions on the left, reactions (the like button) on the right.
+// Layout via the package's class API (0.4.0). Actions on the left, reactions
+// (the like button) on the opposite edge; replies indented under their parent.
+const commentsClasses = {
+  list: 'flex list-none flex-col gap-6 p-0',
+};
 const commentClasses = {
+  root: 'flex flex-col gap-1.5',
   footer: 'flex items-center justify-between gap-2',
   reactions: 'flex items-center gap-1',
+  repliesList:
+    'mt-3 flex list-none flex-col gap-4 border-s border-secondary/10 p-0 ps-5',
 };
 
 // @graficos/nuxt-comments ships an English message catalog; swap in the
@@ -42,6 +49,7 @@ watchEffect(() => {
       :resource="resource"
       :providers="providers"
       :expand-replies="true"
+      :classes="commentsClasses"
       :comment-classes="commentClasses"
     >
       <template #header="{ count }">
@@ -183,21 +191,14 @@ watchEffect(() => {
           {{ t('loadMore') }}
         </button>
       </template>
+
+      <template #footer>
+        <p class="mt-4 text-xs opacity-70">
+          <NuxtLink :to="localePath('/privacy-policy')" class="link">
+            {{ $t('comments.privacyLink') }}
+          </NuxtLink>
+        </p>
+      </template>
     </Comments>
   </section>
 </template>
-
-<style scoped>
-/* The package is unstyled; lay out the lists and nest replies. */
-:deep([data-comments-list]) {
-  @apply flex list-none flex-col gap-6 p-0;
-}
-
-:deep([data-replies-list]) {
-  @apply mt-3 flex list-none flex-col gap-4 border-s border-base-300 p-0 ps-5;
-}
-
-:deep([role='comment']) {
-  @apply flex flex-col gap-1.5;
-}
-</style>

@@ -8,26 +8,41 @@ _locale: en
 
 ## Introduction
 
-Welcome to FlipTheCoin.app. We value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and store your data when you subscribe to our newsletter.
+Welcome to FlipTheCoin.app. We value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and store your data when you subscribe to our newsletter or sign in to leave a comment.
 
-## Information Collection
+## Newsletter
 
-When you subscribe to our newsletter, we collect your email address. This information is sent and stored securely in Cloudflare.
+When you subscribe to our newsletter, we collect your email address. This information is sent and stored securely in Cloudflare. We use it only to send you content related to FlipTheCoin.app and occasional updates about the project.
 
-## Use of Information
+## Comments
 
-The email addresses collected in the newsletter form will be used for the following purposes:
+You can read the comments on our blog without signing in. If you choose to sign in to post a comment, we store the following in Cloudflare's D1 database:
 
-- Sending you content related to FlipTheCoin.app
-- Marketing purposes related to FlipTheCoin.app
+- the text of your comment;
+- your display name and avatar, as provided by the sign-in provider (GitHub or Google), captured at the time you post;
+- an internal account identifier used to link your comments and reactions to your account.
 
-## Data Privacy
+We do not store your email address with your comments. Comments are public: anyone visiting the site can read them.
 
-We do not sell, trade, or otherwise transfer your email address to outside parties. Your information remains private between you, the storage platform, and FlipTheCoin.app.
+This data is used only to display the discussion and to let you edit or delete your own comments. It is not used for analytics, profiling, advertising, or any marketing purpose, and we do not sell or share it.
 
-## No Analytics or Cookies
+Comment data is collected on the website only. It is unrelated to the FlipTheCoin browser extension, which does not use this comment system.
 
-We do not use any analytics or cookies on our website.
+## Cookies
+
+We do not use analytics or marketing cookies. When you sign in to comment, we set a strictly necessary session cookie so the site can recognise you across requests. Without it, you could not post or manage comments.
+
+## Retention and deleting your data
+
+We keep your comment data for as long as your account exists. You can delete it yourself at any time from your profile page: the delete button removes your comments and reactions and deletes your account and login. Threads that already have replies are kept anonymous so the conversation still makes sense, but no name, avatar, or comment text of yours is kept.
+
+## Your rights
+
+Depending on where you live, you may have the right to access, correct, or delete your personal data, and to object to or restrict its processing. You can exercise the deletion right directly from your profile page. For any other request, contact us.
+
+## Changes to this policy
+
+We may update this Privacy Policy from time to time as the site evolves. When we do, we will post the new version on this page. We will always respect your privacy and your right to choose how your data is used.
 
 ## Contact Us
 

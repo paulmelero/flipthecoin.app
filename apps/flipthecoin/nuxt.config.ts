@@ -30,7 +30,15 @@ export default defineNuxtConfig({
       },
     },
     optimizeDeps: {
-      include: [],
+      include: [
+        'gsap',
+        'gsap/ScrollTrigger',
+        'three',
+        'cannon-es',
+        'three/addons/controls/OrbitControls.js',
+        'three/addons/geometries/TextGeometry.js',
+        'three/addons/loaders/FontLoader.js',
+      ],
     },
   },
   app: {
@@ -115,7 +123,14 @@ export default defineNuxtConfig({
       // i18n module mirrors `prerender.routes` under /es, but the glossary API
       // isn't localized, so /es/api/glossary/* 404s. The canonical
       // /api/glossary/{en,es} (what useGlossary fetches) still prerenders.
-      ignore: [/^\/(en|es)\/(en|es)(\/|$)/, /^\/(en|es)\/api\//],
+      // Also skip the auth-guarded profile page: prerendering it records the
+      // logged-out redirect as a static stub, which would break the page for
+      // signed-in users. It must stay an on-demand SSR route.
+      ignore: [
+        /^\/(en|es)\/(en|es)(\/|$)/,
+        /^\/(en|es)\/api\//,
+        /^\/(es\/)?profile\/?$/,
+      ],
       // Glossary index JSON is fetched client-side on hover, so it is never
       // crawled from a link — list it explicitly so it ships as a static asset.
       routes: ['/api/glossary/en', '/api/glossary/es'],
@@ -137,6 +152,10 @@ export default defineNuxtConfig({
     auth: { database: { binding: 'DB' } }, // D1-backed Better Auth (opt-in)
     components: { prefix: '' }, // <Comments> instead of <NuxtComments>
     reactions: { enabled: true, types: ['like'] },
+  },
+  auth: {
+    // No dedicated login page: send guarded routes home instead of a 404.
+    redirects: { login: '/' },
   },
   mdc: {
     components: {

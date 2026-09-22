@@ -3,6 +3,8 @@ import { ref, watch, computed } from 'vue';
 
 const { $t, localePath } = useI18n();
 
+const { loggedIn, ready, signOut } = useUserSession();
+
 const navLinks = computed(() => [
   { to: localePath('/'), label: $t('nav.home') as string },
   { to: localePath('/play'), label: $t('nav.play') as string },
@@ -10,6 +12,11 @@ const navLinks = computed(() => [
   // { to: localePath('/glossary'), label: $t('nav.glossary') as string },
   { to: localePath('/extension'), label: $t('nav.extension') as string },
 ]);
+
+const profilePath = computed(() => localePath('/profile'));
+// Only show auth actions once the session is resolved; ClientOnly keeps them
+// out of the SSR HTML so a cached response never carries user state.
+const showAuthActions = computed(() => ready.value && loggedIn.value);
 
 const dropdownRef = ref<HTMLDetailsElement | null>(null);
 const route = useRoute();
@@ -25,13 +32,13 @@ watch(() => route.path, closeDropdown);
 
 <template>
   <header class="navbar container mx-auto py-5 relative z-20 justify-evenly">
-    <div class="navbar-start w-auto md:w-fit">
+    <div class="navbar-start w-auto lg:w-fit">
       <nuxt-link :to="localePath('/')">
         <BrandLogo />
       </nuxt-link>
     </div>
-    <nav class="navbar-end md:w-full flex gap-4 md:gap-2">
-      <div class="md:hidden">
+    <nav class="navbar-end lg:w-full flex gap-4 lg:gap-2">
+      <div class="lg:hidden">
         <details ref="dropdownRef" class="dropdown dropdown-end isolate z-20">
           <summary class="btn btn-square">
             <span class="sr-only"> open or close </span>
@@ -66,18 +73,52 @@ watch(() => route.path, closeDropdown);
               <NavigationLocaleSwitcher />
               <NavigationThemeSwitcher />
             </div>
+            <ClientOnly>
+              <div
+                v-if="showAuthActions"
+                class="border-t border-base-content/10 pt-2 px-2 flex flex-col gap-1"
+              >
+                <nuxt-link
+                  :to="profilePath"
+                  class="btn btn-ghost btn-sm justify-start"
+                >
+                  {{ $t('nav.profile') }}
+                </nuxt-link>
+                <button
+                  type="button"
+                  class="btn btn-ghost btn-sm justify-start"
+                  @click="signOut()"
+                >
+                  {{ $t('nav.logout') }}
+                </button>
+              </div>
+            </ClientOnly>
           </div>
         </details>
       </div>
-      <ul class="menu menu-horizontal gap-2 hidden md:inline-flex">
+      <ul class="menu menu-horizontal gap-2 hidden lg:inline-flex">
         <li v-for="link in navLinks" :key="link.to">
           <nuxt-link :to="link.to">{{ link.label }}</nuxt-link>
         </li>
       </ul>
-      <div class="hidden md:flex items-center gap-2">
+      <div class="hidden lg:flex items-center gap-2">
         <NavigationLocaleSwitcher />
         <NavigationThemeSwitcher />
       </div>
+      <ClientOnly>
+        <div v-if="showAuthActions" class="hidden lg:flex items-center gap-2">
+          <span
+            class="mx-1 h-6 w-px self-center bg-base-content/10"
+            aria-hidden="true"
+          />
+          <nuxt-link :to="profilePath" class="btn btn-ghost btn-sm">
+            {{ $t('nav.profile') }}
+          </nuxt-link>
+          <button type="button" class="btn btn-ghost btn-sm" @click="signOut()">
+            {{ $t('nav.logout') }}
+          </button>
+        </div>
+      </ClientOnly>
     </nav>
   </header>
 </template>
