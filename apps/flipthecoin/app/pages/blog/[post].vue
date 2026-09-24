@@ -216,12 +216,7 @@ useHead(
   </div>
 
   <div v-if="post" class="mb-16">
-    <ClientOnly>
-      <BlogComments :resource="commentsResource" />
-      <template #fallback>
-        <div class="skeleton h-32 w-full" />
-      </template>
-    </ClientOnly>
+    <BlogComments :resource="commentsResource" />
   </div>
 
   <div v-if="seriesData?.members?.length" class="mb-16">
