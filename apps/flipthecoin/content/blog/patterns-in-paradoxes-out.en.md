@@ -1,6 +1,6 @@
 ---
-title: 'How to Beat a Fair Coin'
-slug: how-to-beat-a-fair-coin
+title: 'Patterns In, Paradoxes Out'
+slug: patterns-in-paradoxes-out
 series: patterns-in-the-noise
 seriesOrder: 1
 _locale: en
@@ -21,7 +21,7 @@ tags:
   - randomness
 ---
 
-# How to Beat a Fair Coin
+# Patterns In, Paradoxes Out
 
 _You and a friend each pick a pattern of three coin flips. The coin is perfectly fair. Yet one of you wins seven times out of eight — and if you choose second, it is always you._ 🤔
 

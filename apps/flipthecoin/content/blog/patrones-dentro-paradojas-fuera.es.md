@@ -1,6 +1,6 @@
 ---
-title: 'Cómo ganarle a una moneda justa'
-slug: como-ganarle-a-una-moneda-justa
+title: 'Patrones Dentro, Paradojas Fuera'
+slug: patrones-dentro-paradojas-fuera
 series: patterns-in-the-noise
 seriesOrder: 1
 _locale: es
@@ -21,7 +21,7 @@ tags:
   - aleatoriedad
 ---
 
-# Cómo ganarle a una moneda justa
+# Patrones Dentro, Paradojas Fuera
 
 _Tú y una amiga elegís cada una un patrón de tres lanzamientos. La moneda es perfectamente justa. Y, aun así, una de vosotras gana siete veces de cada ocho — y si eliges segundo, esa eres siempre tú._ 🤔
 
