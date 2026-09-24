@@ -1,0 +1,12 @@
+slug: nontransitive
+_locale: en
+title: Nontransitive (game)
+description: >-
+  A game or relation in which the options form a cycle, so there is no single
+  best choice: A beats B, B beats C, and C beats A. Rock-paper-scissors is the
+  classic example. Penney's game is a probabilistic version, where a perfectly
+  fair coin still produces a cycle of patterns with no strongest member.
+link: https://en.wikipedia.org/wiki/Nontransitive_game
+aka:
+  - intransitive
+  - non-transitive

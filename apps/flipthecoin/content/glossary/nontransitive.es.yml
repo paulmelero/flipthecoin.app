@@ -1,0 +1,13 @@
+slug: no-transitivo
+_locale: es
+title: No transitivo (juego)
+description: >-
+  Un juego o relación en el que las opciones forman un ciclo, de modo que no hay
+  una única mejor elección: A vence a B, B vence a C y C vence a A. Piedra, papel
+  o tijera es el ejemplo clásico. El juego de Penney es una versión probabilística,
+  en la que una moneda perfectamente justa produce igualmente un ciclo de patrones
+  sin ningún miembro más fuerte.
+link: https://en.wikipedia.org/wiki/Nontransitive_game
+aka:
+  - intransitivo
+  - no transitiva

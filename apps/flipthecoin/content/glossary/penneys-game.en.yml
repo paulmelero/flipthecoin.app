@@ -1,0 +1,12 @@
+slug: penneys-game
+_locale: en
+title: Penney's game
+description: >-
+  A betting game in which two players each pick a pattern of heads and tails and
+  a fair coin is flipped until one pattern appears as a consecutive run. Named
+  after Walter Penney, who posed it in 1969, it is famously nontransitive:
+  whoever chooses second can always pick a pattern with a better chance of
+  appearing first. Against HHH, for instance, THH wins seven times out of eight.
+link: https://en.wikipedia.org/wiki/Penney%27s_game
+aka:
+  - Penney Ante

@@ -1,0 +1,13 @@
+slug: expected-wait
+_locale: en
+title: Expected wait
+description: >-
+  The average number of coin flips needed before a given pattern first appears.
+  It depends on how much the pattern overlaps with itself: HHH can overlap at
+  lengths 1, 2 and 3, giving an expected wait of 2 + 4 + 8 = 14 flips, while THH
+  overlaps only at length 3, giving 8. A pattern can have a shorter expected wait
+  and still lose a head-to-head race, which is the waiting-time paradox.
+link: https://en.wikipedia.org/wiki/Expected_value
+aka:
+  - waiting time
+  - mean waiting time

@@ -1,0 +1,13 @@
+slug: juego-de-penney
+_locale: es
+title: Juego de Penney
+description: >-
+  Un juego de apuestas en el que dos jugadores eligen cada uno un patrón de caras
+  y cruces y se lanza una moneda justa hasta que uno de los patrones aparece como
+  una racha consecutiva. Lleva el nombre de Walter Penney, que lo planteó en
+  1969, y es famoso por ser no transitivo: quien elige segundo siempre puede
+  escoger un patrón con más probabilidad de aparecer primero. Contra CCC, por
+  ejemplo, XCC gana siete veces de cada ocho.
+link: https://es.wikipedia.org/wiki/Juego_de_Penney
+aka:
+  - Penney Ante
