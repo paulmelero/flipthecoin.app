@@ -1,0 +1,15 @@
+slug: numero-conductor
+_locale: es
+title: Número conductor
+description: >-
+  Un número que codifica cómo se solapan dos patrones de lanzamientos de moneda.
+  Desliza un patrón a lo largo del otro y, en cada alineación en la que el final
+  de uno coincide con el principio del otro, anota un 1; lee los bits como un
+  número binario. Para OOO consigo mismo coinciden las tres alineaciones, lo que
+  da 111₂ = 7; para XOO consigo mismo solo coincide la alineación completa, lo
+  que da 100₂ = 4. El algoritmo de Conway compara estos números para dar las
+  probabilidades exactas de que un patrón venza a otro.
+link: https://es.wikipedia.org/wiki/Juego_de_Penney
+aka:
+  - número de Conway
+  - número conductor de Conway

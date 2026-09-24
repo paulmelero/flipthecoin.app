@@ -1,0 +1,14 @@
+slug: leading-number
+_locale: en
+title: Leading number
+description: >-
+  A number that encodes how two coin-flip patterns overlap. Slide one pattern
+  along the other and, at each alignment where the end of one matches the
+  beginning of the other, record a 1; read the bits as a binary number. For HHH
+  against itself all three alignments match, giving 111₂ = 7; for THH against
+  itself only the full alignment matches, giving 100₂ = 4. Conway's algorithm
+  compares these numbers to give the exact odds of one pattern beating another.
+link: https://en.wikipedia.org/wiki/Penney%27s_game
+aka:
+  - Conway number
+  - Conway's leading number

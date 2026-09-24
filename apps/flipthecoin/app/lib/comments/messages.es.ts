@@ -2,7 +2,7 @@
 // They are merged over the package's English defaults, so only translated
 // keys are listed here. Applied at runtime when the active locale is `es`.
 export const commentsMessagesEs = {
-  comments: 'Comentarios',
+  comments: 'Comentarios — déjanos tu feedback',
   loading: 'Cargando comentarios…',
   loadFailed: 'No se pudieron cargar los comentarios.',
   empty: 'Todavía no hay comentarios. ¡Sé el primero!',

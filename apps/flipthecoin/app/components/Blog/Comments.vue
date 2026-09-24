@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { commentsMessagesEs } from '../../lib/comments/messages.es';
+import { commentsMessagesEn } from '../../lib/comments/messages.en';
 
 const { t } = useCommentsMessages();
 const config = useRuntimeConfig();
-const { $getLocale, localePath } = useI18n();
+const { $t, $getLocale, localePath } = useI18n();
 
 withDefaults(
   defineProps<{
@@ -35,11 +36,12 @@ const commentClasses = {
 
 // @graficos/nuxt-comments ships an English message catalog; swap in the
 // Spanish overrides when the active locale is `es`.
-const publicComments = config.public.comments as {
+const publicComments = config.public.comments as unknown as {
   messages?: Record<string, string>;
 };
 watchEffect(() => {
-  publicComments.messages = $getLocale() === 'es' ? commentsMessagesEs : {};
+  publicComments.messages =
+    $getLocale() === 'es' ? commentsMessagesEs : commentsMessagesEn;
 });
 </script>
 
@@ -195,7 +197,7 @@ watchEffect(() => {
       <template #footer>
         <p class="mt-4 text-xs opacity-70">
           <NuxtLink :to="localePath('/privacy-policy')" class="link">
-            {{ $t('comments.privacyLink') }}
+            {{ $t('comments.privacyLink') as string }}
           </NuxtLink>
         </p>
       </template>

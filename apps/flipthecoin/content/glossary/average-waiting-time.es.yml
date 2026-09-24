@@ -1,0 +1,14 @@
+slug: tiempo-de-espera-medio
+_locale: es
+title: Tiempo de espera medio
+description: >-
+  El número esperado de lanzamientos hasta que un patrón dado aparece por primera
+  vez, introducido por Stanley Collings en 1982. Es el doble del número conductor
+  propio del patrón: OOO se solapa consigo mismo en longitudes 1, 2 y 3, lo que
+  da 2 + 4 + 8 = 14 lanzamientos, mientras que XOO solo se solapa en longitud 3,
+  lo que da 8. Un patrón puede tener un tiempo de espera medio más corto y aun
+  así perder una carrera cara a cara.
+link: https://yutaka-nishiyama.sakura.ne.jp/math/stanley_collings.pdf
+aka:
+  - esperanza del tiempo de espera
+  - tiempo de espera

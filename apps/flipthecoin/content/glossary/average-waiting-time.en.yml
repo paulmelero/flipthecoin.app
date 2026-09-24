@@ -1,0 +1,14 @@
+slug: average-waiting-time
+_locale: en
+title: Average waiting time
+description: >-
+  The expected number of coin flips until a given pattern first appears,
+  introduced by Stanley Collings in 1982. It equals twice the pattern's self
+  leading number: HHH overlaps itself at lengths 1, 2 and 3, giving 2 + 4 + 8 =
+  14 flips, while THH overlaps only at length 3, giving 8. A pattern can have a
+  shorter average waiting time and still lose a head-to-head race.
+link: https://yutaka-nishiyama.sakura.ne.jp/math/stanley_collings.pdf
+aka:
+  - expected waiting time
+  - mean waiting time
+  - waiting time

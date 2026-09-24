@@ -91,7 +91,7 @@ const { coinSymbolTail = 'T', coinSymbolHead = 'H' } = defineProps<{
             {{ coinSymbolHead }}{{ coinSymbolHead }}{{ coinSymbolHead }}
           </text>
           <text x="372" y="195">
-            {{ coinSymbolTail }}{{ coinSymbolTail }}{{ coinSymbolHead }}
+            {{ coinSymbolTail }}{{ coinSymbolHead }}{{ coinSymbolTail }}
           </text>
         </g>
       </svg>
