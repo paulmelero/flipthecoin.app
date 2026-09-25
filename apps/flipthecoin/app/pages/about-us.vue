@@ -18,7 +18,8 @@ definePageMeta({
 
 useSeoMeta({
   title: () => page.value?.title,
-  description: () => page.value?.description ?? $t('app.description'),
+  description: () =>
+    page.value?.description ?? ($t('app.description') as string),
 });
 </script>
 

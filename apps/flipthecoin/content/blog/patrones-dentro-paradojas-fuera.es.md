@@ -23,13 +23,13 @@ tags:
 
 # Patrones Dentro, Paradojas Fuera
 
-_Tú y una amiga elegís cada una un patrón de tres lanzamientos. La moneda es perfectamente justa. Y, aun así, una de vosotras gana siete veces de cada ocho — y si eliges segundo, esa eres siempre tú._ 🤔
+_Tú y una amiga elegís cada una un patrón de tres lanzamientos. La moneda es perfectamente justa. Y, aun así, una de vosotras gana siete veces de cada ocho — y si eliges después, ganas siempre tú._ 🤔
 
 Pídele a una amiga que nombre cualquier patrón de tres lanzamientos — por ejemplo, cara-cara-cara. Ahora nombra tú el tuyo. Después lanza una moneda justa una y otra vez, anotando cada resultado, hasta que uno de los dos patrones aparezca en la secuencia. Quien vea su patrón primero, gana.
 
 Tu amiga eligió primero, así que tenía todo el universo de patrones a su disposición. La moneda es justa. Cada lanzamiento es independiente. No hay ningún truco _en el metal_. Y, aun así, el juego no es en absoluto un cara o cruz: sea lo que sea lo que elija tu amiga, existe un patrón que puedes elegir para vencerlo. No por poco. Contra su orgulloso _OOO_, tú eliges _XOO_ y ganas **siete veces de cada ocho**.
 
-Esto es el **juego de Penney**, y es el ejemplo más limpio que conozco de un proceso justo que produce un juego profundamente injusto. En el camino conoceremos un patrón que gana carreras que debería perder, y acabaremos en un lugar menos cómodo: preguntándonos qué significa realmente "justo" cuando la moneda no tiene preferencias — y nosotr@s sí.
+Esto es el **juego de Penney**, y es el ejemplo más limpio que conozco de un proceso justo que produce un juego profundamente injusto. En el camino conoceremos un patrón que gana carreras que debería perder, y acabaremos en un lugar menos cómodo: preguntándonos qué significa realmente "justo" cuando la moneda no tiene preferencias — pero tú puedes elegir una estrategia ganadora.
 
 <!--more-->
 
@@ -209,7 +209,7 @@ La no-transitividad es también la forma de la mayoría de los desacuerdos reale
 
 Así que quizá el uso más antiguo de la moneda — producir un ganador, limpiamente y sin discusión — lleva tiempo diciéndonos lo contrario de lo que suponíamos. Una moneda justa puede zanjar una discusión en una decisión binaria. Pero no puede decirte cuál de tres cosas es la mejor, porque "mejor" puede que no exista. Lo que existe es el ciclo, y cada posición en él es la fuerza de alguien y la debilidad de otro.
 
-Nos pasamos mucho tiempo buscando el mejor patrón que jugar. La moneda sugiere una pregunta más honesta: no _¿cuál es la mejor jugada?_, sino _¿es este el momento adecuado, y es este el rival adecuado?_ En un mundo de ciclos, ganar tiene menos que ver con ser el más fuerte y más con estar en el lugar correcto en el momento correcto.
+Nos pasamos mucho tiempo buscando el mejor patrón que jugar. La moneda sugiere una pregunta más honesta: no _¿cuál es la mejor jugada?_, sino _¿es este el momento adecuado, y es este el/la rival adecuado?_ En un mundo de ciclos, ganar tiene menos que ver con ser el más fuerte y más con estar en el lugar correcto en el momento correcto.
 
 ## Ver también
 

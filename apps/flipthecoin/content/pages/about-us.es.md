@@ -28,7 +28,7 @@ También puedes suscribirte a la Newsletter y recibir información sobre la web,
 
 ## Código abierto
 
-El proyecto no es de código abierto por ahora, pero tengo previsto hacerlo en el futuro. También escribiré artículos técnicos sobre cómo está hecho el sitio, tanto en [este blog](/blog) como en [mi blog personal de desarrollo](https://graficos.net/blog).
+El proyecto es **de código abierto**: el código está en [github.com/paulmelero/flipthecoin.app](https://github.com/paulmelero/flipthecoin.app/). Las contribuciones, incidencias e ideas son bienvenidas. También escribo artículos técnicos sobre cómo está hecho el sitio, tanto en [este blog](/blog) como en [mi blog personal de desarrollo](https://graficos.net/blog).
 
 ---
 

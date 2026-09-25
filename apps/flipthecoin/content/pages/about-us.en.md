@@ -28,7 +28,7 @@ You can also sign up to receive the Newsletter and get information about the web
 
 ## Open source
 
-The project is not open sourced for now, but I plan to do it in the future. I will also write technical articles about how the site is made both in [this blog](/blog) and in [my personal development blog](https://graficos.net/blog).
+The project is **open source** — the code lives at [github.com/paulmelero/flipthecoin.app](https://github.com/paulmelero/flipthecoin.app/). Contributions, issues and ideas are welcome. I also write technical articles about how the site is made, both in [this blog](/blog) and in [my personal development blog](https://graficos.net/blog).
 
 ---
 
