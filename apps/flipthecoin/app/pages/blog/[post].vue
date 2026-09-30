@@ -23,6 +23,27 @@ const { data: post } = await useAsyncData(
   { watch: [slug, locale] },
 );
 
+// Drafts (`published: false`) must not be reachable by URL. The `/blog/**`
+// route rule prerenders every slug, and the SSR fallback would serve any route
+// we skip, so a page-level guard is what actually hides them: direct loads
+// (including prerender) get a real 404, and client-side navigation shows the
+// not-found UI instead of the draft.
+const isDraft = computed(() => {
+  const p = post.value as
+    | { meta?: { published?: boolean }; published?: boolean }
+    | null
+    | undefined;
+  return p?.meta?.published === false || p?.published === false;
+});
+
+if (isDraft.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Not Found',
+    fatal: true,
+  });
+}
+
 // Fetch sibling posts to build correct cross-locale hreflang URLs
 const { data: siblings } = await useAsyncData(
   () => `blog-siblings-${locale.value}-${slug.value}`,
@@ -207,7 +228,7 @@ useHead(
 </script>
 
 <template>
-  <div class="mb-16" v-if="post && renderDoc">
+  <div class="mb-16" v-if="post && renderDoc && !isDraft">
     <BlogPostHero :post="post" :author="author" class="mb-12" />
     <ContentRenderer :value="renderDoc" />
   </div>

@@ -1,6 +1,36 @@
 import svgLoader from 'vite-svg-loader';
 import { fileURLToPath } from 'node:url';
+import { readdirSync, readFileSync } from 'node:fs';
 import { rehypeKatexClassify } from './app/lib/mdc/rehypeKatexClassify';
+
+// Blog drafts (`published: false`) must not ship as static pages. The
+// `/blog/**` route rule would prerender every slug, and the page-level guard in
+// pages/blog/[post].vue returns a 404 for drafts — which would abort the build.
+// So we remove draft routes from the prerender set here; the SSR fallback still
+// hits the guard, so a draft URL 404s at runtime too.
+function draftBlogRoutes(): string[] {
+  const dir = fileURLToPath(new URL('./content/blog', import.meta.url));
+  const routes: string[] = [];
+  for (const file of readdirSync(dir)) {
+    const match = file.match(/^(.+)\.(en|es)\.md$/);
+    if (!match) continue;
+    const [, , locale] = match;
+    const source = readFileSync(
+      new URL(`./content/blog/${file}`, import.meta.url),
+      'utf8',
+    );
+    const frontmatter = source.match(/^---\n([\s\S]*?)\n---/)?.[1];
+    if (!frontmatter) continue;
+    if (!/^published:\s*false\s*$/m.test(frontmatter)) continue;
+    const slug = frontmatter
+      .match(/^slug:\s*(.+)$/m)?.[1]
+      ?.trim()
+      .replace(/^['"]|['"]$/g, '');
+    if (!slug) continue;
+    routes.push(locale === 'es' ? `/es/blog/${slug}` : `/blog/${slug}`);
+  }
+  return routes;
+}
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -130,6 +160,9 @@ export default defineNuxtConfig({
         /^\/(en|es)\/(en|es)(\/|$)/,
         /^\/(en|es)\/api\//,
         /^\/(es\/)?profile\/?$/,
+        // Drafts (`published: false`) are skipped so their intentional 404
+        // does not abort prerendering; the page guard still 404s them at runtime.
+        ...draftBlogRoutes(),
       ],
       // Glossary index JSON is fetched client-side on hover, so it is never
       // crawled from a link — list it explicitly so it ships as a static asset.
